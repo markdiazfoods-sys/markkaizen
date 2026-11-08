@@ -1,0 +1,7 @@
+Imágenes de referencia de anime y dorama.
+Nombra cada archivo con el título en minúsculas y guiones:
+black-clover.jpg, naruto.jpg, one-piece.jpg, dragon-ball.jpg, getbackers.jpg,
+death-note.jpg, tokyo-ghoul.jpg, si-la-vida-te-da-mandarinas.jpg,
+she-was-pretty.jpg, mi-novia-es-un-robot.jpg, propuesta-laboral.jpg,
+queen-of-tears.jpg, alquimia-de-almas.jpg
+La web las pone sola como fondo de cada portada.
