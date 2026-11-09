@@ -367,6 +367,7 @@ dialog::backdrop{background:rgba(4,4,7,.88);backdrop-filter:blur(8px)}
 .tkload{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:12px;color:var(--mute);font-size:14px;pointer-events:none}
 .sp{width:34px;height:34px;border-radius:50%;border:3px solid rgba(255,255,255,.12);border-top-color:var(--or);animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
 .tkfb{display:grid;justify-items:center;align-content:center;gap:12px;text-align:center;padding:28px;max-width:360px}.tkfb b{font:700 20px var(--display)}.tkfb p{color:var(--mute)}
+.cgrid.one{grid-template-columns:minmax(0,820px);justify-content:center}
 .lin{display:flex;align-items:center;gap:8px;color:var(--mute);font-size:14px}.lin svg{width:18px;height:18px;fill:var(--gold)}
 .spb{margin-top:16px;padding:clamp(16px,3vw,24px);border-radius:22px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(212,175,55,.10),rgba(139,30,63,.18) 55%,var(--card));transition:border-color .3s,box-shadow .3s}
 .spb.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 0 40px rgba(212,175,55,.18)}
@@ -449,14 +450,11 @@ dialog::backdrop{background:rgba(4,4,7,.88);backdrop-filter:blur(8px)}
 </div></section>
 
 <section class="s" id="contenido"><div class="w">
- <div class="sh rv"><div><p class="eb">Contenido</p><h2>TikTok y LinkedIn</h2></div><p class="lead">Mi perfil de TikTok con los últimos videos. Tócalos para verlos aquí mismo.</p></div>
- <div class="cgrid">
+ <div class="sh rv"><div><p class="eb">Contenido</p><h2>Mi TikTok</h2></div><p class="lead">Mi perfil de TikTok con los últimos videos. Tócalos para verlos aquí mismo.</p></div>
+ <div class="cgrid one">
   <article class="panel tkp rv" id="tkp"><div class="tkh"><span class="tki" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9a7.4 7.4 0 0 0 4.3 1.4V7.3a4.3 4.3 0 0 1-3.2-1.5z"/></svg></span><div><b>@markkaizen_</b><small>Mi perfil de TikTok, en vivo</small></div><a class="btn bp" href="https://www.tiktok.com/@markkaizen_" target="_blank" rel="noopener">Seguir en TikTok</a></div>
    <div class="tkbox" id="tkbox"><blockquote class="tiktok-embed" cite="https://www.tiktok.com/@markkaizen_" data-unique-id="markkaizen_" data-embed-type="creator" style="max-width:780px;min-width:288px;margin:0"><section><a target="_blank" rel="noopener" href="https://www.tiktok.com/@markkaizen_?refer=creator_embed">@markkaizen_</a></section></blockquote>
    <div class="tkload" id="tkload" aria-hidden="true"><span class="sp"></span>Cargando mi perfil de TikTok…</div></div></article>
-  <article class="panel li rv"><div class="hd"><img src="img/hero.jpg" alt=""><div><b style="font:700 18px var(--display)">Mark Anthony Díaz Díaz</b><br><small style="color:var(--mute)">Trafficker Digital · Lima, Perú</small></div></div>
-   <ul id="lnx"></ul>
-   <p class="lin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>LinkedIn · Mark Anthony Díaz Díaz</p></article>
  </div>
 </div></section>
 
@@ -493,6 +491,7 @@ dialog::backdrop{background:rgba(4,4,7,.88);backdrop-filter:blur(8px)}
   <div class="clist rv">
    <a class="cl wa" href="https://wa.me/51969722522?text=Hola%20Mark%2C%20vi%20tu%20web%20MARK%20KAIZEN" target="_blank" rel="noopener"><span class="ci"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg></span><span><b>WhatsApp</b><small>969 722 522</small></span></a>
    <button class="cl" type="button" id="cpmail"><span class="ci"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zm2 2v.5l7 5 7-5V7z"/></svg></span><span><b>Correo · toca para copiar</b><small>markdiazfoods@gmail.com</small></span></button>
+   <a class="cl" href="https://www.linkedin.com/in/mark-anthony-diaz-diaz-8b0240237/" target="_blank" rel="noopener"><span class="ci"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"/></svg></span><span><b>LinkedIn</b><small>Mark Anthony Díaz Díaz</small></span></a>
    <a class="cl" href="https://www.tiktok.com/@markkaizen_" target="_blank" rel="noopener"><span class="ci"><svg viewBox="0 0 24 24"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9a7.4 7.4 0 0 0 4.3 1.4V7.3a4.3 4.3 0 0 1-3.2-1.5z"/></svg></span><span><b>TikTok</b><small>@markkaizen_</small></span></a>
    <button class="cl" type="button" data-cv><span class="ci"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16" fill="none" stroke="currentColor" stroke-width="2"/></svg></span><span><b>Descargar CV</b><small>PDF · Mark Díaz</small></span></button>
   </div>
@@ -616,7 +615,6 @@ $$("#tl .tn").forEach((b,i)=>b.onclick=()=>showExp(i));showExp(0);
 $("edu").innerHTML=`<div><h4>Formación</h4><p><b>UTP</b> · Bachiller en Administración y Marketing (2025)</p><p style="color:var(--mute);margin-top:6px"><b style="color:var(--tx)">ICPNA</b> · Inglés avanzado (en curso)</p></div>
 <div><h4>Paid media y analítica</h4><div class="chs">${["Meta Ads","Google Ads","TikTok Ads","Segmentación","Testing A/B","GA4","Google Tag Manager","Dashboards","Excel avanzado"].map(s=>`<span>${s}</span>`).join("")}</div></div>
 <div><h4>Contenido e IA</h4><div class="chs">${["Canva","CapCut","Copywriting","Guiones","Edición de video","ChatGPT","Gemini","Perplexity"].map(s=>`<span>${s}</span>`).join("")}</div></div>`;
-$("lnx").innerHTML=EXP.map(e=>`<li><span><b>${esc(e.rol)}</b> · ${esc(e.n)} <span style="color:var(--dim)">(${esc(e.p)})</span></span></li>`).join("");
 /* ---------- universo ---------- */
 let utab="a";
 function drawU(){const L=utab=="a"?ANI:DOR;$("posters").innerHTML=L.map((x,i)=>{const p=POST[x.n];return `<button class="po" type="button" data-i="${i}" style="--pc:${p&&p.c||"rgba(255,107,0,.8)"}" aria-label="Abrir ficha de ${esc(x.n)}">${p?`<img loading="lazy" src="${p.f}" alt="">`:`<span style="position:absolute;inset:0;background:linear-gradient(160deg,var(--wine),var(--ink))"></span>`}<span class="jp" aria-hidden="true">${esc(JP[x.n]||"")}</span><span class="pt"><b>${esc(x.n)}</b><small>${esc(x.y)}</small></span></button>`}).join("");
