@@ -343,7 +343,60 @@ dialog::backdrop{background:rgba(4,4,7,.88);backdrop-filter:blur(8px)}
 .spn{color:var(--dim);font-size:13px;margin-top:10px}
 .tside .tlogo.neon{height:84px;width:194px;max-width:100%;background:none!important;padding:0;border-radius:12px;box-shadow:0 0 24px rgba(255,107,0,.25)}
 @media (max-width:640px){.tkbox{min-height:520px}.spf{height:380px}.spst{margin-left:0;width:100%}}
+
+/* ===== Juego con el logo: emblema dragón + gato (yin-yang 改善) ===== */
+.emb{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinr{to{transform:rotate(-360deg)}}
+/* barra de progreso de lectura */
+.prog{position:fixed;left:0;top:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(var(--sp,0));background:var(--grad);background-size:200% 100%;animation:flow 6s linear infinite;z-index:60;pointer-events:none}
+/* el logo del header gira con el scroll */
+.logo img{transition:transform .2s ease-out;transform:rotate(calc(var(--sp,0)*360deg))}
+.logo:hover img{transform:rotate(calc(var(--sp,0)*360deg + 180deg));transition-duration:.6s}
+/* sello giratorio en la foto del hero */
+.seal{position:absolute;right:-46px;top:-46px;width:132px;height:132px;z-index:3;display:grid;place-items:center;border-radius:50%;background:rgba(9,9,13,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 0 0 1px rgba(255,255,255,.08),0 20px 40px -16px rgba(255,107,0,.55)}
+.seal svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 18s linear infinite}
+.seal text{font:700 10.5px var(--display);letter-spacing:.32em;fill:#F4EBDD;text-transform:uppercase}
+.pcard .seal .emb{width:56%;height:auto;object-fit:contain;border-radius:0;background:none;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.seal:hover .emb{transform:rotate(180deg) scale(1.06)}
+.kj{top:120px}
+/* número de sección: 01, 02... */
+main{counter-reset:sec}
+section.s .sh .eb{counter-increment:sec}
+section.s .sh .eb::before{order:-2}section.s .sh .eb::after{content:counter(sec,decimal-leading-zero) " /";color:var(--mute);letter-spacing:.1em;font-weight:500;order:-1}
+/* divisor con emblema entre bloques */
+.ens{display:flex;align-items:center;gap:18px;max-width:var(--w);margin:clamp(56px,9vw,100px) auto 0;padding:0 clamp(18px,4vw,40px);color:var(--mute);font:700 11px var(--display);letter-spacing:.3em;text-transform:uppercase}
+.ens::before,.ens::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--line2),transparent)}
+.ens span{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.ens img{width:44px;height:auto;animation:spin 30s linear infinite;filter:drop-shadow(0 0 14px rgba(255,107,0,.35))}
+.ens:hover img{animation-duration:3s}
+/* manifiesto: emblema grande con anillo y texto orbitando */
+.mani .orb{position:absolute;right:3%;top:50%;width:clamp(220px,25vw,360px);aspect-ratio:1;transform:translateY(-50%);pointer-events:none}
+.mani .orb::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,#FF6B00,#C2335F,#D4AF37,#FF6B00);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 1px));mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 1px));animation:spin 14s linear infinite;opacity:.8}
+.mani .orb::after{content:"";position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle,rgba(255,107,0,.28),transparent 70%);filter:blur(20px)}
+.mani .orb svg{position:absolute;inset:6%;width:88%;height:88%;animation:spinr 40s linear infinite}
+.mani .orb text{font:700 13px var(--display);letter-spacing:.42em;fill:rgba(244,235,221,.55)}
+.mani .orb .emb{position:absolute;inset:24%;width:52%;z-index:1;animation:spin 60s linear infinite;filter:drop-shadow(0 0 30px rgba(255,107,0,.35))}
+/* footer con firma grande */
+.fsig{display:flex;align-items:center;justify-content:center;gap:clamp(12px,3vw,32px);padding:0 16px 34px;overflow:hidden}
+.fsig img{width:clamp(56px,9vw,110px);animation:spin 50s linear infinite}
+.fsig b{font:800 clamp(40px,11vw,150px) var(--display);letter-spacing:-.05em;line-height:.9;color:transparent;-webkit-text-stroke:1px rgba(244,235,221,.22);white-space:nowrap;transition:color .5s}
+.fsig b i{font-style:normal;background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-stroke:0;animation:flow 8s linear infinite}
+.fsig:hover b{color:rgba(244,235,221,.06)}
+/* intro: el emblema aparece girando y se va */
+.intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--ink);pointer-events:none;animation:introout .5s ease-in 1.15s forwards}
+.intro div{display:grid;justify-items:center;gap:14px}
+.intro img{width:120px;animation:introin 1.1s cubic-bezier(.2,.8,.2,1) both}
+.intro p{font:800 14px var(--display);letter-spacing:.5em;color:#F4EBDD;opacity:0;animation:fadeup .6s .45s ease-out forwards}
+.intro p i{font-style:normal;color:var(--or)}
+@keyframes introin{from{transform:rotate(-200deg) scale(.4);opacity:0}to{transform:none;opacity:1}}
+@keyframes introout{to{opacity:0;visibility:hidden}}
+@keyframes fadeup{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (max-width:1100px){.mani .orb{opacity:.4;right:-4%}}
+@media (max-width:640px){.seal{width:96px;height:96px;right:-14px;top:-30px}.seal text{font-size:9px;letter-spacing:.22em}.mani .orb{opacity:.35;right:-18%}.ens{gap:10px;letter-spacing:.2em}}
+@media (prefers-reduced-motion:reduce){.intro{display:none}.seal svg,.ens img,.mani .orb::before,.mani .orb svg,.mani .orb .emb,.fsig img{animation:none}}
 </style></head><body><a class="skip" href="#main">Saltar al contenido</a>
+<div class="intro" id="intro" aria-hidden="true"><div><img src="img/emblem.webp" alt=""><p>MARK <i>KAIZEN</i></p></div></div><div class="prog" aria-hidden="true"></div>
 <canvas id="bgfx" aria-hidden="true"></canvas>
 <header class="top"><div class="w hb">
  <a class="logo" href="#top"><img src="img/logo.png" alt="" width="36" height="36"><span>MARK <b>KAIZEN</b></span><i>改善</i></a>
@@ -369,6 +422,7 @@ dialog::backdrop{background:rgba(4,4,7,.88);backdrop-filter:blur(8px)}
    </div>
   </div>
   <div class="pcard rv">
+   <div class="seal" aria-hidden="true"><svg viewBox="0 0 132 132"><defs><path id="sc" d="M66,66 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs><text><textPath href="#sc">Mark Kaizen · Mejora continua · 改善 ·</textPath></text></svg><img class="emb" src="img/emblem.webp" alt=""></div>
    <img src="img/hero.jpg" alt="Mark Díaz con el hoodie de MARK KAIZEN" width="560" height="747">
    <span class="kj" aria-hidden="true">戦略 創造 結果</span>
    <div class="float f1"><span class="ic">R</span><span><b>ROAS 13.89</b><small>Campaña Flores Amarillas</small></span></div>
@@ -397,6 +451,7 @@ dialog::backdrop{background:rgba(4,4,7,.88);backdrop-filter:blur(8px)}
  <div class="cases rv"><div class="ctabs" role="tablist" aria-label="Proyectos" id="ctabs"></div><div class="cpane" id="cpane" role="tabpanel"></div></div>
 </div></section>
 
+<div class="ens" aria-hidden="true"><span><img src="img/emblem.webp" alt="" loading="lazy">Lo creativo</span></div>
 <section class="s" id="trabajos"><div class="w">
  <div class="sh rv"><div><p class="eb">Portafolio creativo</p><h2>Trabajos por marca</h2></div><p class="lead">Posts, videos y documentos reales. Toca una pieza para verla aquí mismo, en grande.</p></div>
  <div class="brands" id="brands" role="group" aria-label="Elegir marca"></div>
@@ -422,6 +477,7 @@ dialog::backdrop{background:rgba(4,4,7,.88);backdrop-filter:blur(8px)}
  </div>
 </div></section>
 
+<div class="ens" aria-hidden="true"><span><img src="img/emblem.webp" alt="" loading="lazy">Fuera de la oficina · 改善</span></div>
 <section class="s" id="universo"><div class="w">
  <div class="sh rv"><div><p class="eb">Fuera de la oficina</p><h2>Mi universo anime y dorama</h2></div><p class="lead">Las historias que me inspiran. Abre una ficha para ver sinopsis, personajes y sus openings.</p></div>
  <div class="utabs" role="tablist" aria-label="Universo"><button class="chip" role="tab" aria-selected="true" data-u="a">Anime · 8</button><button class="chip" role="tab" aria-selected="false" data-u="d">Dorama · 6</button></div>
@@ -435,7 +491,7 @@ dialog::backdrop{background:rgba(4,4,7,.88);backdrop-filter:blur(8px)}
   <p class="spn">Inicia sesión en Spotify en este navegador para escuchar las canciones completas.</p></div>
 </div></section>
 
-<div class="mani" id="manifiesto"><div class="w"><p class="eb">Manifiesto</p><p class="big">No busco ser perfecto. Busco <span class="gt">evolucionar</span>.</p><p class="lead">Combino estrategia con creatividad, análisis con intuición y disciplina con experimentación. Cada campaña es una oportunidad para aprender y mejorar. 改善, mejora continua.</p></div><span class="kz" aria-hidden="true">改善</span></div>
+<div class="mani" id="manifiesto"><div class="w"><p class="eb">Manifiesto</p><p class="big">No busco ser perfecto. Busco <span class="gt">evolucionar</span>.</p><p class="lead">Combino estrategia con creatividad, análisis con intuición y disciplina con experimentación. Cada campaña es una oportunidad para aprender y mejorar. 改善, mejora continua.</p></div><div class="orb" aria-hidden="true"><svg viewBox="0 0 200 200"><defs><path id="oc" d="M100,100 m-84,0 a84,84 0 1,1 168,0 a84,84 0 1,1 -168,0"/></defs><text><textPath href="#oc">改善 · Mejora continua · 改善 · Mejora continua ·</textPath></text></svg><img class="emb" src="img/emblem.webp" alt="" loading="lazy"></div></div>
 
 <section class="s" id="contacto"><div class="w">
  <div class="cta">
@@ -450,7 +506,7 @@ dialog::backdrop{background:rgba(4,4,7,.88);backdrop-filter:blur(8px)}
  </div>
 </div></section>
 </main>
-<footer><div class="w"><span>© 2026 Mark Díaz · Trafficker Digital · Lima, Perú</span><span>MARK KAIZEN 改善 · Mejora continua</span></div></footer>
+<footer><div class="fsig" aria-hidden="true"><img src="img/emblem.webp" alt="" loading="lazy"><b>MARK <i>KAIZEN</i></b></div><div class="w"><span>© 2026 Mark Díaz · Trafficker Digital · Lima, Perú</span><span>MARK KAIZEN 改善 · Mejora continua</span></div></footer>
 
 <a class="wafab" href="https://wa.me/51969722522?text=Hola%20Mark%2C%20vi%20tu%20web%20MARK%20KAIZEN" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg></a>
 <button class="sptap" type="button" id="sptap" hidden>▶ Toca para escuchar</button>
@@ -603,4 +659,6 @@ function tkLoad(){if(tkLoad.d)return;tkLoad.d=1;const sc=document.createElement(
  const ob=new MutationObserver(()=>{if(box.querySelector("iframe")){const l=$("tkload");if(l)l.remove();ob.disconnect()}});ob.observe(box,{childList:true,subtree:true})}
 const lz=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;lz.unobserve(e.target);tkLoad()}),{rootMargin:"600px 0px"});lz.observe($("tkp"));
 </script>
+<script>(()=>{const r=document.documentElement;let t=0;const f=()=>{t=0;const h=r.scrollHeight-innerHeight;r.style.setProperty("--sp",h>0?(scrollY/h).toFixed(4):0)};addEventListener("scroll",()=>{if(!t)t=requestAnimationFrame(f)},{passive:true});f();
+const i=document.getElementById("intro");if(i){if(sessionStorage.getItem("mkIntro"))i.remove();else{sessionStorage.setItem("mkIntro",1);setTimeout(()=>i.remove(),1800)}}})();</script>
 </body></html>
