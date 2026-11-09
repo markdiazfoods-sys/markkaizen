@@ -1,4 +1,0 @@
-Sube aquí tus canciones (mp3, m4a, ogg o wav).
-Nombre sugerido: Artista - Canción.mp3
-Portada opcional: una imagen con el mismo nombre (jpg o png).
-La web las encuentra sola, las mezcla y las reproduce una tras otra.
