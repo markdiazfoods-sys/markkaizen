@@ -225,6 +225,29 @@ section.s{padding:clamp(64px,10vw,120px) 0 0}
 .po:hover{transform:translateY(-6px) rotate(-.6deg);box-shadow:0 30px 50px -25px var(--pc,rgba(255,107,0,.8))}
 .po:hover img{transform:scale(1.06)}
 /* música: Spotify */
+/* música: mini reproductor fijo que acompaña al navegar */
+.mpsec{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.mpsec .spn{width:100%}
+.mp{position:fixed;left:max(12px,env(safe-area-inset-left));bottom:max(12px,env(safe-area-inset-bottom));z-index:45;display:flex;align-items:center;gap:4px;max-width:calc(100vw - 100px);padding:6px 8px 6px 6px;border-radius:99px;background:rgba(9,9,13,.88);border:1px solid rgba(30,215,96,.35);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 14px 34px -12px rgba(0,0,0,.8);overflow:visible}
+.mp.on{border-color:#1ED760;box-shadow:0 0 0 1px #1ED760,0 14px 34px -12px rgba(30,215,96,.6)}
+.mpimg{flex:none;width:38px;height:38px;border-radius:50%;object-fit:cover;background:#15151b}
+.mp.on .mpimg{animation:spin 6s linear infinite}
+.mpt{min-width:0;width:150px;display:flex;flex-direction:column;line-height:1.2;margin:0 4px}
+.mpt b{font:700 13px var(--display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mpt small{font-size:11px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mpb{flex:none;width:36px;height:36px;border-radius:50%;border:0;background:none;color:var(--tx);display:grid;place-items:center;cursor:pointer;transition:background .2s,color .2s,transform .15s}
+.mpb svg{width:18px;height:18px;fill:currentColor}
+.mpb:hover{background:rgba(255,255,255,.08)}.mpb:active{transform:scale(.9)}
+.mpb[aria-pressed=true]{color:#1ED760}
+.mpmain{width:42px;height:42px;background:#1ED760;color:#04140a}.mpmain:hover{background:#3BE477}
+.mpmain .i-pa,.mp.on .mpmain .i-pl{display:none}.mp.on .mpmain .i-pa{display:block}
+.mpbar{position:absolute;left:22px;right:22px;bottom:-1px;height:2px;border-radius:2px;overflow:hidden;background:rgba(255,255,255,.08)}
+.mpbar i{display:block;height:100%;width:0;background:#1ED760;transition:width .5s linear}
+.mpemb{position:absolute;left:0;bottom:calc(100% + 8px);width:300px;height:80px;opacity:0;pointer-events:none;border-radius:12px;overflow:hidden}
+.mpemb iframe{width:100%;height:100%;border:0}
+.mp.fb .mpemb{opacity:1;pointer-events:auto}
+@media (max-width:560px){.mpt{width:auto;flex:1}.mpb{width:32px;height:32px}.mpmain{width:38px;height:38px}}
+@media (max-width:400px){.mpt{display:none}}
+@media (prefers-reduced-motion:reduce){.mp.on .mpimg{animation:none}}
 .spb{padding:clamp(16px,3vw,24px);border-radius:22px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(212,175,55,.10),rgba(139,30,63,.18) 55%,var(--card));transition:border-color .3s,box-shadow .3s}
 .spb.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 0 40px rgba(212,175,55,.18)}
 .sptap{position:fixed;left:max(16px,env(safe-area-inset-left));bottom:max(16px,env(safe-area-inset-bottom));z-index:45;min-height:52px;padding:0 20px;border:0;border-radius:99px;background:#1DB954;color:#06160c;font:700 15px var(--display);cursor:pointer;box-shadow:0 14px 34px -10px rgba(29,185,84,.7);animation:fade .3s ease}
@@ -611,16 +634,9 @@ section.s .sh .eb::before{background:var(--sc);animation:none}
 </div></section>
 
 <section class="s" id="musica"><div class="w">
- <div class="sh rv"><div><p class="eb">Música</p><h2>Suena mientras navegas</h2></div><p class="lead">Mi playlist “Mix Anime” de Spotify. Empieza a sonar sola cuando tocas la página: pausa o reproduce con ▶, y cambia de canción con ⏮ ⏭.</p></div>
- <div class="spb rv" id="spb"><div class="sph"><span class="spi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.4a.6.6 0 0 1-.9.2c-2.4-1.5-5.4-1.8-9-1a.6.6 0 1 1-.3-1.2c3.9-.9 7.2-.5 9.9 1.1.3.2.4.6.3.9zm1.2-2.7a.8.8 0 0 1-1.1.3c-2.7-1.7-6.9-2.2-10.2-1.2a.8.8 0 0 1-.5-1.5c3.7-1.1 8.3-.6 11.5 1.3.4.3.5.8.3 1.1zm.1-2.8C14.7 9 9.4 8.8 6.3 9.7a1 1 0 1 1-.6-1.8c3.5-1.1 9.4-.9 13.1 1.3a1 1 0 0 1-.9 1.7z"/></svg></span><div><p class="eb">Spotify</p><h3>Mix Anime</h3></div><span class="spst" id="spst" aria-live="polite"></span></div>
-   <div class="spnow">
-    <div class="sptop"><div class="spdisc" aria-hidden="true"><img id="spdimg" src="img/emblem.webp" alt="" onerror="this.onerror=null;this.src='img/emblem.webp'"></div>
-    <div class="spmeta"><span class="spnum" id="spnum">Canción 01</span><b id="spt">…</b><small id="spa"></small></div></div>
-    <div class="spctl"><button type="button" class="spbt" id="spprev" aria-label="Canción anterior"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button><button type="button" class="spbt spmain" id="sptg" aria-label="Reproducir o pausar"><svg class="i-pl" viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg><svg class="i-pa" viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button><button type="button" class="spbt" id="spnext" aria-label="Canción siguiente"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button></div>
-    <div class="spbar" aria-hidden="true"><i id="spbar"></i></div>
-    <div class="spf"><div id="spembed"><div class="spph"><span class="sp"></span>Cargando Spotify…</div></div></div>
-   </div>
-  <p class="spn">Inicia sesión en Spotify en este navegador para escuchar las canciones completas (sin sesión, Spotify solo da 30 segundos por canción). <a href="https://open.spotify.com/playlist/6DyXkY9uTOwcoNU8sWsK5u" target="_blank" rel="noopener">Abrir Mix Anime en Spotify</a></p></div>
+ <div class="sh rv"><div><p class="eb">Música</p><h2>Suena mientras navegas</h2></div><p class="lead">Mi playlist “Mix Anime” de Spotify. El reproductor vive abajo a la izquierda y te acompaña por toda la página: aleatorio, anterior, play/pausa, siguiente y stop.</p></div>
+ <div class="mpsec rv"><button class="btn bp" type="button" id="mpgo">▶ Escuchar Mix Anime</button><a class="btn" href="https://open.spotify.com/playlist/6DyXkY9uTOwcoNU8sWsK5u" target="_blank" rel="noopener">Abrir en Spotify</a>
+ <p class="spn">Inicia sesión en Spotify en este navegador para escuchar las canciones completas (sin sesión, Spotify solo da 30 segundos por canción).</p></div>
 </div></section>
 
 <div class="mani" id="manifiesto"><div class="w"><p class="eb">Manifiesto</p><p class="big">No busco ser perfecto. Busco <span class="gt">evolucionar</span>.</p><p class="lead">Combino estrategia con creatividad, análisis con intuición y disciplina con experimentación. Cada campaña es una oportunidad para aprender y mejorar. 改善, mejora continua.</p></div><div class="orb" aria-hidden="true"><svg viewBox="0 0 200 200"><defs><path id="oc" d="M100,100 m-84,0 a84,84 0 1,1 168,0 a84,84 0 1,1 -168,0"/></defs><text><textPath href="#oc">改善 · Mejora continua · 改善 · Mejora continua ·</textPath></text></svg><img class="emb" src="img/emblem.webp" alt="" loading="lazy"></div></div>
@@ -641,7 +657,7 @@ section.s .sh .eb::before{background:var(--sc);animation:none}
 <footer><div class="fsig" aria-hidden="true"><img src="img/emblem.webp" alt="" loading="lazy"><b>MARK <i>KAIZEN</i></b></div><div class="w"><span>© 2026 Mark Díaz · Trafficker Digital · Lima, Perú</span><span>MARK KAIZEN 改善 · Mejora continua</span></div></footer>
 
 <a class="wafab" href="https://wa.me/51969722522?text=Hola%20Mark%2C%20vi%20tu%20web%20MARK%20KAIZEN" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg></a>
-<button class="sptap" type="button" id="sptap" hidden>▶ Toca para escuchar</button>
+<div class="mp" id="mp" role="region" aria-label="Reproductor Mix Anime"><img class="mpimg" id="mpimg" src="img/emblem.webp" alt="" onerror="this.onerror=null;this.src='img/emblem.webp'"><div class="mpt"><b id="mpt">Mix Anime</b><small id="mpa">Spotify</small></div><button type="button" class="mpb" id="mpsh" aria-label="Aleatorio" aria-pressed="false" title="Aleatorio"><svg viewBox="0 0 24 24"><path d="M17 3h4v4h-2V6.4l-4.3 4.3-1.4-1.4L17.6 5H17zM3 6h3.6l11 11H19v-1h2v4h-4v-2h.6L6 7H3zm0 11h3l3.2-3.2 1.4 1.4L6.8 19H3z"/></svg></button><button type="button" class="mpb" id="mpprev" aria-label="Canción anterior" title="Anterior"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button><button type="button" class="mpb mpmain" id="mptg" aria-label="Reproducir o pausar" title="Reproducir / pausar"><svg class="i-pl" viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg><svg class="i-pa" viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button><button type="button" class="mpb" id="mpnext" aria-label="Canción siguiente" title="Siguiente"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button><button type="button" class="mpb" id="mpstop" aria-label="Detener" title="Stop"><svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg></button><i class="mpbar" aria-hidden="true"><i id="mpbar"></i></i><div class="mpemb" id="spembed"></div></div>
 
 <dialog class="vw" id="vw" aria-label="Visor"><div class="vwh"><div class="t"><b id="vwt"></b><small id="vws"></small></div><button class="x" type="button" id="vwx" aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div><div class="vwb" id="vwb"></div><div class="vwf" id="vwf"></div></dialog>
 <dialog class="md" id="md" aria-label="Ficha"><button class="x mdx" type="button" id="mdx" aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div class="mdi" id="mdc"></div></dialog>
@@ -767,46 +783,50 @@ function ficha(x){const p=POST[x.n],isA=!!x.mu;
  <h4>${isA?"Personajes":"Reparto"}</h4><div class="chs">${x.ch.map(c=>`<span>${esc(c)}</span>`).join("")}</div>
  <h4>${isA?"Openings y endings":"Banda sonora"}</h4><ol>${(isA&&x.mu.length?x.mu:[[x.o||x.n," OST","ost"]]).map(m=>`<li><span><b>${esc(m[0])}</b><small>${esc(m[1])}</small></span></li>`).join("")}</ol>
  <button class="btn bp" type="button" id="mdsp">Escuchar mi “Mix Anime” aquí</button></div>`;
- $("mdsp").onclick=()=>{md.close();$("spb").scrollIntoView({behavior:"smooth",block:"center"});spPlay()};
+ $("mdsp").onclick=()=>{md.close();spPlay()};
  md.showModal()}
-/* ---------- música: Spotify "Mix Anime" ----------
+/* ---------- música: Spotify "Mix Anime" en un mini reproductor fijo ----------
    Las canciones viven en musica.json: {id, n, img, t:[[idCanción, título, artista]]}.
-   Solo: reproducción automática, play/pausa, anterior y siguiente. */
-let MU=null,spI=0;
-let spC=null,spOn=false,spReq=false,spWant=false,spWas=false,spT=0,spEnd=-1,spFb=false;
-const pad=n=>String(n).padStart(2,"0");
+   Controles: aleatorio, anterior, play/pausa, siguiente y stop. Arranca solo al primer toque. */
+let MU=null,spI=0,spSh=false,spHist=[];
+let spC=null,spOn=false,spReq=false,spWant=false,spWas=false,spEnd=-1,spFb=false;
 const spTr=()=>MU.t[spI];
-function spSave(){try{localStorage.setItem("mk-mix",spI)}catch(e){}}
-function spInfo(){const t=spTr();$("spdimg").src=MU.img||"img/emblem.webp";
- $("spnum").textContent="Canción "+pad(spI+1)+" / "+pad(MU.t.length);$("spt").textContent=t[1];$("spa").textContent=t[2];spSave()}
-function spState(on){spOn=on;$("spst").textContent=on?"Sonando en Spotify":"";$("spb").classList.toggle("on",on);if(on){spWant=false;clearTimeout(spT);$("sptap").hidden=true}}
-function spLoadTrack(play){spEnd=-1;$("spbar").style.width="0";const id=spTr()[0];
+function spSave(){try{localStorage.setItem("mk-mix",JSON.stringify([spI,spSh]))}catch(e){}}
+function spInfo(){const t=spTr();$("mpt").textContent=t[1];$("mpa").textContent=t[2];if(MU.img)$("mpimg").src=MU.img;spSave()}
+function spState(on){spOn=on;$("mp").classList.toggle("on",on);if(on)spWant=false}
+function spLoadTrack(play){spEnd=-1;$("mpbar").style.width="0";const id=spTr()[0];
  if(spFb){$("spf").src=`https://open.spotify.com/embed/track/${id}?utm_source=generator&theme=0`;return}
  if(!spC){if(play)spWant=true;return}
  spC.loadUri("spotify:track:"+id);if(play){spWant=true;setTimeout(()=>{try{spC.play()}catch(e){}},700)}}
-/* canción siguiente / anterior: da la vuelta al llegar al final o al inicio */
-function spGo(i,play){if(!MU)return;const m=MU.t.length;spI=(i+m)%m;spInfo();spLoadTrack(play)}
-/* intenta reproducir; si en unos segundos no suena, el navegador lo bloqueó: mostrar botón */
-function spPlay(){spWant=true;if(!spC)return;try{spC.play()}catch(e){}clearTimeout(spT);spT=setTimeout(()=>{if(!spOn&&spWant)$("sptap").hidden=false},3500)}
-$("spprev").onclick=()=>spGo(spI-1,true);$("spnext").onclick=()=>spGo(spI+1,true);
-$("sptg").onclick=()=>{if(spC&&spOn)spC.pause();else spPlay()};
+function spTo(i,play){if(!MU)return;const m=MU.t.length;spI=(i+m)%m;spInfo();spLoadTrack(play)}
+/* siguiente: en orden o al azar (sin repetir la actual); anterior: vuelve a la que sonó antes */
+function spNext(){if(!MU)return;spHist.push(spI);if(spHist.length>50)spHist.shift();
+ if(spSh&&MU.t.length>1){let r;do r=Math.floor(Math.random()*MU.t.length);while(r==spI);spTo(r,true)}else spTo(spI+1,true)}
+function spPrev(){if(!MU)return;if(spHist.length)spTo(spHist.pop(),true);else spTo(spI-1,true)}
+function spPlay(){spWant=true;if(!spC)return;try{spC.play()}catch(e){}}
+function spStop(){spWant=false;if(!spC)return;try{spC.pause();spC.seek(0)}catch(e){}$("mpbar").style.width="0"}
+function spShuf(on){spSh=on;$("mpsh").setAttribute("aria-pressed",on);spSave()}
+$("mpprev").onclick=spPrev;$("mpnext").onclick=spNext;$("mpstop").onclick=spStop;
+$("mptg").onclick=()=>{if(spC&&spOn)spC.pause();else spPlay()};
+$("mpsh").onclick=()=>spShuf(!spSh);
+$("mpgo").onclick=()=>{if(!spOn)spPlay()};
 function spLoad(){if(spReq)return;spReq=true;
  fetch("musica.json").then(r=>r.json()).then(d=>{MU=d;
-  try{const s=+localStorage.getItem("mk-mix");if(s>=0&&s<MU.t.length)spI=s}catch(e){}
+  try{const s=JSON.parse(localStorage.getItem("mk-mix")||"null");if(Array.isArray(s)){if(s[0]>=0&&s[0]<MU.t.length)spI=s[0];spShuf(!!s[1])}}catch(e){}
   spInfo();
-  const fb=()=>{if(spC)return;spFb=true;$("spembed").innerHTML=`<iframe id="spf" title="Spotify" src="https://open.spotify.com/embed/track/${spTr()[0]}?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;$("sptap").hidden=true};
+  /* si la API de Spotify no carga, se muestra el reproductor normal de Spotify encima de la barra */
+  const fb=()=>{if(spC)return;spFb=true;$("mp").classList.add("fb");$("spembed").innerHTML=`<iframe id="spf" title="Spotify" src="https://open.spotify.com/embed/track/${spTr()[0]}?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`};
   window.onSpotifyIframeApiReady=API=>{const el=document.createElement("div");$("spembed").innerHTML="";$("spembed").appendChild(el);
-   API.createController(el,{uri:"spotify:track:"+spTr()[0],width:"100%",height:"152"},C=>{spC=C;
+   API.createController(el,{uri:"spotify:track:"+spTr()[0],width:"100%",height:"80"},C=>{spC=C;
     C.addListener("playback_update",e=>{const d=e&&e.data;if(!d)return;spState(!d.isPaused);
-     if(d.duration>0){$("spbar").style.width=Math.min(100,d.position/d.duration*100)+"%";
+     if(d.duration>0){$("mpbar").style.width=Math.min(100,d.position/d.duration*100)+"%";
       /* al terminar una canción pasa sola a la siguiente */
-      if(d.position>=d.duration-600&&spEnd!=spI&&!d.isBuffering){spEnd=spI;setTimeout(()=>spGo(spI+1,true),400)}}});
+      if(d.position>=d.duration-600&&spEnd!=spI&&!d.isBuffering){spEnd=spI;setTimeout(spNext,400)}}});
     C.addListener("ready",()=>{if(spWant)spPlay()})})};
   const sc=document.createElement("script");sc.src="https://open.spotify.com/embed/iframe-api/v1";sc.async=true;sc.onerror=fb;document.head.appendChild(sc);setTimeout(fb,10000)
- }).catch(()=>{$("spembed").innerHTML=`<div class="spph">No se pudo cargar la música.</div>`})}
+ }).catch(()=>{$("mpt").textContent="No se pudo cargar la música"})}
 /* primer toque o clic en cualquier parte de la página: arrancar la música */
-(()=>{const ev=["pointerdown","touchstart","keydown"],k=e=>{if(e.target.closest&&e.target.closest("#sptap,#spb"))return;ev.forEach(n=>removeEventListener(n,k,true));if(!spOn)spPlay()};ev.forEach(n=>addEventListener(n,k,{capture:true,passive:true}))})();
-$("sptap").onclick=()=>{$("sptap").hidden=true;if(!spC){$("spb").scrollIntoView({behavior:"smooth",block:"center"});return}spPlay()};
+(()=>{const ev=["pointerdown","touchstart","keydown"],k=e=>{if(e.target.closest&&e.target.closest("#mp,#mpgo"))return;ev.forEach(n=>removeEventListener(n,k,true));if(!spOn)spPlay()};ev.forEach(n=>addEventListener(n,k,{capture:true,passive:true}))})();
 /* al abrir un video del portafolio se pausa Spotify y vuelve al cerrar */
 function pauseBg(on){if(!spC)return;if(on){spWas=spOn;if(spOn)spC.pause()}else if(spWas){spWas=false;spC.resume()}}
 spLoad();
