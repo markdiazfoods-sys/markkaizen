@@ -544,6 +544,17 @@ section.s .sh .eb::before{background:var(--sc);animation:none}
  section.s>.w::before{font-size:130px;top:-30px;opacity:.25}.hero h1 span:first-child{text-shadow:4px 4px 0 var(--pink)}
  .posters .po{transform:none!important}.cbig{box-shadow:8px 8px 0 var(--vio)}}
 @media (prefers-reduced-motion:reduce){.spdisc,.spb.on .sptl .on .eq i{animation:none}}
+/* ================= MARK KAIZEN siempre legible ================= */
+/* Pie: "MARK" era solo un contorno casi invisible; ahora es sólido y KAIZEN conserva el degradado con borde para que no se pierda */
+.fsig b{color:#F4EBDD;-webkit-text-stroke:0;text-shadow:0 2px 0 rgba(0,0,0,.35)}
+.fsig:hover b{color:#F4EBDD}
+.fsig b i{color:transparent;-webkit-text-stroke:0;text-shadow:none;padding-right:.04em}
+/* Intro y cabecera: KAIZEN en naranja de marca con más contraste */
+.intro p{letter-spacing:.42em}
+.intro p i,.logo b{color:var(--or2)}
+/* Foto: la tarjeta "131 compras" tapaba el logo MARK KAIZEN del hoodie; pasa al lado izquierdo */
+.pcard .f2{right:auto;left:-28px;top:44%}
+@media (max-width:640px){.pcard .f2{left:-14px;top:40%}}
 </style></head><body><a class="skip" href="#main">Saltar al contenido</a>
 <div class="intro" id="intro" aria-hidden="true"><div><img src="img/emblem.webp" alt=""><p>MARK <i>KAIZEN</i></p></div></div><div class="prog" aria-hidden="true"></div>
 <canvas id="bgfx" aria-hidden="true"></canvas>
