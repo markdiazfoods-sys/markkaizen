@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Manual de marca · MARK KAIZEN 改善</title>
+<meta name="description" content="Manual de identidad de MARK KAIZEN: símbolo, colores, logotipo, tipografía, voz, movimiento y aplicaciones.">
+<meta name="theme-color" content="#0B0B0F">
+<link rel="icon" type="image/png" href="img/favicon.png"><link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:image" content="img/logo-mark-kaizen.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&family=Noto+Sans+JP:wght@700;800&display=swap" rel="stylesheet">
+<style>
+/* MARK KAIZEN · manual de marca en web. Mismos tokens que index.html */
+:root{--ink:#0B0B0F;--ink2:#111116;--card:#151515;--card2:#1C1C1F;--line:#26262B;--line2:#36363D;
+ --tx:#FFFFFF;--mute:#A9A9B3;--dim:#71717B;
+ --or:#FF6B00;--or2:#FF8A33;--wine:#8B1E3F;--wine2:#B8325A;--gold:#D4AF37;--gold2:#E6C766;
+ --display:'Sora',system-ui,sans-serif;--body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;--jp:'Noto Sans JP',sans-serif;
+ --ease:cubic-bezier(.2,.8,.2,1);--w:1160px;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px;background:var(--ink)}
+body{margin:0;background:var(--ink);color:var(--tx);font:400 16px/1.65 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit}button{font:inherit;color:inherit}
+h1,h2,h3,h4{font-family:var(--display);margin:0;line-height:1.08;letter-spacing:-.02em;text-wrap:balance}p{margin:0}
+:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:6px}
+.w{max-width:var(--w);margin:0 auto;padding:0 clamp(18px,4vw,36px)}
+.mute{color:var(--mute)}
+/* barra de progreso + cabecera */
+.prog{position:fixed;left:0;top:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(var(--sp,0));background:var(--or);z-index:60}
+header{position:sticky;top:0;z-index:40;background:rgba(11,11,15,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+.hb{display:flex;align-items:center;gap:16px;height:64px}
+.lg{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 14px var(--display);letter-spacing:.2em}
+.lg img{width:36px;height:36px;transform:rotate(calc(var(--sp,0)*360deg))}.lg b{color:var(--or)}
+.toc{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.toc a{padding:8px 10px;border-radius:8px;font:500 13px var(--body);color:var(--mute);text-decoration:none;white-space:nowrap;transition:color .2s}
+.toc a:hover,.toc a.on{color:#fff}.toc a.on{box-shadow:inset 0 -2px 0 var(--or)}
+.back{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:10px;border:1px solid var(--line2);text-decoration:none;font:600 13px var(--display);white-space:nowrap}
+.back:hover{border-color:var(--or)}
+@media(max-width:980px){.toc{display:none}.hb .back{margin-left:auto}}
+/* portada: el logo se arma */
+.cover{min-height:calc(100svh - 64px);display:grid;place-items:center;text-align:center;position:relative;isolation:isolate;overflow:hidden;padding:48px 0 70px}
+.cover::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(600px 420px at 50% 38%,rgba(255,107,0,.16),transparent 70%),radial-gradient(700px 500px at 85% 90%,rgba(139,30,63,.28),transparent 70%)}
+.lk{display:grid;justify-items:center;gap:18px}
+.sym{position:relative;width:clamp(200px,32vw,300px);aspect-ratio:1}
+.sym img{position:absolute;inset:6%;width:88%;animation:symin 1.4s .25s var(--ease) both}
+.sym svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
+.sym circle{fill:none;stroke:var(--or);stroke-width:2;stroke-linecap:round;stroke-dasharray:597;stroke-dashoffset:597;animation:draw 1.4s var(--ease) forwards}
+.sym circle.c2{stroke:rgba(255,255,255,.18);stroke-width:1;stroke-dasharray:4 8;animation:spin 60s linear infinite;stroke-dashoffset:0;transform-origin:50% 50%}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes symin{from{opacity:0;transform:rotate(-180deg) scale(.5)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.mk{display:flex;gap:.42em;font:800 clamp(52px,10vw,104px)/1 var(--display);letter-spacing:0;padding-left:.2em}
+.mk span{display:inline-block;opacity:0;transform:translateY(40%);animation:up .8s var(--ease) forwards}
+.mk span:nth-child(1){animation-delay:1s}.mk span:nth-child(2){animation-delay:1.08s}.mk span:nth-child(3){animation-delay:1.16s}.mk span:nth-child(4){animation-delay:1.24s}
+@keyframes up{to{opacity:1;transform:none}}
+.kz{display:flex;align-items:center;gap:18px;font:600 clamp(18px,2.6vw,26px) var(--display);letter-spacing:.6em;color:var(--or)}
+.kz b{font-weight:600;padding-left:.6em;opacity:0;animation:up .7s 1.55s var(--ease) forwards}
+.kz i{display:block;width:clamp(50px,10vw,110px);height:2px;background:var(--or);transform:scaleX(0);animation:grow .8s 1.4s var(--ease) forwards}
+.kz i:first-child{transform-origin:right}.kz i:last-child{transform-origin:left}
+@keyframes grow{to{transform:scaleX(1)}}
+.mc{font:500 clamp(11px,1.3vw,14px) var(--display);letter-spacing:.7em;padding-left:.7em;color:#fff;opacity:0;animation:up .7s 1.8s var(--ease) forwards}
+.cover .ct{margin-top:30px;opacity:0;animation:up .8s 2.1s var(--ease) forwards}
+.cover .ct p{font:600 clamp(18px,2.2vw,24px) var(--display)}.cover .ct small{display:block;margin-top:8px;color:var(--mute);font-size:14px;letter-spacing:.14em;text-transform:uppercase}
+.scroll{position:absolute;left:50%;bottom:22px;width:24px;height:38px;margin-left:-12px;border:1.5px solid var(--line2);border-radius:14px;opacity:0;animation:up .6s 2.4s forwards}
+.scroll::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:8px;margin-left:-1.5px;border-radius:2px;background:var(--or);animation:wheel 1.6s ease-in-out infinite}
+@keyframes wheel{to{transform:translateY(12px);opacity:0}}
+/* secciones */
+section{padding:clamp(72px,11vw,130px) 0 0;position:relative}
+.sh{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 22px;align-items:end;margin-bottom:clamp(28px,4vw,44px)}
+.num{grid-row:span 2;font:800 clamp(64px,10vw,120px)/.8 var(--display);color:transparent;-webkit-text-stroke:1.5px var(--or);letter-spacing:-.04em}
+.eb{font:600 12px var(--display);letter-spacing:.2em;text-transform:uppercase;color:var(--or)}
+.sh h2{font-size:clamp(34px,5.4vw,64px);font-weight:800;letter-spacing:-.035em}
+@media(max-width:560px){.sh{grid-template-columns:1fr}.num{grid-row:auto;font-size:64px}.sh h2{font-size:32px}}
+.lead{color:var(--mute);font-size:clamp(16px,1.6vw,18px);max-width:62ch}
+.card{border-radius:20px;border:1px solid var(--line);background:var(--card);padding:clamp(20px,3vw,30px)}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media(max-width:860px){.g2,.g3{grid-template-columns:1fr}}
+h3{font-size:20px;margin-bottom:8px}
+.lbl{font:700 12px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-bottom:10px;display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{border:1px solid var(--line2);border-radius:99px;padding:6px 14px;font-size:14px;transition:.3s var(--ease)}
+.chips span:hover{border-color:var(--or);color:var(--or);transform:translateY(-3px)}
+/* 01 esencia */
+.ess{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px}
+.ess .big{font:800 clamp(26px,3.6vw,42px)/1.12 var(--display);letter-spacing:-.025em}
+.ess .big em{font-style:normal;color:var(--or)}
+.arq{display:flex;align-items:center;gap:14px;margin-top:6px}
+.arq b{font:800 22px var(--display)}.arq i{font-style:normal;color:var(--or);font:800 22px var(--display)}
+@media(max-width:860px){.ess{grid-template-columns:1fr}}
+/* 02 símbolo interactivo */
+.symx{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center}
+.stage{position:relative;max-width:460px;width:100%;margin:0 auto;aspect-ratio:1}
+.stage img{width:100%;transition:transform 1s var(--ease)}
+.stage[data-k=dragon] img{transform:rotate(-8deg) scale(1.03)}.stage[data-k=gato] img{transform:rotate(8deg) scale(1.03)}.stage[data-k=yy] img{transform:rotate(180deg)}.stage[data-k=kanji] img{transform:scale(1.08)}
+.hot{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:0;background:rgba(255,107,0,.9);color:#140800;font:800 13px var(--display);cursor:pointer;box-shadow:0 0 0 0 rgba(255,107,0,.6);animation:ping 2.2s infinite}
+.hot[aria-pressed=true]{background:#fff;animation:none}
+@keyframes ping{70%{box-shadow:0 0 0 16px rgba(255,107,0,0)}100%{box-shadow:0 0 0 0 rgba(255,107,0,0)}}
+.means{display:grid;gap:10px}
+.mean{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;text-align:left;padding:16px;border-radius:16px;border:1px solid var(--line);background:var(--card);cursor:pointer;transition:border-color .3s,background .3s,transform .3s var(--ease)}
+.mean .n{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--card2);font:800 18px var(--jp);color:var(--or);transition:.3s}
+.mean b{font:700 17px var(--display);display:block}.mean small{color:var(--mute);font-size:14px;line-height:1.5;display:block;margin-top:2px}
+.mean:hover,.mean[aria-pressed=true]{border-color:var(--or);transform:translateX(6px)}
+.mean[aria-pressed=true]{background:linear-gradient(90deg,rgba(255,107,0,.12),var(--card) 70%)}.mean[aria-pressed=true] .n{background:var(--or);color:#140800}
+@media(max-width:860px){.symx{grid-template-columns:1fr}}
+/* 03 color */
+.sw{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.s{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card);text-align:left;padding:0;cursor:pointer;transition:transform .4s var(--ease),box-shadow .4s}
+.s:hover{transform:translateY(-6px);box-shadow:0 26px 40px -24px var(--c)}
+.s .fill{height:150px;background:var(--c);position:relative;overflow:hidden}
+.s .fill::after{content:"";position:absolute;inset:0;background:var(--ink);transform-origin:top;transition:transform 1s var(--ease) var(--d,0s)}
+.s.in .fill::after{transform:scaleY(0)}
+.s .meta{padding:12px 14px 14px}.s b{display:block;font:700 15px var(--display)}.s code{font:500 13px ui-monospace,Menlo,monospace;color:var(--mute)}
+.s small{display:block;font-size:12px;color:var(--dim);margin-top:4px;line-height:1.35}
+.s .cp{position:absolute;right:10px;top:10px;font:600 11px var(--body);background:rgba(0,0,0,.55);color:#fff;border-radius:99px;padding:3px 9px;opacity:0;transition:opacity .2s}
+.s:hover .cp,.s.ok .cp{opacity:1}
+@media(max-width:980px){.sw{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:520px){.sw{grid-template-columns:repeat(2,minmax(0,1fr))}.s .fill{height:110px}}
+.ratio{display:flex;height:64px;border-radius:16px;overflow:hidden;margin-top:18px;border:1px solid var(--line)}
+.ratio div{display:flex;align-items:flex-end;padding:10px 12px;font:700 13px var(--display);width:0;transition:width 1.4s var(--ease)}
+.ratio.in div{width:var(--p)}
+.rule{display:flex;gap:14px;align-items:center;margin-top:14px;padding:16px 18px;border-radius:16px;border:1px dashed var(--line2);color:var(--mute)}
+.rule b{color:#fff}.rule i{flex:none;width:12px;height:12px;border-radius:50%;background:var(--or)}
+/* 04 logotipo */
+.lv{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:14px}
+.lv figure{margin:0;border-radius:20px;border:1px solid var(--line);overflow:hidden;background:var(--card);display:flex;flex-direction:column}
+.lv .vb{flex:1;display:grid;place-items:center;padding:24px;min-height:260px;background:#000;position:relative}
+.lv .vb img{max-height:260px;width:auto;transition:transform .8s var(--ease)}
+.lv figure:hover .vb img{transform:scale(1.04) rotate(-2deg)}
+.lv figcaption{padding:14px 18px;font-size:14px;color:var(--mute)}.lv figcaption b{display:block;color:#fff;font:700 15px var(--display)}
+.vb.mono img{filter:grayscale(1) brightness(1.6) contrast(1.1);opacity:.85}
+.vb.wm{background:url(img/hero.jpg) center 20%/cover}.vb.wm img{width:70px;opacity:.75;position:absolute;right:16px;bottom:16px;filter:grayscale(1) brightness(2)}
+@media(max-width:860px){.lv{grid-template-columns:1fr}}
+.safe{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-top:14px}
+.sz{position:relative;display:grid;place-items:center;padding:42px;border-radius:20px;background:#000;border:1px solid var(--line)}
+.sz .bx{position:relative;padding:22px;outline:1.5px dashed rgba(255,107,0,.7);outline-offset:0;animation:breathe 3s ease-in-out infinite}
+.sz .bx img{width:150px}
+.sz .bx::before{content:"x";position:absolute;left:4px;top:2px;font:600 11px var(--body);color:var(--or)}
+@keyframes breathe{50%{outline-offset:6px}}
+.donts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.dn{position:relative;border-radius:14px;border:1px solid var(--line);background:#000;padding:18px 12px 12px;display:grid;justify-items:center;gap:8px;text-align:center;font-size:12px;color:var(--mute);overflow:hidden}
+.dn img{width:64px;height:64px;object-fit:contain}
+.dn::after{content:"";position:absolute;right:10px;top:10px;width:18px;height:18px;border-radius:50%;background:#e5484d url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke='white' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M7 7l10 10M17 7 7 17'/%3E%3C/svg%3E") center/12px no-repeat}
+.dn.d1 img{transform:scaleX(1.5) scaleY(.75)}.dn.d2 img{transform:rotate(25deg) skewX(-14deg)}.dn.d3 img{filter:drop-shadow(8px 8px 0 #FF6B00) drop-shadow(-6px 6px 6px #8B1E3F)}
+.dn.d4{background:linear-gradient(135deg,#ff00b7,#00e1ff)}.dn.d5 img{filter:hue-rotate(160deg) saturate(3)}.dn.d6 b{font:800 20px var(--display);letter-spacing:.1em;background:linear-gradient(90deg,#ff2e7e,#7b5cff,#19d3f0,#ffc23d);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media(max-width:860px){.safe{grid-template-columns:1fr}}
+/* 05 tipografía */
+.ty{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.tyc{min-height:300px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.tyc .spec{font:800 clamp(64px,9vw,120px)/.9 var(--display);letter-spacing:-.04em}
+.tyc.t2 .spec{font:500 clamp(64px,9vw,120px)/.9 var(--body);letter-spacing:-.03em}
+.tyc .abc{font-size:15px;color:var(--mute);word-break:break-all}
+.tyc.t1 .abc{font-family:var(--display)}
+.tw{font:700 clamp(22px,3vw,34px) var(--display);min-height:1.4em}
+.tw::after{content:"";display:inline-block;width:3px;height:.95em;margin-left:4px;background:var(--or);vertical-align:-.1em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media(max-width:860px){.ty{grid-template-columns:1fr}}
+/* 06 voz */
+.vq{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.vq blockquote{margin:0;padding:22px;border-radius:18px;border:1px solid var(--line);background:var(--card);font:700 clamp(18px,2vw,22px)/1.25 var(--display);position:relative;overflow:hidden;transition:transform .4s var(--ease),border-color .3s}
+.vq blockquote::before{content:"“";position:absolute;right:12px;top:-14px;font:800 90px var(--display);color:rgba(255,107,0,.18)}
+.vq blockquote:hover{transform:translateY(-6px) rotate(-1deg);border-color:var(--or)}
+.loop{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.loop span{display:flex;align-items:center;gap:10px;font:800 clamp(26px,4vw,44px) var(--display);color:var(--dim);transition:color .3s}
+.loop span.on{color:#fff}.loop span.on::first-letter{color:var(--or)}
+.loop span:not(:last-child)::after{content:"→";color:var(--line2);font-weight:400}
+@media(max-width:980px){.vq{grid-template-columns:1fr 1fr}}@media(max-width:520px){.vq{grid-template-columns:1fr}}
+.avoid{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.avoid span{text-decoration:line-through;text-decoration-color:var(--or);color:var(--mute);border:1px solid var(--line);border-radius:99px;padding:6px 12px;font-size:14px}
+/* 07 movimiento */
+.mv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.mvc{display:flex;flex-direction:column;gap:12px}
+.demo{height:150px;border-radius:14px;background:#000;display:grid;place-items:center;position:relative;overflow:hidden}
+.mvc b{font:700 16px var(--display)}.mvc small{color:var(--mute);font-size:13px;line-height:1.5}
+.mvc code{font:500 12px ui-monospace,Menlo,monospace;color:var(--or2)}
+.replay{align-self:flex-start;min-height:36px;padding:0 14px;border-radius:99px;border:1px solid var(--line2);background:none;cursor:pointer;font:600 13px var(--display)}
+.replay:hover{border-color:var(--or)}
+.dm1 img{width:90px}.go .dm1 img{animation:symin 1.2s var(--ease) both}
+.dm2 svg{width:100px;height:100px;transform:rotate(-90deg)}.dm2 circle{fill:none;stroke:var(--or);stroke-width:4;stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:0}.go .dm2 circle{animation:draw2 1.2s var(--ease) both}
+@keyframes draw2{from{stroke-dashoffset:283}to{stroke-dashoffset:0}}
+.dm3 div{display:grid;gap:8px;width:70%}.dm3 i{height:12px;border-radius:6px;background:var(--line2)}.dm3 i:first-child{background:var(--or);width:60%}
+.go .dm3 i{animation:rise .8s var(--ease) both}.go .dm3 i:nth-child(2){animation-delay:.1s}.go .dm3 i:nth-child(3){animation-delay:.2s}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}}
+.dm4 span{position:relative;overflow:hidden;padding:12px 22px;border-radius:12px;background:var(--or);color:#140800;font:700 15px var(--display)}
+.dm4 span::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%)}
+.go .dm4 span::after{animation:shine 1s var(--ease)}
+@keyframes shine{to{transform:translateX(120%)}}
+.curve{margin-top:14px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+.curve svg{width:150px;height:150px}
+.curve path{fill:none;stroke:var(--or);stroke-width:3;stroke-dasharray:300;stroke-dashoffset:300;transition:stroke-dashoffset 1.6s var(--ease)}
+.curve.in path{stroke-dashoffset:0}
+.durs{display:flex;flex-wrap:wrap;gap:10px}
+.durs div{flex:1;min-width:140px;padding:14px;border-radius:14px;border:1px solid var(--line);background:var(--card2)}
+.durs b{display:block;font:800 22px var(--display);color:var(--or)}.durs small{color:var(--mute);font-size:13px}
+@media(max-width:980px){.mv{grid-template-columns:1fr 1fr}}@media(max-width:520px){.mv{grid-template-columns:1fr}.curve{grid-template-columns:1fr}}
+/* 08 TikTok */
+.tt{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center}
+.phone{width:280px;border-radius:38px;padding:12px;background:#000;border:1px solid var(--line2);box-shadow:0 40px 80px -40px rgba(255,107,0,.45);margin:0 auto}
+.screen{border-radius:28px;background:#111;padding:26px 18px 20px;display:grid;justify-items:center;gap:10px;text-align:center}
+.av{position:relative;width:104px;height:104px;border-radius:50%;background:#000;display:grid;place-items:center;box-shadow:0 0 0 2px #333}
+.av img{width:80%;animation:spin 40s linear infinite}
+.screen b{font:700 16px var(--display)}.screen .h{color:var(--mute);font-size:13px}
+.stats{display:flex;gap:18px;font-size:12px;color:var(--mute)}.stats b{display:block;font-size:16px;color:#fff}
+.follow{width:100%;padding:10px;border-radius:6px;background:#fe2c55;font:700 14px var(--body);color:#fff}
+.bio{font-size:13px;line-height:1.5;white-space:pre-line}
+.grid9{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;width:100%;margin-top:6px}
+.grid9 i{aspect-ratio:3/4;background:linear-gradient(160deg,#1c1c1f,#0b0b0f);position:relative}
+.grid9 i:nth-child(3n+1){background:linear-gradient(160deg,rgba(255,107,0,.5),#0b0b0f)}.grid9 i:nth-child(4){background:linear-gradient(160deg,rgba(139,30,63,.7),#0b0b0f)}
+.spec2{display:grid;gap:10px}
+.spec2 div{display:flex;justify-content:space-between;gap:16px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--card)}
+.spec2 span{color:var(--mute)}.spec2 b{font-family:var(--display);text-align:right}
+@media(max-width:860px){.tt{grid-template-columns:1fr}}
+/* 09 foto y video */
+.ph{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.shot{position:relative;border-radius:20px;overflow:hidden;min-height:380px;background:#000}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;animation:kb 14s ease-in-out infinite alternate}
+@keyframes kb{to{transform:scale(1.12) translate(-2%,-2%)}}
+.shot::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,107,0,.35),transparent 45%),linear-gradient(transparent 55%,rgba(0,0,0,.85))}
+.shot p{position:absolute;left:20px;bottom:18px;z-index:1;font:700 15px var(--display)}
+.shot p small{display:block;color:var(--mute);font:400 13px var(--body)}
+.list{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.list li{display:grid;grid-template-columns:14px 1fr;gap:12px;color:var(--mute)}
+.list li::before{content:"";width:10px;height:2px;margin-top:12px;background:var(--or)}
+.list li b{color:#fff}
+@media(max-width:860px){.ph{grid-template-columns:1fr}}
+/* 10 aplicaciones */
+.apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.app{border-radius:20px;border:1px solid var(--line);background:var(--card);overflow:hidden;transition:transform .4s var(--ease),border-color .3s}
+.app:hover{transform:translateY(-6px);border-color:var(--or)}
+.mock{height:200px;display:grid;place-items:center;background:#000;position:relative;overflow:hidden}
+.app .tx{padding:16px 18px}.app b{display:block;font:700 16px var(--display)}.app small{color:var(--mute);font-size:14px}
+.m-av img{width:110px;border-radius:50%}
+.m-web{background:var(--ink)}.m-web .bw{width:80%;border-radius:10px;border:1px solid var(--line2);overflow:hidden;background:#0b0b0f}
+.m-web .bw .bar{height:18px;display:flex;gap:4px;align-items:center;padding:0 8px;background:#151515}.m-web .bw .bar i{width:6px;height:6px;border-radius:50%;background:#333}
+.m-web .bw .bd{padding:14px;display:flex;align-items:center;gap:10px}.m-web .bw img{width:34px}.m-web .bw b{font:800 12px var(--display);letter-spacing:.18em}.m-web .bw b em{font-style:normal;color:var(--or)}
+.m-web .bw .ln{height:8px;margin:0 14px 8px;border-radius:4px;background:#222}.m-web .bw .ln.o{width:40%;background:var(--or)}
+.m-cv{background:#e9e6e1}.m-cv .pp{width:120px;height:160px;background:#fff;box-shadow:0 14px 30px -12px rgba(0,0,0,.4);padding:12px;display:grid;gap:6px;align-content:start}
+.m-cv .pp .hd{display:flex;align-items:center;gap:6px}.m-cv .pp img{width:18px}.m-cv .pp b{font:800 7px var(--display);letter-spacing:.14em;color:#111}.m-cv .pp i{height:4px;border-radius:2px;background:#ddd}.m-cv .pp i.o{width:40%;background:#C24E00}
+.m-pr .sl{width:82%;aspect-ratio:16/9;background:#0b0b0f;border:1px solid #222;border-radius:6px;padding:12px;display:flex;flex-direction:column;justify-content:space-between}
+.m-pr .sl b{font:800 18px/1 var(--display)}.m-pr .sl b em{font-style:normal;color:var(--or)}.m-pr .sl small{font-size:9px;color:#888;letter-spacing:.2em}
+.m-hd svg{width:150px;height:170px}
+.m-wm{background:url(img/hero.jpg) center 25%/cover}.m-wm img{position:absolute;right:12px;bottom:12px;width:44px;opacity:.7;filter:grayscale(1) brightness(2)}
+@media(max-width:980px){.apps{grid-template-columns:1fr 1fr}}@media(max-width:560px){.apps{grid-template-columns:1fr}}
+/* 11 manifiesto */
+.mani{margin-top:clamp(72px,11vw,130px);padding:clamp(60px,9vw,110px) 0;border-block:1px solid var(--line);position:relative;overflow:hidden;background:radial-gradient(800px 400px at 15% 50%,rgba(139,30,63,.35),transparent 70%),radial-gradient(600px 400px at 90% 40%,rgba(255,107,0,.15),transparent 70%)}
+.mani p.m{font:800 clamp(28px,4.6vw,58px)/1.1 var(--display);letter-spacing:-.03em;max-width:22ch}
+.mani p.m span{opacity:.15;transition:opacity .5s}.mani p.m span.on{opacity:1}
+.mani .kj{position:absolute;right:4%;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font:800 clamp(120px,20vw,260px)/1 var(--jp);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.1)}
+.mani .sig{margin-top:30px;display:flex;align-items:center;gap:14px;font:700 14px var(--display);letter-spacing:.3em;color:var(--or)}
+.mani .sig img{width:44px;animation:spin 30s linear infinite}
+footer{padding:40px 0 60px;color:var(--mute);font-size:14px}
+footer .w{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border-radius:12px;font:600 15px var(--display);text-decoration:none;position:relative;overflow:hidden;isolation:isolate}
+.bp{background:var(--or);color:#140800}.bp::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease)}.bp:hover::after{transform:translateX(120%)}
+.bg{border:1px solid var(--line2);color:#fff}.bg:hover{border-color:var(--or)}
+.toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);z-index:70;background:#fff;color:#000;font:600 14px var(--body);padding:10px 18px;border-radius:99px;animation:up .3s var(--ease)}
+/* aparición al hacer scroll */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+.sh .num{clip-path:inset(100% 0 0 0);transition:clip-path 1s var(--ease)}.sh.in .num{clip-path:inset(0)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.sh .num{clip-path:none}
+ .mk span,.kz b,.mc,.cover .ct,.scroll{opacity:1;transform:none}.kz i{transform:none}.sym circle{stroke-dashoffset:0}.s .fill::after{display:none}.ratio div{width:var(--p)}.mani p.m span{opacity:1}}
+</style></head><body>
+<div class="prog" aria-hidden="true"></div>
+<header><div class="w hb">
+ <a class="lg" href="index.html"><img src="img/simbolo.webp" alt="" width="36" height="36">MARK <b>KAIZEN</b></a>
+ <nav class="toc" aria-label="Secciones del manual"><a href="#esencia">Esencia</a><a href="#simbolo">Símbolo</a><a href="#color">Color</a><a href="#logo">Logotipo</a><a href="#tipo">Tipografía</a><a href="#voz">Voz</a><a href="#movimiento">Movimiento</a><a href="#tiktok">TikTok</a><a href="#aplicaciones">Aplicaciones</a></nav>
+ <a class="back" href="index.html">← Volver a la web</a>
+</div></header>
+
+<main>
+<div class="cover"><div class="lk">
+ <div class="sym"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="95"/><circle class="c2" cx="100" cy="100" r="99"/></svg><img src="img/simbolo.webp" alt="Símbolo de MARK KAIZEN: dragón y gato en yin-yang con el kanji 改善"></div>
+ <h1 class="mk" aria-label="MARK"><span>M</span><span>A</span><span>R</span><span>K</span></h1>
+ <p class="kz"><i></i><b>KAIZEN</b><i></i></p>
+ <p class="mc">MEJORA CONTINUA</p>
+ <div class="ct"><p>“Creatividad que evoluciona constantemente.”</p><small>Manual de identidad de marca</small></div>
+</div><span class="scroll" aria-hidden="true"></span></div>
+
+<section id="esencia"><div class="w">
+ <div class="sh rv"><span class="num">01</span><p class="eb">Esencia de marca</p><h2>Quién es MARK KAIZEN</h2></div>
+ <div class="ess">
+  <div class="card rv"><span class="lbl">Concepto</span><p class="big">Una marca personal de marketing que une <em>estrategia</em>, <em>creatividad</em>, cultura visual japonesa y <em>mejora continua</em>.</p></div>
+  <div class="g2" style="grid-template-columns:1fr">
+   <div class="card rv" style="--d:.1s"><span class="lbl">Propósito</span><p>Convertir ideas en marcas y contenidos con identidad, estrategia y resultados.</p></div>
+   <div class="card rv" style="--d:.2s"><span class="lbl">Visión</span><p>Construir una marca personal reconocible por su estilo creativo, su pensamiento estratégico y su capacidad de evolución.</p></div>
+  </div>
+ </div>
+ <div class="g2" style="margin-top:14px">
+  <div class="card rv"><span class="lbl">Personalidad</span><div class="chips"><span>Creativa</span><span>Estratégica</span><span>Moderna</span><span>Disciplinada</span><span>Curiosa</span><span>Premium</span><span>Ligeramente futurista</span></div></div>
+  <div class="card rv" style="--d:.1s"><span class="lbl">Arquetipo</span><div class="arq"><b>El Creador</b><i>+</i><b>El Explorador</b></div><p class="mute" style="margin-top:8px">Crea soluciones originales, experimenta y busca mejorar continuamente.</p></div>
+ </div>
+</div></section>
+
+<section id="simbolo"><div class="w">
+ <div class="sh rv"><span class="num">02</span><p class="eb">Significado del símbolo</p><h2>Cuatro ideas en un círculo</h2></div>
+ <div class="symx">
+  <div class="stage rv" id="stage"><img src="img/simbolo.webp" alt="Símbolo de MARK KAIZEN">
+   <button class="hot" type="button" data-k="dragon" style="left:24%;top:38%" aria-label="Dragón">1</button>
+   <button class="hot" type="button" data-k="gato" style="left:74%;top:34%" aria-label="Gato">2</button>
+   <button class="hot" type="button" data-k="yy" style="left:50%;top:80%" aria-label="Yin-yang">3</button>
+   <button class="hot" type="button" data-k="kanji" style="left:50%;top:46%" aria-label="Kanji 改善">4</button>
+  </div>
+  <div class="means" id="means">
+   <button class="mean rv" type="button" data-k="dragon"><span class="n">龍</span><span><b>Dragón</b><small>Fuerza, ambición, transformación y energía creativa.</small></span></button>
+   <button class="mean rv" type="button" data-k="gato" style="--d:.08s"><span class="n">猫</span><span><b>Gato</b><small>Curiosidad, inteligencia, independencia y sensibilidad estética.</small></span></button>
+   <button class="mean rv" type="button" data-k="yy" style="--d:.16s"><span class="n">☯</span><span><b>Yin-yang</b><small>Equilibrio entre estrategia y creatividad, lógica e intuición, análisis y expresión.</small></span></button>
+   <button class="mean rv" type="button" data-k="kanji" style="--d:.24s"><span class="n">改</span><span><b>改善 · Kaizen</b><small>La mejora continua. Es el núcleo filosófico de la marca.</small></span></button>
+  </div>
+ </div>
+</div></section>
+
+<section id="color"><div class="w">
+ <div class="sh rv"><span class="num">03</span><p class="eb">Sistema visual</p><h2>Color</h2></div>
+ <p class="lead rv" style="margin-bottom:22px">Toca un color para copiar su código.</p>
+ <div class="sw" id="sw">
+  <button class="s" type="button" style="--c:#0B0B0F;--d:0s" data-hex="#0B0B0F"><div class="fill" style="box-shadow:inset 0 0 0 1px #26262B"></div><span class="cp">Copiar</span><div class="meta"><b>Negro profundo</b><code>#0B0B0F</code><small>Fondo principal. Identidad premium.</small></div></button>
+  <button class="s" type="button" style="--c:#151515;--d:.1s" data-hex="#151515"><div class="fill" style="box-shadow:inset 0 0 0 1px #26262B"></div><span class="cp">Copiar</span><div class="meta"><b>Gris oscuro</b><code>#151515</code><small>Fondos secundarios y tarjetas.</small></div></button>
+  <button class="s" type="button" style="--c:#FF6B00;--d:.2s" data-hex="#FF6B00"><div class="fill"></div><span class="cp">Copiar</span><div class="meta"><b>Naranja creativo</b><code>#FF6B00</code><small>Acentos, botones y elementos clave.</small></div></button>
+  <button class="s" type="button" style="--c:#8B1E3F;--d:.3s" data-hex="#8B1E3F"><div class="fill"></div><span class="cp">Copiar</span><div class="meta"><b>Rojo vino</b><code>#8B1E3F</code><small>Acento secundario y piezas especiales.</small></div></button>
+  <button class="s" type="button" style="--c:#D4AF37;--d:.4s" data-hex="#D4AF37"><div class="fill"></div><span class="cp">Copiar</span><div class="meta"><b>Dorado</b><code>#D4AF37</code><small>Detalles premium.</small></div></button>
+  <button class="s" type="button" style="--c:#FFFFFF;--d:.5s" data-hex="#FFFFFF"><div class="fill"></div><span class="cp">Copiar</span><div class="meta"><b>Blanco</b><code>#FFFFFF</code><small>Texto y contraste.</small></div></button>
+ </div>
+ <div class="ratio rv" id="ratio" aria-label="Proporción recomendada"><div style="--p:60%;background:#0B0B0F;color:#fff">Negro 60%</div><div style="--p:28%;background:#fff;color:#000">Blanco 28%</div><div style="--p:8%;background:#FF6B00;color:#140800">Naranja</div><div style="--p:2%;background:#8B1E3F"></div><div style="--p:2%;background:#D4AF37"></div></div>
+ <p class="rule rv"><i></i><span><b>Regla:</b> el naranja funciona como acento, no como fondo dominante. La base es negro + blanco + naranja; vino y dorado solo en detalles.</span></p>
+ <div class="g3" style="margin-top:14px">
+  <div class="card rv"><span class="lbl" style="color:var(--or)">Naranja</span><p>Energía, acción, creatividad y diferenciación.</p></div>
+  <div class="card rv" style="--d:.1s"><span class="lbl" style="color:#fff">Negro</span><p>Autoridad, sofisticación y tecnología.</p></div>
+  <div class="card rv" style="--d:.2s"><span class="lbl" style="color:#fff">Blanco</span><p>Claridad, simplicidad y equilibrio.</p></div>
+ </div>
+</div></section>
+
+<section id="logo"><div class="w">
+ <div class="sh rv"><span class="num">04</span><p class="eb">Logotipo</p><h2>Versiones y uso</h2></div>
+ <div class="lv">
+  <figure class="rv"><div class="vb"><img src="img/logo-mark-kaizen.webp" alt="Logotipo principal de MARK KAIZEN" style="max-height:300px"></div><figcaption><b>Versión principal</b>Símbolo circular + MARK + KAIZEN + MEJORA CONTINUA, sobre fondo negro.</figcaption></figure>
+  <figure class="rv" style="--d:.1s"><div class="vb"><img src="img/simbolo.webp" alt="Símbolo para avatar" style="width:190px"></div><figcaption><b>Avatar</b>Solo el símbolo, sin texto. Se lee bien en tamaños pequeños.</figcaption></figure>
+  <figure class="rv" style="--d:.2s"><div class="vb wm"><img src="img/simbolo.webp" alt=""></div><figcaption><b>Marca de agua</b>Símbolo monocromático o naranja sobre fondos oscuros.</figcaption></figure>
+ </div>
+ <div class="safe">
+  <div class="card rv"><span class="lbl">Área de seguridad</span><div class="sz"><div class="bx"><img src="img/simbolo.webp" alt=""></div></div><p class="mute" style="margin-top:12px">Deja libre alrededor del logo, como mínimo, el ancho del trazo naranja exterior (x).</p></div>
+  <div class="card rv" style="--d:.1s"><span class="lbl">No hacer</span><div class="donts">
+   <div class="dn d1"><img src="img/simbolo.webp" alt="">Deformar</div>
+   <div class="dn d2"><img src="img/simbolo.webp" alt="">Inclinar</div>
+   <div class="dn d3"><img src="img/simbolo.webp" alt="">Sombras excesivas</div>
+   <div class="dn d4"><img src="img/simbolo.webp" alt="">Fondos saturados</div>
+   <div class="dn d5"><img src="img/simbolo.webp" alt="">Cambiar colores o kanji</div>
+   <div class="dn d6"><b>MARK</b>Mezclar muchos colores</div>
+  </div></div>
+ </div>
+</div></section>
+
+<section id="tipo"><div class="w">
+ <div class="sh rv"><span class="num">05</span><p class="eb">Tipografía</p><h2>Dos familias, nada más</h2></div>
+ <div class="ty">
+  <div class="card tyc t1 rv"><div><span class="lbl">Títulos · Sora Bold</span><p class="mute" style="font-size:14px">Sans-serif geométrica, equivalente a Marigny Bold.</p></div><p class="spec">Aa</p><p class="abc">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789</p></div>
+  <div class="card tyc t2 rv" style="--d:.1s"><div><span class="lbl">Texto · Inter</span><p class="mute" style="font-size:14px">Limpia y legible en pantalla. Alternativa: Montserrat.</p></div><p class="spec">Aa</p><p class="abc">abcdefghijklmnñopqrstuvwxyz 0123456789</p></div>
+ </div>
+ <div class="card rv" style="margin-top:14px"><span class="lbl">Así se ve un titular</span><p class="tw" id="tw"></p><p class="mute" style="margin-top:10px;font-size:14px">El lettering del logo es personalizado: no se reemplaza ni se cambian sus proporciones. Máximo 2 familias por pieza.</p></div>
+</div></section>
+
+<section id="voz"><div class="w">
+ <div class="sh rv"><span class="num">06</span><p class="eb">Voz y comunicación</p><h2>Directa, segura y creativa</h2></div>
+ <p class="lead rv" style="margin-bottom:22px">Hablar como alguien que entiende marketing y también sabe comunicar visualmente.</p>
+ <div class="vq">
+  <blockquote class="rv">No publiques por publicar.</blockquote>
+  <blockquote class="rv" style="--d:.08s">Una idea también necesita estrategia.</blockquote>
+  <blockquote class="rv" style="--d:.16s">Creatividad con propósito.</blockquote>
+  <blockquote class="rv" style="--d:.24s">Mejora. Prueba. Aprende. Repite.</blockquote>
+ </div>
+ <div class="loop rv" id="loop" aria-label="Mejora, prueba, aprende, repite"><span>Mejora</span><span>Prueba</span><span>Aprende</span><span>Repite</span></div>
+ <div class="avoid rv"><span>Lenguaje corporativo excesivo</span><span>Frases genéricas</span><span>Exceso de emojis</span><span>Textos demasiado largos</span></div>
+</div></section>
+
+<section id="movimiento"><div class="w">
+ <div class="sh rv"><span class="num">07</span><p class="eb">Movimiento</p><h2>Cómo se mueve la marca</h2></div>
+ <p class="lead rv" style="margin-bottom:22px">Movimiento moderado y limpio: zooms suaves, trazos que se dibujan y destellos breves. Tecnológico y premium, nunca gamer ni infantil. Toca “Repetir” para ver cada uno.</p>
+ <div class="mv">
+  <div class="card mvc rv"><div class="demo dm1"><img src="img/simbolo.webp" alt=""></div><b>Entrada del símbolo</b><small>Gira media vuelta y crece. Para intros, cierres de video y carga.</small><code>1.2 s · ease-kaizen</code><button class="replay" type="button">↻ Repetir</button></div>
+  <div class="card mvc rv" style="--d:.08s"><div class="demo dm2"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="45"/></svg></div><b>Trazo del anillo</b><small>El círculo naranja se dibuja de un solo trazo, como un enso.</small><code>1.2 s · ease-kaizen</code><button class="replay" type="button">↻ Repetir</button></div>
+  <div class="card mvc rv" style="--d:.16s"><div class="demo dm3"><div><i></i><i></i><i></i></div></div><b>Aparición escalonada</b><small>Los bloques suben uno tras otro al hacer scroll.</small><code>0.8 s · +0.1 s por bloque</code><button class="replay" type="button">↻ Repetir</button></div>
+  <div class="card mvc rv" style="--d:.24s"><div class="demo dm4"><span>Hablemos</span></div><b>Destello</b><small>Un brillo breve cruza el botón principal al pasar el mouse.</small><code>0.7 s · solo en hover</code><button class="replay" type="button">↻ Repetir</button></div>
+ </div>
+ <div class="card curve rv" id="curve"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M5 95 C 25 15, 25 5, 95 5" /><line x1="5" y1="95" x2="95" y2="95" stroke="#36363D"/><line x1="5" y1="95" x2="5" y2="5" stroke="#36363D"/></svg><div><span class="lbl">Curva de la marca · ease-kaizen</span><p style="font:600 15px ui-monospace,Menlo,monospace;color:var(--or2)">cubic-bezier(.2, .8, .2, 1)</p><p class="mute" style="margin:6px 0 14px;font-size:14px">Arranca rápido y llega suave: se siente decidido, no brusco.</p><div class="durs"><div><b>200 ms</b><small>Hover y botones</small></div><div><b>500–800 ms</b><small>Apariciones</small></div><div><b>1.2–2 s</b><small>Intro del logo</small></div></div></div></div>
+</div></section>
+
+<section id="tiktok"><div class="w">
+ <div class="sh rv"><span class="num">08</span><p class="eb">Redes sociales</p><h2>TikTok</h2></div>
+ <div class="tt">
+  <div class="phone rv"><div class="screen">
+   <div class="av"><img src="img/simbolo.webp" alt="Foto de perfil con el símbolo"></div>
+   <b>@markkaizen_</b>
+   <div class="stats"><span><b>—</b>Siguiendo</span><span><b>—</b>Seguidores</span><span><b>—</b>Me gusta</span></div>
+   <span class="follow">Seguir</span>
+   <p class="bio">Marketing · Creatividad · Estrategia
+Construyendo marcas que evolucionan.
+改善 KAIZEN — Mejora continua.</p>
+   <div class="grid9" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div></div>
+  <div class="spec2">
+   <div class="rv"><span>Foto de perfil</span><b>Solo el símbolo, centrado</b></div>
+   <div class="rv"><span>Lienzo</span><b>1080 × 1080 px</b></div>
+   <div class="rv"><span>Tamaño del símbolo</span><b>75–82 % del lienzo</b></div>
+   <div class="rv"><span>Contenido</span><b>Marketing, branding, IA aplicada y proyectos</b></div>
+   <div class="rv"><span>Estética</span><b>Fondo negro, luz naranja, blanco de alto contraste</b></div>
+   <a class="btn bp rv" href="img/simbolo.webp" download="mark-kaizen-simbolo.webp" style="justify-self:start">Descargar símbolo</a>
+  </div>
+ </div>
+</div></section>
+
+<section id="foto"><div class="w">
+ <div class="sh rv"><span class="num">09</span><p class="eb">Fotografía y audiovisual</p><h2>Estudio creativo japonés contemporáneo</h2></div>
+ <div class="ph">
+  <div class="shot rv"><img src="img/hero.jpg" alt="Mark Díaz con el hoodie de MARK KAIZEN"><p>Fondo oscuro, luz lateral, detalle naranja<small>Zoom suave · movimiento moderado</small></p></div>
+  <div class="card rv" style="--d:.1s"><span class="lbl">Dirección</span><ul class="list">
+   <li><span><b>Encuadres limpios</b> y fondos oscuros.</span></li>
+   <li><span><b>Luces laterales</b> con detalles naranjas.</span></li>
+   <li><span><b>Edición dinámica</b> con movimiento moderado.</span></li>
+   <li><span><b>Transiciones:</b> cortes limpios, zooms suaves, flashes breves y motion graphics minimalistas.</span></li>
+   <li><span><b>Música:</b> electrónica, lo-fi, future bass o instrumentales japonesas modernas.</span></li>
+   <li><span><b>Evitar</b> la apariencia gamer o infantil.</span></li>
+  </ul></div>
+ </div>
+</div></section>
+
+<section id="aplicaciones"><div class="w">
+ <div class="sh rv"><span class="num">10</span><p class="eb">Aplicaciones</p><h2>La marca en cada pieza</h2></div>
+ <div class="apps">
+  <div class="app rv"><div class="mock m-av"><img src="img/simbolo.webp" alt=""></div><div class="tx"><b>Avatar TikTok / Instagram</b><small>Símbolo circular, sin texto inferior.</small></div></div>
+  <div class="app rv" style="--d:.08s"><div class="mock m-web"><div class="bw"><div class="bar"><i></i><i></i><i></i></div><div class="bd"><img src="img/simbolo.webp" alt=""><b>MARK <em>KAIZEN</em></b></div><div class="ln o"></div><div class="ln"></div><div class="ln" style="width:70%"></div></div></div><div class="tx"><b>Portafolio web</b><small>Logo completo + sistema negro y naranja.</small></div></div>
+  <div class="app rv" style="--d:.16s"><div class="mock m-cv"><div class="pp"><div class="hd"><img src="img/simbolo.webp" alt=""><b>MARK DÍAZ</b></div><i class="o"></i><i></i><i></i><i style="width:80%"></i><i></i><i style="width:60%"></i></div></div><div class="tx"><b>CV</b><small>Versión horizontal o símbolo pequeño. Máxima legibilidad.</small></div></div>
+  <div class="app rv"><div class="mock m-pr"><div class="sl"><small>MARK KAIZEN · 改善</small><b>Creatividad<br>con <em>propósito</em>.</b><small>01 / 12</small></div></div><div class="tx"><b>Presentaciones</b><small>Negro + blanco + naranja. Títulos grandes.</small></div></div>
+  <div class="app rv" style="--d:.08s"><div class="mock m-hd"><svg viewBox="0 0 150 170" aria-hidden="true"><path d="M40 30 Q75 0 110 30 L140 60 L128 80 L118 72 L118 165 L32 165 L32 72 L22 80 L10 60 Z" fill="#141414" stroke="#2a2a2a"/><path d="M58 30 Q75 50 92 30" fill="none" stroke="#2a2a2a" stroke-width="2"/><image href="img/simbolo.webp" x="83" y="62" width="26" height="26"/></svg></div><div class="tx"><b>Merch / hoodie</b><small>Símbolo en el pecho; MARK KAIZEN en la espalda.</small></div></div>
+  <div class="app rv" style="--d:.16s"><div class="mock m-wm"><img src="img/simbolo.webp" alt=""></div><div class="tx"><b>Marca de agua</b><small>Símbolo monocromático o naranja sobre fondos oscuros.</small></div></div>
+ </div>
+</div></section>
+
+<div class="mani"><div class="w"><p class="eb" style="margin-bottom:18px">Manifiesto</p>
+ <p class="m" id="mani">MARK KAIZEN no busca ser perfecto. Busca evolucionar. Combina estrategia con creatividad, análisis con intuición y disciplina con experimentación. Cada proyecto es una oportunidad para aprender, mejorar y construir algo más fuerte que antes.</p>
+ <p class="sig"><img src="img/simbolo.webp" alt="">改善 — KAIZEN · MEJORA CONTINUA.</p>
+</div><span class="kj" aria-hidden="true">改善</span></div>
+</main>
+<footer><div class="w"><span>© 2026 MARK KAIZEN · Manual de identidad de marca</span><span style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn bg" href="docs/Manual_de_Marca_MARK_KAIZEN.pdf" download>Descargar PDF</a><a class="btn bp" href="index.html">Ver la web</a></span></div></footer>
+
+<script>
+(()=>{const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+// progreso de lectura (gira el símbolo de la cabecera) y sección activa
+const root=document.documentElement;let tk=0;
+addEventListener("scroll",()=>{if(tk)return;tk=requestAnimationFrame(()=>{tk=0;const h=root.scrollHeight-innerHeight;root.style.setProperty("--sp",h>0?(scrollY/h).toFixed(4):0)})},{passive:true});
+const toc=$$(".toc a");const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)toc.forEach(a=>a.classList.toggle("on",a.hash=="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});$$("section[id]").forEach(s=>so.observe(s));
+// aparición al hacer scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add("in");io.unobserve(e.target);if(e.target.id=="tw")type()}),{rootMargin:"0px 0px -10% 0px",threshold:.1});
+$$(".rv,.s,#ratio,#curve,#tw").forEach(el=>RM?el.classList.add("in"):io.observe(el));
+// símbolo interactivo
+const st=$("#stage");function pick(k){st.dataset.k=k;$$("[data-k]").forEach(b=>{if(b!=st)b.setAttribute("aria-pressed",b.dataset.k==k)})}
+$$(".hot,.mean").forEach(b=>{b.onclick=()=>pick(b.dataset.k);b.onmouseenter=()=>matchMedia("(hover:hover)").matches&&pick(b.dataset.k)});
+// copiar colores
+function toast(t){const d=document.createElement("div");d.className="toast";d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),1600)}
+$$(".s").forEach(b=>b.onclick=async()=>{const h=b.dataset.hex;try{await navigator.clipboard.writeText(h)}catch(e){}b.classList.add("ok");b.querySelector(".cp").textContent="Copiado";toast(h+" copiado");setTimeout(()=>{b.classList.remove("ok");b.querySelector(".cp").textContent="Copiar"},1500)});
+// titular que se escribe solo
+const T=["Una idea también necesita estrategia.","Creatividad con propósito.","No publiques por publicar."];let ti=0,typing=false;
+function type(){if(typing)return;typing=true;const el=$("#tw");if(RM){el.textContent=T[0];return}
+ (function next(){const t=T[ti%T.length];let i=0;(function w(){el.textContent=t.slice(0,++i);if(i<t.length)setTimeout(w,45);else setTimeout(()=>{(function e(){el.textContent=t.slice(0,--i);if(i>0)setTimeout(e,22);else{ti++;setTimeout(next,300)}})()},2200)})()})()}
+// ciclo Mejora → Prueba → Aprende → Repite
+const lp=$$("#loop span");let li=0;if(!RM)setInterval(()=>{lp.forEach((s,i)=>s.classList.toggle("on",i==li));li=(li+1)%lp.length},900);else lp.forEach(s=>s.classList.add("on"));
+// demos de movimiento
+$$(".mvc").forEach(c=>{const d=c.querySelector(".demo"),run=()=>{d.classList.remove("go");void d.offsetWidth;d.classList.add("go")};c.querySelector(".replay").onclick=run;const o=new IntersectionObserver(es=>{if(es[0].isIntersecting){run();o.disconnect()}},{threshold:.5});o.observe(c)});
+// manifiesto: se ilumina palabra por palabra con el scroll
+const m=$("#mani");m.innerHTML=m.textContent.split(" ").map(w=>`<span>${w}</span>`).join(" ");const ws=[...m.children];
+function lit(){const r=m.getBoundingClientRect(),p=Math.min(1,Math.max(0,(innerHeight*.85-r.top)/(r.height+innerHeight*.35)));const n=Math.round(p*ws.length);ws.forEach((s,i)=>s.classList.toggle("on",i<n))}
+if(RM)ws.forEach(s=>s.classList.add("on"));else{addEventListener("scroll",lit,{passive:true});lit()}
+})();
+</script>
+</body></html>
