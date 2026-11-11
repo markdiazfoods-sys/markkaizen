@@ -500,6 +500,21 @@ section.s .sh .eb::before{background:var(--sc);animation:none}
 .sptl .on .eq{display:flex}
 .spb.on .sptl .on .eq i{animation:eq .9s ease-in-out infinite alternate}.spb.on .sptl .on .eq i:nth-child(2){animation-delay:.3s}.spb.on .sptl .on .eq i:nth-child(3){animation-delay:.6s}
 @keyframes eq{from{height:20%}to{height:100%}}
+.spcats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.spcats .chip[aria-selected=true]{background:var(--spg);border-color:var(--spg);color:#04140a}
+.sppl{display:flex;align-items:center;gap:12px;padding:10px;border-radius:16px;background:linear-gradient(90deg,rgba(30,215,96,.14),rgba(123,92,255,.12));border:1px solid rgba(30,215,96,.25)}
+.sppl img{width:56px;height:56px;border-radius:10px;object-fit:cover;flex:none;box-shadow:0 10px 24px -10px rgba(0,0,0,.8)}
+.spplm{min-width:0;flex:1;display:flex;flex-direction:column}
+.spplm span{font:800 12px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--spg)}
+.spplm b{font:700 16px/1.25 var(--display);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.spsm{width:44px;height:44px;flex:none}.spsm svg{fill:none}
+.spdisc img{object-fit:cover}
+.spside{display:flex;flex-direction:column;gap:10px;min-width:0}
+.spvs{display:flex;gap:8px}
+.spvs .chip[aria-selected=true]{background:var(--tx);color:var(--ink)}
+.spls button{gap:12px}
+.spls img,.spls .ph{width:44px;height:44px;border-radius:8px;object-fit:cover;flex:none;background:var(--card2)}
+.spls .on{background:rgba(30,215,96,.14)}
 @media (max-width:860px){.spg{grid-template-columns:1fr}.sptl{max-height:340px}}
 @media (max-width:640px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpis>div{transform:none!important}
  section.s>.w::before{font-size:130px;top:-30px;opacity:.25}.hero h1 span:first-child{text-shadow:4px 4px 0 var(--pink)}
@@ -595,17 +610,22 @@ section.s .sh .eb::before{background:var(--sc);animation:none}
 </div></section>
 
 <section class="s" id="musica"><div class="w">
- <div class="sh rv"><div><p class="eb">Música</p><h2>Suena mientras navegas</h2></div><p class="lead">Mi playlist “Anime” de Spotify. Empieza a sonar cuando tocas la página; usa ⏮ ⏭ para cambiar de canción o elige una de la lista.</p></div>
- <div class="spb rv" id="spb"><div class="sph"><span class="spi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.4a.6.6 0 0 1-.9.2c-2.4-1.5-5.4-1.8-9-1a.6.6 0 1 1-.3-1.2c3.9-.9 7.2-.5 9.9 1.1.3.2.4.6.3.9zm1.2-2.7a.8.8 0 0 1-1.1.3c-2.7-1.7-6.9-2.2-10.2-1.2a.8.8 0 0 1-.5-1.5c3.7-1.1 8.3-.6 11.5 1.3.4.3.5.8.3 1.1zm.1-2.8C14.7 9 9.4 8.8 6.3 9.7a1 1 0 1 1-.6-1.8c3.5-1.1 9.4-.9 13.1 1.3a1 1 0 0 1-.9 1.7z"/></svg></span><div><p class="eb">Spotify</p><h3>Mi playlist “Anime”</h3></div><span class="spst" id="spst" aria-live="polite"></span></div>
+ <div class="sh rv"><div><p class="eb">Música</p><h2>Suena mientras navegas</h2></div><p class="lead">Mis listas de anime de Spotify. Empieza a sonar cuando tocas la página: cambia de lista con ‹ ›, de canción con ⏮ ⏭, y al terminar una lista sigue sola con la próxima.</p></div>
+ <div class="spb rv" id="spb"><div class="sph"><span class="spi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.4a.6.6 0 0 1-.9.2c-2.4-1.5-5.4-1.8-9-1a.6.6 0 1 1-.3-1.2c3.9-.9 7.2-.5 9.9 1.1.3.2.4.6.3.9zm1.2-2.7a.8.8 0 0 1-1.1.3c-2.7-1.7-6.9-2.2-10.2-1.2a.8.8 0 0 1-.5-1.5c3.7-1.1 8.3-.6 11.5 1.3.4.3.5.8.3 1.1zm.1-2.8C14.7 9 9.4 8.8 6.3 9.7a1 1 0 1 1-.6-1.8c3.5-1.1 9.4-.9 13.1 1.3a1 1 0 0 1-.9 1.7z"/></svg></span><div><p class="eb">Spotify</p><h3>Mis listas de anime</h3></div><span class="spst" id="spst" aria-live="polite"></span></div>
+  <div class="spcats" id="spcats" role="tablist" aria-label="Categorías de música"></div>
   <div class="spg">
    <div class="spnow">
-    <div class="sptop"><div class="spdisc" aria-hidden="true"><img src="img/emblem.webp" alt=""></div>
-    <div class="spmeta"><span class="spnum" id="spnum">01 / 28</span><b id="spt">…</b><small id="spa"></small></div></div>
+    <div class="sppl"><button type="button" class="spbt spsm" id="splprev" aria-label="Lista anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg></button>
+     <img id="splimg" src="img/emblem.webp" alt="" onerror="this.onerror=null;this.src='img/emblem.webp'"><div class="spplm"><span id="splnum">Lista 01</span><b id="spln">Cargando…</b></div>
+     <button type="button" class="spbt spsm" id="splnext" aria-label="Lista siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button></div>
+    <div class="sptop"><div class="spdisc" aria-hidden="true"><img id="spdimg" src="img/emblem.webp" alt="" onerror="this.onerror=null;this.src='img/emblem.webp'"></div>
+    <div class="spmeta"><span class="spnum" id="spnum">Canción 01</span><b id="spt">…</b><small id="spa"></small></div></div>
     <div class="spctl"><button type="button" class="spbt" id="spprev" aria-label="Canción anterior"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button><button type="button" class="spbt spmain" id="sptg" aria-label="Reproducir o pausar"><svg class="i-pl" viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg><svg class="i-pa" viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button><button type="button" class="spbt" id="spnext" aria-label="Canción siguiente"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button></div>
     <div class="spbar" aria-hidden="true"><i id="spbar"></i></div>
     <div class="spf"><div id="spembed"><div class="spph"><span class="sp"></span>Cargando Spotify…</div></div></div>
    </div>
-   <ol class="sptl" id="sptl" aria-label="Canciones de la playlist"></ol>
+   <div class="spside"><div class="spvs" role="tablist"><button type="button" class="chip" role="tab" data-v="t" id="spvt" aria-selected="true">Canciones</button><button type="button" class="chip" role="tab" data-v="l" id="spvl" aria-selected="false">Listas</button></div>
+   <ol class="sptl" id="sptl" aria-label="Canciones o listas"></ol></div>
   </div>
   <p class="spn">Inicia sesión en Spotify en este navegador para escuchar las canciones completas (sin sesión, Spotify solo da 30 segundos por canción).</p></div>
 </div></section>
@@ -756,37 +776,60 @@ function ficha(x){const p=POST[x.n],isA=!!x.mu;
  <button class="btn bp" type="button" id="mdsp">Escuchar mi playlist “Anime” aquí</button></div>`;
  $("mdsp").onclick=()=>{md.close();$("spb").scrollIntoView({behavior:"smooth",block:"center"});spPlay()};
  md.showModal()}
-/* ---------- música: Spotify, playlist "Anime" con anterior / siguiente ---------- */
-/* canciones de la playlist (open.spotify.com/playlist/5fhJbA8O0rbxf487Fhnp0W): [id, título, artista] */
-const TR=[["7weHG0yOwtAcZ0qBhyODLF","Hero's Come Back!!","nobodyknows+"],["17zGkwutNrdgAAfC61QLWF","distance","Long Shot Party"],["2XpV9sHBexcNrz0Gyf3l18","ブルーバード","Ikimonogakari"],["2Kld61w2NR7zPPXtaHeIii","CLOSER","Joe Inoue"],["7HAkrW8JUYoVR9dXwb6Uku","ホタルノヒカリ","Ikimonogakari"],["1hi0P1Y2he1p09xnUccuAN","Sign","FLOW"],["3ILmwMefYZoQh5Cf5jeuUQ","透明だった世界","Motohiro Hata"],["3PcKYVcZNSsLqI1xzXV5Aq","Diver","NICO Touches the Walls"],["75SKlkZrcOX32dseIE8l4O","ラヴァーズ","7!!"],["2tNcvY9PZlEKrUJRx9OiGr","newsong","tacica"],["6Kg19UJsggomlPU7vrggU3","Moshimo","Daisuke"],["6flEDs8jmQ47ZSFZru59Fz","ニワカ雨ニモ負ケズ","NICO Touches the Walls"],["0aR5Nfq1tDRpy6XCrlitVe","月の大きさ","Nogizaka46"],["0ldzDKNON23ajcssPHjTKH","紅蓮","DOES"],["21z1GxeHjfD3qkaF5CgCTO","シルエット","KANA-BOON"],["18rmNlzEWr9DmYM0iBNUAl","風","Yamazaru"],["1m3qFOyT5u01Yd2WBVX0cI","LINE","Sukima Switch"],["3xQBvKxm8mdy9OBLiJDcwB","ブラッドサーキュレーター","ASIAN KUNG-FU GENERATION"],["2UnrCmVUqwkT7sV1S3vd4W","カラノココロ","Anly"],["052C0m9kD30nZqcPWPPRqm","遥か彼方","ASIAN KUNG-FU GENERATION"],["4fKjIzm80Rpf4EUAt96hW2","悲しみをやさしさに","Little by Little"],["0GSs0GV34KX7KCpLw9tWjk","GO!!!","FLOW"],["3mPkQST4ybEL6xx0q7ujaZ","青春狂騒曲","Sambomaster"],["1Ek1oOZaKFPYsa4ri0yu4u","ノーボーイ・ノークライ","STANCE PUNKS"],["4OLVgNgoTslbcSAyR4PmCq","波風サテライト","SNOWKEL"],["1Ucmx7qaayeZL8Qfsq9vzD","Re:member","FLOW"],["5Uf7tljfwhcaLNZi6AdVow","ユラユラ","HEARTS GROW"],["1YqVJ2YSgwxWpfuENocF2t","Hello,world!","BUMP OF CHICKEN"]];
-let spC=null,spOn=false,spReq=false,spWant=false,spWas=false,spT=0,spI=0,spEnd=-1,spFb=false;
+/* ---------- música: Spotify por categorías → listas → canciones ----------
+   Los datos viven en musica.json: {cats:[{name, lists:[{id, n, img, t:[[idCanción, título, artista]]}]}]}.
+   Para sumar otra categoría (p. ej. "Música moderna") basta con agregarla a ese archivo. */
+let MU=null,spCi=0,spLi=0,spI=0,spV="t";
+let spC=null,spOn=false,spReq=false,spWant=false,spWas=false,spT=0,spEnd=-1,spFb=false;
 const pad=n=>String(n).padStart(2,"0");
-$("sptl").innerHTML=TR.map((t,i)=>`<li><button type="button" data-t="${i}"><span class="n">${pad(i+1)}</span><span class="tt"><b>${esc(t[1])}</b><small>${esc(t[2])}</small></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></button></li>`).join("");
-$$("#sptl [data-t]").forEach(b=>b.onclick=()=>spGo(+b.dataset.t,true));
-function spInfo(){const t=TR[spI];$("spnum").textContent=pad(spI+1)+" / "+pad(TR.length);$("spt").textContent=t[1];$("spa").textContent=t[2];
- $$("#sptl [data-t]").forEach(b=>{const on=+b.dataset.t==spI;b.classList.toggle("on",on);if(on)b.setAttribute("aria-current","true");else b.removeAttribute("aria-current")});
- const cur=$("sptl").querySelector(".on");if(cur){const L=$("sptl");L.scrollTo({top:cur.parentNode.offsetTop-L.clientHeight/2+cur.clientHeight/2,behavior:"smooth"})}}
+const spCat=()=>MU.cats[spCi],spList=()=>spCat().lists[spLi],spTr=()=>spList().t[spI];
+function spSave(){try{localStorage.setItem("mk-sp",JSON.stringify([spCi,spLi,spI]))}catch(e){}}
+function spDrawCats(){$("spcats").innerHTML=MU.cats.map((c,i)=>`<button class="chip" type="button" role="tab" aria-selected="${i==spCi}" data-c="${i}">${esc(c.name)} · ${c.lists.length} listas</button>`).join("");
+ $$("#spcats [data-c]").forEach(b=>b.onclick=()=>{spCi=+b.dataset.c;spDrawCats();spPick(0,0,spOn)})}
+function spDrawSide(){const L=spList();$$("[data-v]").forEach(b=>b.setAttribute("aria-selected",b.dataset.v==spV));
+ $("spvt").textContent="Canciones · "+L.t.length;$("spvl").textContent="Listas · "+spCat().lists.length;
+ if(spV=="t"){$("sptl").className="sptl";$("sptl").innerHTML=L.t.map((t,i)=>`<li><button type="button" data-t="${i}"><span class="n">${pad(i+1)}</span><span class="tt"><b>${esc(t[1])}</b><small>${esc(t[2])}</small></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></button></li>`).join("");
+  $$("#sptl [data-t]").forEach(b=>b.onclick=()=>spGo(+b.dataset.t,true))}
+ else{$("sptl").className="sptl spls";$("sptl").innerHTML=spCat().lists.map((l,i)=>`<li><button type="button" data-l="${i}">${l.img?`<img loading="lazy" src="${esc(l.img)}" alt="" onerror="this.onerror=null;this.src='img/emblem.webp'">`:`<span class="ph"></span>`}<span class="tt"><b>${esc(l.n)}</b><small>${pad(i+1)} · ${l.t.length} canciones</small></span></button></li>`).join("");
+  $$("#sptl [data-l]").forEach(b=>b.onclick=()=>{spV="t";spPick(+b.dataset.l,0,true)})}
+ spMark()}
+function spMark(){const sel=spV=="t"?"[data-t]":"[data-l]",cur=spV=="t"?spI:spLi;
+ $$("#sptl "+sel).forEach(b=>{const on=+(b.dataset.t??b.dataset.l)==cur;b.classList.toggle("on",on);if(on)b.setAttribute("aria-current","true");else b.removeAttribute("aria-current")});
+ const c=$("sptl").querySelector(".on");if(c){const L=$("sptl");L.scrollTo({top:c.parentNode.offsetTop-L.clientHeight/2+c.clientHeight/2,behavior:"smooth"})}}
+function spInfo(){const L=spList(),t=spTr();
+ $("splnum").textContent="Lista "+pad(spLi+1)+" / "+pad(spCat().lists.length);$("spln").textContent=L.n;
+ $("splimg").src=L.img||"img/emblem.webp";$("spdimg").src=L.img||"img/emblem.webp";
+ $("spnum").textContent="Canción "+pad(spI+1)+" / "+pad(L.t.length);$("spt").textContent=t[1];$("spa").textContent=t[2];spMark();spSave()}
 function spState(on){spOn=on;$("spst").textContent=on?"Sonando en Spotify":"";$("spb").classList.toggle("on",on);if(on){spWant=false;clearTimeout(spT);$("sptap").hidden=true}}
-/* cambiar de canción: pasar del final vuelve al inicio y al revés */
-function spGo(i,play){spI=(i+TR.length)%TR.length;spEnd=-1;spInfo();$("spbar").style.width="0";
- if(spFb){$("spf").src=`https://open.spotify.com/embed/track/${TR[spI][0]}?utm_source=generator&theme=0`;return}
- if(!spC){spWant=play;return}
- spC.loadUri("spotify:track:"+TR[spI][0]);if(play){spWant=true;setTimeout(()=>{try{spC.play()}catch(e){}},700)}}
+function spLoadTrack(play){spEnd=-1;$("spbar").style.width="0";const id=spTr()[0];
+ if(spFb){$("spf").src=`https://open.spotify.com/embed/track/${id}?utm_source=generator&theme=0`;return}
+ if(!spC){if(play)spWant=true;return}
+ spC.loadUri("spotify:track:"+id);if(play){spWant=true;setTimeout(()=>{try{spC.play()}catch(e){}},700)}}
+/* elegir lista (y canción): da la vuelta al pasar del final o del inicio */
+function spPick(li,ti,play){const n=spCat().lists.length;spLi=(li+n)%n;const m=spList().t.length;spI=ti<0?m-1:Math.min(ti,m-1);spDrawSide();spInfo();spLoadTrack(play)}
+/* canción siguiente / anterior: al acabar una lista sigue con la próxima */
+function spGo(i,play){const m=spList().t.length;if(i>=m)return spPick(spLi+1,0,play);if(i<0)return spPick(spLi-1,-1,play);spI=i;spInfo();spLoadTrack(play)}
 /* intenta reproducir; si en unos segundos no suena, el navegador lo bloqueó: mostrar botón */
 function spPlay(){spWant=true;if(!spC)return;try{spC.play()}catch(e){}clearTimeout(spT);spT=setTimeout(()=>{if(!spOn&&spWant)$("sptap").hidden=false},3500)}
 $("spprev").onclick=()=>spGo(spI-1,true);$("spnext").onclick=()=>spGo(spI+1,true);
+$("splprev").onclick=()=>spPick(spLi-1,0,true);$("splnext").onclick=()=>spPick(spLi+1,0,true);
 $("sptg").onclick=()=>{if(spC&&spOn)spC.pause();else spPlay()};
-function spLoad(){if(spReq)return;spReq=true;spInfo();
- const fb=()=>{if(spC)return;spFb=true;$("spembed").innerHTML=`<iframe id="spf" title="Spotify: playlist Anime" src="https://open.spotify.com/embed/track/${TR[spI][0]}?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;$("sptap").hidden=true};
- window.onSpotifyIframeApiReady=API=>{const el=document.createElement("div");$("spembed").innerHTML="";$("spembed").appendChild(el);
-  API.createController(el,{uri:"spotify:track:"+TR[spI][0],width:"100%",height:"152"},C=>{spC=C;
-   C.addListener("playback_update",e=>{const d=e&&e.data;if(!d)return;spState(!d.isPaused);
-    if(d.duration>0){$("spbar").style.width=Math.min(100,d.position/d.duration*100)+"%";
-     /* al terminar una canción pasa sola a la siguiente */
-     if(d.position>=d.duration-600&&spEnd!=spI&&!d.isBuffering){spEnd=spI;setTimeout(()=>spGo(spI+1,true),400)}}});
-   C.addListener("ready",()=>{if(spWant)spPlay()})})};
- const sc=document.createElement("script");sc.src="https://open.spotify.com/embed/iframe-api/v1";sc.async=true;sc.onerror=fb;document.head.appendChild(sc);setTimeout(fb,10000)}
-/* primer toque o clic en cualquier parte de la página: arrancar la playlist */
+$$("[data-v]").forEach(b=>b.onclick=()=>{spV=b.dataset.v;spDrawSide()});
+function spLoad(){if(spReq)return;spReq=true;
+ fetch("musica.json").then(r=>r.json()).then(d=>{MU=d;
+  try{const s=JSON.parse(localStorage.getItem("mk-sp")||"null");if(s&&MU.cats[s[0]]&&MU.cats[s[0]].lists[s[1]]){spCi=s[0];spLi=s[1];spI=Math.min(s[2]||0,spList().t.length-1)}}catch(e){}
+  spDrawCats();spDrawSide();spInfo();
+  const fb=()=>{if(spC)return;spFb=true;$("spembed").innerHTML=`<iframe id="spf" title="Spotify" src="https://open.spotify.com/embed/track/${spTr()[0]}?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;$("sptap").hidden=true};
+  window.onSpotifyIframeApiReady=API=>{const el=document.createElement("div");$("spembed").innerHTML="";$("spembed").appendChild(el);
+   API.createController(el,{uri:"spotify:track:"+spTr()[0],width:"100%",height:"152"},C=>{spC=C;
+    C.addListener("playback_update",e=>{const d=e&&e.data;if(!d)return;spState(!d.isPaused);
+     if(d.duration>0){$("spbar").style.width=Math.min(100,d.position/d.duration*100)+"%";
+      /* al terminar una canción pasa sola a la siguiente */
+      if(d.position>=d.duration-600&&spEnd!=spI&&!d.isBuffering){spEnd=spI;setTimeout(()=>spGo(spI+1,true),400)}}});
+    C.addListener("ready",()=>{if(spWant)spPlay()})})};
+  const sc=document.createElement("script");sc.src="https://open.spotify.com/embed/iframe-api/v1";sc.async=true;sc.onerror=fb;document.head.appendChild(sc);setTimeout(fb,10000)
+ }).catch(()=>{$("spembed").innerHTML=`<div class="spph">No se pudo cargar la música.</div>`})}
+/* primer toque o clic en cualquier parte de la página: arrancar la música */
 (()=>{const ev=["pointerdown","touchstart","keydown"],k=e=>{if(e.target.closest&&e.target.closest("#sptap,#spb"))return;ev.forEach(n=>removeEventListener(n,k,true));if(!spOn)spPlay()};ev.forEach(n=>addEventListener(n,k,{capture:true,passive:true}))})();
 $("sptap").onclick=()=>{$("sptap").hidden=true;if(!spC){$("spb").scrollIntoView({behavior:"smooth",block:"center"});return}spPlay()};
 /* al abrir un video del portafolio se pausa Spotify y vuelve al cerrar */
