@@ -186,6 +186,12 @@ section.s{padding:clamp(64px,10vw,120px) 0 0}
 .gal .it.pving .pl{opacity:0}
 @media(hover:none){.gal .it .pl{display:none}}
 @media(max-width:640px){.gal .it.ft{grid-row:auto;aspect-ratio:4/5}.binfo .ba{justify-content:stretch}.binfo .ba .btn{flex:1 1 auto}}
+.mkv{display:grid;grid-template-columns:repeat(2,minmax(0,300px));gap:16px;justify-content:center}
+.mkv .it{aspect-ratio:9/16}
+.mkv .it .pl{left:50%;top:30%}
+.mkv .it .cap{font-size:17px;padding:44px 16px 16px}
+.mkv .it .cap small{display:block;font:500 13px var(--body);color:var(--mute);margin-top:4px}
+@media(max-width:640px){.mkv{gap:10px}.mkv .it .cap{font-size:14px;padding:34px 12px 12px}}
 .binfo .bm{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px}
 .binfo .bm span{font-size:13px;color:var(--mute)}.binfo .bm b{font:700 17px var(--display);color:#fff;margin-right:6px}
 .binfo .ba{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
@@ -799,6 +805,11 @@ html.nointro .hero h1 span,html.nointro .hero .role,html.nointro .hero .lead,htm
 </div></section>
 
 <div class="ens" aria-hidden="true"><span><img src="img/simbolo.webp" alt="" loading="lazy">Fuera de la oficina · 改善</span></div>
+<section class="s" id="marcavideo"><div class="w">
+ <div class="sh rv"><div><p class="eb">La marca en video</p><h2>MARK KAIZEN, explicado</h2></div><p class="lead">Dos videos cortos sobre qué es la marca y qué significa su símbolo. Animación hecha con el manual de marca y narración generada con IA.</p></div>
+ <div class="mkv rv" id="mkv"></div>
+</div></section>
+
 <section class="s" id="universo"><div class="w">
  <div class="sh rv"><div><p class="eb">Fuera de la oficina</p><h2>Mi universo anime y dorama</h2></div><p class="lead">Las historias y la música que me inspiran, sacadas de mi playlist “Mix Anime”. Abre una ficha para ver sinopsis, personajes y sus openings.</p></div>
  <div class="utabs" role="tablist" aria-label="Universo"><button class="chip" role="tab" aria-selected="true" data-u="a">Anime</button><button class="chip" role="tab" aria-selected="false" data-u="d">Dorama</button><button class="chip" role="tab" aria-selected="false" data-u="m">Artistas</button></div>
@@ -931,6 +942,10 @@ function peek(el){let t,v;const stop=()=>{clearTimeout(t);if(v){v.pause();el.rem
  el.addEventListener("mouseleave",stop);el.addEventListener("click",stop)}
 const toV=x=>({t:x.t,id:x.id,n:x.n,s:x.s+" · "+TY[x.t]});
 pickBrand(BR[0]);
+/* ---------- la marca en video ---------- */
+const MKV=[{t:"v",id:"marca-1",n:"¿Qué es MARK KAIZEN?",d:"Concepto y propósito",s:"La marca en video",du:"0:23"},{t:"v",id:"marca-2",n:"Cuatro ideas en un círculo",d:"El significado del símbolo",s:"La marca en video",du:"0:22"}];
+$("mkv").innerHTML=MKV.map((x,i)=>`<button class="it" type="button" data-i="${i}" aria-label="Reproducir: ${esc(x.n)}"><img loading="lazy" decoding="async" src="${thumb(x.id)}" srcset="${thumb(x.id)} 600w, ${hd(x)} 1080w" sizes="(max-width:640px) 50vw, 300px" alt=""><span class="ty">${IC.v}Video</span><span class="du" style="position:absolute;right:10px;top:10px;font:600 11px var(--body);background:rgba(9,9,13,.72);border-radius:99px;padding:4px 9px">${x.du}</span><span class="pl">${IC.v}</span><span class="cap">${esc(x.n)}<small>${esc(x.d)}</small></span></button>`).join("");
+$$("#mkv .it").forEach(el=>el.onclick=()=>viewer(MKV,+el.dataset.i));
 /* ---------- visor dentro de la página ---------- */
 let VL=[],VI=0;const vw=$("vw");
 function viewer(list,i){VL=list;VI=i;vrender();if(!vw.open)vw.showModal();pauseBg(true)}
