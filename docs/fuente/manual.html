@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Manual de marca · MARK KAIZEN 改善</title>
+<!-- Fuente del PDF docs/Manual_de_Marca_MARK_KAIZEN.pdf. Se genera con: node docs/fuente/generar.js
+     Tres colores: negro #0B0B0F, blanco #FFFFFF, naranja #FF6B00 (los grises son tonos del negro).
+     Tres tipografías: Sora, Inter y Noto Sans JP. -->
+<style>
+@font-face{font-family:'Sora';src:url(fuentes/Sora-recorte.ttf);font-weight:100 800}
+@font-face{font-family:'Inter';src:url(fuentes/Inter-recorte.ttf);font-weight:100 900}
+@font-face{font-family:'Noto Sans JP';src:url(fuentes/NotoSansJP-recorte.ttf);font-weight:100 900}
+@page{size:A4;margin:0}
+:root{--ink:#0B0B0F;--card:#151515;--card2:#1C1C1F;--line:#26262B;--line2:#36363D;--mute:#A9A9B3;--dim:#71717B;--or:#FF6B00;
+ --d:'Sora',sans-serif;--b:'Inter',sans-serif;--jp:'Noto Sans JP',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{background:var(--ink);color:#fff;font:400 9.6pt/1.5 var(--b)}
+img{display:block;max-width:100%}
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;background:var(--ink);padding:16mm 16mm 16mm 20mm;page-break-after:always;break-after:page;isolation:isolate}
+.page:last-child{page-break-after:auto;break-after:auto}
+/* recursos de manga */
+.cut{position:absolute;left:-10mm;width:230mm;height:.5mm;background:var(--or);transform:rotate(-1.6deg);z-index:-1}
+.cut::after{content:"";position:absolute;left:0;right:0;top:2mm;height:.2mm;background:rgba(255,255,255,.25)}
+.dots{position:absolute;z-index:-1;background-image:radial-gradient(rgba(255,255,255,.55) .32mm,transparent .42mm);background-size:2.4mm 2.4mm;opacity:.3;-webkit-mask-image:linear-gradient(200deg,#000 5%,transparent 70%);mask-image:linear-gradient(200deg,#000 5%,transparent 70%)}
+.vt{position:absolute;left:7.5mm;writing-mode:vertical-rl;font:700 8pt/1 var(--jp);letter-spacing:.42em;color:var(--or)}
+.vt::after{content:"";display:block;width:.25mm;height:12mm;margin:3mm auto 0;background:var(--or)}
+.kout{position:absolute;z-index:-1;font:800 21mm/1 var(--jp);color:var(--ink);-webkit-text-stroke:.7mm var(--line2);paint-order:stroke fill;letter-spacing:.04em}
+.foot{position:absolute;left:20mm;right:16mm;bottom:8mm;display:flex;justify-content:space-between;align-items:center;font:600 6.6pt var(--d);letter-spacing:.24em;text-transform:uppercase;color:var(--dim)}
+.foot b{color:var(--or);font-weight:700}
+.foot span:last-child{font-size:8pt;letter-spacing:.1em;color:#fff}
+/* cabecera de capítulo */
+.ch{position:relative;display:grid;grid-template-columns:auto 1fr;gap:1mm 5mm;align-items:end;margin-bottom:6mm}
+.ch .n{grid-row:span 2;font:800 24mm/.8 var(--d);letter-spacing:-.05em;color:var(--ink);-webkit-text-stroke:.9mm var(--or);paint-order:stroke fill;padding-right:1mm}
+.ch .eb{font:600 6.8pt var(--d);letter-spacing:.22em;text-transform:uppercase;color:var(--or)}
+.ch h2{font:800 21pt/1.05 var(--d);letter-spacing:-.03em}
+.ch+.lead{margin-top:-2mm}
+.sec{position:relative;margin-bottom:10mm}
+.sec:last-of-type{margin-bottom:0}
+.lead{color:var(--mute);font-size:10pt;max-width:150mm;margin-bottom:5mm}
+.card{position:relative;border:.25mm solid var(--line);border-radius:3.5mm;background:var(--card);padding:4.2mm 4.6mm}
+.lbl{display:block;font:700 6.6pt var(--d);letter-spacing:.16em;text-transform:uppercase;color:var(--or);margin-bottom:2.2mm}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:3.5mm}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:3.5mm}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:3.5mm}
+.mt{margin-top:3.5mm}
+.mute{color:var(--mute)}
+.big{font:800 15pt/1.15 var(--d);letter-spacing:-.02em}.big em,.or{font-style:normal;color:var(--or)}
+.chips{display:flex;flex-wrap:wrap;gap:1.6mm}
+.chips span{border:.25mm solid var(--line2);border-radius:99px;padding:1mm 3mm;font-size:8.4pt}
+.chips.no span{color:var(--mute);text-decoration:line-through;text-decoration-color:var(--or)}
+h3{font:700 11pt/1.2 var(--d);margin-bottom:1mm}
+ul.list{list-style:none;display:grid;gap:1.8mm}
+ul.list li{display:grid;grid-template-columns:3.5mm 1fr;gap:2.4mm;color:var(--mute)}
+ul.list li::before{content:"";width:3mm;height:.5mm;margin-top:2.3mm;background:var(--or)}
+ul.list b{color:#fff;font-weight:600}
+/* portada */
+.cover{padding:0;display:grid;grid-template-rows:1fr auto;background:var(--ink)}
+.cover .kout{writing-mode:vertical-rl;right:8mm;top:20mm;font-size:74mm;-webkit-text-stroke:.8mm #2A2A30}
+.cover .logo{align-self:center;justify-self:center;width:118mm;background:#000;border:.25mm solid var(--line2);padding:5mm;margin-top:16mm}
+.cover .bot{padding:0 20mm 22mm}
+.cover .ep{font:700 8pt var(--d);letter-spacing:.3em;text-transform:uppercase;color:var(--or)}
+.cover h1{font:800 34pt/1 var(--d);letter-spacing:-.035em;margin:3mm 0 4mm}
+.cover .q{font:600 13pt var(--d)}
+.cover .meta{margin-top:9mm;display:flex;gap:9mm;white-space:nowrap;font:600 7pt var(--d);letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.cover .meta b{display:block;color:#fff;font-size:9pt;letter-spacing:.06em;margin-top:1mm;text-transform:none}
+/* símbolo */
+.symx{display:grid;grid-template-columns:50mm 1fr;gap:6mm;align-items:center}
+.mean{display:grid;grid-template-columns:10mm 1fr;gap:3.5mm;align-items:center;padding:2.2mm 3.5mm;border:.25mm solid var(--line);border-radius:3mm;background:var(--card)}
+.mean i{font-style:normal;width:10mm;height:10mm;border-radius:2.4mm;display:grid;place-items:center;background:var(--card2);font:800 13pt var(--jp);color:var(--or)}
+.mean b{font:700 10.5pt var(--d);display:block}.mean small{color:var(--mute);font-size:8.4pt;line-height:1.4;display:block}
+.means{display:grid;gap:1.8mm}
+/* color */
+.sw{border:.25mm solid var(--line);border-radius:3.5mm;overflow:hidden;background:var(--card)}
+.sw .fill{height:19mm}.sw .m{padding:3mm 3.5mm}
+.sw b{display:block;font:700 10pt var(--d)}.sw code{font:600 9pt var(--b);color:var(--or)}.sw small{display:block;color:var(--mute);font-size:7.8pt;line-height:1.35;margin-top:1mm}
+.ratio{display:flex;height:13mm;border-radius:3mm;overflow:hidden;border:.25mm solid var(--line2)}
+.ratio div{display:flex;align-items:flex-end;padding:2mm 3mm;font:700 8.4pt var(--d);white-space:nowrap}
+.rule{display:flex;gap:3mm;align-items:center;padding:3.2mm 4mm;border:.25mm dashed var(--line2);border-radius:3mm;color:var(--mute)}
+.rule i{flex:none;width:2.6mm;height:2.6mm;border-radius:50%;background:var(--or)}.rule b{color:#fff}
+/* logotipo */
+.lv{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:3.5mm}
+.lv figure{border:.25mm solid var(--line);border-radius:3.5mm;overflow:hidden;background:var(--card)}
+.lv .vb{height:40mm;display:grid;place-items:center;background:#000;position:relative;overflow:hidden}
+.lv .vb img{max-height:40mm;width:auto}
+.lv .wm{background:url(../../img/hero.jpg) center 18%/cover}.lv .wm img{position:absolute;right:3mm;bottom:3mm;width:13mm;opacity:.8;filter:grayscale(1) brightness(2)}
+.lv figcaption{padding:2.6mm 3.5mm;color:var(--mute);font-size:8pt;line-height:1.4}.lv figcaption b{display:block;color:#fff;font:700 9.4pt var(--d)}
+.safe{display:grid;grid-template-columns:.8fr 1.2fr;gap:3.5mm}
+.sz{display:grid;place-items:center;height:32mm;background:#000;border-radius:2.5mm}
+.sz div{position:relative;padding:3mm;outline:.3mm dashed var(--or)}.sz img{width:18mm}
+.sz div::before{content:"x";position:absolute;left:1mm;top:0;font:600 6.5pt var(--b);color:var(--or)}
+.donts{display:grid;grid-template-columns:repeat(6,1fr);gap:2mm}
+.dn{position:relative;height:32mm;border:.25mm solid var(--line);border-radius:2.5mm;background:#000;display:grid;justify-items:center;align-content:center;gap:2mm;text-align:center;font-size:6.6pt;line-height:1.25;color:var(--mute);padding:1mm;overflow:hidden}
+.dn img{width:13mm;height:13mm;object-fit:contain}
+.dn::after{content:"×";position:absolute;right:1.4mm;top:1.4mm;width:3.6mm;height:3.6mm;border-radius:50%;background:#fff;color:#000;font:800 7pt/3.6mm var(--b);text-align:center}
+.d1 img{transform:scaleX(1.5) scaleY(.75)}.d2 img{transform:rotate(25deg) skewX(-14deg)}.d3 img{filter:drop-shadow(1.6mm 1.6mm 0 #FF6B00) drop-shadow(-1.3mm 1.3mm .8mm #FFFFFF)}
+.d4{background:#FF6B00;color:#0B0B0F}.d5 img{filter:grayscale(1) invert(1)}
+.d6 b{display:flex;height:13mm;align-items:center;font:800 11pt var(--d)}.d6 b i{font-style:normal;padding:.3mm .8mm}.d6 b i:nth-child(1){color:#FF6B00}.d6 b i:nth-child(2){background:#fff;color:#0B0B0F}.d6 b i:nth-child(3){background:#FF6B00;color:#fff}.d6 b i:nth-child(4){font:italic 400 11pt var(--b);color:#fff}
+/* tipografía */
+.tyc{display:flex;flex-direction:column;justify-content:space-between;gap:3mm;min-height:50mm}
+.tyc .spec{font:800 38pt/.9 var(--d);letter-spacing:-.04em}
+.tyc.t2 .spec{font:500 38pt/.9 var(--b)}.tyc.t3 .spec{font:800 33pt/1 var(--jp);color:var(--or);letter-spacing:0}
+.tyc .abc{font-size:7.6pt;color:var(--mute);word-break:break-all;line-height:1.4}.tyc.t1 .abc{font-family:var(--d)}.tyc.t3 .abc{font:500 11pt var(--jp);letter-spacing:.14em}
+.scale{display:grid;gap:2mm}
+.scale div{display:grid;grid-template-columns:30mm 1fr;align-items:baseline;gap:4mm;border-top:.25mm solid var(--line);padding-top:2mm}
+.scale div:first-child{border:0;padding:0}
+.scale small{font:600 6.6pt var(--d);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+/* voz */
+.vq blockquote{position:relative;padding:4.5mm 4mm;border:.25mm solid var(--line);border-radius:3.5mm;background:var(--card);font:700 11pt/1.25 var(--d);overflow:hidden;min-height:24mm}
+.vq blockquote::before{content:"“";position:absolute;right:2mm;top:-4mm;font:800 44pt var(--d);color:rgba(255,107,0,.25)}
+.loop{display:flex;gap:3mm;align-items:center;font:800 17pt var(--d)}
+.loop i{font-style:normal;color:var(--line2);font-weight:400}.loop span::first-letter{color:var(--or)}
+/* movimiento */
+.mvc .demo{height:36mm;border-radius:2.5mm;background:#000;display:grid;place-items:center;margin-bottom:3mm;position:relative;overflow:hidden}
+.mvc b{font:700 9.6pt var(--d);display:block}.mvc small{display:block;color:var(--mute);font-size:7.8pt;line-height:1.4;margin:1mm 0 1.5mm}
+.mvc code{font:600 7.4pt var(--b);color:var(--or)}
+.demo .ring{width:17mm;height:17mm;border-radius:50%;border:.7mm solid var(--or);border-right-color:transparent;transform:rotate(-30deg)}
+.demo .bars{display:grid;gap:1.6mm;width:60%}.demo .bars i{height:2.4mm;border-radius:2mm;background:var(--line2)}.demo .bars i:first-child{background:var(--or);width:60%}.demo .bars i:nth-child(2){opacity:.7;transform:translateY(.8mm)}.demo .bars i:nth-child(3){opacity:.35;transform:translateY(1.8mm)}
+.demo .btn{position:relative;overflow:hidden;padding:2.2mm 5mm;border-radius:2.4mm;background:var(--or);color:var(--ink);font:700 8.6pt var(--d)}
+.demo .btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.6) 50%,transparent 70%)}
+.demo .brush{position:absolute;inset:-2mm 30% -2mm -6mm;background:var(--or);transform:skewX(-10deg);clip-path:polygon(0 0,96% 0,100% 9%,95% 22%,99% 36%,94% 50%,100% 64%,95% 78%,99% 90%,94% 100%,0 100%)}
+.durs{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5mm}
+.durs div{padding:3mm;border-radius:2.5mm;border:.25mm solid var(--line);background:var(--card2)}
+.durs b{display:block;font:800 12pt var(--d);color:var(--or)}.durs small{color:var(--mute);font-size:7.8pt}
+/* tiktok y foto */
+.spec2{display:grid;gap:2.6mm}
+.spec2 div{display:flex;justify-content:space-between;gap:4mm;padding:3.6mm 4mm;border:.25mm solid var(--line);border-radius:2.5mm;background:var(--card);font-size:8.6pt}
+.spec2 span{color:var(--mute)}.spec2 b{font-family:var(--d);text-align:right}
+.tt{display:grid;grid-template-columns:54mm 1fr;gap:6mm;align-items:center}
+.phone{border-radius:6mm;padding:2.4mm;background:#000;border:.25mm solid var(--line2)}
+.screen{border-radius:4.2mm;background:var(--card);padding:5mm 3mm 4mm;display:grid;justify-items:center;gap:1.6mm;text-align:center}
+.screen .av{width:25mm;height:25mm;border-radius:50%;background:#000;display:grid;place-items:center;box-shadow:0 0 0 .4mm var(--line2)}.screen .av img{width:80%}
+.screen b{font:700 8pt var(--d)}.screen .fo{width:100%;padding:1.4mm;border-radius:1.2mm;background:var(--or);color:var(--ink);font:700 7pt var(--b)}
+.screen p{font-size:7pt;line-height:1.45;color:#fff}
+.shot{position:relative;border-radius:3.5mm;overflow:hidden;height:88mm;background:#000 url(../../img/hero.jpg) center 18%/cover}
+.shot::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,107,0,.35),transparent 45%),linear-gradient(transparent 55%,rgba(0,0,0,.85))}
+.shot p{position:absolute;left:4mm;bottom:3.5mm;z-index:1;font:700 9pt var(--d)}
+/* aplicaciones */
+table{width:100%;border-collapse:collapse;font-size:8.8pt}
+th{text-align:left;font:700 6.6pt var(--d);letter-spacing:.16em;text-transform:uppercase;color:var(--or);padding:0 3mm 2mm;border-bottom:.4mm solid var(--or)}
+td{padding:3.1mm 3mm;border-bottom:.25mm solid var(--line);color:var(--mute);vertical-align:top}
+td:first-child{color:#fff;font:600 9pt var(--d);width:58mm}
+/* panel anime */
+.pnl{position:relative;height:70mm;overflow:hidden;background:#000;border:.25mm solid var(--line);border-radius:3.5mm}
+.pnl .cut{left:-10%;top:27%;width:120%;transform:rotate(-8deg);z-index:0}
+.pnl .dots{right:0;top:0;width:60%;height:60%;z-index:0}
+.pnl .pn{position:absolute;right:4mm;top:1mm;font:800 34mm/.9 var(--d);letter-spacing:-.06em;color:#000;-webkit-text-stroke:.9mm var(--or);paint-order:stroke fill}
+.pnl .pk{position:absolute;left:4mm;top:3mm;font:800 20mm/1 var(--jp);color:#000;-webkit-text-stroke:.6mm var(--dim);paint-order:stroke fill}
+.pnl .pv{position:absolute;left:5mm;bottom:17mm;writing-mode:vertical-rl;font:700 7.4pt var(--jp);letter-spacing:.42em;color:var(--or)}
+.pnl p{position:absolute;left:14mm;bottom:5mm;font:800 12pt/1.15 var(--d)}
+.cast div{text-align:left}.cast i{display:block;font:800 20pt/1.1 var(--jp);font-style:normal;color:var(--or);margin-bottom:1.5mm}.cast b{display:block;font:700 10pt var(--d)}.cast small{display:block;color:var(--mute);font-size:8pt;line-height:1.4}
+/* manifiesto */
+.mani{display:flex;flex-direction:column;justify-content:center;padding-right:62mm}
+.mani .kout{writing-mode:vertical-rl;right:8mm;top:50%;transform:translateY(-50%);font-size:46mm;-webkit-text-stroke:.8mm #2A2A30}
+.mani .m{font:800 23pt/1.14 var(--d);letter-spacing:-.03em}
+.mani .m em{font-style:normal;color:var(--or)}
+.mani .sig{margin-top:11mm;display:flex;align-items:center;gap:4mm;font:700 8pt var(--d);letter-spacing:.3em;color:var(--or)}
+.mani .sig img{width:12mm}
+.mani .end{margin-top:16mm;width:54mm;background:#000;border:.25mm solid var(--line2);padding:3mm}
+.mani .url{margin-top:6mm;color:var(--mute);font-size:8.6pt}
+.mani .url b{color:#fff;font-weight:600}
+</style></head><body>
+
+<!-- 1 · Portada -->
+<div class="page cover">
+ <span class="kout" lang="ja">改善</span><i class="cut" style="top:36mm"></i><i class="dots" style="left:0;top:0;width:120mm;height:110mm;transform:scaleX(-1)"></i>
+ <span class="vt" style="top:22mm" lang="ja">第零話 · 誕生</span>
+ <img class="logo" src="../../img/logo-mark-kaizen.webp" alt="Logotipo de MARK KAIZEN">
+ <div class="bot">
+  <p class="ep">Manual de identidad de marca</p>
+  <h1>La marca,<br>capítulo por <span class="or">capítulo</span>.</h1>
+  <p class="q">“Creatividad que evoluciona constantemente.”</p>
+  <div class="meta"><span>Colores<b>Negro · Blanco · Naranja</b></span><span>Tipografías<b>Sora · Inter · Noto Sans JP</b></span><span>Dirección<b>Opening de anime, hecho por un estudio</b></span></div>
+ </div>
+</div>
+
+<!-- 2 · Esencia y símbolo -->
+<div class="page">
+ <i class="cut" style="top:9mm"></i><i class="dots" style="right:0;top:0;width:110mm;height:70mm"></i><span class="kout" style="right:14mm;top:15mm" lang="ja">本質</span><span class="vt" style="top:19mm" lang="ja">第一話</span>
+ <div class="sec">
+  <div class="ch"><span class="n">01</span><p class="eb">Esencia de marca</p><h2>Quién es MARK KAIZEN</h2></div>
+  <div class="g2" style="grid-template-columns:1.25fr 1fr">
+   <div class="card"><span class="lbl">Concepto</span><p class="big">Una marca personal de marketing que une <em>estrategia</em>, <em>creatividad</em>, cultura visual japonesa y <em>mejora continua</em>.</p></div>
+   <div style="display:grid;gap:3.5mm"><div class="card"><span class="lbl">Propósito</span><p>Convertir ideas en marcas y contenidos con identidad, estrategia y resultados.</p></div><div class="card"><span class="lbl">Visión</span><p>Una marca personal reconocible por su estilo creativo, su pensamiento estratégico y su capacidad de evolución.</p></div></div>
+  </div>
+  <div class="g2 mt">
+   <div class="card"><span class="lbl">Personalidad</span><div class="chips"><span>Creativa</span><span>Estratégica</span><span>Moderna</span><span>Disciplinada</span><span>Curiosa</span><span>Premium</span><span>Ligeramente futurista</span></div></div>
+   <div class="card"><span class="lbl">Arquetipo</span><p class="big" style="font-size:13pt">El Creador <em>+</em> El Explorador</p><p class="mute" style="margin-top:1.5mm">Crea soluciones originales, experimenta y busca mejorar continuamente.</p></div>
+  </div>
+ </div>
+ <div class="sec">
+  <i class="cut" style="top:-6mm"></i><span class="vt" style="top:0;left:-12.5mm" lang="ja">第二話</span>
+  <div class="ch"><span class="n">02</span><p class="eb">Significado del símbolo</p><h2>Cuatro ideas en un círculo</h2></div>
+  <div class="symx">
+   <img src="../../img/simbolo.webp" alt="Símbolo de MARK KAIZEN: dragón y gato en yin-yang con el kanji 改善">
+   <div class="means">
+    <div class="mean"><i lang="ja">龍</i><span><b>Dragón · la estrategia</b><small>Fuerza, ambición, transformación y energía creativa.</small></span></div>
+    <div class="mean"><i lang="ja">猫</i><span><b>Gato · la creatividad</b><small>Curiosidad, inteligencia, independencia y sensibilidad estética.</small></span></div>
+    <div class="mean"><i lang="ja">陰</i><span><b>Yin-yang · el equilibrio</b><small>Estrategia y creatividad, lógica e intuición, análisis y expresión.</small></span></div>
+    <div class="mean"><i lang="ja">改</i><span><b>改善 · Kaizen</b><small>La mejora continua. Es el núcleo filosófico de la marca.</small></span></div>
+   </div>
+  </div>
+  <p class="rule mt"><i></i><span><b>Cómo nació:</b> el dragón y el gato parecían fuerzas opuestas. La estrategia sin creatividad no conecta, y la creatividad sin estrategia no vende. El yin-yang las une y 改善 las mantiene en movimiento.</span></p>
+ </div>
+ <div class="foot"><span>MARK <b>KAIZEN</b> · Manual de marca</span><span>02</span></div>
+</div>
+
+<!-- 3 · Color y logotipo -->
+<div class="page">
+ <i class="cut" style="top:9mm"></i><i class="dots" style="right:0;top:0;width:110mm;height:70mm"></i><span class="kout" style="right:14mm;top:15mm" lang="ja">色彩</span><span class="vt" style="top:19mm" lang="ja">第三話</span>
+ <div class="sec">
+  <div class="ch"><span class="n">03</span><p class="eb">Sistema visual</p><h2>Color</h2></div>
+  <div class="g3">
+   <div class="sw"><div class="fill" style="background:#0B0B0F;border-bottom:.25mm solid #26262B"></div><div class="m"><b>Negro profundo</b><code>#0B0B0F</code><small>Fondo principal. Autoridad, sofisticación y tecnología. Sus grises (#151515) van en tarjetas.</small></div></div>
+   <div class="sw"><div class="fill" style="background:#FFFFFF"></div><div class="m"><b>Blanco</b><code>#FFFFFF</code><small>Texto y contraste. Claridad, simplicidad y equilibrio.</small></div></div>
+   <div class="sw"><div class="fill" style="background:#FF6B00"></div><div class="m"><b>Naranja creativo</b><code>#FF6B00</code><small>Acentos, botones y elementos clave. Energía, acción y creatividad.</small></div></div>
+  </div>
+  <div class="ratio mt"><div style="width:60%;background:#0B0B0F;color:#fff">Negro 60 %</div><div style="width:30%;background:#fff;color:#0B0B0F">Blanco 30 %</div><div style="width:10%;background:#FF6B00;color:#0B0B0F">10 %</div></div>
+  <p class="rule mt"><i></i><span><b>Regla:</b> negro 60, blanco 30, naranja 10. El naranja es acento, nunca fondo dominante. La marca usa solo tres colores; los grises son tonos del negro.</span></p>
+ </div>
+ <div class="sec">
+  <i class="cut" style="top:-6mm"></i><span class="vt" style="top:0;left:-12.5mm" lang="ja">第四話</span>
+  <div class="ch"><span class="n">04</span><p class="eb">Logotipo</p><h2>Versiones y uso</h2></div>
+  <div class="lv">
+   <figure><div class="vb"><img src="../../img/logo-mark-kaizen.webp" alt="" style="max-height:39mm"></div><figcaption><b>Versión principal</b>Símbolo + MARK + KAIZEN + MEJORA CONTINUA, sobre negro.</figcaption></figure>
+   <figure><div class="vb"><img src="../../img/simbolo.webp" alt="" style="width:30mm"></div><figcaption><b>Avatar</b>Solo el símbolo. Se lee bien en tamaños pequeños.</figcaption></figure>
+   <figure><div class="vb wm"><img src="../../img/simbolo.webp" alt=""></div><figcaption><b>Marca de agua</b>Símbolo monocromático o naranja sobre fondos oscuros.</figcaption></figure>
+  </div>
+  <div class="safe mt">
+   <div class="card"><span class="lbl">Área de seguridad</span><div class="sz"><div><img src="../../img/simbolo.webp" alt=""></div></div><p class="mute" style="margin-top:2mm;font-size:8pt">Deja libre, como mínimo, el ancho del trazo naranja exterior (x).</p></div>
+   <div class="card"><span class="lbl">No hacer</span><div class="donts">
+    <div class="dn d1"><img src="../../img/simbolo.webp" alt="">Deformar</div><div class="dn d2"><img src="../../img/simbolo.webp" alt="">Inclinar</div><div class="dn d3"><img src="../../img/simbolo.webp" alt="">Sombras excesivas</div>
+    <div class="dn d4"><img src="../../img/simbolo.webp" alt="">Naranja de fondo</div><div class="dn d5"><img src="../../img/simbolo.webp" alt="">Cambiar colores o kanji</div><div class="dn d6"><b><i>M</i><i>A</i><i>R</i><i>K</i></b>Mezclar colores y estilos</div>
+   </div><p class="mute" style="margin-top:2mm;font-size:8pt">El símbolo y el logo se usan desde el archivo oficial. No se redibujan.</p></div>
+  </div>
+ </div>
+ <div class="foot"><span>MARK <b>KAIZEN</b> · Manual de marca</span><span>03</span></div>
+</div>
+
+<!-- 4 · Tipografía y voz -->
+<div class="page">
+ <i class="cut" style="top:9mm"></i><i class="dots" style="right:0;top:0;width:110mm;height:70mm"></i><span class="kout" style="right:14mm;top:15mm" lang="ja">書体</span><span class="vt" style="top:19mm" lang="ja">第五話</span>
+ <div class="sec">
+  <div class="ch"><span class="n">05</span><p class="eb">Tipografía</p><h2>Tres familias, cada una<br>con su papel</h2></div>
+  <div class="g3">
+   <div class="card tyc t1"><div><span class="lbl">Títulos · Sora</span><p class="mute" style="font-size:8pt">Sans-serif geométrica. En peso Bold o ExtraBold.</p></div><p class="spec">Aa</p><p class="abc">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789</p></div>
+   <div class="card tyc t2"><div><span class="lbl">Texto · Inter</span><p class="mute" style="font-size:8pt">Limpia y legible en pantalla y en papel.</p></div><p class="spec">Aa</p><p class="abc">abcdefghijklmnñopqrstuvwxyz 0123456789</p></div>
+   <div class="card tyc t3"><div><span class="lbl">Kanji · Noto Sans JP</span><p class="mute" style="font-size:8pt">Solo para 改善 y los kanji de apoyo.</p></div><p class="spec" lang="ja">改善</p><p class="abc" lang="ja">龍 猫 陰陽 第一話</p></div>
+  </div>
+  <div class="card mt scale">
+   <div><small>Título · Sora 800</small><p style="font:800 19pt/1.05 var(--d);letter-spacing:-.03em">Una idea también necesita estrategia.</p></div>
+   <div><small>Subtítulo · Sora 700</small><p style="font:700 12pt var(--d)">Creatividad con propósito.</p></div>
+   <div><small>Texto · Inter 400</small><p class="mute">Planifico, lanzo y optimizo campañas con datos, y le pongo cabeza creativa a cada pieza.</p></div>
+   <div><small>Etiqueta · Sora 600</small><p style="font:600 7pt var(--d);letter-spacing:.2em;text-transform:uppercase;color:var(--or)">Mejora continua</p></div>
+  </div>
+  <p class="rule mt"><i></i><span><b>Regla:</b> máximo 3 familias por pieza. El lettering del logo es personalizado: no se reemplaza ni se cambian sus proporciones.</span></p>
+ </div>
+ <div class="sec">
+  <i class="cut" style="top:-6mm"></i><span class="vt" style="top:0;left:-12.5mm" lang="ja">第六話</span>
+  <div class="ch"><span class="n">06</span><p class="eb">Voz y comunicación</p><h2>Directa, segura y creativa</h2></div>
+  <p class="lead">Hablar como alguien que entiende marketing y también sabe comunicar visualmente.</p>
+  <div class="g4 vq"><blockquote>No publiques por publicar.</blockquote><blockquote>Una idea también necesita estrategia.</blockquote><blockquote>Creatividad con propósito.</blockquote><blockquote>Mejora. Prueba. Aprende. Repite.</blockquote></div>
+  <div class="loop mt" style="margin-top:5mm"><span>Mejora</span><i>→</i><span>Prueba</span><i>→</i><span>Aprende</span><i>→</i><span>Repite</span></div>
+  <div class="card mt" style="margin-top:5mm"><span class="lbl">Evitar</span><div class="chips no"><span>Lenguaje corporativo excesivo</span><span>Frases genéricas</span><span>Exceso de emojis</span><span>Textos demasiado largos</span></div></div>
+ </div>
+ <div class="foot"><span>MARK <b>KAIZEN</b> · Manual de marca</span><span>04</span></div>
+</div>
+
+<!-- 5 · Movimiento, TikTok y foto -->
+<div class="page">
+ <i class="cut" style="top:9mm"></i><i class="dots" style="right:0;top:0;width:110mm;height:70mm"></i><span class="kout" style="right:14mm;top:15mm" lang="ja">動き</span><span class="vt" style="top:19mm" lang="ja">第七話</span>
+ <div class="sec" style="margin-bottom:14mm">
+  <div class="ch"><span class="n">07</span><p class="eb">Movimiento</p><h2>Cómo se mueve la marca</h2></div>
+  <p class="lead" style="max-width:140mm">Movimiento moderado y limpio. Solo se animan posición y opacidad, y siempre hay una versión sin movimiento.</p>
+  <div class="g4">
+   <div class="card mvc"><div class="demo"><img src="../../img/simbolo.webp" alt="" style="width:16mm;transform:rotate(-24deg)"></div><b>Opening</b><small>Las dos mitades del símbolo entran, giran y se unen.</small><code>2 s como máximo</code></div>
+   <div class="card mvc"><div class="demo"><i class="brush"></i></div><b>Barrido de pincel</b><small>Un trazo naranja cruza la pantalla al cambiar de sección.</small><code>0.7 s</code></div>
+   <div class="card mvc"><div class="demo"><div class="bars"><i></i><i></i><i></i></div></div><b>Aparición escalonada</b><small>Los bloques suben uno tras otro.</small><code>0.8 s · +0.1 s por bloque</code></div>
+   <div class="card mvc"><div class="demo"><span class="btn">Hablemos</span></div><b>Destello</b><small>Un brillo breve cruza el botón principal.</small><code>0.7 s</code></div>
+  </div>
+  <div class="card mt" style="display:grid;grid-template-columns:1fr 1.5fr;gap:5mm;align-items:center"><div><span class="lbl">Curva de la marca</span><p style="font:700 10pt var(--d);color:var(--or)">cubic-bezier(.2, .8, .2, 1)</p><p class="mute" style="font-size:8pt;margin-top:1mm">Arranca rápido y llega suave: decidido, no brusco.</p></div><div class="durs"><div><b>200 ms</b><small>Botones</small></div><div><b>500–800 ms</b><small>Apariciones</small></div><div><b>1.2–2 s</b><small>Opening</small></div></div></div>
+ </div>
+ <div class="sec" style="margin-bottom:9mm">
+  <i class="cut" style="top:-5mm"></i><span class="vt" style="top:0;left:-12.5mm" lang="ja">第八話</span>
+  <div class="ch"><span class="n">08</span><p class="eb">Redes sociales</p><h2>TikTok</h2></div>
+  <div class="tt">
+   <div class="phone"><div class="screen"><div class="av"><img src="../../img/simbolo.webp" alt=""></div><b>@markkaizen_</b><span class="fo">Seguir</span><p>Marketing · Creatividad · Estrategia<br>Construyendo marcas que evolucionan.<br><span lang="ja" style="font-family:var(--jp)">改善</span> KAIZEN — Mejora continua.</p></div></div>
+   <div class="spec2"><div><span>Foto de perfil</span><b>Solo el símbolo, centrado</b></div><div><span>Lienzo</span><b>1080 × 1080 px</b></div><div><span>Tamaño del símbolo</span><b>75–82 % del lienzo</b></div><div><span>Contenido</span><b>Marketing, branding, IA aplicada y proyectos</b></div><div><span>Estética</span><b>Fondo negro, luz naranja, blanco de alto contraste</b></div></div>
+  </div>
+ </div>
+ <div class="foot"><span>MARK <b>KAIZEN</b> · Manual de marca</span><span>05</span></div>
+</div>
+
+<!-- 6 · Aplicaciones y estilo anime -->
+<div class="page">
+ <i class="cut" style="top:9mm"></i><i class="dots" style="right:0;top:0;width:110mm;height:70mm"></i><span class="kout" style="right:14mm;top:15mm" lang="ja">写真</span><span class="vt" style="top:19mm" lang="ja">第九話</span>
+ <div class="sec" style="margin-bottom:16mm">
+  <div class="ch"><span class="n">09</span><p class="eb">Fotografía y audiovisual</p><h2>Estudio creativo japonés</h2></div>
+  <div class="g2" style="grid-template-columns:.8fr 1.2fr">
+   <div class="shot"><p>Fondo oscuro, luz lateral, detalle naranja</p></div>
+   <div class="card"><span class="lbl">Dirección</span><ul class="list" style="font-size:9.4pt;gap:3.4mm"><li><span><b>Encuadres limpios</b> y fondos oscuros.</span></li><li><span><b>Luces laterales</b> con detalles naranjas.</span></li><li><span><b>Edición dinámica</b> con movimiento moderado.</span></li><li><span><b>Transiciones:</b> cortes limpios, zooms suaves y flashes breves.</span></li><li><span><b>Música:</b> electrónica, lo-fi o instrumentales japonesas modernas.</span></li><li><span><b>Evitar</b> la apariencia gamer o infantil.</span></li></ul></div>
+  </div>
+ </div>
+ <div class="sec">
+  <i class="cut" style="top:-6mm"></i><span class="vt" style="top:0;left:-12.5mm" lang="ja">第十話</span>
+  <div class="ch"><span class="n">10</span><p class="eb">Aplicaciones</p><h2>La marca en cada pieza</h2></div>
+  <div class="card"><table>
+   <tr><th>Pieza</th><th>Tratamiento</th></tr>
+   <tr><td>Avatar TikTok / Instagram</td><td>Símbolo circular, sin texto inferior.</td></tr>
+   <tr><td>Portafolio web</td><td>Logo completo + sistema negro, blanco y naranja.</td></tr>
+   <tr><td>CV</td><td>Versión horizontal o símbolo pequeño. Máxima legibilidad.</td></tr>
+   <tr><td>Presentaciones</td><td>Negro + blanco + naranja. Títulos grandes.</td></tr>
+   <tr><td>Merch / hoodie</td><td>Símbolo en el pecho; MARK KAIZEN en la espalda.</td></tr>
+   <tr><td>Marca de agua</td><td>Símbolo monocromático o naranja sobre fondos oscuros.</td></tr>
+   <tr><td style="border:0">Video</td><td style="border:0">Tarjeta “Episodio 0X” al inicio y logo completo al cierre.</td></tr>
+  </table></div>
+ </div>
+ <div class="foot"><span>MARK <b>KAIZEN</b> · Manual de marca</span><span>06</span></div>
+</div>
+
+<!-- 7 · Estilo anime -->
+<div class="page">
+ <i class="cut" style="top:9mm"></i><i class="dots" style="right:0;top:0;width:110mm;height:70mm"></i><span class="kout" style="right:14mm;top:15mm" lang="ja">演出</span><span class="vt" style="top:19mm" lang="ja">第十一話</span>
+ <div class="sec">
+  <div class="ch"><span class="n">11</span><p class="eb">Dirección de arte</p><h2>Estilo anime de la marca</h2></div>
+  <p class="lead">Un opening de anime hecho por un estudio de diseño: limpio, preciso y con intención. Nunca gamer ni infantil.</p>
+  <div class="g2" style="grid-template-columns:.9fr 1.1fr">
+   <div class="pnl"><i class="cut"></i><i class="dots"></i><b class="pn">01</b><span class="pk" lang="ja">改善</span><span class="pv" lang="ja">第一話</span><p>Cada sección entra<br><span class="or">como un panel de manga.</span></p></div>
+   <div class="card"><span class="lbl">Reglas</span><ul class="list" style="font-size:9pt;gap:2.6mm">
+    <li><span><b>Tres colores.</b> Negro, blanco y naranja.</span></li>
+    <li><span><b>Tres tipografías.</b> Sora, Inter y Noto Sans JP.</span></li>
+    <li><span><b>Cuatro protagonistas.</b> Dragón (estrategia), gato (creatividad), yin-yang y 改善.</span></li>
+    <li><span><b>El símbolo no se toca.</b> No se redibuja ni se deforma.</span></li>
+    <li><span><b>Arte propio.</b> Nunca personajes ni imágenes de animes existentes.</span></li>
+   </ul></div>
+  </div>
+  <div class="g3 mt">
+   <div class="card"><span class="lbl">Panel de manga</span><p class="mute" style="font-size:8.4pt">Corte diagonal, número de capítulo grande, kanji en contorno, trama de puntos y texto vertical tipo 第一話.</p></div>
+   <div class="card"><span class="lbl">Sí</span><div class="chips"><span>Encuadres limpios</span><span>Mucho negro</span><span>Naranja como acento</span><span>Textos cortos</span></div></div>
+   <div class="card"><span class="lbl">No</span><div class="chips no"><span>Estética gamer</span><span>Aspecto infantil</span><span>Neones y arcoíris</span><span>Más de tres colores</span></div></div>
+  </div>
+  <div class="card mt"><span class="lbl">Los cuatro protagonistas</span><div class="g4 cast">
+   <div><i lang="ja">龍</i><b>Dragón</b><small>La estrategia: datos, plan y ambición.</small></div>
+   <div><i lang="ja">猫</i><b>Gato</b><small>La creatividad: curiosidad y detalle visual.</small></div>
+   <div><i lang="ja">陰陽</i><b>Yin-yang</b><small>El equilibrio: cada fuerza lleva algo de la otra.</small></div>
+   <div><i lang="ja">改善</i><b>Kaizen</b><small>La mejora continua: probar, medir y aprender.</small></div>
+  </div></div>
+  <div class="card mt"><span class="lbl">Los videos de la marca</span><table>
+   <tr><th>Episodio</th><th>Tema</th></tr>
+   <tr><td>01 · Cómo nació MARK KAIZEN</td><td>Dragón + gato = yin-yang. 改善 = mejora continua.</td></tr>
+   <tr><td>02 · Qué hago por tu marca</td><td>Los cuatro servicios y los resultados de la web.</td></tr>
+   <tr><td style="border:0">03 · La marca en 3 colores</td><td style="border:0">Paleta, 60 / 30 / 10, tipografías, qué sí y qué no.</td></tr>
+  </table><p class="mute" style="font-size:8pt;margin-top:2.5mm">Cada episodio abre con su tarjeta “Episodio 0X” y cierra con el logo completo. Formatos: 1280 × 720 y 1080 × 1920.</p></div>
+ </div>
+ <div class="foot"><span>MARK <b>KAIZEN</b> · Manual de marca</span><span>07</span></div>
+</div>
+
+<!-- 8 · Manifiesto -->
+<div class="page mani">
+ <span class="kout" lang="ja">改善</span><i class="cut" style="top:30mm"></i><i class="dots" style="left:0;bottom:0;width:120mm;height:90mm;transform:scale(-1)"></i><span class="vt" style="top:40mm" lang="ja">最終話</span>
+ <p class="lbl" style="margin-bottom:6mm">Manifiesto</p>
+ <p class="m">MARK KAIZEN no busca ser perfecto. Busca <em>evolucionar</em>. Combina estrategia con creatividad, análisis con intuición y disciplina con experimentación. Cada proyecto es una oportunidad para aprender, mejorar y construir algo más fuerte que antes.</p>
+ <p class="sig"><img src="../../img/simbolo.webp" alt=""><span><span lang="ja" style="font-family:var(--jp)">改善</span> — KAIZEN · MEJORA CONTINUA</span></p>
+ <img class="end" src="../../img/logo-mark-kaizen.webp" alt="Logotipo de MARK KAIZEN">
+ <p class="url">Web: <b>markdiazfoods-sys.github.io/markkaizen</b> · TikTok: <b>@markkaizen_</b></p>
+ <div class="foot"><span>MARK <b>KAIZEN</b> · Manual de marca</span><span>08</span></div>
+</div>
+</body></html>
