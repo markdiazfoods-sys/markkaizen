@@ -1,0 +1,71 @@
+/* ===== MARK KAIZEN · 第八話 開発 · "Código y diseño" =====
+   Editor de código como viñeta de manga + ciclo Kaizen (Planear · Hacer · Verificar · Actuar).
+   Marca: negro #0B0B0F, blanco #FFFFFF, naranja #FF6B00. Sora / Inter / Noto Sans JP.
+   Solo se animan transform y opacity. Con prefers-reduced-motion todo queda quieto y visible. */
+#codigo{--sc:var(--or);--n:"08"}
+.cd{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(20px,3.4vw,44px);align-items:start}
+
+/* ---------- editor ---------- */
+.cd-win{margin:0;border:1px solid var(--line2);border-radius:var(--r);background:var(--ink2);overflow:hidden;position:relative}
+.cd-bar{display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:1px solid var(--line)}
+.cd-bar i{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--dim)}
+.cd-bar i:first-child{border-color:var(--or)}
+.cd-bar b{margin-left:10px;font:600 12px var(--display);letter-spacing:.08em;color:var(--mute)}
+.cd-bar span{margin-left:auto;font:700 12px var(--jp);color:var(--or);letter-spacing:.2em}
+.cd-code{margin:0;padding:clamp(16px,2.6vw,28px) clamp(14px,2.4vw,26px);font:500 clamp(12.5px,1.55vw,15px)/1.85 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--tx);overflow-x:auto;counter-reset:ln;tab-size:2}
+.cd-l{display:block;position:relative;padding-left:3.2em;white-space:pre;counter-increment:ln}
+.cd-l::after{content:counter(ln);position:absolute;left:0;width:2em;text-align:right;color:var(--dim)}
+.cd-l::before{content:"";position:absolute;left:-.9em;top:.2em;bottom:.2em;width:3px;border-radius:2px;background:var(--or);opacity:0;transition:opacity .3s}
+.cd-l .k{color:var(--or)}
+.cd-l .c{color:var(--dim)}
+.cd-l .s{color:var(--mute)}
+.cd-cur{display:inline-block;width:.55em;height:1.1em;margin-left:2px;vertical-align:text-bottom;background:var(--or)}
+.cd-tags{display:flex;flex-wrap:wrap;gap:8px;padding:0 clamp(14px,2.4vw,26px) clamp(16px,2.4vw,24px)}
+.cd-tags span{padding:6px 13px;border:1px solid var(--line2);border-radius:99px;font:600 12px var(--display);letter-spacing:.06em;color:var(--mute)}
+
+/* ---------- ciclo ---------- */
+.cd-pd{display:grid;gap:22px;justify-items:center}
+.cd-ring{position:relative;width:min(100%,300px);aspect-ratio:1}
+.cd-ring svg{width:100%;height:100%;display:block;overflow:visible}
+.cd-ring .q{cursor:pointer;transform-origin:120px 120px}
+.cd-ring .b{fill:rgba(255,255,255,.03);stroke:var(--line2);stroke-width:1.2}
+.cd-ring .f{fill:var(--or);fill-opacity:.2;stroke:var(--or);stroke-width:1.6;opacity:0;transition:opacity .35s var(--k-ease)}
+.cd-ring text{font:800 21px var(--display);fill:var(--tx);text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.cd-ring .q{transition:transform .45s var(--k-ease)}
+.cd-ring .q.on{transform:scale(1.045)}
+.cd-ring .q.on .f{opacity:1}
+.cd-sym{position:absolute;left:50%;top:50%;width:25%;aspect-ratio:1;margin:-12.5% 0 0 -12.5%;pointer-events:none}
+.cd-sym img{width:100%;height:100%;display:block;will-change:transform}
+.cd.on .cd-sym img{animation:cdSpin 28s linear infinite}
+@keyframes cdSpin{to{transform:rotate(360deg)}}
+.cd-st{list-style:none;margin:0;padding:0;display:grid;gap:8px;width:100%}
+.cd-st button{display:grid;grid-template-columns:34px 1fr;gap:2px 14px;align-items:center;width:100%;min-height:56px;padding:10px 14px;text-align:left;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02);cursor:pointer;position:relative;transition:border-color .25s}
+.cd-st button:hover{border-color:var(--line2)}
+.cd-st button:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+.cd-st button[aria-pressed=true]{border-color:var(--or)}
+.cd-st em{grid-row:span 2;font:800 20px var(--display);font-style:normal;color:var(--or)}
+.cd-st b{font:700 15px var(--display)}
+.cd-st small{color:var(--mute);font-size:13.5px;line-height:1.45}
+
+/* ---------- resaltado de la línea activa (solo opacity) ---------- */
+.cd.cyc[data-k="0"] .cd-l[data-s]:not([data-s="0"]),
+.cd.cyc[data-k="1"] .cd-l[data-s]:not([data-s="1"]),
+.cd.cyc[data-k="2"] .cd-l[data-s]:not([data-s="2"]),
+.cd.cyc[data-k="3"] .cd-l[data-s]:not([data-s="3"]){opacity:.38}
+.cd[data-k="0"] .cd-l[data-s="0"]::before,
+.cd[data-k="1"] .cd-l[data-s="1"]::before,
+.cd[data-k="2"] .cd-l[data-s="2"]::before,
+.cd[data-k="3"] .cd-l[data-s="3"]::before{opacity:1}
+.cd-l{transition:opacity .35s var(--k-ease)}
+
+/* ---------- entrada: líneas escalonadas + cursor ---------- */
+.js-anim .cd:not(.in) .cd-l{opacity:0;transform:translateX(-10px)}
+.js-anim .cd.in .cd-l{transform:none;transition:opacity .5s calc(var(--i,0)*80ms) var(--k-ease),transform .5s calc(var(--i,0)*80ms) var(--k-ease)}
+.cd.on .cd-cur{animation:cdBlink 1.05s steps(1) infinite}
+@keyframes cdBlink{50%{opacity:0}}
+
+@media(max-width:880px){.cd{grid-template-columns:1fr}.cd-ring{width:min(100%,260px)}}
+@media(prefers-reduced-motion:reduce){
+ .cd *,.cd *::before,.cd *::after{animation:none!important;transition:none!important}
+ .js-anim .cd:not(.in) .cd-l{opacity:1;transform:none}
+}
