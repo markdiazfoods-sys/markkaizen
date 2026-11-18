@@ -71,6 +71,7 @@ p{margin:0}
 .tile.cake{background:linear-gradient(160deg,var(--mint),#E9F7F0);display:grid;place-items:center}
 .tile.cake svg{width:auto;height:74%;margin-bottom:34px}
 .tile.cake span{color:#2c5c49;background:none;text-align:center}
+.rlogo{position:absolute;top:16px;left:50%;transform:translateX(-50%);width:72px;height:72px;border-radius:50%;object-fit:cover;background:#fff;box-shadow:0 8px 20px -8px rgba(0,0,0,.35)}
 .plus{font:500 clamp(40px,6vw,80px) var(--serif);color:var(--gold)}
 @media(max-width:760px){.two{grid-template-columns:1fr 1fr}.plus{display:none}.tile.cake svg{width:80%;height:auto;margin-bottom:30px}}
 
@@ -165,7 +166,7 @@ p{margin:0}
             <circle cx="70" cy="166" r="6" fill="#fff"/><circle cx="100" cy="176" r="6" fill="#fff"/><circle cx="130" cy="166" r="6" fill="#fff"/>
             <rect x="14" y="196" width="172" height="10" rx="5" fill="#8B4A5E" opacity=".25"/>
           </svg>
-          <span>Rabbit Bakery</span>
+          <img class="rlogo" src="img/rabbit-bakery-logo.png" alt="" width="72" height="72" onerror="this.remove()"><span>Rabbit Bakery · 10 años</span>
         </figure>
       </div>
     </div>
