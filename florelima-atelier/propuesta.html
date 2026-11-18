@@ -125,6 +125,17 @@ p{margin:0}
 @keyframes spin{to{transform:rotate(360deg)}}
 .end .gaby{display:inline-block;margin-top:28px;padding:12px 26px;border-radius:999px;background:var(--rose);color:var(--plum);font:500 15px var(--sans);letter-spacing:.08em}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.slide .r{opacity:1;transform:none}.deck{scroll-behavior:auto}}
+.lead{font:400 clamp(16px,1.7vw,20px)/1.55 var(--sans);max-width:620px;margin:18px auto 0;opacity:.85}
+.cover .lead,.bg4 .lead{color:#fff}
+.bg2 .lead,.bg5 .lead{margin-left:0;margin-bottom:6px}
+@media(max-width:760px){.offer li{padding:10px 14px;font-size:14px}.offer b{font-size:16px}.offer{gap:8px}}
+.offer{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px}
+.offer li{background:rgba(255,255,255,.75);border-radius:18px;padding:14px 18px;font:400 15px/1.45 var(--sans);color:var(--ink)}
+.offer b{display:block;font:600 17px var(--sans);color:var(--plum);margin-bottom:2px}
+.steps{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:14px;max-width:640px}
+.steps li{display:flex;gap:16px;align-items:center;background:rgba(255,255,255,.75);border-radius:20px;padding:16px 20px;color:var(--ink);font:400 16px/1.45 var(--sans)}
+.steps b{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--plum);color:#fff;font:600 18px var(--sans)}
+.steps em{display:block;font:italic 600 22px var(--serif);color:var(--plum)}
 </style>
 </head>
 <body>
@@ -145,6 +156,7 @@ p{margin:0}
       <p class="k r">Propuesta visual</p>
       <h1 class="big r" style="margin-top:20px">Florelima<span class="x">×</span>Rabbit</h1>
       <p class="sub r">Dos marcas. Una sola celebración.</p>
+      <p class="lead r">Propongo una colaboración entre Florelima Atelier y Rabbit Bakery: flores y pastel, juntos en un solo regalo.</p>
       <span class="for r">Para Gaby · por Mark Kaizen</span>
     </div>
   </section>
@@ -154,6 +166,7 @@ p{margin:0}
     <div class="in">
       <p class="k r">El punto de partida</p>
       <h2 class="mid r" style="margin-top:14px">Los mismos momentos especiales</h2>
+      <p class="lead r">Florelima hace arreglos florales, globos y cajas de regalo a mano. Rabbit Bakery, de Lima, cumple 10 años con tortas, cupcakes y brownies. Sus clientes celebran lo mismo (cumpleaños, nacimientos, aniversarios), pero hoy compran en dos lugares distintos.</p>
       <div class="two r">
         <figure class="tile" style="margin:0"><img src="img/flor2.jpg" alt="Arreglo floral Florelima" loading="lazy"><span>Florelima</span></figure>
         <div class="plus" aria-hidden="true">+</div>
@@ -184,7 +197,7 @@ p{margin:0}
         <p class="k r" style="color:var(--plum)">La idea</p>
         <h2 class="mid r" style="margin-top:14px;color:var(--ink)">El regalo completo</h2>
         <p class="sub r" style="color:var(--ink);opacity:.75">Flores + pastel, en una sola entrega.</p>
-        <div class="pills r"><span>Cajas combinadas</span><span>Ediciones limitadas</span><span>Mismo evento, un solo detalle</span></div>
+        <ul class="offer r"><li><b>Cajas combinadas</b>Un arreglo de Florelima junto a un pastel o cupcakes de Rabbit Bakery.</li><li><b>Ediciones limitadas</b>Packs por fecha: Día de la Madre, cumpleaños, aniversarios.</li><li><b>Un solo pedido</b>El cliente elige todo en un lugar y recibe un solo detalle.</li></ul>
       </div>
     </div>
   </section>
@@ -195,6 +208,7 @@ p{margin:0}
       <p class="k r">El mini aviso</p>
       <h2 class="mid r" style="margin-top:14px;color:#fff">Algo está floreciendo…</h2>
       <p class="sub r">Se enseña poco. Se revela de a poco.</p>
+      <p class="lead r">Antes del anuncio, tres historias de Instagram en una semana. Cada una muestra un poco más.</p>
       <div class="phones r">
         <div class="ph">
           <div class="day">Día 1</div>
@@ -217,6 +231,7 @@ p{margin:0}
     <div class="in">
       <p class="k r" style="color:var(--plum)">La marca</p>
       <h2 class="mid r" style="margin-top:14px;color:var(--ink)">Lo mejor se queda. Lo nuevo suma.</h2>
+      <p class="lead r" style="color:var(--ink)">Florelima no cambia su esencia. Suma un toque menta, el verde de Rabbit, para que la colaboración se reconozca.</p>
       <div class="brand r">
         <div class="col">
           <span class="k">Se queda</span>
@@ -235,6 +250,20 @@ p{margin:0}
   </section>
 
   <!-- 6 -->
+  <section class="slide bg2">
+    <div class="in">
+      <p class="k r" style="color:var(--plum)">Próximos pasos</p>
+      <h2 class="mid r" style="margin-top:14px;color:var(--ink)">Cómo lo hacemos realidad</h2>
+      <ol class="steps r">
+        <li><b>1</b><span><em>Conversar</em>Gaby y Rabbit Bakery revisan la idea.</span></li>
+        <li><b>2</b><span><em>Elegir la primera caja</em>Definir qué incluye, la fecha y cómo se pide.</span></li>
+        <li><b>3</b><span><em>Lanzar el mini aviso</em>Las tres historias, y luego el anuncio.</span></li>
+      </ol>
+      <p class="lead r" style="color:var(--ink);opacity:.7">Textos, fechas y packs son propuestas para ajustar entre las dos marcas.</p>
+    </div>
+  </section>
+
+  <!-- 7 -->
   <section class="slide bg4 end">
     <div class="in">
       <img class="stamp r" src="img/mark-kaizen-sello.png" alt="Sello Mark Kaizen" width="210" height="210">
