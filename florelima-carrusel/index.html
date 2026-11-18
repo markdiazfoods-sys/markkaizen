@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<title>Florelima Atelier · Carrusel Nivel de Búsqueda</title>
+<html lang="es"><head><meta charset="utf-8"><title>Florelima Atelier · Carrusel Nivel de Búsqueda</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
 <style>
@@ -29,70 +26,75 @@ body{background:#111;display:flex;flex-direction:column;gap:40px;align-items:cen
 .tag{position:absolute;z-index:8;background:var(--rosa);color:#fff;font-size:44px;letter-spacing:3px;padding:12px 28px;border:4px solid #fff;transform:rotate(-4deg);box-shadow:0 8px 0 rgba(0,0,0,.4);text-transform:uppercase}
 .fade{-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}
 .cta{position:absolute;left:50%;transform:translateX(-50%);bottom:190px;z-index:9;background:#fff;color:var(--rosa);font-size:54px;letter-spacing:3px;padding:20px 54px;border-radius:999px;box-shadow:0 10px 0 rgba(0,0,0,.4);text-transform:uppercase;white-space:nowrap}
-</style>
-</head>
-<body>
 
-<!-- 1 ★ -->
+.name{position:absolute;left:56px;top:500px;width:400px;z-index:8;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;font-size:40px;line-height:1.15;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.price{position:absolute;left:56px;top:620px;z-index:8;background:var(--rosa);border:5px solid #fff;box-shadow:0 9px 0 rgba(0,0,0,.4);padding:6px 30px 0;font-size:92px;line-height:1.1;transform:rotate(-3deg)}
+.price small{font-size:44px;margin-right:8px}
+.sticker{filter:drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff) drop-shadow(0 14px 18px rgba(0,0,0,.5)) !important;z-index:6}
+.hint{position:absolute;left:56px;bottom:70px;font-size:34px;letter-spacing:5px;z-index:9;text-shadow:0 3px 0 rgba(0,0,0,.5)}
+</style></head><body>
 <section class="slide" id="s1">
   <div class="bg"></div><div class="vig"></div>
   <div class="wanted">NIVEL DE <b>BÚSQUEDA</b> · AMOR</div>
   <div class="stars"><i class="on">★</i><i>★</i><i>★</i><i>★</i><i>★</i></div>
-  <img class="cut" src="assets/cj_bici.png" style="left:90px;bottom:60px;width:900px;">
-  <div class="title" style="top:190px"><span class="big">Se busca</span><span class="big"><em>un detalle</em></span></div>
-  <div class="sub" style="top:520px;width:480px;">Todo empieza con una estrella. Desliza →</div>
+  <div class="title" style="top:190px"><span class="big">Un</span><span class="big"><em>detalle</em></span></div>
+  <img class="cut" src="assets/cj_ramo_1.png" style="left:174px;bottom:130px;width:800px;">
+  <div class="name">Ramo Corazón Rosado</div>
+  <div class="price"><small>S/</small>85.90</div>
+  <div class="hint">Desliza →</div>
   <img class="logo" src="assets/logo_blanco.png">
   <div class="page">1/5</div>
 </section>
 
-<!-- 2 ★★ -->
 <section class="slide" id="s2">
   <div class="bg"></div><div class="vig"></div>
   <div class="wanted">NIVEL DE <b>BÚSQUEDA</b> · AMOR</div>
   <div class="stars"><i class="on">★</i><i class="on">★</i><i>★</i><i>★</i><i>★</i></div>
-  <div class="title" style="top:190px"><span class="big">El barrio</span><span class="mid">ya lo <em>sabe</em></span></div>
-  <img class="cut fade" src="assets/cj_bigsmoke.png" style="left:20px;bottom:230px;width:1040px;">
-  <div class="tag" style="left:70px;bottom:520px">Trato hecho</div>
-  <div class="sub" style="bottom:140px;text-align:center;">Cuando el detalle es bueno,<br>hasta Grove Street asiente.</div>
-  <img class="logo" src="assets/logo_blanco.png" style="width:300px;bottom:40px">
+  <div class="title" style="top:190px"><span class="big">Se pone</span><span class="big"><em>serio</em></span></div>
+  <img class="cut" src="assets/cj_ramo_2.png" style="left:285px;bottom:130px;width:820px;">
+  <div class="name">Ramo Pink</div>
+  <div class="price"><small>S/</small>169.90</div>
+  <img class="cut sticker" src="assets/cj_bigsmoke.png" style="left:30px;bottom:190px;width:400px;transform:rotate(-5deg)"><div class="tag" style="left:70px;bottom:150px;font-size:34px">Big Smoke aprueba</div>
+  <img class="logo" src="assets/logo_blanco.png">
   <div class="page">2/5</div>
 </section>
 
-<!-- 3 ★★★ -->
 <section class="slide" id="s3">
   <div class="bg"></div><div class="vig"></div>
   <div class="wanted">NIVEL DE <b>BÚSQUEDA</b> · AMOR</div>
   <div class="stars"><i class="on">★</i><i class="on">★</i><i class="on">★</i><i>★</i><i>★</i></div>
-  <div class="title" style="top:190px"><span class="big">Ramo que</span><span class="big">se <em>nota</em></span></div>
-  <img class="cut" src="assets/ramo.png" style="left:190px;bottom:150px;width:700px;transform:rotate(-5deg)">
-  <div class="tag" style="right:60px;top:520px;transform:rotate(5deg)">Hecho a mano</div>
+  <div class="title" style="top:190px"><span class="big">Ya se enteró</span><span class="big"><em>el barrio</em></span></div>
+  <img class="cut" src="assets/cj_ramo_3.png" style="left:155px;bottom:130px;width:840px;">
+  <div class="name">Ramo Amour</div>
+  <div class="price"><small>S/</small>229.90</div>
+  
   <img class="logo" src="assets/logo_blanco.png">
   <div class="page">3/5</div>
 </section>
 
-<!-- 4 ★★★★ -->
 <section class="slide" id="s4">
   <div class="bg"></div><div class="vig"></div>
   <div class="wanted">NIVEL DE <b>BÚSQUEDA</b> · AMOR</div>
   <div class="stars"><i class="on">★</i><i class="on">★</i><i class="on">★</i><i class="on">★</i><i>★</i></div>
-  <img class="cut" src="assets/cj_bici.png" style="left:240px;bottom:90px;width:820px;">
-  <div class="title" style="top:190px"><span class="big">Entrega</span><span class="big"><em>en dos ruedas</em></span></div>
-  <div class="tag" style="left:56px;top:530px">Express</div>
+  <div class="title" style="top:190px"><span class="big">Operativo</span><span class="big"><em>total</em></span></div>
+  <img class="cut" src="assets/cj_ramo_4.png" style="left:150px;bottom:130px;width:850px;">
+  <div class="name">Ramo Blair · Rosas inglesas</div>
+  <div class="price"><small>S/</small>389.90</div>
+  
   <img class="logo" src="assets/logo_blanco.png">
   <div class="page">4/5</div>
 </section>
 
-<!-- 5 ★★★★★ -->
 <section class="slide" id="s5">
   <div class="bg"></div><div class="vig"></div>
   <div class="wanted">NIVEL DE <b>BÚSQUEDA</b> · AMOR</div>
-  <div class="stars hot"><i class="on">★</i><i class="on">★</i><i class="on">★</i><i class="on">★</i><i class="on">★</i></div>
+  <div class="stars"><i class="on">★</i><i class="on">★</i><i class="on">★</i><i class="on">★</i><i class="on">★</i></div>
   <div class="title" style="top:190px"><span class="big">Nivel</span><span class="big"><em>máximo</em></span></div>
-  <img class="cut" src="assets/cj_bici.png" style="left:160px;bottom:220px;width:760px;">
-  <div class="cta">Pide el tuyo</div>
+  <img class="cut" src="assets/cj_ramo_5.png" style="left:146px;bottom:130px;width:860px;">
+  <div class="name">Ramo Majestuoso Amor</div>
+  <div class="price"><small>S/</small>669.90</div>
+  <div class="cta">Pide el tuyo · WhatsApp 933 642 066</div>
   <img class="logo" src="assets/logo_blanco.png">
   <div class="page">5/5</div>
 </section>
-
-</body>
-</html>
+</body></html>
