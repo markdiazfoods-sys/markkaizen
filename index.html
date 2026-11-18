@@ -676,6 +676,31 @@ html.nointro .hero h1 span,html.nointro .hero .role,html.nointro .hero .lead,htm
 /* 7 · Cursor con halo naranja (solo con mouse) */
 .glow{position:fixed;left:0;top:0;width:340px;height:340px;margin:-170px 0 0 -170px;border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(closest-side,rgba(255,107,0,.12),transparent);transform:translate(var(--gx,-999px),var(--gy,-999px));transition:transform .25s ease-out}
 @media (hover:none){.glow{display:none}}
+/* ---------- Así trabajo (proceso) y glosario de métricas ---------- */
+.proc{margin-top:clamp(40px,6vw,72px)}
+.proc h3{font:700 clamp(20px,2.4vw,26px)/1.2 var(--display);margin:0 0 6px}
+.proc>p{color:var(--mute);margin:0 0 30px;max-width:60ch}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;position:relative;counter-reset:st}
+.steps::before{content:"";position:absolute;left:20px;right:0;top:19px;height:2px;background:var(--or);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.5s .25s var(--k-ease)}
+.proc.in .steps::before{transform:scaleX(1)}
+.steps li{position:relative;padding-top:54px}
+.steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--ink);border:2px solid var(--or);font:800 15px var(--display);color:var(--or)}
+.steps b{display:block;font:700 17px var(--display);margin-bottom:6px}
+.steps span{display:block;color:var(--mute);font-size:14.5px;line-height:1.55}
+.js-anim .steps li{opacity:0;transform:translateY(18px);transition:opacity .7s var(--k-ease),transform .7s var(--k-ease)}
+.js-anim .proc.in .steps li{opacity:1;transform:none;transition-delay:calc(.25s + var(--i)*.18s)}
+.gloss{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:16px 0 0}
+.gloss>div{padding:16px 18px;border-left:2px solid var(--or);border-radius:0 var(--r) var(--r) 0;background:rgba(255,255,255,.03)}
+.gloss dt{font:700 13px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--or)}
+.gloss dd{margin:6px 0 0;color:var(--mute);font-size:14px;line-height:1.55}
+@media(max-width:820px){
+ .steps{grid-template-columns:1fr;gap:22px}
+ .steps::before{left:19px;right:auto;top:20px;bottom:20px;width:2px;height:auto;transform:scaleY(0);transform-origin:50% 0}
+ .proc.in .steps::before{transform:scaleY(1)}
+ .steps li{padding:0 0 0 58px;min-height:40px}
+ .gloss{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.steps::before{transform:none!important;transition:none}.js-anim .steps li{opacity:1!important;transform:none!important}}
 @media (prefers-reduced-motion:reduce){.js-anim .rv,.js-anim .ain,.js-anim .kpis>div{opacity:1!important;transform:none!important;translate:none!important}.js-anim .sh .kn{clip-path:none}.js-anim .sh h2::after{transform:skewX(-20deg)}.glow{display:none}}
 </style>
 <script>try{if(!localStorage.getItem("mkOpening")&&!matchMedia("(prefers-reduced-motion: reduce)").matches){localStorage.setItem("mkOpening","1");document.documentElement.classList.add("op-run")}else document.documentElement.classList.add("nointro")}catch(e){document.documentElement.classList.add("nointro")}</script>
@@ -720,6 +745,11 @@ html.nointro .hero h1 span,html.nointro .hero .role,html.nointro .hero .lead,htm
   <div><dt>CPA</dt><dd data-count="8.01" data-dec="2" data-pre="S/">S/8.01</dd><span>Campaña Flores Amarillas</span></div>
   <div><dt>Videos en un mes</dt><dd data-count="21">21</dd><span>TikTok B2B · Cajas Aldana</span></div>
  </dl>
+ <dl class="gloss" aria-label="Qué significan estas métricas">
+  <div class="ain" style="--d:0ms"><dt>ROAS</dt><dd>Ventas que genera cada S/1 invertido en anuncios. Un ROAS de 5 equivale a S/5 vendidos por cada S/1.</dd></div>
+  <div class="ain" style="--d:120ms"><dt>Valor atribuido</dt><dd>Ventas que la plataforma asigna a los anuncios en el periodo medido.</dd></div>
+  <div class="ain" style="--d:240ms"><dt>CPA</dt><dd>Costo por adquisición: cuánto se invierte, en promedio, para conseguir una compra.</dd></div>
+ </dl>
 </div>
 <div class="mq" aria-hidden="true"><div class="mqt" id="mqt"></div></div>
 </section>
@@ -728,6 +758,17 @@ html.nointro .hero h1 span,html.nointro .hero .role,html.nointro .hero .lead,htm
  <div class="sh rv"><div><p class="eb">Servicios</p><h2>Qué hago por tu marca</h2></div><p class="lead">Pauta digital de punta a punta: estrategia, campañas, optimización y reporte.</p></div>
  <div class="svc" id="svc"></div>
  <div class="tools rv" id="tools"></div>
+ <div class="proc rv" id="proceso">
+  <h3>Así trabajo, paso a paso</h3>
+  <p>Un proceso simple y medible: sabes en qué etapa estamos y qué sigue.</p>
+  <ol class="steps">
+   <li style="--i:0"><b>Auditoría</b><span>Reviso tu cuenta, el seguimiento de ventas, el catálogo y a la competencia para saber desde dónde partimos.</span></li>
+   <li style="--i:1"><b>Estrategia</b><span>Defino objetivo, público, presupuesto y qué mensaje probar en cada plataforma.</span></li>
+   <li style="--i:2"><b>Lanzamiento</b><span>Armo y publico las campañas en Meta, Google o TikTok con piezas creativas propias.</span></li>
+   <li style="--i:3"><b>Optimización</b><span>Pauso lo que no rinde, escalo lo que sí y pruebo variantes para mejorar cada semana.</span></li>
+   <li style="--i:4"><b>Reporte</b><span>Recibes resultados claros: inversión, ventas, ROAS y el siguiente paso recomendado.</span></li>
+  </ol>
+ </div>
 </div></section>
 
 <section class="s" id="resultados" data-ch="02" data-kanji="結果"><div class="w">
