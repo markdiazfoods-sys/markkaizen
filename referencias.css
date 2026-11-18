@@ -1,0 +1,84 @@
+/* ===== MARK KAIZEN · 第九話 · "Referencias animadas" =====
+   Seis láminas brandeadas con la mascota (dragón + gato, 改善). Cada una enseña un movimiento de cámara
+   estilo Higgsfield, hecho solo con CSS: dolly zoom, órbita, crash zoom, whip pan, glitch y speed ramp.
+   Marca: negro #0B0B0F, blanco #FFFFFF, naranja #FF6B00. Sora / Inter / Noto Sans JP.
+   Solo se animan transform y opacity. Con prefers-reduced-motion todo queda quieto y visible. */
+#referencias{--rf-e:cubic-bezier(.2,.8,.2,1)}
+.rf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.rf-c{position:relative;margin:0;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--line2);border-radius:var(--r);background:var(--ink2);isolation:isolate;transition:border-color .3s,transform .5s var(--rf-e)}
+.rf-c:hover{border-color:var(--or);transform:translateY(-4px)}
+.rf-c:focus-visible{outline:2px solid var(--or);outline-offset:3px}
+.rf-k{position:absolute;left:50%;top:46%;z-index:0;font:800 min(62vw,280px)/1 var(--jp);color:transparent;-webkit-text-stroke:2px var(--line2);transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap}
+.rf-s{position:absolute;inset:0;z-index:1;display:grid;place-items:center;padding-bottom:22%}
+.rf-s>*{grid-area:1/1;place-self:center}
+.rf-m{position:relative;width:52%;aspect-ratio:1;will-change:transform}
+.rf-m img{width:100%;height:100%;display:block;border-radius:50%}
+.rf-ring{width:52%;aspect-ratio:1;border-radius:50%;border:2px solid var(--or);opacity:0;will-change:transform,opacity}
+.rf-cap{position:absolute;left:0;right:0;bottom:0;z-index:3;display:grid;gap:4px;padding:34px 18px 16px;background:linear-gradient(0deg,var(--ink) 38%,transparent)}
+.rf-cap b{font:700 11px var(--display);letter-spacing:.2em;color:var(--or);text-transform:uppercase}
+.rf-cap strong{font:800 clamp(17px,1.9vw,21px)/1.1 var(--display);color:var(--tx)}
+.rf-cap span{font:500 13px/1.45 var(--body,inherit);color:var(--mute)}
+.rf-n{position:absolute;right:14px;top:12px;z-index:3;font:700 13px var(--jp);color:var(--or);letter-spacing:.2em}
+.rf-ln{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;will-change:opacity}
+.rf-ln i{position:absolute;left:50%;top:50%;width:46%;height:2px;margin-top:-1px;background:var(--tx);transform-origin:0 50%}
+.rf-g{opacity:0;pointer-events:none}
+
+/* 一 · Dolly zoom: la mascota se acerca y el fondo se aleja */
+.rf-1 .rf-m{animation:rf1m 5s var(--rf-e) infinite alternate}
+.rf-1 .rf-k{animation:rf1k 5s var(--rf-e) infinite alternate}
+.rf-1 .rf-ring{animation:rf1r 5s var(--rf-e) infinite alternate;opacity:.9}
+@keyframes rf1m{from{transform:scale(.82)}to{transform:scale(1.22)}}
+@keyframes rf1k{from{transform:translate(-50%,-50%) scale(1.5)}to{transform:translate(-50%,-50%) scale(.82)}}
+@keyframes rf1r{from{transform:scale(.9)}to{transform:scale(1.35)}}
+
+/* 二 · Órbita: la mascota gira de perfil y un punto naranja la rodea */
+.rf-2 .rf-m{animation:rf2m 6s ease-in-out infinite}
+.rf-2 .rf-o{position:relative;width:76%;aspect-ratio:1;animation:rf2o 6s linear infinite;will-change:transform}
+.rf-2 .rf-o::before{content:"";position:absolute;left:50%;top:-5px;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--or)}
+.rf-2 .rf-o::after{content:"";position:absolute;inset:0;border-radius:50%;border:1px dashed var(--line2)}
+@keyframes rf2m{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.16)}}
+@keyframes rf2o{to{transform:rotate(360deg)}}
+
+/* 三 · Crash zoom: golpe de cámara, líneas de velocidad y calma */
+.rf-3 .rf-m{animation:rf3m 3.2s var(--rf-e) infinite}
+.rf-3 .rf-ln{animation:rf3l 3.2s linear infinite}
+.rf-3 .rf-ln i:nth-child(1){transform:rotate(0)}.rf-3 .rf-ln i:nth-child(2){transform:rotate(45deg)}
+.rf-3 .rf-ln i:nth-child(3){transform:rotate(90deg)}.rf-3 .rf-ln i:nth-child(4){transform:rotate(135deg)}
+.rf-3 .rf-ln i:nth-child(5){transform:rotate(180deg)}.rf-3 .rf-ln i:nth-child(6){transform:rotate(225deg)}
+.rf-3 .rf-ln i:nth-child(7){transform:rotate(270deg)}.rf-3 .rf-ln i:nth-child(8){transform:rotate(315deg)}
+@keyframes rf3m{0%{transform:scale(.55)}12%{transform:scale(1.32)}28%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes rf3l{0%{opacity:0}9%{opacity:.9}26%{opacity:0}100%{opacity:0}}
+
+/* 四 · Whip pan: barrido lateral rápido con estela naranja */
+.rf-4 .rf-m{animation:rf4m 4s var(--rf-e) infinite}
+.rf-4 .rf-w{position:absolute;left:0;right:0;top:33%;height:34%;z-index:0;background:var(--or);opacity:0;will-change:transform,opacity;animation:rf4w 4s var(--rf-e) infinite}
+@keyframes rf4m{0%{transform:translateX(-135%)}18%{transform:translateX(0)}70%{transform:translateX(0)}88%{transform:translateX(135%)}100%{transform:translateX(135%)}}
+@keyframes rf4w{0%{opacity:0;transform:translateX(-100%)}10%{opacity:.85;transform:translateX(-30%)}20%{opacity:0;transform:translateX(30%)}78%{opacity:0;transform:translateX(-30%)}86%{opacity:.85;transform:translateX(30%)}96%{opacity:0;transform:translateX(100%)}100%{opacity:0}}
+
+/* 五 · Glitch: dos copias, naranja y blanca, se desfasan sobre la mascota */
+.rf-5 .rf-m{animation:rf5m 3.6s steps(1,end) infinite}
+.rf-5 .rf-g{animation:rf5a 3.6s steps(1,end) infinite}
+.rf-5 .rf-g.b{animation-name:rf5b}
+.rf-5 .rf-g img{filter:sepia(1) saturate(9) hue-rotate(-12deg)}
+.rf-5 .rf-g.b img{filter:none}
+@keyframes rf5m{0%,100%{transform:translateX(0)}44%{transform:translateX(-3%)}47%{transform:translateX(2%)}50%{transform:translateX(0)}}
+@keyframes rf5a{0%,40%,56%,100%{transform:translateX(0);opacity:0}44%{transform:translateX(-7%);opacity:.7}50%{transform:translateX(5%);opacity:.7}}
+@keyframes rf5b{0%,40%,56%,100%{transform:translateX(0);opacity:0}44%{transform:translateX(6%);opacity:.5}50%{transform:translateX(-4%);opacity:.5}}
+
+/* 六 · Speed ramp: respira lento, acelera y suelta ondas de impacto */
+.rf-6 .rf-m{animation:rf6m 4.4s var(--rf-e) infinite}
+.rf-6 .rf-ring{animation:rf6r 4.4s ease-out infinite}
+.rf-6 .rf-ring.b{animation-delay:.22s}
+@keyframes rf6m{0%{transform:scale(1)}55%{transform:scale(1.04)}66%{transform:scale(.9)}74%{transform:scale(1.14)}100%{transform:scale(1)}}
+@keyframes rf6r{0%,60%{opacity:0;transform:scale(1)}66%{opacity:.9;transform:scale(1.05)}100%{opacity:0;transform:scale(2.2)}}
+
+.rf-nota{margin-top:18px;font:500 13px/1.6 var(--display);letter-spacing:.04em;color:var(--dim)}
+
+@media (max-width:900px){.rf{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.rf{grid-template-columns:minmax(0,1fr)}.rf-c{aspect-ratio:1/1}}
+@media (prefers-reduced-motion:reduce){
+ .rf-c *,.rf-c{animation:none!important;transition:none!important}
+ .rf-c:hover{transform:none}
+ .rf-ring{opacity:.5!important}
+ .rf-ln,.rf-w,.rf-g{opacity:0!important}
+}
