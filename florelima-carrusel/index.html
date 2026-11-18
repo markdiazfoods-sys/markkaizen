@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Florelima Atelier · Carrusel Nivel de Búsqueda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+:root{--rosa:#e0357e;--rosa-claro:#f7c6d4;--naranja:#ff8a3d;--morado:#5b2a6e;--oro:#ffd45a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#111;display:flex;flex-direction:column;gap:40px;align-items:center;padding:40px}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;background:linear-gradient(180deg,#5b2a6e 0%,#d6458a 38%,#ff8a3d 70%,#3a2a3a 100%);font-family:'Anton','Impact','DejaVu Sans Condensed',sans-serif;color:#fff}
+.bg{position:absolute;inset:0;background:url(assets/escena_base.jpg) center/cover;filter:blur(14px) saturate(1.2);opacity:.55;transform:scale(1.1)}
+.vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 35%,rgba(20,0,30,.65) 100%)}
+.stars{position:absolute;top:56px;right:56px;display:flex;gap:10px;z-index:9}
+.stars i{font-style:normal;font-size:74px;line-height:1;color:rgba(255,255,255,.28);text-shadow:0 3px 0 rgba(0,0,0,.4)}
+.stars i.on{color:#fff;text-shadow:0 0 18px rgba(255,255,255,.9),0 4px 0 rgba(0,0,0,.45)}
+.stars.hot i.on{animation:none;color:#fff}
+.wanted{position:absolute;top:62px;left:56px;font-size:34px;letter-spacing:6px;z-index:9;text-shadow:0 3px 0 rgba(0,0,0,.5)}
+.wanted b{color:var(--oro);font-weight:400}
+.logo{position:absolute;left:50%;transform:translateX(-50%);bottom:46px;width:360px;z-index:9;filter:drop-shadow(0 3px 6px rgba(0,0,0,.5))}
+.page{position:absolute;bottom:60px;right:56px;font-size:30px;letter-spacing:4px;opacity:.85;z-index:9}
+.title{position:absolute;left:56px;right:56px;z-index:8;text-transform:uppercase;line-height:.92;text-shadow:0 6px 0 rgba(0,0,0,.45),0 0 40px rgba(0,0,0,.35)}
+.title .big{display:block;font-size:150px}
+.title .mid{display:block;font-size:92px}
+.title em{font-style:normal;color:var(--oro)}
+.sub{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;font-size:40px;line-height:1.25;text-shadow:0 2px 10px rgba(0,0,0,.6);position:absolute;left:56px;right:56px;z-index:8}
+.cut{position:absolute;z-index:5;filter:drop-shadow(0 18px 24px rgba(0,0,0,.55))}
+.tag{position:absolute;z-index:8;background:var(--rosa);color:#fff;font-size:44px;letter-spacing:3px;padding:12px 28px;border:4px solid #fff;transform:rotate(-4deg);box-shadow:0 8px 0 rgba(0,0,0,.4);text-transform:uppercase}
+.fade{-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}
+.cta{position:absolute;left:50%;transform:translateX(-50%);bottom:190px;z-index:9;background:#fff;color:var(--rosa);font-size:54px;letter-spacing:3px;padding:20px 54px;border-radius:999px;box-shadow:0 10px 0 rgba(0,0,0,.4);text-transform:uppercase;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<!-- 1 ★ -->
+<section class="slide" id="s1">
+  <div class="bg"></div><div class="vig"></div>
+  <div class="wanted">NIVEL DE <b>BÚSQUEDA</b> · AMOR</div>
+  <div class="stars"><i class="on">★</i><i>★</i><i>★</i><i>★</i><i>★</i></div>
+  <img class="cut" src="assets/cj_bici.png" style="left:90px;bottom:60px;width:900px;">
+  <div class="title" style="top:190px"><span class="big">Se busca</span><span class="big"><em>un detalle</em></span></div>
+  <div class="sub" style="top:520px;width:480px;">Todo empieza con una estrella. Desliza →</div>
+  <img class="logo" src="assets/logo_blanco.png">
+  <div class="page">1/5</div>
+</section>
+
+<!-- 2 ★★ -->
+<section class="slide" id="s2">
+  <div class="bg"></div><div class="vig"></div>
+  <div class="wanted">NIVEL DE <b>BÚSQUEDA</b> · AMOR</div>
+  <div class="stars"><i class="on">★</i><i class="on">★</i><i>★</i><i>★</i><i>★</i></div>
+  <div class="title" style="top:190px"><span class="big">El barrio</span><span class="mid">ya lo <em>sabe</em></span></div>
+  <img class="cut fade" src="assets/cj_bigsmoke.png" style="left:20px;bottom:230px;width:1040px;">
+  <div class="tag" style="left:70px;bottom:520px">Trato hecho</div>
+  <div class="sub" style="bottom:140px;text-align:center;">Cuando el detalle es bueno,<br>hasta Grove Street asiente.</div>
+  <img class="logo" src="assets/logo_blanco.png" style="width:300px;bottom:40px">
+  <div class="page">2/5</div>
+</section>
+
+<!-- 3 ★★★ -->
+<section class="slide" id="s3">
+  <div class="bg"></div><div class="vig"></div>
+  <div class="wanted">NIVEL DE <b>BÚSQUEDA</b> · AMOR</div>
+  <div class="stars"><i class="on">★</i><i class="on">★</i><i class="on">★</i><i>★</i><i>★</i></div>
+  <div class="title" style="top:190px"><span class="big">Ramo que</span><span class="big">se <em>nota</em></span></div>
+  <img class="cut" src="assets/ramo.png" style="left:190px;bottom:150px;width:700px;transform:rotate(-5deg)">
+  <div class="tag" style="right:60px;top:520px;transform:rotate(5deg)">Hecho a mano</div>
+  <img class="logo" src="assets/logo_blanco.png">
+  <div class="page">3/5</div>
+</section>
+
+<!-- 4 ★★★★ -->
+<section class="slide" id="s4">
+  <div class="bg"></div><div class="vig"></div>
+  <div class="wanted">NIVEL DE <b>BÚSQUEDA</b> · AMOR</div>
+  <div class="stars"><i class="on">★</i><i class="on">★</i><i class="on">★</i><i class="on">★</i><i>★</i></div>
+  <img class="cut" src="assets/cj_bici.png" style="left:240px;bottom:90px;width:820px;">
+  <div class="title" style="top:190px"><span class="big">Entrega</span><span class="big"><em>en dos ruedas</em></span></div>
+  <div class="tag" style="left:56px;top:530px">Express</div>
+  <img class="logo" src="assets/logo_blanco.png">
+  <div class="page">4/5</div>
+</section>
+
+<!-- 5 ★★★★★ -->
+<section class="slide" id="s5">
+  <div class="bg"></div><div class="vig"></div>
+  <div class="wanted">NIVEL DE <b>BÚSQUEDA</b> · AMOR</div>
+  <div class="stars hot"><i class="on">★</i><i class="on">★</i><i class="on">★</i><i class="on">★</i><i class="on">★</i></div>
+  <div class="title" style="top:190px"><span class="big">Nivel</span><span class="big"><em>máximo</em></span></div>
+  <img class="cut" src="assets/cj_bici.png" style="left:160px;bottom:220px;width:760px;">
+  <div class="cta">Pide el tuyo</div>
+  <img class="logo" src="assets/logo_blanco.png">
+  <div class="page">5/5</div>
+</section>
+
+</body>
+</html>
