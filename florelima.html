@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Florelima Atelier · Flores que cuentan tu momento</title>
+<meta name="description" content="Florelima Atelier: arreglos florales, globos y detalles para celebrar cumpleaños, nacimientos, graduaciones y fechas especiales.">
+<meta name="theme-color" content="#F9C9D4">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rose:#F9C9D4;--rose2:#F4A9BB;--blush:#FDEEF1;--cream:#FFF8F3;
+  --plum:#8B4A5E;--ink:#3A2530;--mute:#7C6670;--gold:#B8935A;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);--w:1120px}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;margin:0;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:2px solid var(--plum);outline-offset:3px;border-radius:6px}
+.w{max-width:var(--w);margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+.eyebrow{font:500 12px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--plum)}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 28px;border-radius:999px;background:var(--plum);color:#fff;text-decoration:none;font:500 15px var(--sans);letter-spacing:.04em;transition:transform .3s var(--ease),background .3s}
+.btn:hover{transform:translateY(-2px);background:#74394c}
+.btn.ghost{background:transparent;color:var(--plum);box-shadow:inset 0 0 0 1.5px var(--plum)}
+.btn.ghost:hover{background:var(--plum);color:#fff}
+
+/* header */
+header{position:sticky;top:0;z-index:30;background:rgba(255,248,243,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(139,74,94,.12)}
+.hb{display:flex;align-items:center;gap:24px;height:68px}
+.brand{font:600 22px var(--serif);letter-spacing:.14em;text-decoration:none;color:var(--plum)}
+.brand small{font:500 9px var(--sans);letter-spacing:.4em;display:block;margin-top:-3px;text-align:center}
+nav{margin-left:auto;display:flex;gap:26px}
+nav a{font:500 14px var(--sans);text-decoration:none;color:var(--mute);transition:color .2s}
+nav a:hover{color:var(--plum)}
+@media(max-width:760px){nav{display:none}.hb .btn{margin-left:auto;min-height:40px;padding:0 20px;font-size:14px}}
+.hb .btn{min-height:42px;padding:0 22px;font-size:14px}
+
+/* hero */
+.hero{position:relative;background:linear-gradient(160deg,var(--rose) 0%,var(--blush) 60%,var(--cream) 100%);overflow:hidden}
+.hero .w{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,72px);align-items:center;padding-top:clamp(48px,8vw,96px);padding-bottom:clamp(56px,9vw,110px)}
+.hero h1{font-size:clamp(44px,7vw,88px);color:var(--plum);margin:18px 0 22px}
+.hero h1 em{font-style:italic;color:var(--ink)}
+.hero p.lead{font-size:clamp(17px,1.6vw,20px);color:var(--ink);max-width:46ch;opacity:.85}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.stage{position:relative;aspect-ratio:4/5;max-width:460px;justify-self:center;width:100%}
+.stage .arch{position:absolute;inset:0;border-radius:999px 999px 28px 28px;overflow:hidden;box-shadow:0 30px 60px -24px rgba(139,74,94,.45)}
+.stage .arch img{width:100%;height:100%;object-fit:cover}
+.stage .ring{position:absolute;inset:-14px;border:1.5px solid var(--gold);border-radius:999px 999px 40px 40px;opacity:.55}
+.badge{position:absolute;left:-18px;bottom:36px;background:#fff;padding:12px 18px;border-radius:16px;box-shadow:0 16px 36px -14px rgba(58,37,48,.3);font:500 13px var(--sans);display:flex;gap:10px;align-items:center;animation:float 5s ease-in-out infinite}
+.badge b{font:600 22px var(--serif);color:var(--plum)}
+@keyframes float{50%{transform:translateY(-8px)}}
+.petal{position:absolute;width:26px;height:36px;border-radius:100% 0 100% 0;background:var(--rose2);opacity:.5;animation:drift 14s linear infinite}
+.petal:nth-child(1){left:6%;top:-40px;animation-delay:0s}
+.petal:nth-child(2){left:38%;top:-40px;animation-delay:-5s;transform:scale(.7)}
+.petal:nth-child(3){left:72%;top:-40px;animation-delay:-9s;transform:scale(.9)}
+@keyframes drift{to{transform:translate(60px,640px) rotate(300deg)}}
+@media(max-width:860px){.hero .w{grid-template-columns:1fr;text-align:center}.hero p.lead{margin:0 auto}.cta{justify-content:center}.stage{max-width:340px}.badge{left:0}}
+
+/* marquee */
+.strip{background:var(--plum);color:var(--blush);overflow:hidden;white-space:nowrap}
+.strip div{display:inline-block;padding:14px 0;font:italic 500 22px var(--serif);animation:slide 30s linear infinite}
+.strip span{margin:0 28px}
+.strip span::after{content:"✿";margin-left:56px;color:var(--rose2)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:clamp(64px,10vw,120px) 0}
+.sh{text-align:center;max-width:620px;margin:0 auto clamp(36px,6vw,64px)}
+.sh h2{font-size:clamp(34px,5vw,56px);color:var(--plum);margin:14px 0 14px}
+.sh p{color:var(--mute)}
+
+/* colecciones */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,28px)}
+.card{position:relative;border-radius:24px;overflow:hidden;background:var(--blush);min-height:420px;display:flex;align-items:flex-end;isolation:isolate;transition:transform .5s var(--ease),box-shadow .5s}
+.card:hover{transform:translateY(-6px);box-shadow:0 30px 50px -28px rgba(139,74,94,.5)}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s var(--ease)}
+.card:hover img{transform:scale(1.05)}
+.card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(58,37,48,.72),transparent 60%)}
+.card .t{padding:24px;color:#fff}
+.card h3{font-size:30px}
+.card p{font-size:14px;opacity:.88;margin-top:4px}
+.card.soft{background:linear-gradient(150deg,var(--rose),var(--blush));align-items:center;justify-content:center;text-align:center}
+.card.soft::before{display:none}
+.card.soft .t{color:var(--plum)}
+.card.soft .t a{display:inline-block;margin-top:16px;font:500 14px var(--sans);letter-spacing:.08em;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px}
+@media(max-width:860px){.grid{grid-template-columns:1fr}.card{min-height:340px}}
+
+/* ocasiones */
+.occ{background:var(--blush)}
+.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.chip{padding:14px 26px;border-radius:999px;background:#fff;font:500 15px var(--sans);color:var(--plum);box-shadow:0 6px 18px -10px rgba(139,74,94,.4);transition:transform .3s var(--ease),background .3s,color .3s;cursor:default}
+.chip:hover{transform:translateY(-3px);background:var(--plum);color:#fff}
+
+/* pasos */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,56px);counter-reset:s}
+.step{text-align:center;position:relative;padding-top:8px}
+.step::before{counter-increment:s;content:"0" counter(s);display:block;font:italic 500 64px var(--serif);color:var(--rose2);line-height:1}
+.step h3{font-size:26px;color:var(--plum);margin:10px 0 8px}
+.step p{color:var(--mute);font-size:16px;max-width:30ch;margin:0 auto}
+@media(max-width:760px){.steps{grid-template-columns:1fr}}
+
+/* cierre */
+.final{position:relative;text-align:center;background:var(--plum);color:var(--blush);overflow:hidden}
+.final h2{font-size:clamp(36px,6vw,68px);color:#fff;max-width:16ch;margin:16px auto 20px}
+.final p{opacity:.85;max-width:44ch;margin:0 auto 32px}
+.final .eyebrow{color:var(--rose2)}
+.final .btn{background:var(--rose);color:var(--plum)}
+.final .btn:hover{background:#fff}
+.final img.lg{width:190px;margin:0 auto 28px;border-radius:14px}
+footer{background:#2D1B24;color:#C9B1BB;padding:28px 0;font-size:14px}
+footer .w{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+footer a{color:var(--rose)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="w hb">
+    <a class="brand" href="#top">FLORELIMA<small>ATELIER</small></a>
+    <nav>
+      <a href="#colecciones">Colecciones</a>
+      <a href="#ocasiones">Ocasiones</a>
+      <a href="#pedido">Cómo pedir</a>
+    </nav>
+    <a class="btn" href="https://florelimatelier.com" target="_blank" rel="noopener">Ver tienda</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+    <div class="w">
+      <div>
+        <span class="eyebrow">Atelier floral</span>
+        <h1>Flores que <em>cuentan</em> tu momento</h1>
+        <p class="lead">Arreglos florales, globos y detalles diseñados a mano para celebrar nacimientos, graduaciones, cumpleaños y todo lo que merece un gesto bonito.</p>
+        <div class="cta">
+          <a class="btn" href="https://florelimatelier.com" target="_blank" rel="noopener">Comprar ahora →</a>
+          <a class="btn ghost" href="#colecciones">Ver colecciones</a>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="ring"></div>
+        <div class="arch"><img src="img/flor2.jpg" alt="Arreglo floral con girasoles, rosas y birrete rosado en caja Florelima" width="440" height="495" fetchpriority="high"></div>
+        <div class="badge"><b>✿</b> Hecho a mano,<br>flor por flor</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip" aria-hidden="true"><div>
+    <span>Arreglos florales</span><span>Globos</span><span>Cajas de regalo</span><span>Graduaciones</span><span>Baby shower</span><span>Cumpleaños</span>
+    <span>Arreglos florales</span><span>Globos</span><span>Cajas de regalo</span><span>Graduaciones</span><span>Baby shower</span><span>Cumpleaños</span>
+  </div></div>
+
+  <section id="colecciones">
+    <div class="w">
+      <div class="sh rv">
+        <span class="eyebrow">Colecciones</span>
+        <h2>Diseños para cada ocasión</h2>
+        <p>Combinaciones de temporada en cestas, cajas y globos, listas para regalar.</p>
+      </div>
+      <div class="grid">
+        <article class="card rv">
+          <img src="img/flor.jpg" alt="Cesta con hortensias azules, rosas blancas y globo Baby Boy" loading="lazy" width="400" height="570">
+          <div class="t"><h3>Bienvenido, bebé</h3><p>Hortensias, rosas y globos para dar la bienvenida.</p></div>
+        </article>
+        <article class="card rv">
+          <img src="img/flor2.jpg" alt="Caja hexagonal con girasoles, rosas y birrete de graduación" loading="lazy" width="440" height="495">
+          <div class="t"><h3>Graduación</h3><p>Colores luminosos para celebrar un logro.</p></div>
+        </article>
+        <article class="card soft rv">
+          <div class="t">
+            <h3>Más diseños</h3>
+            <p>Descubre todo el catálogo y promociones vigentes en la tienda.</p>
+            <a href="https://florelimatelier.com" target="_blank" rel="noopener">Ir a la tienda →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="occ" id="ocasiones">
+    <div class="w">
+      <div class="sh rv">
+        <span class="eyebrow">Ocasiones</span>
+        <h2>Un detalle para cada historia</h2>
+      </div>
+      <div class="chips rv">
+        <span class="chip">Cumpleaños</span><span class="chip">Nacimientos</span><span class="chip">Graduaciones</span>
+        <span class="chip">Aniversarios</span><span class="chip">Día de la Madre</span><span class="chip">Gracias</span><span class="chip">Sorpresas</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="pedido">
+    <div class="w">
+      <div class="sh rv">
+        <span class="eyebrow">Cómo pedir</span>
+        <h2>Tres pasos, cero complicaciones</h2>
+      </div>
+      <div class="steps">
+        <div class="step rv"><h3>Elige</h3><p>Explora la colección y escoge el diseño que más te guste.</p></div>
+        <div class="step rv"><h3>Personaliza</h3><p>Agrega tu mensaje, fecha y datos de entrega.</p></div>
+        <div class="step rv"><h3>Regala</h3><p>Recibimos tu pedido y lo preparamos con cuidado.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="w rv">
+      <img class="lg" src="img/logo-florelima-atelier.png" alt="Florelima Atelier" width="300" height="118">
+      <span class="eyebrow">Florelima Atelier</span>
+      <h2>Regala algo que florezca</h2>
+      <p>Entra a la tienda y encuentra el arreglo perfecto para quien más quieres.</p>
+      <a class="btn" href="https://florelimatelier.com" target="_blank" rel="noopener">Visitar florelimatelier.com</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="w">
+    <span>© 2026 Florelima Atelier</span>
+    <a href="https://florelimatelier.com" target="_blank" rel="noopener">florelimatelier.com</a>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*90+'ms';io.observe(el)});
+</script>
+</body>
+</html>
