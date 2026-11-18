@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Prompt senior · Portafolio UI/UX animado · MARK KAIZEN 改善</title>
+<meta name="description" content="Presentación visual del prompt senior para el portafolio UI/UX animado de MARK KAIZEN.">
+<meta name="theme-color" content="#0B0B0F">
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&family=Noto+Sans+JP:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+/* Tres colores de marca: negro #0B0B0F, blanco #FFF, naranja #FF6B00. Los grises son tonos del negro/blanco. */
+:root{--ink:#0B0B0F;--card:#151515;--card2:#1C1C1F;--line:#26262B;--line2:#36363D;--mute:#A9A9B3;--dim:#71717B;--or:#FF6B00;
+ --d:'Sora',system-ui,sans-serif;--b:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;--jp:'Noto Sans JP',sans-serif;
+ --ease:cubic-bezier(.2,.8,.2,1);color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--ink);scroll-behavior:smooth;scroll-snap-type:y proximity}
+body{margin:0;background:var(--ink);color:#fff;font:400 16px/1.5 var(--b);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--d);line-height:1.05;letter-spacing:-.02em;text-wrap:balance}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* barra de progreso + puntos de navegación */
+.prog{position:fixed;left:0;top:0;width:100%;height:3px;background:var(--or);transform-origin:0 50%;transform:scaleX(var(--sp,0));z-index:60}
+.dots{position:fixed;right:max(12px,env(safe-area-inset-right));top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:2px;z-index:50}
+.dots a{display:grid;place-items:center;width:44px;height:26px;text-decoration:none}
+.dots a i{display:block;width:8px;height:8px;border-radius:50%;background:var(--line2);transition:transform .2s var(--ease),background .2s}
+.dots a.on i{background:var(--or);transform:scale(1.6)}
+@media(max-width:760px){.dots{display:none}}
+
+/* diapositiva */
+.s{position:relative;min-height:100svh;padding:clamp(72px,10vh,110px) clamp(20px,6vw,88px) clamp(48px,8vh,80px);display:grid;align-content:center;gap:clamp(24px,4vh,44px);scroll-snap-align:start;isolation:isolate;overflow:hidden;border-bottom:1px solid var(--line)}
+.s>*{max-width:1180px;width:100%;margin-inline:auto}
+.k{position:absolute;right:-1vw;top:2vh;z-index:-1;font:800 clamp(140px,26vw,360px)/1 var(--jp);color:transparent;-webkit-text-stroke:2px var(--line);pointer-events:none;user-select:none}
+.cut{position:absolute;left:-5%;width:110%;height:2px;background:var(--or);transform:rotate(-1.6deg);top:0;z-index:-1}
+.hd{display:flex;align-items:flex-end;gap:clamp(14px,3vw,28px)}
+.hd .n{font:800 clamp(64px,11vw,128px)/.8 var(--d);letter-spacing:-.05em;color:transparent;-webkit-text-stroke:2px var(--or)}
+.hd .t{display:grid;gap:6px;padding-bottom:6px}
+.eb{font:600 12px var(--d);letter-spacing:.24em;text-transform:uppercase;color:var(--or)}
+.hd h2{font-size:clamp(28px,4.6vw,52px);font-weight:800}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:clamp(16px,2.4vw,26px);position:relative}
+.or{color:var(--or)}
+.mute{color:var(--mute)}
+.lbl{font:600 11px var(--d);letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.pill{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 14px;border:1px solid var(--line2);border-radius:99px;font:600 13px var(--d);background:var(--card)}
+.pill.o{border-color:var(--or);color:var(--or)}
+.pill.x{color:var(--dim);text-decoration:line-through;text-decoration-color:var(--or)}
+.grid{display:grid;gap:16px}
+
+/* reveal: solo transform + opacity */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--i,0)*70ms)}
+.in .rv,.rv.in{opacity:1;transform:none}
+
+/* 00 portada */
+.cover{text-align:center;justify-items:center}
+.cover>*{max-width:none;width:auto}
+.cover::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(600px 420px at 50% 36%,rgba(255,107,0,.18),transparent 70%)}
+.sym{position:relative;width:clamp(180px,26vw,280px);aspect-ratio:1}
+.sym img{position:absolute;inset:7%;width:86%;height:auto;animation:symin 1.3s .2s var(--ease) both}
+.sym svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
+.sym circle{fill:none;stroke:var(--or);stroke-width:2;stroke-linecap:round;stroke-dasharray:597;stroke-dashoffset:597;animation:draw 1.4s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes symin{from{opacity:0;transform:rotate(-180deg) scale(.5)}to{opacity:1;transform:none}}
+.cover h1{font-size:clamp(40px,8vw,92px);font-weight:800;letter-spacing:.02em}
+.cover h1 span{color:var(--or)}
+.cover .sub{font:600 clamp(13px,1.6vw,18px) var(--d);letter-spacing:.5em;color:var(--or);padding-left:.5em}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.hint{display:flex;align-items:center;gap:10px;color:var(--dim);font:600 11px var(--d);letter-spacing:.25em;text-transform:uppercase}
+.hint i{display:block;width:2px;height:28px;background:var(--or);transform-origin:50% 0;animation:tick 1.6s var(--ease) infinite}
+@keyframes tick{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* 01 rol */
+.rol{grid-template-columns:1fr 1.1fr;align-items:center}
+.rol .who{display:grid;gap:14px}
+.rol .who h3{font-size:clamp(22px,3vw,34px)}
+.orbit{position:relative;aspect-ratio:1;max-width:460px;margin-inline:auto;width:100%}
+.orbit .core{position:absolute;inset:32%;border-radius:50%;border:2px solid var(--or);display:grid;place-items:center;text-align:center;font:800 clamp(12px,1.6vw,17px)/1.2 var(--d);background:var(--card)}
+.orbit .ring{position:absolute;inset:6%;border-radius:50%;border:1px dashed var(--line2);animation:spin 60s linear infinite}
+.orbit .sat{position:absolute;width:30%;aspect-ratio:1;display:grid;place-items:center;gap:4px;text-align:center;font:600 12px var(--d);background:var(--card2);border:1px solid var(--line2);border-radius:50%;padding:8px}
+.orbit .sat svg{width:34%;stroke:var(--or);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sat:nth-of-type(1){left:35%;top:-2%}.sat:nth-of-type(2){right:-2%;top:35%}.sat:nth-of-type(3){left:35%;bottom:-2%}.sat:nth-of-type(4){left:-2%;top:35%}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:860px){.rol{grid-template-columns:1fr}}
+
+/* 02 contexto */
+.ctx{grid-template-columns:1.25fr 1fr;align-items:center}
+.map{position:relative;aspect-ratio:16/11}
+.map svg.l{position:absolute;inset:0;width:100%;height:100%}
+.map svg.l path{fill:none;stroke:var(--line2);stroke-width:1.5;stroke-dasharray:5 6}
+.node{position:absolute;transform:translate(-50%,-50%);padding:10px 14px;border-radius:12px;background:var(--card);border:1px solid var(--line2);font:600 clamp(11px,1.3vw,14px) var(--d);text-align:center;white-space:nowrap}
+.node small{display:block;font:500 11px var(--b);color:var(--mute);margin-top:2px}
+.node.c{border-color:var(--or);background:var(--card2);padding:16px 22px}
+.node.law{border-color:var(--or);color:var(--or)}
+.kj{display:flex;flex-wrap:wrap;gap:8px}
+.kj span{display:grid;place-items:center;min-width:64px;padding:8px 10px;border:1px solid var(--line2);border-radius:10px;background:var(--card);font:700 22px var(--jp);line-height:1}
+.kj small{display:block;font:500 10px var(--b);color:var(--mute);margin-top:4px;letter-spacing:.04em}
+.read{display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--or);border-radius:14px;font:700 15px var(--d)}
+.read b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--or);color:var(--ink)}
+@media(max-width:860px){.ctx{grid-template-columns:1fr}.map{aspect-ratio:4/5}}
+
+/* 03 marca */
+.brand{grid-template-columns:repeat(12,1fr)}
+.sw{grid-column:span 4;min-height:150px;display:grid;align-content:end;gap:2px;border-radius:18px;padding:18px;border:1px solid var(--line2)}
+.sw b{font:800 22px var(--d)}.sw span{font:500 13px var(--b);opacity:.85}
+.sw.k1{background:var(--ink)}.sw.k2{background:#fff;color:var(--ink);border-color:#fff}.sw.k3{background:var(--or);color:var(--ink);border-color:var(--or)}
+.tones{grid-column:span 12;display:flex;height:14px;border-radius:99px;overflow:hidden;border:1px solid var(--line2)}
+.tones i{flex:1}
+.tp{grid-column:span 4;display:grid;gap:6px}
+.tp .g{font-size:64px;line-height:1;font-weight:800}
+.tp.fs .g{font-family:var(--d)}.tp.i .g{font-family:var(--b);font-weight:500}.tp.j .g{font-family:var(--jp)}
+.ez{grid-column:span 7;display:grid;gap:10px}
+.ez svg{width:100%;height:auto;overflow:visible}
+.ez .curve{fill:none;stroke:var(--or);stroke-width:3;stroke-linecap:round;stroke-dasharray:420;stroke-dashoffset:420}
+.in .ez .curve{animation:draw2 1.4s .3s var(--ease) forwards}
+@keyframes draw2{to{stroke-dashoffset:0}}
+.ez code{font:600 13px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--or)}
+.tm{grid-column:span 5;display:grid;gap:12px;align-content:center}
+.bar{display:grid;grid-template-columns:90px 1fr;align-items:center;gap:10px;font:600 12px var(--d)}
+.bar i{display:block;height:12px;border-radius:99px;background:var(--or);transform-origin:left;transform:scaleX(0);transition:transform 1s .4s var(--ease)}
+.in .bar i{transform:scaleX(var(--w))}
+.ban{grid-column:span 6;display:flex;flex-wrap:wrap;gap:8px;align-content:center}
+.safe{grid-column:span 6;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+.safe .lg{position:relative;width:120px;aspect-ratio:1;display:grid;place-items:center}
+.safe .lg::before{content:"";position:absolute;inset:-14px;border:1.5px dashed var(--or);border-radius:50%}
+.safe .lg img{width:100%}
+@media(max-width:860px){.sw,.tp,.ez,.tm,.ban,.safe{grid-column:span 12}.sw{min-height:110px}}
+
+/* 04 objetivo */
+.ob{grid-template-columns:1fr auto 1fr;align-items:stretch}
+.ob .card{display:grid;gap:12px;align-content:center}
+.ob .card h3{font-size:clamp(20px,2.4vw,28px)}
+.ob .card.to{border-color:var(--or)}
+.arrow{display:grid;place-items:center}
+.arrow svg{width:56px;stroke:var(--or);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.aud{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.aud .card{display:flex;align-items:center;gap:14px;font:700 16px var(--d)}
+.aud svg{width:34px;flex:none;stroke:var(--or);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:860px){.ob{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}.aud{grid-template-columns:1fr}}
+
+/* 05 entregables */
+.flow{grid-template-columns:repeat(4,1fr);position:relative}
+.flow::before{content:"";position:absolute;left:6%;right:6%;top:46px;height:2px;background:linear-gradient(90deg,var(--or) 0 100%);opacity:.5;z-index:0}
+.step{display:grid;gap:10px;align-content:start;z-index:1}
+.step .no{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--or);color:var(--ink);font:800 18px var(--d)}
+.step h3{font-size:19px}
+.step p{color:var(--mute);font-size:14px}
+.step .mini{display:flex;gap:6px;flex-wrap:wrap}
+.step .mini i{font:600 11px var(--d);font-style:normal;padding:3px 9px;border-radius:99px;border:1px solid var(--line2);color:var(--mute)}
+@media(max-width:960px){.flow{grid-template-columns:1fr 1fr}.flow::before{display:none}}
+@media(max-width:560px){.flow{grid-template-columns:1fr}}
+
+/* 06 ideas */
+.bento{grid-template-columns:repeat(3,1fr)}
+.idea{display:grid;gap:12px;align-content:space-between;min-height:190px;overflow:hidden;transition:transform .2s var(--ease),border-color .2s}
+.idea:hover{transform:translateY(-4px);border-color:var(--or)}
+.idea h3{font-size:17px}
+.idea p{font-size:13px;color:var(--mute)}
+.idea .vz{height:64px;display:flex;align-items:center}
+.idea svg{height:100%;width:auto;max-width:100%;overflow:visible}
+.ln{display:grid;gap:6px;width:100%}
+.ln i{display:block;height:8px;border-radius:4px;background:var(--line2);transform-origin:left;transform:scaleX(0);animation:type 3.2s var(--ease) infinite}
+.ln i:nth-child(1){width:60%}.ln i:nth-child(2){width:84%;animation-delay:.5s;background:var(--or)}.ln i:nth-child(3){width:46%;animation-delay:1s}.ln i:nth-child(4){width:72%;animation-delay:1.5s}
+@keyframes type{0%{transform:scaleX(0)}40%,85%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
+.hk{display:grid;place-items:center;width:54px;height:54px;border-radius:8px;border:3px solid var(--or);color:var(--or);font:800 28px var(--jp);transform:rotate(-8deg);animation:stamp 3s var(--ease) infinite}
+@keyframes stamp{0%{transform:rotate(-8deg) scale(1.8);opacity:0}15%,80%{transform:rotate(-8deg) scale(1);opacity:1}100%{opacity:0}}
+.credits{height:64px;overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(transparent,#000 25%,#000 75%,transparent);mask-image:linear-gradient(transparent,#000 25%,#000 75%,transparent)}
+.credits div{display:grid;gap:8px;animation:roll 6s linear infinite}
+.credits i{display:block;height:8px;border-radius:4px;background:var(--line2);margin-inline:auto}
+.credits i:nth-child(odd){width:40%;background:var(--or)}.credits i:nth-child(even){width:70%}
+@keyframes roll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+.tilt{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;width:100%}
+.tilt i{display:block;height:26px;border-radius:6px;background:var(--line2)}
+.tilt i:nth-child(1){grid-column:span 2;background:var(--or)}
+.kin{font:800 60px/1 var(--jp);color:transparent;-webkit-text-stroke:1.5px var(--or);animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.pg{display:flex;gap:10px;align-items:center;width:100%}
+.pg i{flex:1;height:44px;border-radius:8px;background:var(--line2)}
+.pg i:first-child{animation:pgs 3s var(--ease) infinite}
+.pg i:last-child{background:var(--or);animation:pgs 3s 1.5s var(--ease) infinite}
+@keyframes pgs{0%,100%{transform:translateX(0);opacity:1}50%{transform:translateX(10px);opacity:.4}}
+.flt{display:flex;gap:6px;width:100%}
+.flt i{flex:1;height:34px;border-radius:8px;background:var(--line2)}
+.flt i:nth-child(2){background:var(--or);animation:swap 3s var(--ease) infinite}
+@keyframes swap{0%,100%{transform:translateX(0)}50%{transform:translateX(calc(100% + 6px))}}
+@media(max-width:960px){.bento{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.bento{grid-template-columns:1fr}}
+
+/* 07 motion */
+.mo{grid-template-columns:repeat(12,1fr)}
+.mo>.card{display:grid;gap:12px;align-content:start}
+.m1{grid-column:span 6}.m2{grid-column:span 6}.m3{grid-column:span 4}.m4{grid-column:span 4}.m5{grid-column:span 4}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+.st{display:flex;gap:6px;align-items:flex-end;height:70px}
+.st i{flex:1;border-radius:6px 6px 0 0;background:var(--or);transform-origin:bottom;animation:rise 2.4s var(--ease) infinite;animation-delay:calc(var(--k)*60ms);height:100%}
+@keyframes rise{0%{transform:scaleY(.15);opacity:.3}35%,80%{transform:scaleY(1);opacity:1}100%{transform:scaleY(.15);opacity:.3}}
+.big{display:flex;align-items:center;justify-content:center;gap:14px;height:70px}
+.big i{display:block;border-radius:50%;background:var(--line2)}
+.big i:nth-child(2){width:46px;height:46px;background:var(--or);animation:pulse 2.4s var(--ease) infinite}
+.big i:nth-child(1),.big i:nth-child(3){width:18px;height:18px}
+@keyframes pulse{50%{transform:scale(1.18)}}
+.rm{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sw2{position:relative;width:68px;height:38px;flex:none;border-radius:99px;border:1px solid var(--line2);background:var(--card2);cursor:pointer;padding:0}
+.sw2::after{content:"";position:absolute;left:4px;top:4px;width:28px;height:28px;border-radius:50%;background:var(--dim);transition:transform .2s var(--ease),background .2s}
+.sw2[aria-pressed=true]{border-color:var(--or)}
+.sw2[aria-pressed=true]::after{transform:translateX(30px);background:var(--or)}
+.demo{display:grid;gap:10px;grid-template-columns:repeat(3,1fr)}
+.demo i{display:block;height:44px;border-radius:8px;background:var(--line2);animation:rise2 2.4s var(--ease) infinite;animation-delay:calc(var(--k)*120ms)}
+.demo i:first-child{background:var(--or)}
+@keyframes rise2{0%{transform:translateY(14px);opacity:0}30%,80%{transform:none;opacity:1}100%{opacity:0}}
+.rmon .demo i,.rmon .st i,.rmon .big i,.rmon .ln i,.rmon .hk,.rmon .credits div,.rmon .kin,.rmon .pg i,.rmon .flt i{animation:none!important;transform:none;opacity:1}
+@media(max-width:860px){.m1,.m2,.m3,.m4,.m5{grid-column:span 12}}
+
+/* 08 UI/UX */
+.ux{grid-template-columns:repeat(12,1fr)}
+.u1{grid-column:span 7}.u2{grid-column:span 5}.u3{grid-column:span 5}.u4{grid-column:span 7}
+.ux>.card{display:grid;gap:14px;align-content:start}
+.vps{display:flex;align-items:flex-end;gap:18px;height:150px}
+.vp{display:grid;gap:6px;justify-items:center;font:600 12px var(--d);color:var(--mute)}
+.vp i{display:block;border:2px solid var(--line2);border-radius:8px;position:relative;overflow:hidden;background:var(--card2)}
+.vp i::before{content:"";position:absolute;left:8%;top:10%;width:60%;height:10%;background:var(--or);border-radius:3px}
+.vp i::after{content:"";position:absolute;left:8%;right:8%;top:30%;bottom:10%;background:repeating-linear-gradient(var(--line2) 0 5px,transparent 5px 12px);border-radius:3px}
+.vp.a i{width:34px;height:84px}.vp.b i{width:70px;height:96px}.vp.c i{width:130px;height:84px}
+.vp.a{color:#fff}
+.tt{display:flex;align-items:center;gap:16px}
+.tt .t44{width:44px;height:44px;border-radius:12px;background:var(--or);display:grid;place-items:center;color:var(--ink);font:800 11px var(--d);flex:none;position:relative}
+.tt .t44::before{content:"";position:absolute;inset:-5px;border:1.5px dashed var(--mute);border-radius:16px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{display:inline-grid;place-items:center;min-height:44px;padding:0 20px;border-radius:12px;border:0;font:700 14px var(--d);background:var(--or);color:var(--ink);cursor:default}
+.btn.g{background:transparent;border:1px solid var(--line2);color:#fff}
+.story{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.story>div{flex:1;min-width:120px;padding:14px 16px;background:var(--card2);border:1px solid var(--line2);display:grid;gap:4px;font:700 15px var(--d)}
+.story>div:first-child{border-radius:14px 0 0 14px}.story>div:last-child{border-radius:0 14px 14px 0;border-color:var(--or)}
+.story small{font:500 12px var(--b);color:var(--mute)}
+.fo{width:100%;height:46px;border-radius:12px;background:var(--card2);border:2px solid var(--or);display:flex;align-items:center;padding:0 14px;font:600 12px var(--d);color:var(--mute)}
+@media(max-width:860px){.u1,.u2,.u3,.u4{grid-column:span 12}}
+
+/* 09 rendimiento */
+.pf{grid-template-columns:repeat(12,1fr)}
+.g3{grid-column:span 4;display:grid;gap:8px;justify-items:center;text-align:center;padding:22px 12px}
+.gg{position:relative;width:min(160px,70%);aspect-ratio:1}
+.gg svg{width:100%;height:100%;transform:rotate(-90deg)}
+.gg circle{fill:none;stroke-width:9;stroke-linecap:round}
+.gg .bg{stroke:var(--line2)}
+.gg .fg{stroke:var(--or);stroke-dasharray:314;stroke-dashoffset:314;transition:stroke-dashoffset 1.4s .3s var(--ease)}
+.in .gg .fg{stroke-dashoffset:var(--o)}
+.gg b{position:absolute;inset:0;display:grid;place-items:center;font:800 24px var(--d)}
+.g3 h3{font-size:17px}
+.g3 .lbl{color:var(--or)}
+.l3{grid-column:span 6;display:flex;gap:18px;align-items:center;justify-content:space-around}
+.l3 .gg{width:84px}.l3 .gg b{font-size:18px}
+.l3 .gg circle{stroke-width:11}
+.l3 figure{margin:0;display:grid;gap:6px;justify-items:center;font:600 11px var(--d);color:var(--mute);text-align:center}
+.q3{grid-column:span 6;display:grid;gap:12px;align-content:center}
+.ct{display:flex;gap:10px;flex-wrap:wrap}
+.ct span{display:grid;place-items:center;padding:10px 16px;border-radius:12px;font:700 15px var(--d);border:1px solid var(--line2)}
+.ct .w{background:#fff;color:var(--ink)}.ct .o{background:var(--ink);color:var(--or)}
+@media(max-width:860px){.g3,.l3,.q3{grid-column:span 12}}
+
+/* 10 checklist */
+.ck{grid-template-columns:1fr 2fr;align-items:center}
+.ck .big2{display:grid;gap:14px;justify-items:center;text-align:center}
+.ck .gg{width:min(190px,60%)}
+.ck .gg b{font-size:34px}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.it{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;background:var(--card);border:1px solid var(--line);cursor:pointer;min-height:64px;transition:border-color .2s,transform .2s var(--ease);text-align:left;color:#fff;font:600 14px/1.3 var(--d);width:100%}
+.it:hover{transform:translateY(-2px)}
+.it .bx{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;border:2px solid var(--line2);flex:none}
+.it .bx svg{width:16px;stroke:var(--ink);fill:none;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;transform:scale(0);transition:transform .2s var(--ease)}
+.it[aria-pressed=true]{border-color:var(--or)}
+.it[aria-pressed=true] .bx{background:var(--or);border-color:var(--or)}
+.it[aria-pressed=true] .bx svg{transform:scale(1)}
+.it small{display:block;font:500 12px var(--b);color:var(--mute);margin-top:2px}
+@media(max-width:960px){.ck{grid-template-columns:1fr}.items{grid-template-columns:1fr}}
+
+/* 11 datos */
+.fm{grid-template-columns:1fr 1.4fr;align-items:start}
+.way{display:grid;gap:12px}
+.way .card{display:flex;align-items:center;gap:14px;font:700 15px var(--d)}
+.way svg{width:30px;flex:none;stroke:var(--or);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.way small{display:block;font:500 12px var(--b);color:var(--mute);margin-top:2px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fld{display:grid;gap:6px}
+.fld label{font:600 11px var(--d);letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.fld input{min-height:48px;padding:0 14px;border-radius:12px;border:1px solid var(--line2);background:var(--card);color:#fff;font:500 15px var(--b);width:100%}
+.fld input::placeholder{color:var(--dim)}
+.fld.f{grid-column:span 2}
+.act{grid-column:span 2;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.act .btn{cursor:pointer}
+.ok{font:600 13px var(--d);color:var(--or);opacity:0;transition:opacity .2s}
+.ok.on{opacity:1}
+@media(max-width:960px){.fm{grid-template-columns:1fr}}
+@media(max-width:520px){.fields{grid-template-columns:1fr}.fld.f,.act{grid-column:span 1}}
+
+/* cierre */
+.end{text-align:center;justify-items:center}
+.end>*{max-width:none;width:auto}
+.end img{width:clamp(90px,14vw,150px)}
+.end h2{font-size:clamp(30px,6vw,64px);font-weight:800}
+.end .kz{font:800 clamp(80px,16vw,200px)/1 var(--jp);color:transparent;-webkit-text-stroke:2px var(--or)}
+
+@media (prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{animation:none!important;transition:none!important}
+ .rv{opacity:1;transform:none}
+ .sym circle,.ez .curve{stroke-dashoffset:0}
+ .bar i{transform:scaleX(var(--w))}
+ .gg .fg{stroke-dashoffset:var(--o)}
+ .ln i,.st i{transform:none}
+}
+</style>
+</head>
+<body>
+<div class="prog" aria-hidden="true"></div>
+<nav class="dots" aria-label="Diapositivas"></nav>
+
+<main>
+
+<!-- 00 · PORTADA -->
+<section class="s cover" id="s0" data-t="Portada" aria-labelledby="h0">
+  <div class="sym" aria-hidden="true"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="95"/></svg><img src="../img/simbolo.webp" width="256" height="256" alt=""></div>
+  <h1 id="h0">PROMPT <span>SENIOR</span></h1>
+  <p class="sub">PORTAFOLIO UI/UX ANIMADO</p>
+  <div class="chips" aria-label="Qué incluye">
+    <span class="pill o">改善 MARK KAIZEN</span><span class="pill">Senior Creative Developer</span><span class="pill">HTML · CSS · JS vanilla</span>
+  </div>
+  <div class="hint" aria-hidden="true"><i></i>Desliza</div>
+</section>
+
+<!-- 01 · ROL -->
+<section class="s" id="s1" data-t="Rol" aria-labelledby="h1b">
+  <span class="k" aria-hidden="true" lang="ja">役</span>
+  <div class="hd rv"><span class="n" aria-hidden="true">01</span><div class="t"><span class="eb">ROL</span><h2 id="h1b">Quién eres</h2></div></div>
+  <div class="grid rol">
+    <div class="who rv" style="--i:1">
+      <span class="lbl">10+ años · estudio de diseño</span>
+      <h3>Decide. Justifica. <span class="or">Entrega código listo.</span></h3>
+      <div class="chips" style="justify-content:flex-start"><span class="pill x">Plantillas genéricas</span><span class="pill o">Oficio con intención</span></div>
+    </div>
+    <div class="orbit rv" style="--i:2" role="img" aria-label="Senior Creative Developer más UI/UX Designer, rodeado de motion design, front-end ligero, accesibilidad y rendimiento">
+      <div class="ring"></div>
+      <div class="core">Senior<br>Creative<br>Dev + UX</div>
+      <div class="sat"><svg viewBox="0 0 24 24"><path d="M4 18c4-1 3-12 8-12s4 11 8 12"/></svg>Motion</div>
+      <div class="sat"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>Front-end</div>
+      <div class="sat"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M5 9h14M12 9v6M9 21l3-6 3 6"/></svg>A11y</div>
+      <div class="sat"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Rendimiento</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · CONTEXTO -->
+<section class="s" id="s2" data-t="Contexto" aria-labelledby="h2b">
+  <span class="k" aria-hidden="true" lang="ja">構</span>
+  <div class="hd rv"><span class="n" aria-hidden="true">02</span><div class="t"><span class="eb">CONTEXTO · YA IMPLEMENTADO</span><h2 id="h2b">El mapa del repo</h2></div></div>
+  <div class="grid ctx">
+    <div class="map rv" style="--i:1" role="img" aria-label="index.html conectado con anime.css y anime.js, origen.css y origen.js, musica.json y marca.html con el manual PDF">
+      <svg class="l" viewBox="0 0 160 110" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M80 55 L28 20"/><path d="M80 55 L132 20"/><path d="M80 55 L28 92"/><path d="M80 55 L132 92"/>
+      </svg>
+      <div class="node c" style="left:50%;top:50%">index.html<small>la web · secciones data-ch</small></div>
+      <div class="node" style="left:17%;top:18%">anime.css + .js<small>capa anime · opening</small></div>
+      <div class="node" style="left:83%;top:18%">origen.css + .js<small>scroll pegajoso 520vh</small></div>
+      <div class="node" style="left:17%;top:84%">musica.json<small>universo anime/dorama</small></div>
+      <div class="node law" style="left:83%;top:84%">marca.html + PDF<small>es la ley</small></div>
+    </div>
+    <div class="grid rv" style="--i:2;gap:18px">
+      <div class="read"><b aria-hidden="true">1</b>Primera tarea: LEER y reutilizar. No duplicar sistemas.</div>
+      <span class="lbl">Secciones de index.html</span>
+      <div class="kj" lang="ja">
+        <span>戦略<small>estrategia</small></span><span>結果<small>resultados</small></span><span>作品<small>trabajos</small></span><span>経歴<small>trayectoria</small></span><span>動画<small>contenido</small></span><span>宇宙<small>universo</small></span><span>音楽<small>música</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · MARCA -->
+<section class="s" id="s3" data-t="Marca" aria-labelledby="h3b">
+  <span class="k" aria-hidden="true" lang="ja">印</span>
+  <div class="hd rv"><span class="n" aria-hidden="true">03</span><div class="t"><span class="eb">SISTEMA DE MARCA · INNEGOCIABLE</span><h2 id="h3b">Tres colores. Tres familias.</h2></div></div>
+  <div class="grid brand">
+    <div class="sw k1 rv" style="--i:0"><b>Negro</b><span>#0B0B0F</span></div>
+    <div class="sw k2 rv" style="--i:1"><b>Blanco</b><span>#FFFFFF</span></div>
+    <div class="sw k3 rv" style="--i:2"><b>Naranja</b><span>#FF6B00</span></div>
+    <div class="tones rv" style="--i:3" role="img" aria-label="Los grises son tonos del negro"><i style="background:#0B0B0F"></i><i style="background:#151515"></i><i style="background:#1C1C1F"></i><i style="background:#26262B"></i><i style="background:#36363D"></i><i style="background:#71717B"></i><i style="background:#A9A9B3"></i></div>
+
+    <div class="card tp fs rv" style="--i:3"><span class="g">Aa</span><b>Sora</b><span class="lbl">Títulos</span></div>
+    <div class="card tp i rv" style="--i:4"><span class="g">Aa</span><b>Inter</b><span class="lbl">Texto</span></div>
+    <div class="card tp j rv" style="--i:5"><span class="g" lang="ja">改善</span><b>Noto Sans JP</b><span class="lbl">Kanji</span></div>
+
+    <div class="card ez rv" style="--i:6">
+      <span class="lbl">Curva de marca · ease-kaizen</span>
+      <svg viewBox="0 0 220 110" role="img" aria-label="Curva cubic-bezier .2 .8 .2 1">
+        <path d="M10 100H210M10 100V10" stroke="#36363D" stroke-width="1.5" fill="none"/>
+        <path class="curve" d="M10 100 C 54 20, 54 10, 210 10"/>
+        <circle cx="210" cy="10" r="5" fill="#FF6B00"/>
+      </svg>
+      <code>cubic-bezier(.2, .8, .2, 1)</code>
+    </div>
+    <div class="card tm rv" style="--i:7">
+      <span class="lbl">Tiempos</span>
+      <div class="bar"><span>200 ms</span><i style="--w:.14"></i></div>
+      <div class="bar"><span>500–800 ms</span><i style="--w:.5"></i></div>
+      <div class="bar"><span>1.2–2 s</span><i style="--w:1"></i></div>
+      <span class="mute" style="font-size:12px">hover · apariciones · intro del logo</span>
+    </div>
+
+    <div class="card ban rv" style="--i:8">
+      <span class="pill o">Directa</span><span class="pill o">Segura</span><span class="pill o">Creativa</span>
+      <span class="pill x">Gamer</span><span class="pill x">Infantil</span><span class="pill x">Recargado</span>
+      <span class="lbl" style="flex-basis:100%;margin-top:6px">“Un opening de anime hecho por un estudio de diseño”</span>
+    </div>
+    <div class="card safe rv" style="--i:9">
+      <div class="lg"><img src="../img/simbolo-256.png" width="256" height="256" alt="Símbolo MARK KAIZEN con su área de seguridad"></div>
+      <div style="display:grid;gap:6px"><b style="font:800 16px var(--d)">Logo intocable</b><span class="mute" style="font-size:13px">No se redibuja, no se deforma. Área de seguridad = ancho del trazo naranja.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · OBJETIVO -->
+<section class="s" id="s4" data-t="Objetivo" aria-labelledby="h4b">
+  <span class="k" aria-hidden="true" lang="ja">目</span>
+  <div class="hd rv"><span class="n" aria-hidden="true">04</span><div class="t"><span class="eb">OBJETIVO</span><h2 id="h4b">De web anime a portafolio pro</h2></div></div>
+  <div class="grid ob">
+    <div class="card rv" style="--i:1"><span class="lbl">Hoy</span><h3>Web con identidad anime / dorama</h3><div class="chips" style="justify-content:flex-start"><span class="pill">Opening</span><span class="pill">Paneles 第N話</span><span class="pill">Universo</span></div></div>
+    <div class="arrow rv" style="--i:2" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h17M14 6l6 6-6 6"/></svg></div>
+    <div class="card to rv" style="--i:3"><span class="lbl or">Meta</span><h3>Portafolio de programador UI/UX</h3><div class="chips" style="justify-content:flex-start"><span class="pill o">Oficio técnico</span><span class="pill o">Criterio de diseño</span></div></div>
+  </div>
+  <div class="aud rv" style="--i:4">
+    <div class="card"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/></svg><span>Profesional para un <span class="or">reclutador</span></span></div>
+    <div class="card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg><span>Memorable para un <span class="or">cliente</span></span></div>
+  </div>
+</section>
+
+<!-- 05 · ENTREGABLES -->
+<section class="s" id="s5" data-t="Entregables" aria-labelledby="h5b">
+  <span class="k" aria-hidden="true" lang="ja">納</span>
+  <div class="hd rv"><span class="n" aria-hidden="true">05</span><div class="t"><span class="eb">QUÉ DEBES ENTREGAR · EN ORDEN</span><h2 id="h5b">Cuatro pasos</h2></div></div>
+  <div class="grid flow">
+    <div class="card step rv" style="--i:1"><span class="no">1</span><h3>Auditoría</h3><p>Qué funciona, qué es genérico, qué rompe la marca.</p><div class="mini"><i>máx. 15 líneas</i></div></div>
+    <div class="card step rv" style="--i:2"><span class="no">2</span><h3>3 conceptos</h3><p>Nombre, idea, boceto y riesgo. Recomienda uno.</p><div class="mini"><i>A</i><i>B</i><i>C</i></div></div>
+    <div class="card step rv" style="--i:3"><span class="no">3</span><h3>Implementación</h3><p>Concepto elegido, por archivos, con diffs. Sin romper lo existente.</p><div class="mini"><i>diffs claros</i></div></div>
+    <div class="card step rv" style="--i:4"><span class="no">4</span><h3>Checklist</h3><p>Ejecutada con resultado real, no supuesto.</p><div class="mini"><i>evidencia</i></div></div>
+  </div>
+</section>
+
+<!-- 06 · IDEAS -->
+<section class="s" id="s6" data-t="Ideas" aria-labelledby="h6b">
+  <span class="k" aria-hidden="true" lang="ja">案</span>
+  <div class="hd rv"><span class="n" aria-hidden="true">06</span><div class="t"><span class="eb">IDEAS CREATIVAS · ELIGE CON CRITERIO</span><h2 id="h6b">Nueve ideas, no todas</h2></div></div>
+  <div class="grid bento">
+    <article class="card idea rv" style="--i:0"><div class="vz"><div class="ln" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div><div><h3>Código como manga</h3><p>Editor real dentro de los paneles 第N話.</p></div></article>
+    <article class="card idea rv" style="--i:1"><div class="vz"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="#36363D" stroke-width="2"/><path d="M32 2v60M2 32h60" stroke="#36363D" stroke-width="2"/><path d="M32 32V2a30 30 0 0 1 30 30z" fill="#FF6B00"/></svg></div><div><h3>Ciclo Kaizen</h3><p>Plan · Do · Check · Act como yin-yang con scroll.</p></div></article>
+    <article class="card idea rv" style="--i:2"><div class="vz"><div class="credits" aria-hidden="true"><div><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div><div><h3>Créditos finales</h3><p>Commits, stack e hitos al estilo ending.</p></div></article>
+    <article class="card idea rv" style="--i:3"><div class="vz"><svg viewBox="0 0 140 40" aria-hidden="true"><path d="M4 28C30 6 52 40 80 20S120 8 136 22" fill="none" stroke="#FF6B00" stroke-width="5" stroke-linecap="round"/></svg></div><div><h3>Trazo de pincel SVG</h3><p>Divisores que se dibujan (stroke-dashoffset).</p></div></article>
+    <article class="card idea rv" style="--i:4"><div class="vz"><div class="hk" lang="ja" aria-hidden="true">改</div></div><div><h3>Sello hanko</h3><p>Se estampa al revelar cada proyecto.</p></div></article>
+    <article class="card idea rv" style="--i:5"><div class="vz"><div class="tilt" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div><div><h3>Bento de proyectos</h3><p>Stack, rol y resultado medible.</p></div></article>
+    <article class="card idea rv" style="--i:6"><div class="vz"><span class="kin" lang="ja" aria-hidden="true">作</span></div><div><h3>Tipografía cinética</h3><p>Kanji en contorno con parallax suave.</p></div></article>
+    <article class="card idea rv" style="--i:7"><div class="vz"><div class="pg" aria-hidden="true"><i></i><i></i></div></div><div><h3>View Transitions</h3><p>index ↔ marca con barrido de pincel.</p></div></article>
+    <article class="card idea rv" style="--i:8"><div class="vz"><div class="flt" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div><div><h3>Universo como datos</h3><p>Filtros FLIP y música sincronizada.</p></div></article>
+  </div>
+</section>
+
+<!-- 07 · MOTION -->
+<section class="s" id="s7" data-t="Motion" aria-labelledby="h7b">
+  <span class="k" aria-hidden="true" lang="ja">動</span>
+  <div class="hd rv"><span class="n" aria-hidden="true">07</span><div class="t"><span class="eb">REGLAS DE MOTION · NIVEL SENIOR</span><h2 id="h7b">Mover con intención</h2></div></div>
+  <div class="grid mo" id="mo">
+    <div class="card m1 rv" style="--i:0"><span class="lbl">Solo se anima</span>
+      <div class="row"><span class="pill o">transform</span><span class="pill o">opacity</span></div>
+      <span class="lbl">Nunca</span>
+      <div class="row"><span class="pill x">top</span><span class="pill x">left</span><span class="pill x">width</span><span class="pill x">height</span><span class="pill x">box-shadow</span></div></div>
+    <div class="card m2 rv" style="--i:1"><span class="lbl">Escalonado · 40–80 ms</span>
+      <div class="st" aria-hidden="true"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i></div></div>
+    <div class="card m3 rv" style="--i:2"><span class="lbl">1 idea + 2 acentos</span>
+      <div class="big" aria-hidden="true"><i></i><i></i><i></i></div><span class="mute" style="font-size:13px">Si todo se mueve, nada destaca.</span></div>
+    <div class="card m4 rv" style="--i:3"><span class="lbl">Mejora progresiva</span>
+      <div class="row"><span class="pill o">animation-timeline</span></div><div class="row"><span class="pill">↳ IntersectionObserver</span></div>
+      <span class="mute" style="font-size:13px">will-change solo durante la animación. Pausa lo que está fuera de pantalla.</span></div>
+    <div class="card m5 rv" style="--i:4"><div class="rm"><div><span class="lbl">prefers-reduced-motion</span><div style="font:700 15px var(--d);margin-top:4px">Todo visible y quieto</div></div>
+      <button class="sw2" id="rm" aria-pressed="false" aria-label="Simular reducir movimiento"></button></div>
+      <div class="demo" aria-hidden="true"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i></div></div>
+  </div>
+</section>
+
+<!-- 08 · UI/UX -->
+<section class="s" id="s8" data-t="UI / UX" aria-labelledby="h8b">
+  <span class="k" aria-hidden="true" lang="ja">界</span>
+  <div class="hd rv"><span class="n" aria-hidden="true">08</span><div class="t"><span class="eb">UI / UX</span><h2 id="h8b">Claro, táctil, accesible</h2></div></div>
+  <div class="grid ux">
+    <div class="card u1 rv" style="--i:0"><span class="lbl">Mobile-first real · 320 → 1440 px</span>
+      <div class="vps" role="img" aria-label="Móvil 320, tablet 768, escritorio 1440"><div class="vp a"><i></i>320</div><div class="vp b"><i></i>768</div><div class="vp c"><i></i>1440</div></div></div>
+    <div class="card u2 rv" style="--i:1"><span class="lbl">Objetivos táctiles ≥ 44 px</span>
+      <div class="tt"><div class="t44">44</div><span class="mute" style="font-size:13px">+ safe-area-inset en los bordes</span></div>
+      <span class="lbl">Foco visible en naranja</span><div class="fo">Tab → siguiente elemento</div></div>
+    <div class="card u3 rv" style="--i:2"><span class="lbl">Una acción principal</span>
+      <div class="cta"><span class="btn">Contactar</span><span class="btn g">Ver proyecto</span></div>
+      <span class="mute" style="font-size:13px">CTA naranja · el resto en blanco/gris.</span></div>
+    <div class="card u4 rv" style="--i:3"><span class="lbl">Cada proyecto cuenta una historia</span>
+      <div class="story"><div>Problema<small>qué dolía</small></div><div>Decisión<small>de diseño</small></div><div class="or">Resultado<small>medible</small></div></div></div>
+  </div>
+</section>
+
+<!-- 09 · RENDIMIENTO -->
+<section class="s" id="s9" data-t="Rendimiento" aria-labelledby="h9b">
+  <span class="k" aria-hidden="true" lang="ja">速</span>
+  <div class="hd rv"><span class="n" aria-hidden="true">09</span><div class="t"><span class="eb">RENDIMIENTO Y CALIDAD · CRITERIOS DE ACEPTACIÓN</span><h2 id="h9b">Core Web Vitals</h2></div></div>
+  <div class="grid pf">
+    <div class="card g3 rv" style="--i:0"><div class="gg"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" style="--o:63"/></svg><b>2.5 s</b></div><h3>LCP</h3><span class="lbl">≤ 2.5 s</span></div>
+    <div class="card g3 rv" style="--i:1"><div class="gg"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" style="--o:80"/></svg><b>200 ms</b></div><h3>INP</h3><span class="lbl">≤ 200 ms</span></div>
+    <div class="card g3 rv" style="--i:2"><div class="gg"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" style="--o:250"/></svg><b>0.1</b></div><h3>CLS</h3><span class="lbl">≤ 0.1</span></div>
+    <div class="card l3 rv" style="--i:3">
+      <figure><div class="gg"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" style="--o:31"/></svg><b>90</b></div>Performance</figure>
+      <figure><div class="gg"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" style="--o:31"/></svg><b>90</b></div>Accessibility</figure>
+      <figure><div class="gg"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" style="--o:31"/></svg><b>90</b></div>Best Practices</figure>
+    </div>
+    <div class="card q3 rv" style="--i:4"><span class="lbl">Contraste AA mínimo</span>
+      <div class="ct"><span class="w">Negro sobre blanco</span><span class="o">Naranja sobre negro</span></div>
+      <div class="row"><span class="pill">WebP / AVIF</span><span class="pill">width / height</span><span class="pill">lazy</span><span class="pill">Sin frameworks nuevos</span><span class="pill">GitHub Pages</span></div></div>
+  </div>
+</section>
+
+<!-- 10 · CHECKLIST -->
+<section class="s" id="s10" data-t="Checklist" aria-labelledby="h10b">
+  <span class="k" aria-hidden="true" lang="ja">確</span>
+  <div class="hd rv"><span class="n" aria-hidden="true">10</span><div class="t"><span class="eb">ANTES DE DECIR “LISTO”</span><h2 id="h10b">“Compila” no es “terminado”</h2></div></div>
+  <div class="grid ck">
+    <div class="big2 rv" style="--i:0"><div class="gg"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" id="cf" cx="60" cy="60" r="50" style="stroke-dashoffset:314"/></svg><b id="cn">0/8</b></div><span class="mute" style="font-size:13px">Marca cada punto con evidencia: captura, salida o valor medido.</span></div>
+    <div class="items" id="items">
+      <button class="it rv" style="--i:1" aria-pressed="false"><span class="bx"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></span><span>Se ve bien en 360 · 768 · 1440 px<small>capturas</small></span></button>
+      <button class="it rv" style="--i:2" aria-pressed="false"><span class="bx"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></span><span>Reduced-motion: todo legible y funcional</span></button>
+      <button class="it rv" style="--i:3" aria-pressed="false"><span class="bx"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></span><span>Solo transform y opacity<small>revisión del CSS</small></span></button>
+      <button class="it rv" style="--i:4" aria-pressed="false"><span class="bx"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></span><span>Cero colores o fuentes fuera de marca</span></button>
+      <button class="it rv" style="--i:5" aria-pressed="false"><span class="bx"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></span><span>Lighthouse móvil ≥ 90<small>Performance · Accessibility · Best Practices</small></span></button>
+      <button class="it rv" style="--i:6" aria-pressed="false"><span class="bx"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></span><span>Navegación solo con teclado, punta a punta</span></button>
+      <button class="it rv" style="--i:7" aria-pressed="false"><span class="bx"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></span><span>Logo sin alterar, con su área de seguridad</span></button>
+      <button class="it rv" style="--i:8" aria-pressed="false"><span class="bx"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></span><span>Sin personajes de animes fuera de la galería</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · FORMA DE TRABAJO + DATOS -->
+<section class="s" id="s11" data-t="Datos" aria-labelledby="h11b">
+  <span class="k" aria-hidden="true" lang="ja">入</span>
+  <div class="hd rv"><span class="n" aria-hidden="true">11</span><div class="t"><span class="eb">FORMA DE TRABAJO · DATOS A COMPLETAR</span><h2 id="h11b">Completa y pega</h2></div></div>
+  <div class="grid fm">
+    <div class="way rv" style="--i:1">
+      <div class="card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17v.01M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7"/><circle cx="12" cy="12" r="10"/></svg><span>Falta info crítica → <span class="or">una</span> pregunta<small>si no, decide y deja la suposición escrita</small></span></div>
+      <div class="card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Directo: decisión, razón, código<small>sin conceptos básicos</small></span></div>
+      <div class="card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 17H3z"/><path d="M12 10v4M12 17v.01"/></svg><span>Cada idea creativa: su riesgo<small>y cómo se mitiga para la marca</small></span></div>
+    </div>
+    <form class="fields rv" style="--i:2" id="fm" onsubmit="return false">
+      <div class="fld f"><label for="f1">Rol / servicio a destacar</label><input id="f1" placeholder="Trafficker Digital + Desarrollo front-end UI/UX"></div>
+      <div class="fld"><label for="f2">Público objetivo</label><input id="f2" placeholder="reclutadores / clientes / ambos"></div>
+      <div class="fld"><label for="f3">Proyectos (nombre, stack, resultado)</label><input id="f3" placeholder="lista"></div>
+      <div class="fld"><label for="f4">Enlaces y contacto</label><input id="f4" placeholder="WhatsApp / correo / LinkedIn / GitHub"></div>
+      <div class="fld"><label for="f5">Referencias (opcional)</label><input id="f5" placeholder="URLs"></div>
+      <div class="act"><button class="btn" id="cp" type="button">Copiar datos</button><span class="ok" id="ok" role="status">Copiado</span></div>
+    </form>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="s end" id="s12" data-t="Fin" aria-labelledby="h12">
+  <div class="cut" aria-hidden="true"></div>
+  <img src="../img/simbolo-256.png" width="256" height="256" alt="Símbolo MARK KAIZEN" class="rv">
+  <h2 id="h12" class="rv" style="--i:1">Mejora <span class="or">continua</span></h2>
+  <div class="kz rv" style="--i:2" lang="ja" aria-hidden="true">改善</div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var slides=[].slice.call(document.querySelectorAll('.s'));
+  var nav=document.querySelector('.dots');
+  slides.forEach(function(s,i){
+    var a=document.createElement('a');a.href='#'+s.id;a.setAttribute('aria-label',(i+1)+'. '+s.dataset.t);a.innerHTML='<i></i>';nav.appendChild(a);
+  });
+  var dots=[].slice.call(nav.children);
+
+  // revelar y marcar diapositiva activa (solo clases; el movimiento vive en CSS: transform + opacity)
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');var i=slides.indexOf(e.target);dots.forEach(function(d,j){d.classList.toggle('on',i===j)})}
+    });
+  },{threshold:.35});
+  slides.forEach(function(s){io.observe(s)});
+
+  // progreso de scroll
+  var bar=document.querySelector('.prog'),tick=false;
+  function prog(){var h=document.documentElement;bar.style.setProperty('--sp',(h.scrollTop/(h.scrollHeight-h.clientHeight||1)).toFixed(4));tick=false}
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(prog)}},{passive:true});prog();
+
+  // simulador de reduced-motion
+  var rm=document.getElementById('rm'),mo=document.getElementById('mo');
+  rm.addEventListener('click',function(){var on=rm.getAttribute('aria-pressed')!=='true';rm.setAttribute('aria-pressed',on);document.body.classList.toggle('rmon',on)});
+
+  // checklist con anillo de progreso
+  var items=[].slice.call(document.querySelectorAll('.it')),cf=document.getElementById('cf'),cn=document.getElementById('cn');
+  function upd(){var n=items.filter(function(b){return b.getAttribute('aria-pressed')==='true'}).length;cn.textContent=n+'/'+items.length;cf.style.strokeDashoffset=314*(1-n/items.length)}
+  items.forEach(function(b){b.addEventListener('click',function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true');upd()})});
+
+  // copiar datos del formulario
+  var cp=document.getElementById('cp'),ok=document.getElementById('ok');
+  cp.addEventListener('click',function(){
+    var L=['Rol / servicio a destacar','Público objetivo','Proyectos (nombre, stack, resultado)','Enlaces y contacto','Referencias'];
+    var t=L.map(function(l,i){return '- '+l+': '+(document.getElementById('f'+(i+1)).value||'[completar]')}).join('\n');
+    (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).catch(function(){var x=document.createElement('textarea');x.value=t;document.body.appendChild(x);x.select();try{document.execCommand('copy')}catch(e){}x.remove()}).then(function(){});
+    ok.classList.add('on');setTimeout(function(){ok.classList.remove('on')},1800);
+  });
+})();
+</script>
+</body></html>
