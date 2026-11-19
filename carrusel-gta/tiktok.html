@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>MARK KAIZEN · Carrusel TikTok 9:16</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Sora:wght@600;700;800&family=Noto+Sans+JP:wght@700;800&display=swap" rel="stylesheet">
+<style>
+/* Carrusel 1080x1350 (4:5). Marca: negro #0B0B0F, blanco, naranja #FF6B00. Fuentes: Sora / Inter / Noto Sans JP.
+   Neones Vice City añadidos: rosa #FF2E97, cian #19E3FF, violeta #6A1BFF. Arte 100% propio, sin material de terceros. */
+:root{--ink:#0B0B0F;--or:#FF6B00;--pk:#FF2E97;--cy:#19E3FF;--vi:#6A1BFF;--ye:#FFD23F;
+ --d:'Sora',system-ui,sans-serif;--b:'Inter',system-ui,sans-serif;--jp:'Noto Sans JP',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#050507}
+body{display:flex;flex-direction:column;align-items:center;gap:28px;padding:28px;font-family:var(--b);color:#fff;-webkit-font-smoothing:antialiased}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--ink);isolation:isolate;flex:none}
+.slide>*{position:absolute}
+/* capas comunes */
+.sky{inset:0;z-index:0}
+.scan{inset:0;z-index:20;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.09) 0 2px,transparent 2px 5px);mix-blend-mode:multiply}
+.vig{inset:0;z-index:21;pointer-events:none;background:radial-gradient(120% 90% at 50% 45%,transparent 55%,rgba(0,0,0,.55))}
+.top{z-index:15;left:70px;right:70px;top:58px;display:flex;justify-content:space-between;align-items:center;font:700 22px var(--d);letter-spacing:.22em;text-transform:uppercase}
+.top b{color:var(--or)}
+.foot{z-index:15;left:70px;right:70px;bottom:54px;display:flex;justify-content:space-between;align-items:center;font:700 22px var(--d);letter-spacing:.22em;text-transform:uppercase}
+.foot .lg{display:flex;align-items:center;gap:14px}.foot .lg img{width:58px;height:58px}
+.foot .nx{color:var(--cy);text-shadow:0 0 14px var(--cy)}
+.neon-pk{color:#fff;text-shadow:0 0 10px var(--pk),0 0 28px var(--pk),0 0 64px var(--pk)}
+.neon-cy{color:#fff;text-shadow:0 0 10px var(--cy),0 0 28px var(--cy),0 0 64px var(--cy)}
+.sk{transform:skewX(-9deg)}
+.glow{filter:drop-shadow(0 0 18px rgba(255,46,151,.75)) drop-shadow(0 0 46px rgba(255,107,0,.55))}
+.floor{left:-30%;right:-30%;bottom:-6%;height:36%;z-index:1;transform:perspective(520px) rotateX(62deg);transform-origin:50% 100%;
+ background:linear-gradient(var(--cy) 0 2px,transparent 2px) 0 0/100% 70px,linear-gradient(90deg,var(--cy) 0 2px,transparent 2px) 0 0/90px 100%;opacity:.55;
+ -webkit-mask-image:linear-gradient(0deg,#000 20%,transparent);mask-image:linear-gradient(0deg,#000 20%,transparent)}
+.palm{z-index:3;fill:#07040f}
+.gr{left:0;right:0;bottom:0;height:190px;z-index:4;background:linear-gradient(180deg,transparent,rgba(7,4,15,.92) 62%)}.sun{z-index:1}
+.sky svg.sk-svg{position:absolute;left:0;bottom:0;width:100%}
+
+/* ---- 1 portada ---- */
+.s1 .sky{background:linear-gradient(180deg,#1a0640 0%,#5b1b9e 28%,#ff2e97 58%,#ff6b00 82%,#ffb347 100%)}
+.s1 .sun{left:170px;top:210px;width:740px;height:740px}
+.s1 .av{z-index:6;left:330px;top:370px;width:420px;height:420px;border-radius:50%;background:#0B0B0F;box-shadow:0 0 0 10px #0B0B0F,0 0 80px rgba(255,46,151,.8)}
+.s1 .av img{width:100%;height:100%;display:block}
+.s1 .kick{z-index:10;left:0;right:0;top:150px;text-align:center;font:800 26px var(--d);letter-spacing:.3em;color:var(--cy);text-shadow:0 0 16px var(--cy)}
+.s1 .h{z-index:10;left:0;right:0;top:850px;text-align:center}
+.s1 .h small{display:block;font:800 64px/1 var(--d);letter-spacing:.06em;color:#fff;text-shadow:0 6px 0 rgba(0,0,0,.55)}
+.s1 .h strong{display:block;margin-top:6px;font:800 168px/.95 var(--d);letter-spacing:-.02em;white-space:nowrap;background:linear-gradient(180deg,#fff 5%,#ffd0ea 30%,#FF2E97 62%,#FF6B00 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 8px 0 rgba(0,0,0,.5)) drop-shadow(0 0 36px rgba(255,46,151,.7))}
+.s1 .sub{z-index:10;left:0;right:0;top:1120px;text-align:center;font:600 34px var(--b);color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.7)}
+.s1 .pl{left:-60px;bottom:100px;width:470px;height:880px}.s1 .pr{right:-60px;bottom:100px;width:470px;height:880px;transform:scaleX(-1)}
+
+/* ---- 2 personaje ---- */
+.s2 .sky{background:linear-gradient(180deg,#05020f 0%,#1c0a55 55%,#7a1fa8 100%)}
+.s2 .city{left:0;right:0;bottom:0;height:520px;z-index:1}
+.s2 .t{z-index:10;left:70px;right:70px;top:150px}
+.s2 .t small{display:block;font:700 26px var(--d);letter-spacing:.3em;color:var(--cy);text-shadow:0 0 14px var(--cy)}
+.s2 .t h2{margin-top:16px;font:800 118px/.95 var(--d);letter-spacing:-.02em}
+.s2 .card{z-index:10;left:70px;right:70px;top:480px;height:690px;border:3px solid var(--pk);border-radius:34px;background:rgba(8,4,24,.78);box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 0 50px rgba(255,46,151,.45),0 0 120px rgba(106,27,255,.3);backdrop-filter:blur(6px)}
+.s2 .card>*{position:absolute}
+.s2 .por{left:50px;top:56px;width:330px;height:330px;border-radius:50%;box-shadow:0 0 0 6px var(--or),0 0 60px rgba(255,107,0,.7);background:#0B0B0F}
+.s2 .por img{width:100%;height:100%;display:block}
+.s2 .nm{left:420px;top:62px;right:44px}
+.s2 .nm b{display:block;font:800 48px/1 var(--d);white-space:nowrap}
+.s2 .nm span{display:block;margin-top:14px;font:600 28px/1.25 var(--b);color:#d9cdf5}
+.s2 .nm em{display:inline-block;margin-top:20px;font:800 22px var(--d);letter-spacing:.14em;padding:10px 18px;border-radius:10px;background:var(--or);color:#0B0B0F;font-style:normal}
+.s2 .st{left:50px;right:50px;top:440px;display:grid;gap:22px}
+.s2 .r{display:grid;grid-template-columns:230px 1fr 90px;align-items:center;gap:18px;font:700 26px var(--d);letter-spacing:.08em}
+.s2 .r i{display:block;height:24px;border-radius:12px;background:rgba(255,255,255,.12);overflow:hidden}
+.s2 .r i u{display:block;height:100%;border-radius:12px;background:linear-gradient(90deg,var(--pk),var(--or))}
+.s2 .r.c i u{background:linear-gradient(90deg,var(--cy),#7df)}
+.s2 .r em{text-align:right;font-style:normal;color:var(--ye)}
+
+/* ---- 3 se busca ---- */
+.s3 .sky{background:radial-gradient(70% 55% at 0% 0%,rgba(255,30,60,.65),transparent 70%),radial-gradient(70% 55% at 100% 0%,rgba(30,90,255,.7),transparent 70%),linear-gradient(180deg,#0a0614,#150a2c 60%,#2a0b3a)}
+.s3 .st{z-index:10;left:0;right:0;top:140px;text-align:center}
+.s3 .st small{display:block;font:800 26px var(--d);letter-spacing:.34em;color:#fff}
+.s3 .st div{margin-top:10px;font:800 130px/1 var(--d);letter-spacing:.06em;color:var(--ye);text-shadow:0 0 12px rgba(255,210,63,.8),0 0 50px rgba(255,150,0,.6)}
+.s3 .st div s{text-decoration:none;color:rgba(255,255,255,.16);text-shadow:none}
+.s3 .poster{z-index:10;left:150px;right:150px;top:410px;height:830px;background:#f3e6c8;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 0 14px #2a1a10 inset;transform:rotate(-2.2deg);color:#241505;text-align:center}
+.s3 .poster h3{margin-top:52px;font:800 112px/1 var(--d);letter-spacing:.04em}
+.s3 .poster p.l{font:700 24px var(--d);letter-spacing:.3em;margin-top:6px}
+.s3 .pic{position:relative!important;left:auto;display:block;margin:30px auto 0;width:360px;height:360px;border-radius:12px;background:#0B0B0F;border:10px solid #241505}
+.s3 .pic img{width:100%;height:100%;display:block;filter:contrast(1.05)}
+.s3 .poster .cr{text-wrap:balance;margin:26px 54px 0;font:700 32px/1.25 var(--b)}
+.s3 .poster .cr b{color:#c2410c}
+.s3 .poster .rw{margin-top:14px;font:800 40px var(--d);letter-spacing:.06em}
+
+/* ---- 4 radio ---- */
+.s4 .sky{background:linear-gradient(180deg,#2a0a5e 0%,#c21d8a 42%,#ff6b00 78%,#ffb347 100%)}
+.s4 .sun{left:300px;top:215px;width:520px;height:520px;opacity:.6}
+.s4 .t{z-index:10;left:70px;right:70px;top:140px}
+.s4 .t small{display:block;font:700 26px var(--d);letter-spacing:.3em;color:#fff}
+.s4 .t h2{margin-top:12px;font:800 112px/.95 var(--d);letter-spacing:-.02em;text-shadow:0 6px 0 rgba(0,0,0,.35)}
+.s4 .t h2 span{color:var(--cy);text-shadow:0 0 14px var(--cy),0 0 50px var(--cy)}
+.s4 .dial{z-index:10;left:70px;top:440px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,#0B0B0F 0 58%,#1a1030 59%);border:6px solid #fff;box-shadow:0 0 60px rgba(25,227,255,.6),0 0 0 14px rgba(0,0,0,.35)}
+.s4 .dial img{position:absolute;left:50%;top:50%;width:190px;height:190px;margin:-95px 0 0 -95px}
+.s4 .dial svg{position:absolute;inset:0;width:100%;height:100%}
+.s4 .list{z-index:10;left:490px;right:70px;top:440px;display:grid;gap:18px}
+.s4 .tr{padding:20px 24px;border-radius:18px;background:rgba(8,4,24,.72);border:2px solid rgba(255,255,255,.25);font:700 28px/1.2 var(--d)}
+.s4 .tr small{display:block;font:700 18px var(--b);letter-spacing:.2em;color:var(--cy);margin-bottom:6px}
+.s4 .tr.on{border-color:var(--cy);box-shadow:0 0 30px rgba(25,227,255,.5)}
+.s4 .ad{z-index:10;left:70px;right:70px;top:880px;padding:34px 40px;border-radius:24px;background:#0B0B0F;border:3px dashed var(--ye);box-shadow:0 0 50px rgba(0,0,0,.5)}
+.s4 .ad small{display:block;font:800 22px var(--d);letter-spacing:.3em;color:var(--ye)}
+.s4 .ad p{margin-top:12px;font:800 54px/1.12 var(--d)}
+.s4 .ad p u{text-decoration:none;color:var(--or)}
+.s4 .dj{z-index:10;left:70px;right:70px;top:1190px;font:600 30px var(--b);color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+
+/* ---- 5 wasted ---- */
+.s5 .sky{background:linear-gradient(180deg,#2b2b2e,#0d0d10)}
+.s5 .av{z-index:3;left:300px;top:190px;width:480px;height:480px;border-radius:50%;background:#0B0B0F;filter:grayscale(1) brightness(.8);box-shadow:0 0 0 8px #3a3a40}
+.s5 .av img{width:100%;height:100%;display:block}
+.s5 .w{z-index:10;left:0;right:0;top:470px;text-align:center}
+.s5 .w div{display:inline-block;padding:6px 60px 14px;background:rgba(0,0,0,.55);font:800 210px/1 var(--d);letter-spacing:.02em;color:#d6182c;text-shadow:0 8px 0 #4b050e;transform:skewX(-6deg)}
+.s5 .rs{z-index:10;left:70px;right:70px;top:800px;text-align:center}
+.s5 .rs small{display:block;font:800 26px var(--d);letter-spacing:.34em;color:var(--cy);text-shadow:0 0 14px var(--cy)}
+.s5 .rs b{display:block;margin-top:14px;font:800 106px/1 var(--d);color:var(--or);text-shadow:0 0 30px rgba(255,107,0,.7)}
+.s5 .rs p{margin:26px 40px 0;font:600 38px/1.3 var(--b);color:#fff}
+.s5 .rs p span{color:var(--ye);font-weight:800}
+.s5 .kj{z-index:2;left:0;right:0;top:30px;text-align:center;font:800 520px/1 var(--jp);color:transparent;-webkit-text-stroke:3px rgba(255,255,255,.07);white-space:nowrap}
+
+/* ---- 6 misión cumplida ---- */
+.s6 .sky{background:linear-gradient(180deg,#1a0640 0%,#7a1fa8 30%,#ff2e97 62%,#ff6b00 88%,#ffb347 100%)}
+.s6 .sun{left:110px;top:560px;width:860px;height:860px;opacity:.55}
+.s6 .mp{z-index:10;left:0;right:0;top:140px;text-align:center}
+.s6 .mp small{display:block;font:800 26px var(--d);letter-spacing:.34em;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.s6 .mp h2{margin-top:14px;font:800 128px/.95 var(--d);letter-spacing:-.01em;background:linear-gradient(180deg,#fff 0%,#ffe9a8 35%,var(--ye) 60%,var(--or) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 8px 0 rgba(0,0,0,.45)) drop-shadow(0 0 30px rgba(255,210,63,.5))}
+.s6 .mp p{margin-top:18px;font:800 40px var(--d);letter-spacing:.08em;color:#fff;text-shadow:0 3px 0 rgba(0,0,0,.4)}
+.s6 .mp p b{color:var(--cy);text-shadow:0 0 14px var(--cy)}
+.s6 .lp{z-index:10;left:290px;top:520px;width:500px;height:500px;border-radius:44px;background:#0B0B0F;border:4px solid var(--cy);box-shadow:0 0 0 10px rgba(0,0,0,.35),0 0 70px rgba(25,227,255,.7),0 0 140px rgba(255,46,151,.5);overflow:hidden}
+.s6 .lp img{width:100%;height:100%;display:block}
+.s6 .cta{z-index:10;left:70px;right:70px;top:1062px;display:flex;justify-content:center;gap:18px}
+.s6 .cta span{padding:22px 34px;border-radius:999px;background:#0B0B0F;border:3px solid #fff;font:800 32px var(--d);letter-spacing:.1em}
+.s6 .cta span:first-child{background:var(--or);border-color:#fff;color:#0B0B0F}
+.s6 .nm{z-index:10;left:0;right:0;top:1170px;text-align:center;font:600 30px var(--b);color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.s6 .pl{left:-90px;bottom:60px;width:380px;height:720px;z-index:3}.s6 .pr{right:-90px;bottom:60px;width:380px;height:720px;transform:scaleX(-1);z-index:3}
+
+
+/* ===== TikTok 9:16 · 1080x1920 · zona segura: y 150–1440, x 70–960 (botones a la derecha, texto abajo) ===== */
+.slide{height:1920px}
+.slide>*:not(.sky):not(.scan):not(.vig):not(.floor):not(.gr):not(.city){translate:0 150px}
+.slide>.sky{height:1920px}
+.gr{height:700px;background:linear-gradient(180deg,transparent,rgba(7,4,15,.95) 38%)}
+.s2 .city{height:620px}
+.top{left:70px;right:150px}.foot{right:150px;bottom:auto;top:1236px}
+@media print{body{padding:0;gap:0}.slide{break-after:page}}
+</style>
+</head>
+<body>
+
+<!-- símbolos reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="palm" viewBox="0 0 240 460">
+  <path d="M104 460 C104 340 112 240 138 150 L150 153 C128 242 122 342 126 460 Z"/>
+  <g id="frs">
+   <path d="M144 150 C110 94 48 90 2 140 C50 116 100 122 144 150 Z" transform="rotate(-42 144 150)"/>
+   <path d="M144 150 C110 94 48 90 2 140 C50 116 100 122 144 150 Z" transform="rotate(-12 144 150)"/>
+   <path d="M144 150 C110 94 48 90 2 140 C50 116 100 122 144 150 Z" transform="rotate(22 144 150)"/>
+   <path d="M144 150 C110 94 48 90 2 140 C50 116 100 122 144 150 Z" transform="rotate(54 144 150)"/>
+   <path d="M144 150 C110 94 48 90 2 140 C50 116 100 122 144 150 Z" transform="translate(288 0) scale(-1 1) rotate(-30 144 150)"/>
+   <path d="M144 150 C110 94 48 90 2 140 C50 116 100 122 144 150 Z" transform="translate(288 0) scale(-1 1) rotate(2 144 150)"/>
+   <path d="M144 150 C110 94 48 90 2 140 C50 116 100 122 144 150 Z" transform="translate(288 0) scale(-1 1) rotate(38 144 150)"/>
+  </g>
+ </symbol>
+ <symbol id="sunsym" viewBox="0 0 400 400">
+  <defs>
+   <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE45C"/><stop offset=".45" stop-color="#FF9A3C"/><stop offset="1" stop-color="#FF2E97"/></linearGradient>
+   <mask id="sm"><rect width="400" height="400" fill="#fff"/>
+    <rect y="236" width="400" height="7"/><rect y="264" width="400" height="11"/><rect y="294" width="400" height="15"/><rect y="326" width="400" height="19"/><rect y="362" width="400" height="26"/></mask>
+  </defs>
+  <circle cx="200" cy="200" r="196" fill="url(#sg)" mask="url(#sm)"/>
+ </symbol>
+</defs></svg>
+
+<!-- 1 · PORTADA -->
+<section class="slide s1" id="s1">
+ <div class="sky"></div>
+ <svg class="sun"><use href="#sunsym"/></svg>
+ <svg class="palm pl" viewBox="0 0 240 460"><use href="#palm"/></svg>
+ <svg class="palm pr" viewBox="0 0 240 460"><use href="#palm"/></svg>
+ <div class="floor"></div><div class="gr"></div>
+ <div class="top"><span><b>★</b> Mark Kaizen</span><span>01 / 06</span></div>
+ <div class="kick">▶ NUEVO PERSONAJE DESBLOQUEADO</div>
+ <div class="av glow"><img src="../img/simbolo.webp" alt="Avatar MARK KAIZEN: dragón y gato"></div>
+ <div class="h sk"><small>BIENVENIDO A</small><strong>MARK CITY</strong></div>
+ <div class="sub">Mi avatar, versión Vice City 🌴</div>
+ <div class="foot"><span class="lg"><img src="../img/simbolo.webp" alt=""> Mark Kaizen</span><span class="nx">Desliza ➜</span></div>
+ <div class="scan"></div><div class="vig"></div>
+</section>
+
+<!-- 2 · PERSONAJE -->
+<section class="slide s2" id="s2">
+ <div class="sky"></div>
+ <svg class="city" id="city2" viewBox="0 0 1080 520" preserveAspectRatio="none"></svg>
+ <div class="top"><span><b>★</b> Mark Kaizen</span><span>02 / 06</span></div>
+ <div class="t"><small>▶ MODO HISTORIA</small><h2 class="sk neon-pk">ELIGE A TU<br>PERSONAJE</h2></div>
+ <div class="card">
+  <div class="por"><img src="../img/simbolo.webp" alt=""></div>
+  <div class="nm"><b>DRAGÓN + GATO</b><span>Clase: Mejora continua <code style="font:800 30px var(--jp);color:#fff">改善</code></span><em>DUO LEGENDARIO</em></div>
+  <div class="st">
+   <div class="r"><span>FUERZA 🐉</span><i><u style="width:90%"></u></i><em>90</em></div>
+   <div class="r c"><span>SIGILO 🐱</span><i><u style="width:95%"></u></i><em>95</em></div>
+   <div class="r"><span>CAFÉ ☕</span><i><u style="width:100%"></u></i><em>100</em></div>
+   <div class="r c"><span>SUEÑO 😴</span><i><u style="width:12%"></u></i><em>12</em></div>
+  </div>
+ </div>
+ <div class="foot"><span class="lg"><img src="../img/simbolo.webp" alt=""> Mark Kaizen</span><span class="nx">Desliza ➜</span></div>
+ <div class="scan"></div><div class="vig"></div>
+</section>
+
+<!-- 3 · SE BUSCA -->
+<section class="slide s3" id="s3">
+ <div class="sky"></div>
+ <div class="top"><span><b>★</b> Mark Kaizen</span><span>03 / 06</span></div>
+ <div class="st"><small>NIVEL DE BÚSQUEDA</small><div>★★★★★</div></div>
+ <div class="poster">
+  <h3>SE BUSCA</h3><p class="l">POR MEJORAR SIN PERMISO</p>
+  <div class="pic"><img src="../img/simbolo.webp" alt=""></div>
+  <p class="cr"><b>Delito:</b> mejorar 1% cada día y no avisar a nadie.</p>
+  <p class="rw">RECOMPENSA: TU ATENCIÓN 👀</p>
+ </div>
+ <div class="foot"><span class="lg"><img src="../img/simbolo.webp" alt=""> Mark Kaizen</span><span class="nx">Desliza ➜</span></div>
+ <div class="scan"></div><div class="vig"></div>
+</section>
+
+<!-- 4 · RADIO -->
+<section class="slide s4" id="s4">
+ <div class="sky"></div>
+ <svg class="sun"><use href="#sunsym"/></svg>
+ <div class="top"><span><b>★</b> Mark Kaizen</span><span>04 / 06</span></div>
+ <div class="t"><small>▶ EN EL AUTO, VOLUMEN AL MÁXIMO</small><h2 class="sk">RADIO<br><span>KAIZEN FM</span></h2></div>
+ <div class="dial">
+  <svg viewBox="0 0 380 380"><circle cx="190" cy="190" r="168" fill="none" stroke="#19E3FF" stroke-width="10" stroke-dasharray="4 14" opacity=".9"/><circle cx="190" cy="190" r="140" fill="none" stroke="#FF2E97" stroke-width="4" opacity=".8"/></svg>
+  <img src="../img/simbolo.webp" alt="">
+ </div>
+ <div class="list">
+  <div class="tr on"><small>▶ AHORA SUENA</small>1% Mejor (Remix)</div>
+  <div class="tr"><small>SIGUIENTE</small>Lo-fi para no rendirte</div>
+  <div class="tr"><small>EN VIVO</small>Dragón vs. Gato</div>
+ </div>
+ <div class="ad"><small>⚠ ANUNCIO</small><p>Tu zona de confort está en <u>liquidación</u>. Últimas unidades.</p></div>
+ <div class="gr"></div>
+ <div class="dj">DJ: <b>MARK</b> · 98.1 FM · Mejora continua 24/7</div>
+ <div class="foot"><span class="lg"><img src="../img/simbolo.webp" alt=""> Mark Kaizen</span><span class="nx">Desliza ➜</span></div>
+ <div class="scan"></div><div class="vig"></div>
+</section>
+
+<!-- 5 · WASTED -->
+<section class="slide s5" id="s5">
+ <div class="sky"></div>
+ <div class="kj">改善</div>
+ <div class="top"><span><b>★</b> Mark Kaizen</span><span>05 / 06</span></div>
+ <div class="av"><img src="../img/simbolo.webp" alt=""></div>
+ <div class="w"><div>WASTED</div></div>
+ <div class="rs">
+  <small>RESPAWN EN 3… 2… 1…</small>
+  <b>改善</b>
+  <p>Te caíste. Normal. Vuelves con <span>1% más de experiencia</span> y sin vergüenza.</p>
+ </div>
+ <div class="foot"><span class="lg"><img src="../img/simbolo.webp" alt=""> Mark Kaizen</span><span class="nx">Desliza ➜</span></div>
+ <div class="scan"></div><div class="vig"></div>
+</section>
+
+<!-- 6 · MISIÓN CUMPLIDA -->
+<section class="slide s6" id="s6">
+ <div class="sky"></div>
+ <svg class="sun"><use href="#sunsym"/></svg>
+ <svg class="palm pl" viewBox="0 0 240 460"><use href="#palm"/></svg>
+ <svg class="palm pr" viewBox="0 0 240 460"><use href="#palm"/></svg>
+ <div class="floor"></div><div class="gr"></div>
+ <div class="top"><span><b>★</b> Mark Kaizen</span><span>06 / 06</span></div>
+ <div class="mp sk"><small>MISIÓN CUMPLIDA</small><h2>RESPETO +1%</h2><p><b>+改善</b> · Nuevo nivel desbloqueado</p></div>
+ <div class="lp"><img src="../img/logo-mark-kaizen.webp" alt="Logo MARK KAIZEN"></div>
+ <div class="cta"><span>SÍGUEME</span><span>GUARDA</span><span>COMPARTE</span></div>
+ <div class="nm">La siguiente misión empieza en mi próximo post 🌴</div>
+ <div class="foot"><span class="lg"><img src="../img/simbolo.webp" alt=""> Mark Kaizen</span><span class="nx">♥ Fin</span></div>
+ <div class="scan"></div><div class="vig"></div>
+</section>
+
+<script>
+/* skyline nocturno de la lámina 2 (semilla fija, siempre igual) */
+(function(){var s=7,r=function(){s=(s*16807)%2147483647;return s/2147483647};
+ var svg=document.getElementById('city2'),x=0,h='',lit='';
+ while(x<1080){var w=50+r()*70,ht=140+r()*330,y=520-ht;
+  h+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+ht+'" fill="#0a0420"/>';
+  for(var wy=y+16;wy<516;wy+=26)for(var wx=x+8;wx<x+w-10;wx+=18)if(r()>.72)lit+='<rect x="'+wx+'" y="'+wy+'" width="8" height="12" fill="'+(r()>.5?'#FF2E97':'#19E3FF')+'" opacity=".85"/>';
+  x+=w+4}
+ svg.innerHTML=h+lit})();
+</script>
+</body>
+</html>
