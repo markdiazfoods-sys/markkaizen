@@ -117,7 +117,7 @@ overlay_a = blur(overlay_a, 0.6)
 
 
 # ---------------------------------------------------------------- fondo limpio (push-pull inpaint bajo el avatar)
-hole = np.maximum(dilate(m, 4), dilate((overlay_a > 0.03).astype(np.float32), 2))
+hole = np.maximum(dilate(m, 10), dilate((overlay_a > 0.03).astype(np.float32), 2))
 hole = (hole > 0.02).astype(np.float32)
 
 
