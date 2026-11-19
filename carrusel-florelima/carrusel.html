@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Florelima Atelier · Carrusel "Con nosotros, ntp"</title>
+<meta name="viewport" content="width=1080">
+<style>
+@font-face{font-family:"Playfair Display";font-weight:700;src:url(fonts/PlayfairDisplay-700.ttf)}
+@font-face{font-family:"Playfair Display";font-weight:900;src:url(fonts/PlayfairDisplay-900.ttf)}
+@font-face{font-family:"Inter";font-weight:400;src:url(fonts/Inter-400.ttf)}
+@font-face{font-family:"Inter";font-weight:600;src:url(fonts/Inter-600.ttf)}
+@font-face{font-family:"Inter";font-weight:700;src:url(fonts/Inter-700.ttf)}
+
+:root{
+  /* Paleta Florelima (muestreada del carrusel original) */
+  --noche:#1d111f; --noche-2:#2c1630; --ciruela:#4a2548;
+  --fucsia:#fe4f8a; --rosa:#d986a0; --rosa-hondo:#cb767d; --rosa-polvo:#ffdfea; --rosa-claro:#ffdbe7;
+  --tinta:#2a1d2c; --menta:#91cbb2; --ambar:#f5c97a; --blanco:#fff;
+  --serif:"Playfair Display",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0c0710;display:flex;flex-direction:column;align-items:center;gap:40px;padding:40px 0;font-family:var(--sans)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;flex:none;color:var(--blanco)}
+
+/* ───────── piezas comunes ───────── */
+.logo{position:absolute;top:46px;left:50%;transform:translateX(-50%);width:244px;z-index:5}
+.pie{position:absolute;left:64px;right:64px;bottom:54px;display:flex;align-items:center;justify-content:space-between;z-index:5;font-size:26px;letter-spacing:.14em;font-weight:600}
+.pie .centro{position:absolute;left:0;right:0;text-align:center;pointer-events:none}
+.prog{display:flex;gap:8px;align-items:center}
+.prog i{display:block;width:26px;height:5px;border-radius:3px;background:currentColor;opacity:.28}
+.prog i.on{width:54px;opacity:1}
+.num{font-weight:600;letter-spacing:.04em;opacity:.8}
+h1,h2{font-family:var(--serif);font-weight:900;line-height:1.04;text-align:center;letter-spacing:-.01em}
+.petalos{position:absolute;z-index:1;pointer-events:none}
+
+/* ───────── fondos ───────── */
+.oscuro{background:
+  radial-gradient(900px 620px at 50% 78%,rgba(254,79,138,.20),transparent 70%),
+  radial-gradient(700px 500px at 100% 0%,rgba(217,134,160,.10),transparent 70%),
+  linear-gradient(180deg,#1d111f 0%,#150b18 100%)}
+.claro{background:
+  radial-gradient(700px 520px at 100% 0%,#fff0f5,transparent 65%),
+  radial-gradient(800px 600px at 0% 100%,#ffcfdf,transparent 65%),
+  var(--rosa-polvo);color:var(--tinta)}
+.claro .logo{filter:none}
+
+/* ───────── personajes ───────── */
+.pj{display:block;overflow:visible}
+.glow{filter:drop-shadow(0 0 26px rgba(254,79,138,.55))}
+.glow-suave{filter:drop-shadow(0 0 22px rgba(254,79,138,.28))}
+
+/* ───────── S1 ───────── */
+.s1 .badge{position:absolute;top:228px;left:50%;transform:translateX(-50%);background:var(--fucsia);color:#fff;font-weight:700;font-size:38px;letter-spacing:.14em;padding:16px 40px;border-radius:12px;display:flex;gap:16px;align-items:center;box-shadow:0 10px 40px rgba(254,79,138,.45)}
+.s1 .badge b{width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 0 0 6px rgba(255,255,255,.28)}
+.s1 h1{position:absolute;top:322px;left:50px;right:50px;font-size:112px}
+.s1 h1 em{font-style:normal;color:var(--fucsia)}
+.escena{position:absolute;left:0;right:0;bottom:196px;height:520px}
+.escena .p{position:absolute;bottom:0}
+.corazon{position:absolute;left:50%;top:0;transform:translateX(-50%);width:132px;z-index:3}
+.rotulo{position:absolute;bottom:-52px;left:0;right:0;text-align:center;font-size:22px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+
+/* ───────── S2 ───────── */
+.s2 h2{position:absolute;top:206px;left:50px;right:50px;font-size:84px}
+.s2 h2 .rosa{color:var(--rosa);display:block}
+.trio{position:absolute;top:650px;left:50px;right:50px;display:flex;gap:26px}
+.tarjeta{flex:1 1 0;min-width:0;height:530px;border-radius:200px 200px 28px 28px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:30px;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:2px solid rgba(255,255,255,.12)}
+.tarjeta .pj{position:absolute;left:50%;bottom:96px;transform:translateX(-50%)}
+.tarjeta.si{background:linear-gradient(180deg,rgba(254,79,138,.22),rgba(254,79,138,.04));border:2px solid rgba(254,79,138,.7);box-shadow:0 0 60px rgba(254,79,138,.25)}
+.tarjeta.no{border-style:dashed}
+.tarjeta.no .pj{opacity:.5;filter:saturate(.6)}
+.estado{position:relative;z-index:2;font-size:23px;font-weight:700;line-height:1.2;text-align:center;padding:10px 16px;border-radius:999px;white-space:nowrap}
+.estado.ok{color:#0f2a20;background:var(--menta)}
+.estado.rep{color:#2e2208;background:var(--ambar)}
+.interr{position:absolute;top:44px;left:50%;transform:translateX(-50%);font-family:var(--serif);font-weight:900;font-size:92px;color:var(--ambar);opacity:.9;z-index:3;line-height:1}
+.check{position:absolute;top:44px;left:50%;transform:translateX(-50%);width:76px;height:76px;border-radius:50%;background:var(--menta);display:grid;place-items:center;z-index:3;box-shadow:0 0 0 10px rgba(145,203,178,.2)}
+.fuente{position:absolute;left:0;right:0;bottom:122px;text-align:center;font-size:25px;color:rgba(255,255,255,.62)}
+
+/* ───────── S3 ───────── */
+.s3{background:linear-gradient(180deg,#170f1c 0%,#3a1f3d 28%,#7a3d62 48%,#d986a0 70%,#ffdbe7 100%)}
+.s3 h2{position:absolute;left:60px;right:60px;font-size:104px}
+.s3 .a{top:410px}
+.s3 .b{top:730px;color:#1d111f}
+.s3 .b::before{content:"";display:block;width:120px;height:4px;background:#1d111f;opacity:.35;border-radius:2px;margin:0 auto 38px}
+.sobre{position:absolute;left:50%;bottom:150px;transform:translateX(-50%);width:300px;z-index:3;filter:drop-shadow(0 22px 28px rgba(120,40,80,.35))}
+
+/* ───────── S4 ───────── */
+.s4 .logo{filter:none}
+.s4 h2{position:absolute;top:214px;left:40px;right:40px;font-size:112px;color:var(--rosa-hondo)}
+.s4 .sub{position:absolute;top:392px;left:0;right:0;text-align:center;font-size:36px;font-weight:600;line-height:1.5;color:var(--tinta)}
+.s4 .sub u{text-decoration:none;color:var(--rosa-hondo)}
+.arco{position:absolute;left:50%;top:560px;transform:translateX(-50%);width:600px;height:640px;border-radius:300px 300px 36px 36px;overflow:hidden;border:12px solid #fff;box-shadow:0 36px 70px rgba(203,118,125,.38);z-index:3}
+.arco img{width:100%;height:100%;object-fit:cover;display:block}
+.nota{position:absolute;z-index:4;left:84px;top:1010px;background:#fff;border-radius:22px;padding:20px 28px 20px 22px;display:flex;gap:16px;align-items:center;transform:rotate(-5deg);box-shadow:0 20px 44px rgba(203,118,125,.4);font-weight:700;font-size:25px;line-height:1.25;color:var(--tinta)}
+.nota svg{flex:none}
+.nota small{display:block;font-weight:400;font-size:21px;color:#7a5a6a}
+
+/* ───────── S5 ───────── */
+.s5 h2{position:absolute;top:210px;left:50px;right:50px;font-size:92px}
+.s5 h2 .r{color:var(--rosa-hondo)}
+.cards{position:absolute;top:520px;left:50px;right:50px;display:flex;gap:24px}
+.card{flex:1;background:#fff;border-radius:34px;padding:18px 18px 30px;box-shadow:0 26px 54px rgba(203,118,125,.28);text-align:center}
+.card img{width:100%;aspect-ratio:1/1.04;object-fit:cover;border-radius:22px;display:block}
+.card h3{font-family:var(--serif);font-weight:700;font-size:35px;line-height:1.15;margin-top:22px;color:var(--tinta)}
+.card span{display:inline-block;margin-top:14px;font-size:19px;letter-spacing:.14em;font-weight:700;color:var(--rosa-hondo)}
+.s5 .mas{position:absolute;top:1060px;left:0;right:0;text-align:center;font-size:36px;font-weight:600}
+.s5 .mas b{color:var(--rosa-hondo)}
+
+/* ───────── S6 ───────── */
+.s6 h2{position:absolute;top:230px;left:20px;right:20px;font-size:90px;white-space:nowrap;color:var(--rosa-hondo)}
+.pasos{position:absolute;top:470px;left:80px;right:80px}
+.pasos::before{content:"";position:absolute;left:79px;top:90px;bottom:90px;width:0;border-left:4px dotted var(--rosa)}
+.paso{position:relative;display:flex;align-items:center;gap:36px;background:#fff;border-radius:34px;padding:30px 40px 30px 44px;margin-bottom:34px;height:190px;box-shadow:0 22px 46px rgba(203,118,125,.26)}
+.paso .n{flex:none;width:112px;height:112px;border-radius:50%;background:var(--rosa);color:#fff;font-family:var(--serif);font-weight:900;font-size:68px;display:grid;place-items:center;box-shadow:0 0 0 10px rgba(217,134,160,.22)}
+.paso h3{font-family:var(--serif);font-weight:700;font-size:48px;line-height:1.1;color:var(--tinta)}
+.paso p{font-size:30px;margin-top:10px;color:#6b5560}
+
+/* ───────── S7 ───────── */
+.s7{background:
+  radial-gradient(800px 560px at 50% 38%,rgba(255,255,255,.18),transparent 70%),
+  linear-gradient(160deg,#d97b9a 0%,#cd7390 40%,#bd5d6b 100%)}
+.s7 h2{position:absolute;top:250px;left:50px;right:50px;font-size:108px;text-shadow:0 6px 36px rgba(120,30,60,.28)}
+.s7 .oferta{position:absolute;top:760px;left:50%;transform:translateX(-50%);background:#fff;color:var(--rosa-hondo);font-weight:700;font-size:46px;padding:30px 66px;border-radius:999px;white-space:nowrap;box-shadow:0 22px 50px rgba(120,30,60,.35)}
+.s7 .web{position:absolute;top:960px;left:0;right:0;text-align:center;font-size:48px;font-weight:700}
+.s7 .tel{position:absolute;top:1040px;left:0;right:0;text-align:center;font-size:44px;font-weight:600}
+.s7 .marca{position:absolute;left:50%;bottom:-120px;transform:translateX(-50%);width:760px;opacity:.1;z-index:0}
+</style>
+</head>
+<body>
+
+<!-- ═════════ BIBLIOTECA DE PERSONAJES (ilustración propia, sin rostros, no representan a nadie en particular) ═════════ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Torso base compartido -->
+    <symbol id="ceo" viewBox="0 0 240 300">
+      <path d="M118 112h4v70h-4z" fill="none"/>
+      <rect x="100" y="130" width="40" height="64" rx="14" fill="var(--piel)"/>
+      <!-- tee blanca -->
+      <path d="M88 186c10 14 22 20 32 20s22-6 32-20l12 114H76z" fill="#f4eef2"/>
+      <!-- chaqueta de cuero -->
+      <path d="M12 300C12 222 52 178 100 172l22 56-30 72zM228 300c0-78-40-122-88-128l-22 56 30 72z" fill="var(--prenda)"/>
+      <path d="M100 172l22 56-30 72M140 172l-22 56 30 72" stroke="rgba(255,255,255,.22)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M28 290c2-60 26-96 60-108" stroke="rgba(255,255,255,.14)" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <g transform="translate(0,24)"><ellipse cx="120" cy="92" rx="40" ry="46" fill="var(--piel)"/>
+      <!-- pelo corto peinado hacia atrás -->
+      <path d="M76 92c-6-52 22-68 46-68 32 0 52 24 42 68-6-26-30-40-52-38-20 2-30 18-36 38z" fill="var(--pelo)"/></g>
+    </symbol>
+
+    <symbol id="esposa" viewBox="0 0 240 300">
+      <!-- moño -->
+      <g transform="translate(0,24)"><circle cx="120" cy="26" r="24" fill="var(--pelo)"/></g>
+      <rect x="104" y="128" width="32" height="60" rx="14" fill="var(--piel)"/>
+      <!-- vestido -->
+      <path d="M14 300C14 224 54 182 100 176c8 18 12 24 20 24s12-6 20-24c46 6 86 48 86 124z" fill="var(--prenda)"/>
+      <path d="M96 176c6 22 14 30 24 30s18-8 24-30" stroke="rgba(0,0,0,.14)" stroke-width="3" fill="none"/>
+      <!-- collar de perlas -->
+      <g fill="#fff5f8">
+        <circle cx="94" cy="186" r="5"/><circle cx="104" cy="196" r="5"/><circle cx="116" cy="201" r="5"/>
+        <circle cx="128" cy="201" r="5"/><circle cx="140" cy="196" r="5"/><circle cx="150" cy="186" r="5"/>
+      </g>
+      <g transform="translate(0,24)"><ellipse cx="120" cy="92" rx="39" ry="45" fill="var(--piel)"/>
+      <!-- pelo recogido -->
+      <path d="M78 94c-6-46 20-58 42-58s48 12 42 58c-8-24-26-34-42-34S86 70 78 94z" fill="var(--pelo)"/>
+      <circle cx="82" cy="112" r="5" fill="#fff5f8"/><circle cx="158" cy="112" r="5" fill="#fff5f8"/></g>
+    </symbol>
+
+    <symbol id="amante-a" viewBox="0 0 240 300">
+      <!-- melena larga lisa (detrás) -->
+      <g transform="translate(0,24)"><path d="M70 94C62 36 96 20 122 20s60 16 50 74l12 120H60z" fill="var(--pelo)"/></g>
+      <rect x="104" y="130" width="32" height="58" rx="14" fill="var(--piel)"/>
+      <path d="M16 300C16 224 56 184 104 178c6 16 10 20 16 20s10-4 16-20c48 6 88 46 88 122z" fill="var(--prenda)"/>
+      <path d="M92 182c8 24 18 32 28 32s20-8 28-32" fill="var(--piel)"/>
+      <g transform="translate(0,24)"><ellipse cx="120" cy="94" rx="38" ry="44" fill="var(--piel)"/>
+      <!-- flequillo lateral -->
+      <path d="M80 96c-2-34 22-48 44-48 28 0 44 22 38 46-12-24-36-32-52-28-14 4-26 14-30 30z" fill="var(--pelo)"/></g>
+    </symbol>
+
+    <symbol id="amante-b" viewBox="0 0 240 300">
+      <!-- bob ondulado -->
+      <g transform="translate(0,24)"><path d="M68 100C58 40 94 22 122 22s64 18 54 78c4 30 14 40 4 54-14 4-20-10-20-28H84c0 18-6 32-20 28-10-14 0-24 4-54z" fill="var(--pelo)"/></g>
+      <rect x="104" y="130" width="32" height="58" rx="14" fill="var(--piel)"/>
+      <path d="M14 300c0-76 38-114 86-122 6 20 12 26 20 26s14-6 20-26c48 8 86 46 86 122z" fill="var(--prenda)"/>
+      <path d="M70 196c8-10 18-14 30-16M170 196c-8-10-18-14-30-16" stroke="rgba(255,255,255,.35)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <g transform="translate(0,24)"><ellipse cx="120" cy="94" rx="38" ry="44" fill="var(--piel)"/>
+      <path d="M82 92c4-34 28-42 42-42 22 0 40 14 38 42-10-20-26-26-42-24-18 2-32 10-38 24z" fill="var(--pelo)"/>
+      <circle cx="80" cy="112" r="4.5" fill="var(--prenda)"/><circle cx="160" cy="112" r="4.5" fill="var(--prenda)"/></g>
+    </symbol>
+
+    <symbol id="amante-c" viewBox="0 0 240 300">
+      <!-- coleta alta -->
+      <g transform="translate(0,24)"><path d="M156 44C200 22 226 70 200 132c-2-34-12-52-36-62z" fill="var(--pelo)"/></g>
+      <rect x="104" y="130" width="32" height="58" rx="14" fill="var(--piel)"/>
+      <path d="M18 300c0-78 36-116 84-122l18 40 18-40c48 6 84 44 84 122z" fill="var(--prenda)"/>
+      <path d="M102 178l18 40 18-40" stroke="rgba(255,255,255,.35)" stroke-width="3" fill="none" stroke-linejoin="round"/>
+      <g transform="translate(0,24)"><ellipse cx="120" cy="94" rx="38" ry="44" fill="var(--piel)"/>
+      <path d="M78 98c-6-50 22-66 46-66 30 0 46 24 40 60-6-22-24-34-48-34-18 0-28 14-38 40z" fill="var(--pelo)"/></g>
+    </symbol>
+
+    <!-- Corazón roto -->
+    <symbol id="corazon" viewBox="0 0 140 150">
+      <path d="M70 140C26 104 6 78 6 50 6 26 24 8 46 8c12 0 20 6 24 14 4-8 12-14 24-14 22 0 40 18 40 42 0 28-20 54-64 90z" fill="#fe4f8a"/>
+      <path d="M72 0L58 44l26 22-22 40-6 44" stroke="#1d111f" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
+    <!-- Peonía simple de líneas -->
+    <symbol id="peonia" viewBox="0 0 200 200">
+      <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <circle cx="100" cy="100" r="14"/>
+        <g id="ring1"><ellipse cx="100" cy="64" rx="22" ry="34"/><ellipse cx="100" cy="64" rx="22" ry="34" transform="rotate(72 100 100)"/><ellipse cx="100" cy="64" rx="22" ry="34" transform="rotate(144 100 100)"/><ellipse cx="100" cy="64" rx="22" ry="34" transform="rotate(216 100 100)"/><ellipse cx="100" cy="64" rx="22" ry="34" transform="rotate(288 100 100)"/></g>
+        <g transform="rotate(36 100 100)"><ellipse cx="100" cy="40" rx="26" ry="38"/><ellipse cx="100" cy="40" rx="26" ry="38" transform="rotate(72 100 100)"/><ellipse cx="100" cy="40" rx="26" ry="38" transform="rotate(144 100 100)"/><ellipse cx="100" cy="40" rx="26" ry="38" transform="rotate(216 100 100)"/><ellipse cx="100" cy="40" rx="26" ry="38" transform="rotate(288 100 100)"/></g>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ═════════════════ 1 · ÚLTIMA HORA ═════════════════ -->
+<section class="slide oscuro s1" id="s1">
+  <img class="logo" src="fotos/logo-blanco.png" alt="Florelima Atelier">
+  <svg class="petalos" style="left:-210px;top:830px;width:520px;color:rgba(217,134,160,.12)"><use href="#peonia"/></svg>
+  <div class="badge"><b></b>ÚLTIMA HORA</div>
+  <h1>El CEO de Nvidia renunció por <em>3 líos</em> de amor</h1>
+
+  <div class="escena">
+    <!-- esposa -->
+    <div class="p" style="left:70px;width:230px;--piel:#f2d3d6;--pelo:#6a3a56;--prenda:#d986a0">
+      <svg class="pj glow-suave" viewBox="0 0 240 300" width="230" height="288"><use href="#esposa"/></svg>
+      <div class="rotulo" style="color:var(--rosa)">Su esposa</div>
+    </div>
+    <svg class="corazon glow" style="left:318px;top:236px;transform:none;width:104px" viewBox="0 0 140 150"><use href="#corazon"/></svg>
+    <!-- CEO -->
+    <div class="p" style="left:50%;transform:translateX(-50%);width:330px;z-index:2;--piel:#f2d3d6;--pelo:#2b1630;--prenda:#0d070f">
+      
+      <svg class="pj glow" viewBox="0 0 240 300" width="330" height="412"><use href="#ceo"/></svg>
+      <div class="rotulo" style="color:#fff">El CEO</div>
+    </div>
+    <!-- amantes -->
+    <div class="p" style="right:34px;width:300px;height:340px">
+      <svg class="pj" style="position:absolute;right:120px;bottom:0;opacity:.38;--piel:#cfa9b6;--pelo:#3a1f3f;--prenda:#8a5a9e" viewBox="0 0 240 300" width="190" height="238"><use href="#amante-c"/></svg>
+      <svg class="pj" style="position:absolute;right:60px;bottom:0;opacity:.62;--piel:#e6bfc8;--pelo:#4a2040;--prenda:#d986a0" viewBox="0 0 240 300" width="200" height="250"><use href="#amante-b"/></svg>
+      <svg class="pj glow" style="position:absolute;right:0;bottom:0;--piel:#f2d3d6;--pelo:#2b1630;--prenda:#fe4f8a" viewBox="0 0 240 300" width="215" height="269"><use href="#amante-a"/></svg>
+      <div class="rotulo" style="color:var(--fucsia)">Las 3 amantes</div>
+    </div>
+  </div>
+
+  <div class="pie" style="color:rgba(255,255,255,.78)">
+    <div class="prog"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="centro" style="left:90px">DESLIZA →</div>
+    <div class="num">1/7</div>
+  </div>
+</section>
+
+<!-- ═════════════════ 2 · SEGÚN REPORTES ═════════════════ -->
+<section class="slide oscuro s2" id="s2">
+  <img class="logo" src="fotos/logo-blanco.png" alt="Florelima Atelier">
+  <h2>Según reportes:<br>3 relaciones. <span class="rosa">Solo una confirmada<br>por él.</span></h2>
+  <div class="trio">
+    <div class="tarjeta si">
+      <div class="check"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#0f2a20" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <svg class="pj glow" style="--piel:#f2d3d6;--pelo:#2b1630;--prenda:#fe4f8a" viewBox="0 0 240 300" width="250" height="312"><use href="#amante-a"/></svg>
+      <div class="estado ok">Confirmada por Huang</div>
+    </div>
+    <div class="tarjeta no">
+      <div class="interr">?</div>
+      <svg class="pj" style="--piel:#e6bfc8;--pelo:#4a2040;--prenda:#d986a0" viewBox="0 0 240 300" width="250" height="312"><use href="#amante-b"/></svg>
+      <div class="estado rep">Según reportes</div>
+    </div>
+    <div class="tarjeta no">
+      <div class="interr">?</div>
+      <svg class="pj" style="--piel:#cfa9b6;--pelo:#3a1f3f;--prenda:#8a5a9e" viewBox="0 0 240 300" width="250" height="312"><use href="#amante-c"/></svg>
+      <div class="estado rep">Según reportes</div>
+    </div>
+  </div>
+  <div class="fuente">Fuente: Reuters, The New York Times, Forbes (nov. 2026)</div>
+  <div class="pie" style="color:rgba(255,255,255,.78)">
+    <div class="prog"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="num">2/7</div>
+  </div>
+</section>
+
+<!-- ═════════════════ 3 · LOS SECRETOS ═════════════════ -->
+<section class="slide s3" id="s3">
+  <img class="logo" src="fotos/logo-blanco.png" alt="Florelima Atelier">
+  <h2 class="a">Los secretos<br>salen a la luz…</h2>
+  <h2 class="b">…menos los tuyos.</h2>
+  <svg class="sobre" viewBox="0 0 300 220">
+    <rect x="6" y="14" width="288" height="200" rx="22" fill="#fff"/>
+    <path d="M6 36c0-12 10-22 22-22h244c12 0 22 10 22 22L150 130z" fill="#fff0f5" stroke="#f3c3d3" stroke-width="2"/>
+    <path d="M6 200l110-84M294 200L184 116" stroke="#f3c3d3" stroke-width="2" fill="none"/>
+    <circle cx="150" cy="124" r="40" fill="#cb767d"/><circle cx="150" cy="124" r="30" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+    <path d="M150 144c-17-13-26-23-26-34 0-9 7-15 15-15 5 0 9 3 11 6 2-3 6-6 11-6 8 0 15 6 15 15 0 11-9 21-26 34z" fill="#fff"/>
+  </svg>
+  <div class="pie" style="color:rgba(60,28,50,.7)">
+    <div class="prog"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    <div class="num">3/7</div>
+  </div>
+</section>
+
+<!-- ═════════════════ 4 · CON NOSOTROS, NTP ═════════════════ -->
+<section class="slide claro s4" id="s4">
+  <img class="logo" src="fotos/logo-rosa.png" alt="Florelima Atelier">
+  <svg class="petalos" style="left:-170px;top:640px;width:460px;color:rgba(203,118,125,.28)"><use href="#peonia"/></svg>
+  <svg class="petalos" style="right:-150px;top:470px;width:400px;color:rgba(203,118,125,.22)"><use href="#peonia"/></svg>
+  <h2>Con nosotros, ntp</h2>
+  <p class="sub">Regala flores a quien amas<br>de forma <u>anónima</u>. Guardamos tu secreto.</p>
+  <div class="arco"><img src="fotos/ramo-anonimo.jpg" alt="Ramo de peonías con dedicatoria"></div>
+  <div class="nota">
+    <svg width="54" height="54" viewBox="0 0 54 54"><rect width="54" height="54" rx="16" fill="#ffdfea"/><path d="M13 19h28v18H13z" fill="none" stroke="#cb767d" stroke-width="2.6" stroke-linejoin="round"/><path d="M13 20l14 10 14-10" fill="none" stroke="#cb767d" stroke-width="2.6" stroke-linejoin="round"/></svg>
+    <div>Dedicatoria sin firmar<small>Tu nombre no aparece</small></div>
+  </div>
+  <div class="pie" style="color:var(--tinta)">
+    <div class="prog"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+    <div class="centro" style="left:90px;color:#5a4150">FLORELIMATELIER.COM</div>
+    <div class="num">4/7</div>
+  </div>
+</section>
+
+<!-- ═════════════════ 5 · ELIGE EL QUE DICE LO QUE CALLAS ═════════════════ -->
+<section class="slide claro s5" id="s5">
+  <img class="logo" src="fotos/logo-rosa.png" alt="Florelima Atelier">
+  <svg class="petalos" style="right:-170px;top:1000px;width:480px;color:rgba(203,118,125,.2)"><use href="#peonia"/></svg>
+  <h2>Elige el que <span class="r">dice lo que callas</span></h2>
+  <div class="cards">
+    <div class="card"><img src="fotos/pink-peonias.jpg" alt="Pink Peonías"><h3>Pink<br>Peonías</h3></div>
+    <div class="card"><img src="fotos/peonia-roja-imperial.jpg" alt="Peonía Roja Imperial"><h3>Peonía Roja<br>Imperial</h3></div>
+    <div class="card"><img src="fotos/la-vie-en-rose.jpg" alt="La Vie en Rose"><h3>La Vie<br>en Rose</h3></div>
+  </div>
+  <p class="mas">Más ramos y boxes en <b>florelimatelier.com</b></p>
+  <div class="pie" style="color:var(--tinta)">
+    <div class="prog"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+    <div class="num">5/7</div>
+  </div>
+</section>
+
+<!-- ═════════════════ 6 · 3 PASOS ═════════════════ -->
+<section class="slide claro s6" id="s6">
+  <img class="logo" src="fotos/logo-rosa.png" alt="Florelima Atelier">
+  <svg class="petalos" style="right:-210px;top:1090px;width:480px;color:rgba(203,118,125,.2)"><use href="#peonia"/></svg>
+  <h2>3 pasos, cero nombres</h2>
+  <div class="pasos">
+    <div class="paso"><div class="n">1</div><div><h3>Eliges tu ramo</h3><p>Peonías, rosas, boxes…</p></div></div>
+    <div class="paso"><div class="n">2</div><div><h3>Dedicatoria sin firmar</h3><p>Tu nombre no aparece.</p></div></div>
+    <div class="paso"><div class="n">3</div><div><h3>Entrega express en Lima</h3><p>Y tu secreto, a salvo.</p></div></div>
+  </div>
+  <div class="pie" style="color:var(--tinta)">
+    <div class="prog"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+    <div class="centro" style="left:90px;color:#5a4150">FLORELIMATELIER.COM</div>
+    <div class="num">6/7</div>
+  </div>
+</section>
+
+<!-- ═════════════════ 7 · CTA ═════════════════ -->
+<section class="slide s7" id="s7">
+  <img class="logo" src="fotos/logo-blanco.png" alt="Florelima Atelier">
+  <svg class="petalos" style="left:-150px;top:60px;width:440px;color:rgba(255,255,255,.2)"><use href="#peonia"/></svg>
+  <svg class="petalos" style="right:-170px;top:1000px;width:500px;color:rgba(255,255,255,.16)"><use href="#peonia"/></svg>
+  <h2>Guárdalo y envíaselo a quien lo necesita</h2>
+  <div class="oferta">5% OFF en tu primera compra</div>
+  <div class="web">florelimatelier.com</div>
+  <div class="tel">Llámanos: 933 642 066</div>
+  <div class="pie" style="color:rgba(255,255,255,.92)">
+    <div class="prog"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+    <div class="centro" style="left:90px;display:flex;justify-content:center;align-items:center;gap:12px">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v5h-5"/></svg>VUELVE AL INICIO</div>
+    <div class="num">7/7</div>
+  </div>
+</section>
+
+</body>
+</html>
