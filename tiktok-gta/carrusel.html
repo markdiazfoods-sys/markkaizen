@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Carrusel GTA — MARK KAIZEN</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#111;font-family:'Pricedown','Impact','DejaVu Sans',sans-serif;font-weight:900}
+.slide{position:relative;width:1080px;height:1920px;overflow:hidden;background:#1a0b2e}
+.gta{font-style:italic;text-transform:uppercase;letter-spacing:2px;paint-order:stroke fill;-webkit-text-stroke:12px #000;text-shadow:0 10px 0 rgba(0,0,0,.55)}
+.yellow{color:#f7d117}.white{color:#fff}.pink{color:#ff4fa3}
+.abs{position:absolute}
+/* fondo */
+.sky{position:absolute;inset:0;background:linear-gradient(180deg,#1d0a3d 0%,#4b1b7a 28%,#c2307f 52%,#ff7a45 66%,#ffc15a 72%,#2a1236 72.1%,#150a22 100%)}
+.sun{position:absolute;left:290px;top:880px;width:500px;height:500px;border-radius:50%;background:linear-gradient(180deg,#ffe36b,#ff5fa2);
+ -webkit-mask:repeating-linear-gradient(180deg,#000 0 26px,transparent 26px 34px);mask:repeating-linear-gradient(180deg,#000 0 26px,transparent 26px 34px);opacity:.9}
+.road{position:absolute;left:0;right:0;top:1382px;bottom:0;background:linear-gradient(180deg,#2a1236,#0d0615)}
+.lane{position:absolute;left:50%;top:1382px;width:14px;height:540px;margin-left:-7px;background:repeating-linear-gradient(180deg,#ffd84a 0 70px,transparent 70px 140px);opacity:.55}
+svg.sky-city{position:absolute;left:0;top:1000px}
+.vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 45%,rgba(0,0,0,.55) 100%)}
+/* HUD */
+.mini{position:absolute;width:270px;height:270px;border-radius:50%;border:8px solid #000;box-shadow:0 0 0 4px rgba(255,255,255,.85),0 12px 30px rgba(0,0,0,.6);overflow:hidden;
+ background:#2b3a4a}
+.mini svg{position:absolute;inset:0}
+.mini img{position:absolute;left:50%;top:50%;width:92px;height:92px;margin:-46px 0 0 -46px;filter:drop-shadow(0 3px 4px #000)}
+.bars{position:absolute}
+.bar{height:22px;border:4px solid #000;background:#222;margin-bottom:10px}
+.bar i{display:block;height:100%}
+.money{font-size:78px;text-align:right}
+/* disco */
+.disc{position:absolute;border-radius:50%;
+ background:conic-gradient(from 20deg,#e9ecff,#9db4ff,#ff9ad9,#fff,#7ff0ff,#e9ecff,#b79bff,#ffd2f0,#fff,#e9ecff);
+ -webkit-mask:radial-gradient(circle at 50% 50%,transparent 0 4.6%,#000 4.8%);mask:radial-gradient(circle at 50% 50%,transparent 0 4.6%,#000 4.8%);
+ box-shadow:0 30px 60px rgba(0,0,0,.6)}
+.disc .label{position:absolute;inset:4%;border-radius:50%;background:radial-gradient(circle at 50% 30%,#7b2d8e,#2a0f4d 70%);overflow:hidden}
+.disc .label:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(255,95,162,.85) 100%)}
+.disc .ring{position:absolute;inset:0}
+.disc .donut{position:absolute;left:50%;top:50%;width:86%;height:86%;margin:-43% 0 0 -43%;filter:drop-shadow(0 14px 14px rgba(0,0,0,.55))}
+.disc .gloss{position:absolute;inset:0;border-radius:50%;background:linear-gradient(115deg,rgba(255,255,255,.55) 0%,transparent 28%,transparent 62%,rgba(255,255,255,.25) 80%,transparent 90%)}
+.stars{position:absolute;right:140px;font-size:58px;letter-spacing:6px;color:#f7d117;-webkit-text-stroke:8px #000;paint-order:stroke fill;text-shadow:0 6px 0 rgba(0,0,0,.55)}
+.stars.off{color:#3a2a4d}
+.cue{position:absolute;display:flex;align-items:center;justify-content:center;gap:18px;white-space:nowrap;background:#f7d117;color:#000;border:6px solid #000;padding:16px 30px;border-radius:10px;box-shadow:0 8px 0 rgba(0,0,0,.6);font-style:italic;text-transform:uppercase}
+.chip{position:absolute;display:flex;align-items:center;gap:20px;background:rgba(0,0,0,.78);border:5px solid #fff;padding:18px 34px;border-radius:10px}
+</style></head><body>
+
+<!-- defs reutilizables -->
+<svg width="0" height="0" style="position:absolute"><defs>
+ <symbol id="donut" viewBox="0 0 300 300">
+  <defs>
+   <mask id="hole"><rect width="300" height="300" fill="#fff"/><circle cx="150" cy="156" r="36" fill="#000"/></mask>
+   <radialGradient id="dough" cx="50%" cy="40%" r="60%"><stop offset="0" stop-color="#f0b05a"/><stop offset="1" stop-color="#b9702a"/></radialGradient>
+  </defs>
+  <g mask="url(#hole)">
+   <ellipse cx="150" cy="170" rx="122" ry="108" fill="#8a4c1c"/>
+   <ellipse cx="150" cy="158" rx="122" ry="108" fill="url(#dough)"/>
+   <path d="M44 156c0-52 46-92 106-92s106 40 106 92c0 10-8 12-12 4-8 16-22 4-30 18-9-14-22-2-32 12-8-12-22-4-32 6-10-14-24-4-34 8-8-14-22-6-30 10-10-8-18 0-22-10-14 6-20-10-20-48z" fill="#ff5fa2"/>
+   <path d="M60 130c10-30 40-50 78-52" stroke="#ffd0e6" stroke-width="10" stroke-linecap="round" fill="none" opacity=".75"/>
+  </g>
+  <g>
+   <rect x="92" y="96" width="22" height="8" rx="4" fill="#fff" transform="rotate(-30 103 100)"/>
+   <rect x="196" y="92" width="22" height="8" rx="4" fill="#ffe14a" transform="rotate(25 207 96)"/>
+   <rect x="222" y="140" width="22" height="8" rx="4" fill="#5ee6ff" transform="rotate(-50 233 144)"/>
+   <rect x="70" y="150" width="22" height="8" rx="4" fill="#ffe14a" transform="rotate(40 81 154)"/>
+   <rect x="120" y="224" width="22" height="8" rx="4" fill="#fff" transform="rotate(15 131 228)"/>
+   <rect x="188" y="214" width="22" height="8" rx="4" fill="#5ee6ff" transform="rotate(-35 199 218)"/>
+   <rect x="76" y="196" width="22" height="8" rx="4" fill="#5ee6ff" transform="rotate(-20 87 200)"/>
+   <rect x="228" y="186" width="22" height="8" rx="4" fill="#fff" transform="rotate(30 239 190)"/>
+  </g>
+  <!-- cereza -->
+  <path d="M168 62c10-24 28-36 52-40" stroke="#3b7a2a" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <circle cx="168" cy="82" r="30" fill="#d4122e"/>
+  <circle cx="168" cy="82" r="30" fill="url(#dough)" opacity="0"/>
+  <ellipse cx="158" cy="70" rx="9" ry="6" fill="#fff" opacity=".8" transform="rotate(-30 158 70)"/>
+ </symbol>
+ <symbol id="discsvg" viewBox="0 0 100 100">
+  <defs><path id="arc" d="M50 50 m-39 0 a39 39 0 1 1 78 0 a39 39 0 1 1 -78 0"/></defs>
+  <text font-family="DejaVu Sans,Impact,sans-serif" font-weight="900" font-size="7.2" fill="#fff" letter-spacing="1.2"><textPath href="#arc" startOffset="2%">MARK KAIZEN ✦ MARK KAIZEN ✦ MARK KAIZEN ✦</textPath></text>
+ </symbol>
+</defs></svg>
+
+<!-- ================= SLIDE 1 ================= -->
+<section class="slide" id="s1">
+ <div class="sky"></div><div class="sun"></div>
+ <svg class="sky-city" width="1080" height="400" id="city1"></svg>
+ <div class="road"></div><div class="lane"></div>
+ <div class="vig"></div>
+
+ <!-- minimapa -->
+ <div class="mini" style="left:60px;top:170px"><svg viewBox="0 0 270 270" class="map"></svg><img src="../img/simbolo.webp"></div>
+ <div class="bars" style="left:360px;top:200px;width:300px">
+  <div class="bar"><i style="width:100%;background:#4fd36a"></i></div>
+  <div class="bar"><i style="width:70%;background:#5aa8ff"></i></div>
+ </div>
+ <div class="abs money gta yellow" style="right:140px;top:170px">$100</div>
+ <div class="stars" style="top:270px">★★★★★</div>
+
+ <!-- título -->
+ <div class="abs gta yellow" style="left:60px;top:470px;width:880px;font-size:136px;line-height:1;text-align:center;white-space:nowrap;transform:rotate(-3deg)">Misión<br>cumplida</div>
+ <div class="abs gta white" style="left:60px;top:790px;width:880px;font-size:56px;text-align:center;white-space:nowrap;color:#f7d117;-webkit-text-stroke:10px #000;transform:rotate(-3deg)">Objeto desbloqueado</div>
+
+ <!-- foto estilo ficha -->
+ <div class="abs" style="left:130px;top:880px;width:440px;height:500px;transform:rotate(-4deg);border:12px solid #fff;box-shadow:0 22px 50px rgba(0,0,0,.65);background:url(../img/hero.jpg) 50% 14%/cover;"></div>
+ <div class="disc" style="left:545px;top:1000px;width:390px;height:390px;transform:rotate(8deg)">
+  <div class="label"></div><svg class="ring" viewBox="0 0 100 100"><use href="#discsvg"/></svg>
+  <svg class="donut" viewBox="0 0 300 300"><use href="#donut"/></svg><div class="gloss"></div>
+ </div>
+ <div class="cue" style="left:130px;top:1420px;width:810px;font-size:44px">Desliza para reclamar <span style="font-size:56px">→</span></div>
+</section>
+
+<!-- ================= SLIDE 2 ================= -->
+<section class="slide" id="s2">
+ <div class="sky"></div><div class="sun" style="top:760px;left:290px"></div>
+ <svg class="sky-city" width="1080" height="400" id="city2" style="top:1000px"></svg>
+ <div class="road"></div><div class="lane"></div><div class="vig"></div>
+
+ <div class="mini" style="left:60px;top:170px;width:200px;height:200px"><svg viewBox="0 0 270 270" class="map"></svg><img src="../img/simbolo.webp" style="width:70px;height:70px;margin:-35px 0 0 -35px"></div>
+ <div class="abs money gta yellow" style="right:140px;top:170px">$100</div>
+ <div class="abs gta white" style="left:300px;top:190px;font-size:34px;-webkit-text-stroke:7px #000">Hambre</div>
+ <div class="bars" style="left:300px;top:240px;width:330px"><div class="bar"><i style="width:100%;background:#4fd36a"></i></div></div>
+ <div class="stars" style="top:270px">★★★★★</div>
+
+ <div class="abs gta yellow" style="left:60px;top:390px;width:880px;font-size:84px;line-height:1.05;text-align:center;white-space:nowrap">Objeto<br>desbloqueado</div>
+
+ <div class="disc" style="left:130px;top:590px;width:640px;height:640px;transform:rotate(-8deg)">
+  <div class="label"></div><svg class="ring" viewBox="0 0 100 100"><use href="#discsvg"/></svg>
+  <svg class="donut" viewBox="0 0 300 300"><use href="#donut"/></svg><div class="gloss"></div>
+ </div>
+
+ <div class="chip" style="left:130px;top:1350px;width:680px;justify-content:center;white-space:nowrap">
+  <span class="gta" style="font-size:72px;color:#4fd36a;-webkit-text-stroke:10px #000">+100</span>
+  <span class="gta white" style="font-size:52px;-webkit-text-stroke:8px #000">de hambre</span>
+ </div>
+ <div class="abs gta" style="left:60px;top:1228px;width:880px;text-align:center;white-space:nowrap;font-size:36px;color:#ff4fa3;-webkit-text-stroke:8px #000">★ Legendario ★</div>
+ <div class="abs gta white" style="left:60px;top:1282px;width:880px;text-align:center;white-space:nowrap;font-size:34px;-webkit-text-stroke:7px #000">Disco MARK KAIZEN · cereza</div>
+</section>
+
+<!-- ================= SLIDE 3 ================= -->
+<section class="slide" id="s3">
+ <div class="sky"></div><div class="sun" style="top:880px"></div>
+ <svg class="sky-city" width="1080" height="400" id="city3"></svg>
+ <div class="road"></div><div class="lane"></div><div class="vig"></div>
+
+ <div class="mini" style="left:60px;top:170px"><svg viewBox="0 0 270 270" class="map"></svg><img src="../img/simbolo.webp"></div>
+ <div class="abs money gta yellow" style="right:140px;top:170px">$100</div>
+ <div class="stars" style="top:270px">★★★★★</div>
+
+ <div class="abs gta white" style="left:60px;top:500px;width:880px;text-align:center;white-space:nowrap;font-size:60px;-webkit-text-stroke:9px #000">Siguiente misión:</div>
+ <div class="abs gta yellow" style="left:60px;top:600px;width:880px;text-align:center;white-space:nowrap;font-size:150px;line-height:1;transform:rotate(-3deg)">Tu<br>campaña</div>
+
+ <!-- avatar + logo -->
+ <div class="abs" style="left:140px;top:950px;width:300px;height:300px;border-radius:50%;border:12px solid #fff;box-shadow:0 20px 50px rgba(0,0,0,.65);background:url(../img/hero.jpg) 57% 6%/200% auto"></div>
+ <div class="abs" style="left:540px;top:950px;width:300px;height:300px;border-radius:24px;border:12px solid #ff7a1a;box-shadow:0 20px 50px rgba(0,0,0,.65);background:#000 url(../img/logo-mark-kaizen.webp) center/cover"></div>
+ <div class="chip" style="left:130px;top:1268px;width:810px;padding:12px 30px;justify-content:center;white-space:nowrap"><span class="gta white" style="font-size:40px;-webkit-text-stroke:8px #000">@markkaizen_ · TikTok</span></div>
+ <div class="cue" style="left:130px;top:1380px;width:810px;flex-direction:column;gap:2px;padding:12px 24px"><span style="font-size:52px;line-height:1.1">Comenta «MISIÓN»</span><span style="font-size:30px;line-height:1.1">Guarda · Comparte · Sígueme</span></div>
+</section>
+
+<script>
+// utilidades: skyline y mapa
+function rnd(seed){let s=seed;return()=>((s=(s*9301+49297)%233280)/233280)}
+function city(id,seed){const r=rnd(seed);let x=0,h='';
+ while(x<1080){const w=40+r()*70,hh=60+r()*230;h+=`<rect x="${x}" y="${400-hh}" width="${w}" height="${hh}" fill="#150a22"/>`;
+  for(let i=0;i<6;i++){h+=`<rect x="${x+8+r()*(w-20)}" y="${400-hh+10+r()*(hh-30)}" width="6" height="8" fill="#ffd84a" opacity=".7"/>`}
+  x+=w+4}
+ document.getElementById(id).innerHTML=h}
+city('city1',7);city('city2',21);city('city3',5);
+document.querySelectorAll('svg.map').forEach(m=>{
+ let h='<rect width="270" height="270" fill="#35495c"/><rect x="20" y="20" width="90" height="70" fill="#27384a"/><rect x="150" y="150" width="100" height="80" fill="#27384a"/><rect x="170" y="30" width="60" height="90" fill="#3f6a52"/>';
+ [60,135,210].forEach(p=>h+=`<rect x="0" y="${p-6}" width="270" height="12" fill="#e9e4d4"/><rect x="${p-6}" y="0" width="12" height="270" fill="#e9e4d4"/>`);
+ h+='<path d="M0 270 L270 0" stroke="#e9e4d4" stroke-width="10"/><circle cx="198" cy="70" r="10" fill="#ff3b30" stroke="#000" stroke-width="3"/>';
+ h+='<text x="135" y="26" text-anchor="middle" font-size="26" font-weight="900" fill="#fff" stroke="#000" stroke-width="5" paint-order="stroke">N</text>';
+ m.innerHTML=h});
+</script>
+</body></html>
