@@ -1,0 +1,63 @@
+<!doctype html><meta charset="utf-8">
+<style>
+@font-face{font-family:Anton;src:url(fuentes/anton.woff2)}
+*{margin:0;box-sizing:border-box}
+body{background:#000}
+.s{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Anton,Impact,sans-serif;color:#fff;margin-bottom:20px;
+ background:#1a0a2a url(hero-gta.png) center/cover}
+.s::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,0,25,.55) 0%,rgba(10,0,25,0) 24%,rgba(10,0,25,0) 62%,rgba(10,0,25,.85) 100%)}
+.s>*{position:relative;z-index:2}
+.title{position:absolute;left:0;right:0;top:1010px;text-align:center;z-index:3}
+.title h1{font-size:176px;line-height:.92;letter-spacing:2px;text-transform:uppercase;font-weight:400;
+ text-shadow:6px 6px 0 #000,0 0 40px rgba(255,0,150,.55);-webkit-text-stroke:2px #000}
+.title h2{margin-top:26px;font-size:60px;letter-spacing:4px;color:#ffd21f;font-weight:400;text-shadow:4px 4px 0 #000;font-style:italic}
+.mini{position:absolute;left:56px;bottom:64px;width:330px;height:330px;border-radius:50%;border:8px solid #fff;overflow:hidden;z-index:3;
+ background:radial-gradient(circle at 50% 50%,#17342f 0 100%);box-shadow:0 0 0 4px #000,0 10px 30px rgba(0,0,0,.6)}
+.mini svg{position:absolute;inset:0}
+.mini img{position:absolute;left:50%;top:50%;width:92px;height:92px;transform:translate(-50%,-50%);filter:drop-shadow(0 0 8px #000)}
+.hud{position:absolute;right:56px;bottom:90px;text-align:right;z-index:3;font-size:44px;letter-spacing:3px;text-shadow:3px 3px 0 #000}
+.hud b{display:block;font-weight:400;color:#7ed957;font-size:76px}
+.hud span{color:#ffd21f}
+.swipe{position:absolute;right:56px;top:60px;font-size:30px;letter-spacing:3px;z-index:3;text-shadow:3px 3px 0 #000}
+.pg{position:absolute;left:56px;top:60px;font-size:30px;letter-spacing:3px;z-index:3;text-shadow:3px 3px 0 #000}
+/* slide 2/3 */
+.bg2{background-size:240% auto;background-position:62% 38%}
+.bg3{background-size:230% auto;background-position:50% 8%}
+.list{position:absolute;left:70px;right:70px;top:300px;z-index:3}
+.list h1{font-size:128px;line-height:.95;font-weight:400;text-shadow:6px 6px 0 #000;-webkit-text-stroke:2px #000;margin-bottom:26px}
+.list h2{font-size:54px;color:#ffd21f;font-style:italic;font-weight:400;letter-spacing:4px;text-shadow:4px 4px 0 #000;margin-bottom:60px}
+.obj{display:flex;align-items:center;gap:30px;background:rgba(0,0,0,.62);border-left:14px solid #ffd21f;padding:34px 40px;margin-bottom:30px;font-size:74px;letter-spacing:2px}
+.obj i{font-style:normal;color:#ffd21f;font-size:60px;width:90px}
+.obj small{display:block;font-size:34px;color:#ddd;letter-spacing:2px;font-family:Inter,sans-serif;font-weight:600;margin-top:6px}
+.cta{position:absolute;left:70px;right:70px;top:330px;text-align:center;z-index:3}
+.cta h1{font-size:150px;line-height:.95;font-weight:400;text-shadow:6px 6px 0 #000;-webkit-text-stroke:2px #000}
+.cta h2{margin:34px 0 70px;font-size:60px;color:#ffd21f;font-style:italic;font-weight:400;letter-spacing:4px;text-shadow:4px 4px 0 #000}
+.btn{display:inline-block;background:#ffd21f;color:#000;font-size:78px;padding:30px 70px;letter-spacing:3px;box-shadow:10px 10px 0 #000}
+.cta p{margin-top:50px;font-size:46px;letter-spacing:3px;text-shadow:3px 3px 0 #000}
+.dark::after{background:linear-gradient(180deg,rgba(10,0,25,.72),rgba(10,0,25,.78) 60%,rgba(10,0,25,.9))!important}
+.dark .mini{width:230px;height:230px;border-width:6px}.dark .mini img{width:64px;height:64px}
+</style>
+
+<div class="s" id="s1">
+ <div class="pg">1 / 3</div><div class="swipe">DESLIZA ›</div>
+ <div class="title"><h1>Misión<br>cumplida</h1><h2>Objeto desbloqueado</h2></div>
+ <div class="mini"><svg viewBox="0 0 330 330"><g stroke="#2b5a52" stroke-width="14" fill="none"><path d="M0 120H330M0 230H330M90 0V330M230 0V330"/></g><g stroke="#3d7d72" stroke-width="5" fill="none"><path d="M0 60L330 270M40 330L330 60"/></g><rect x="105" y="135" width="95" height="82" fill="#0f2623"/><rect x="250" y="40" width="60" height="70" fill="#0f2623"/></svg><img src="simbolo.png"></div>
+ <div class="hud"><b>★★★★★</b>MARK KAIZEN <span>改善</span></div>
+</div>
+
+<div class="s dark" id="s2"><style>#s2{background-size:240% auto;background-position:60% 40%}</style>
+ <div class="pg">2 / 3</div><div class="swipe">DESLIZA ›</div>
+ <div class="list"><h1>Nuevas<br>misiones</h1><h2>ELIGE TU OBJETIVO</h2>
+  <div class="obj"><i>01</i><div>META ADS<small>Ventas y leads con foco en ROAS</small></div></div>
+  <div class="obj"><i>02</i><div>GOOGLE ADS<small>Aparece cuando te están buscando</small></div></div>
+  <div class="obj"><i>03</i><div>TIKTOK ADS<small>Contenido que convierte</small></div></div></div>
+ <div class="mini"><svg viewBox="0 0 330 330"><g stroke="#2b5a52" stroke-width="14" fill="none"><path d="M0 120H330M0 230H330M90 0V330M230 0V330"/></g></svg><img src="simbolo.png"></div>
+</div>
+
+<div class="s dark" id="s3"><style>#s3{background-size:230% auto;background-position:50% 12%}</style>
+ <div class="pg">3 / 3</div>
+ <div class="cta"><h1>¿Listo para<br>tu próxima<br>misión?</h1><h2>MISIÓN NUEVA DISPONIBLE</h2>
+  <div class="btn">ESCRÍBEME</div><p>WHATSAPP +51 969 722 522<br>TIKTOK @MARKKAIZEN_</p></div>
+ <div class="mini"><svg viewBox="0 0 330 330"><g stroke="#2b5a52" stroke-width="14" fill="none"><path d="M0 120H330M0 230H330M90 0V330M230 0V330"/></g></svg><img src="simbolo.png"></div>
+ <div class="hud"><b>MARK KAIZEN</b><span>改善</span> TRAFFICKER DIGITAL</div>
+</div>
