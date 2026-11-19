@@ -480,7 +480,7 @@ const rel=e=>{clearTimeout(hold);if(held){setPause(false);held=false;return}if(e
 stage.addEventListener('pointerup',rel);stage.addEventListener('pointercancel',rel);stage.addEventListener('pointerleave',e=>{if(held)rel(e)});
 document.addEventListener('visibilitychange',()=>{last=performance.now()});
 
-window.mk={go:i=>go(i,true),pause:()=>setPause(true),play:()=>setPause(false),seek:ms=>{T=ms;evs.forEach(e=>e.done=e.ms<=ms);counters()},get t(){return T}};
+window.mk={at:(i,ms)=>{if(idx!==i)go(i,true);evs.forEach(e=>{if(!e.done&&e.ms<=ms){e.done=true;e.fn()}});T=ms;bars[idx].style.width=Math.min(100,T/DUR[idx]*100)+'%';counters()},dur:DUR,go:i=>go(i,true),pause:()=>setPause(true),play:()=>setPause(false),seek:ms=>{T=ms;evs.forEach(e=>e.done=e.ms<=ms);counters()},get t(){return T}};
 const q=new URLSearchParams(location.search);go(+(q.get('scene')||1)-1,true);
 requestAnimationFrame(tick);
 })();
