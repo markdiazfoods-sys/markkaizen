@@ -19,3 +19,6 @@
 [2026-11-19T23:07:55Z] SessionStart
 [2026-11-19T23:07:56Z] UserPromptSubmit (capture=no) «``` Genera ahora el vídeo 9:16 desde el slide v2: avatar caminando ha»
 [2026-11-19T23:11:30Z] PreToolUse (no design-log) → ALLOW
+[2026-11-19T23:45:21Z] SessionStart
+[2026-11-19T23:45:22Z] UserPromptSubmit (capture=no) «``` Rehaz el video 9:16 "Misión cumplida v2": está muy estático. A�»
+[2026-11-19T23:50:21Z] PreToolUse (no design-log) → ALLOW
