@@ -1,0 +1,9 @@
+Video 9:16 "Misión cumplida" (slide 1 v2) con parallax estilo pantalla de carga GTA.
+
+- mark_kaizen_mision-cumplida_v2_parallax_9x16.mp4  1080x1920, 30 fps, 8 s, H.264, sin audio.
+- slide1_mision-cumplida_v2.jpg  slide de origen (899x1599).
+- build_layers.py  separa avatar / fondo limpio / profundidad / overlay (texto, logo, minimapa, estrellas).
+- render.py        anima las capas y codifica el MP4 (numpy + Pillow + ffmpeg).
+
+Regenerar: python3 build_layers.py <carpeta_con_slide_v2.jpg_nombrado_slide_v2.jpg> && python3 render.py <carpeta> salida.mp4 8
+El texto, logo, minimapa y estrellas son una capa estática tomada píxel a píxel del slide.
