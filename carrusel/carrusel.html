@@ -1,0 +1,73 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#222}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:#0b0b0b;color:#f4efe6;font-family:Georgia,'DejaVu Serif',serif;margin-bottom:20px}
+.g{color:#76B900}
+.circ{position:absolute;inset:0;opacity:.35}
+.brand{position:absolute;top:70px;left:80px;font-size:30px;letter-spacing:8px;text-transform:uppercase;color:#76B900;font-family:Helvetica,Arial,sans-serif}
+.num{position:absolute;top:70px;right:80px;font-size:28px;color:#888;font-family:Helvetica,Arial,sans-serif}
+h1{position:absolute;left:80px;right:80px;font-size:96px;line-height:1.05;font-weight:400}
+h2{font-size:78px;line-height:1.08;font-weight:400}
+.sub{font-family:Helvetica,Arial,sans-serif;font-size:36px;line-height:1.4;color:#cfc8ba}
+.flower{position:absolute}
+.card{border:2px solid #76B900;border-radius:24px;padding:44px 50px;background:rgba(118,185,0,.06)}
+.pill{display:inline-block;background:#76B900;color:#0b0b0b;font-family:Helvetica,Arial,sans-serif;font-weight:700;font-size:40px;padding:28px 56px;border-radius:60px}
+</style></head><body>
+<svg width="0" height="0"><defs>
+<g id="fl"><g fill="#f4efe6">
+<ellipse cx="0" cy="-70" rx="34" ry="70"/><ellipse cx="0" cy="-70" rx="34" ry="70" transform="rotate(60)"/><ellipse cx="0" cy="-70" rx="34" ry="70" transform="rotate(120)"/><ellipse cx="0" cy="-70" rx="34" ry="70" transform="rotate(180)"/><ellipse cx="0" cy="-70" rx="34" ry="70" transform="rotate(240)"/><ellipse cx="0" cy="-70" rx="34" ry="70" transform="rotate(300)"/></g><circle r="26" fill="#76B900"/></g>
+<g id="flg"><g fill="#76B900">
+<ellipse cx="0" cy="-70" rx="34" ry="70"/><ellipse cx="0" cy="-70" rx="34" ry="70" transform="rotate(72)"/><ellipse cx="0" cy="-70" rx="34" ry="70" transform="rotate(144)"/><ellipse cx="0" cy="-70" rx="34" ry="70" transform="rotate(216)"/><ellipse cx="0" cy="-70" rx="34" ry="70" transform="rotate(288)"/></g><circle r="22" fill="#0b0b0b"/></g>
+<g id="cc" fill="none" stroke="#76B900" stroke-width="3"><path d="M0 100H200V300H420M200 300V520H120M420 300V80H640M640 80V260H900M420 520H700V420H1080"/><circle cx="200" cy="100" r="10" fill="#76B900"/><circle cx="420" cy="300" r="10" fill="#76B900"/><circle cx="640" cy="80" r="10" fill="#76B900"/><circle cx="700" cy="520" r="10" fill="#76B900"/></g>
+</defs></svg>
+
+<!-- 1 -->
+<section class="slide" id="s1">
+<svg class="circ" viewBox="0 0 1080 1350"><use href="#cc" transform="translate(0,1010)"/></svg>
+<div class="brand">Florelima Atelier</div><div class="num">1/5</div>
+<svg class="flower" style="right:-120px;top:230px" width="640" height="640" viewBox="-220 -220 440 440"><use href="#fl"/></svg>
+<svg class="flower" style="left:-60px;top:520px" width="360" height="360" viewBox="-220 -220 440 440"><use href="#flg"/></svg>
+<h1 style="bottom:260px">Flowers<br>for <span class="g">visionaries</span></h1>
+<div class="sub" style="position:absolute;left:80px;bottom:120px">Desliza → ramos para quien construye el futuro</div>
+</section>
+
+<!-- 2 -->
+<section class="slide" id="s2">
+<svg class="circ" viewBox="0 0 1080 1350"><use href="#cc" transform="translate(0,-20)"/></svg>
+<div class="brand">Florelima Atelier</div><div class="num">2/5</div>
+<h1 style="top:300px">Regala flores al que <span class="g">construye</span> el futuro</h1>
+<div class="sub" style="position:absolute;left:80px;right:80px;top:760px">Fundadores, ingenieros, creadores. Gente que trabaja de noche y merece un detalle que se note.</div>
+<svg class="flower" style="right:60px;bottom:90px" width="300" height="300" viewBox="-220 -220 440 440"><use href="#fl"/></svg>
+</section>
+
+<!-- 3 -->
+<section class="slide" id="s3">
+<div class="brand">Florelima Atelier</div><div class="num">3/5</div>
+<h2 style="position:absolute;left:80px;top:190px">Tres ramos,<br><span class="g">una intención</span></h2>
+<div style="position:absolute;left:80px;right:80px;top:520px;display:flex;flex-direction:column;gap:34px">
+<div class="card"><div style="font-size:52px">Esencial</div><div class="sub">Flor de temporada, envoltura minimalista.</div></div>
+<div class="card"><div style="font-size:52px" class="g">Signature</div><div class="sub">Diseño de atelier con verde lima y blanco marfil.</div></div>
+<div class="card"><div style="font-size:52px">Keynote</div><div class="sub">El ramo grande para el día más importante.</div></div>
+</div></section>
+
+<!-- 4 -->
+<section class="slide" id="s4">
+<svg class="circ" viewBox="0 0 1080 1350"><use href="#cc" transform="translate(0,700)"/></svg>
+<div class="brand">Florelima Atelier</div><div class="num">4/5</div>
+<h2 style="position:absolute;left:80px;top:190px">Pedir es <span class="g">simple</span></h2>
+<div style="position:absolute;left:80px;right:80px;top:470px;display:flex;flex-direction:column;gap:60px">
+<div style="display:flex;gap:40px;align-items:center"><div class="g" style="font-size:120px;width:120px">1</div><div class="sub" style="font-size:44px;color:#f4efe6">Elige tu ramo en la web</div></div>
+<div style="display:flex;gap:40px;align-items:center"><div class="g" style="font-size:120px;width:120px">2</div><div class="sub" style="font-size:44px;color:#f4efe6">Escribe la dedicatoria</div></div>
+<div style="display:flex;gap:40px;align-items:center"><div class="g" style="font-size:120px;width:120px">3</div><div class="sub" style="font-size:44px;color:#f4efe6">Nosotros lo entregamos fresco</div></div>
+</div></section>
+
+<!-- 5 -->
+<section class="slide" id="s5">
+<svg class="circ" viewBox="0 0 1080 1350"><use href="#cc" transform="translate(0,820)"/></svg>
+<div class="brand">Florelima Atelier</div><div class="num">5/5</div>
+<svg class="flower" style="left:50%;margin-left:-250px;top:170px" width="500" height="500" viewBox="-220 -220 440 440"><use href="#fl"/></svg>
+<h1 style="top:700px;text-align:center;font-size:84px">Haz tu pedido hoy</h1>
+<div style="position:absolute;left:0;right:0;top:960px;text-align:center"><span class="pill">florelimatelier.com</span></div>
+<div class="sub" style="position:absolute;left:0;right:0;bottom:110px;text-align:center">Flowers for visionaries</div>
+</section>
+</body></html>
