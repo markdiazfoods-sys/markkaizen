@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Florelima × Nvidia — carrusel</title>
+<style>
+  :root{--rosa:#d98ba3;--rosa-osc:#b5617d;--crema:#fbf3ee;--teal:#0f8f88;--teal-osc:#0a5f5b;--oro:#c9a35f;--tinta:#2a1a20}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#888;font-family:Inter,Helvetica,Arial,sans-serif}
+  .slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--crema);color:var(--tinta);display:flex;flex-direction:column;padding:80px 84px}
+  .serif{font-family:"Liberation Serif",Georgia,serif}
+  .logo{height:150px;width:auto;object-fit:contain;align-self:center}
+  .logo.w,.logoc.w{filter:brightness(0) invert(1) drop-shadow(0 2px 6px #0006)}
+  .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-size:26px;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+  .tag{display:inline-block;font-size:26px;letter-spacing:.2em;text-transform:uppercase;color:var(--rosa-osc);font-weight:600}
+  h1{font-family:"Liberation Serif",Georgia,serif;font-weight:700;font-size:108px;line-height:1.02;letter-spacing:-.01em}
+  h2{font-family:"Liberation Serif",Georgia,serif;font-weight:700;font-size:84px;line-height:1.06}
+  em{font-style:italic;color:var(--rosa-osc)}
+  p{font-size:38px;line-height:1.38}
+  .small{font-size:23px;line-height:1.4;opacity:.7}
+  /* cover */
+  .s1{background:linear-gradient(160deg,#1c0f14 0%,#4a1f33 55%,#b5617d 130%);color:#fff;justify-content:center}
+  .s1 .logo{position:absolute;top:60px;left:50%;transform:translateX(-50%)}
+  .s1 .tag{color:#f3c4d3;margin-top:140px}
+  .s1 h1{margin:34px 0 40px}
+  .s1 h1 em{color:#f6b8cb}
+  .s1 p{opacity:.9;max-width:820px}
+  .swipe{position:absolute;right:84px;bottom:80px;font-size:34px;letter-spacing:.14em;text-transform:uppercase;color:#f6b8cb}
+  /* news */
+  .s2{justify-content:flex-start}
+  .s2 h2{margin:26px 0 70px}
+  .item{display:flex;gap:32px;align-items:flex-start;margin-bottom:64px}
+  .num{flex:none;width:84px;height:84px;border-radius:50%;background:var(--rosa);color:#fff;font:700 46px "Liberation Serif",serif;display:flex;align-items:center;justify-content:center}
+  .item p{font-size:42px}
+  .item b{color:var(--rosa-osc)}
+  /* moral */
+  .s3{background:var(--teal);color:#fff;justify-content:center;text-align:center;align-items:center}
+  .s3 .tag{color:#d8f3ef}
+  .s3 h1{font-size:102px;margin:30px 0}
+  .s3 h1 em{color:#ffe3ad}
+  .s3 p{max-width:800px;opacity:.95}
+  .s3 .big{font:700 330px/1 "Liberation Serif",serif;color:#ffffff1c;position:absolute;bottom:90px;right:50px}
+  /* product */
+  .prod{padding:0;background:var(--crema)}
+  .prod .ph{height:860px;width:100%;position:relative;background:#eee}
+  .prod .ph img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+  .prod .badge{position:absolute;left:60px;top:60px;background:var(--rosa);color:#fff;border-radius:60px;padding:16px 34px;font-size:28px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+  .prod .ph img.logoc{position:absolute;right:50px;top:44px;width:auto;height:96px;filter:none;background:#fbf3ee;border-radius:60px;padding:4px 30px;box-shadow:0 4px 16px #0003}
+  .prod .info{padding:46px 84px 0;flex:1;display:flex;flex-direction:column}
+  .prod h2{font-size:70px;margin-bottom:14px}
+  .prod .row{display:flex;justify-content:space-between;align-items:baseline}
+  .price{font:700 78px "Liberation Serif",serif;color:var(--rosa-osc)}
+  .prod p{font-size:34px;opacity:.85;max-width:640px}
+  .prod .foot{padding:0 84px 50px}
+  /* cta */
+  .s8{background:linear-gradient(160deg,#fff 0%,#f7dfe6 100%);align-items:center;text-align:center;justify-content:center}
+  .s8 .logo{height:260px}
+  .s8 h1{font-size:84px;margin:36px 0 30px}
+  .btn{display:inline-block;background:var(--teal);color:#fff;border-radius:80px;padding:30px 70px;font-size:40px;font-weight:600;letter-spacing:.04em;margin-top:34px}
+  .s8 .small{margin-top:54px;max-width:820px}
+</style>
+</head>
+<body>
+
+<!-- 1 PORTADA -->
+<section class="slide s1" id="s1">
+  <img class="logo w" src="img/logo.png" alt="Florelima Atelier">
+  <span class="tag">Tendencia de la semana</span>
+  <h1>El ex CEO de Nvidia renunció por sus escándalos.<br><em>Tú no necesitas uno.</em></h1>
+  <p>Lo que pasó, y la forma más fácil de quedar bien con tu pareja 🌹</p>
+  <div class="swipe">Desliza →</div>
+</section>
+
+<!-- 2 LO QUE REPORTAN -->
+<section class="slide s2" id="s2">
+  <span class="tag">Lo que reportan los medios</span>
+  <h2>Jensen Huang dejó <em>Nvidia</em> en 1 semana</h2>
+  <div class="item"><div class="num">1</div><p><b>12 nov:</b> renunció como presidente y CEO, tras revelarse relaciones extramatrimoniales.</p></div>
+  <div class="item"><div class="num">2</div><p>Admitió una relación con una mujer que, según EE. UU., sospecha espiaba para China. <b>Pekín lo niega.</b></p></div>
+  <div class="item"><div class="num">3</div><p>Reportes de NYT y Reuters hablan de <b>dos relaciones más</b> con empleadas de la empresa.</p></div>
+  <p class="small" style="margin-top:auto">Fuentes: DW, The New York Times, Reuters (nov. 2026). Son informaciones periodísticas y alegaciones; el caso sigue en investigación.</p>
+  <div class="foot" style="margin-top:30px"><span>Florelima Atelier</span><span>2 / 8</span></div>
+</section>
+
+<!-- 3 MORALEJA -->
+<section class="slide s3" id="s3">
+  <div class="big">3</div>
+  <span class="tag">La moraleja</span>
+  <h1>3 historias en una semana.<br><em>Tú solo necesitas 1:</em><br>la de tu pareja.</h1>
+  <p>Un detalle a tiempo evita lo que ninguna disculpa arregla. Mira los favoritos de Florelima 👇</p>
+  <div class="foot" style="width:100%"><span>Florelima Atelier</span><span>3 / 8</span></div>
+</section>
+
+<!-- 4 PRODUCTO -->
+<section class="slide prod" id="s4">
+  <div class="ph"><img src="img/rosas12.jpg" alt="Caja Florelima 12 Rosas"><div class="badge">Nivel: buen inicio</div><img class="logoc" src="img/logo.png" alt=""></div>
+  <div class="info"><h2>Caja Florelima <em>12 Rosas</em></h2><div class="row"><p>Rosas rojas en caja premium. Clásico que nunca falla.</p><div class="price">$35.11</div></div></div>
+  <div class="foot"><span>florelimatelier.com</span><span>4 / 8</span></div>
+</section>
+
+<!-- 5 PRODUCTO -->
+<section class="slide prod" id="s5">
+  <div class="ph"><img src="img/pink.png" alt="Pink Peonías" style="object-position:center 22%"><div class="badge">Nivel: romántico</div><img class="logoc" src="img/logo.png" alt=""></div>
+  <div class="info"><h2>Pink <em>Peonías</em></h2><div class="row"><p>La peonía dice “pensé en ti” sin decir nada.</p><div class="price">$29.25</div></div></div>
+  <div class="foot"><span>florelimatelier.com</span><span>5 / 8</span></div>
+</section>
+
+<!-- 6 PRODUCTO -->
+<section class="slide prod" id="s6">
+  <div class="ph"><img src="img/dulzura.jpg" alt="Box Dulzura de rosas de Jardín"><div class="badge">Nivel: pro</div><img class="logoc" src="img/logo.png" alt=""></div>
+  <div class="info"><h2>Box Dulzura de <em>Rosas</em></h2><div class="row"><p>Rosas de jardín en box. Detalle que se nota.</p><div class="price">$52.68</div></div></div>
+  <div class="foot"><span>florelimatelier.com</span><span>6 / 8</span></div>
+</section>
+
+<!-- 7 PRODUCTO -->
+<section class="slide prod" id="s7">
+  <div class="ph"><img src="img/vie.jpg" alt="La Vie en Rose"><div class="badge">Nivel: CEO</div><img class="logoc" src="img/logo.png" alt=""></div>
+  <div class="info"><h2>La Vie <em>en Rose</em></h2><div class="row"><p>Para cuando quieres que no quede ninguna duda.</p><div class="price">$117.10</div></div></div>
+  <div class="foot"><span>florelimatelier.com</span><span>7 / 8</span></div>
+</section>
+
+<!-- 8 CTA -->
+<section class="slide s8" id="s8">
+  <img class="logo" src="img/logo.png" alt="Florelima Atelier">
+  <h1>Haz la jugada <em>correcta</em></h1>
+  <p>Envíos express en Lima, Perú.<br>Guarda este post para tu próxima fecha especial.</p>
+  <div class="btn">florelimatelier.com</div>
+  <p class="small">Contenido humorístico basado en noticias públicas. Imágenes de producto: Florelima Atelier. Precios según el sitio al 19/11/2026.</p>
+</section>
+
+</body>
+</html>
