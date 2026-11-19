@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Carrusel Florelima Atelier</title>
+<style>
+@font-face{font-family:'Playfair Display';font-weight:700;src:url('assets/pf700.ttf')}
+@font-face{font-family:'Playfair Display';font-weight:900;src:url('assets/pf900.ttf')}
+:root{--rosa:#D986A0;--claro:#FFDFE9;--viejo:#C57171;--txt:#303030;--neon:#FF4F8B;--noche:#17101a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#888}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;font-family:'Inter',sans-serif;color:var(--txt)}
+.dark{background:radial-gradient(circle at 50% 30%,#2b1a2a 0%,var(--noche) 70%);color:#fff}
+.light{background:var(--claro)}
+h1,h2{font-family:'Playfair Display',serif;font-weight:900;line-height:1.08}
+.logo{position:absolute;top:36px;left:50%;transform:translateX(-50%);width:230px}
+.logo.w{filter:brightness(0) invert(1)}
+.foot{position:absolute;bottom:44px;left:0;right:0;text-align:center;font-size:26px;letter-spacing:3px;text-transform:uppercase;opacity:.75}
+.idx{position:absolute;bottom:44px;right:56px;font-size:24px;opacity:.6;font-weight:600}
+.pad{position:absolute;left:80px;right:80px}
+.tag{display:inline-block;background:var(--neon);color:#fff;font-weight:800;font-size:34px;letter-spacing:4px;padding:14px 30px;border-radius:8px}
+.sil{width:250px}
+.sil svg{width:100%;display:block}
+.lbl{margin-top:18px;text-align:center;font-size:27px;font-weight:700;line-height:1.25}
+.ok{color:#7ee2a8}.rep{color:#ffd37a}
+.card{background:#fff;border-radius:34px;padding:22px 22px 30px;text-align:center;box-shadow:0 24px 50px rgba(197,113,113,.25)}
+.card img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:24px;display:block}
+.card p{margin-top:20px;font-family:'Playfair Display',serif;font-weight:700;font-size:34px;line-height:1.15}
+.step{display:flex;align-items:center;gap:36px;background:#fff;border-radius:34px;padding:38px 44px;box-shadow:0 20px 44px rgba(197,113,113,.22)}
+.num{flex:none;width:112px;height:112px;border-radius:50%;background:var(--rosa);color:#fff;font-family:'Playfair Display',serif;font-weight:900;font-size:68px;display:flex;align-items:center;justify-content:center}
+.step b{font-family:'Playfair Display',serif;font-size:50px;display:block;line-height:1.1}
+.step span{font-size:31px;opacity:.8;display:block;margin-top:8px}
+.btn{display:inline-block;background:#fff;color:var(--viejo);font-weight:800;font-size:40px;padding:34px 60px;border-radius:70px}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="person" viewBox="0 0 200 300">
+      <circle cx="100" cy="82" r="58"/>
+      <path d="M8 300 C8 190 50 160 100 160 C150 160 192 190 192 300 Z"/>
+    </symbol>
+    <symbol id="heart" viewBox="0 0 100 92">
+      <path d="M50 90 C-12 46 10 -6 50 22 C90 -6 112 46 50 90 Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- SLIDE 1 -->
+<section class="slide dark" id="s1">
+  <img class="logo w" src="assets/logo.png" alt="Florelima Atelier">
+  <div class="pad" style="top:230px;text-align:center">
+    <span class="tag">ÚLTIMA HORA</span>
+    <h1 style="font-size:104px;margin-top:44px">El CEO de Nvidia renunció por 3 líos de amor</h1>
+  </div>
+  <div style="position:absolute;top:720px;left:0;right:0;display:flex;justify-content:center">
+    <svg viewBox="0 0 100 92" style="width:160px;filter:drop-shadow(0 0 26px #ff4f8b)">
+      <use href="#heart" fill="#FF4F8B"/>
+      <path d="M54 0 L42 30 L58 44 L44 92" stroke="#17101a" stroke-width="6" fill="none" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div style="position:absolute;top:905px;left:0;right:0;display:flex;justify-content:center;gap:60px">
+    <div class="sil" style="width:215px"><svg viewBox="0 0 200 300" fill="#4a3248" style="filter:drop-shadow(0 0 22px #ff4f8b88)"><use href="#person"/></svg></div>
+    <div class="sil" style="width:215px"><svg viewBox="0 0 200 300" fill="#4a3248" style="filter:drop-shadow(0 0 22px #ff4f8b88)"><use href="#person"/></svg></div>
+    <div class="sil" style="width:215px"><svg viewBox="0 0 200 300" fill="#4a3248" style="filter:drop-shadow(0 0 22px #ff4f8b88)"><use href="#person"/></svg></div>
+  </div>
+  <div class="foot">Desliza &rarr;</div>
+  <div class="idx">1/7</div>
+</section>
+
+<!-- SLIDE 2 -->
+<section class="slide dark" id="s2">
+  <img class="logo w" src="assets/logo.png" alt="Florelima Atelier">
+  <div class="pad" style="top:230px;text-align:center">
+    <h2 style="font-size:84px">Según reportes: 3 relaciones.<br><span style="color:var(--rosa)">Solo una confirmada por él.</span></h2>
+  </div>
+  <div style="position:absolute;top:640px;left:0;right:0;display:flex;justify-content:center;gap:56px">
+    <div class="sil"><svg fill="#4a3248" style="height:375px"><use href="#person"/></svg><div class="lbl ok">Confirmada<br>por Huang</div></div>
+    <div class="sil"><svg fill="#3a2a3a" style="height:375px"><use href="#person"/></svg><div class="lbl rep">Según<br>reportes</div></div>
+    <div class="sil"><svg fill="#3a2a3a" style="height:375px"><use href="#person"/></svg><div class="lbl rep">Según<br>reportes</div></div>
+  </div>
+  <div class="pad" style="bottom:120px;text-align:center;font-size:28px;opacity:.7">Fuente: Reuters, The New York Times, Forbes (nov. 2026)</div>
+  <div class="idx">2/7</div>
+</section>
+
+<!-- SLIDE 3 -->
+<section class="slide" id="s3" style="background:linear-gradient(180deg,#17101a 0%,#4a2a42 38%,#D986A0 78%,#FFDFE9 100%);color:#fff">
+  <img class="logo w" src="assets/logo.png" alt="Florelima Atelier">
+  <div class="pad" style="top:430px;text-align:center">
+    <h1 style="font-size:112px">Los secretos salen a la luz&hellip;</h1>
+    <h1 style="font-size:112px;margin-top:70px;color:var(--txt)">&hellip;menos los tuyos.</h1>
+  </div>
+  <div class="idx" style="color:var(--txt)">3/7</div>
+</section>
+
+<!-- SLIDE 4 -->
+<section class="slide light" id="s4">
+  <img class="logo" src="assets/logo.png" alt="Florelima Atelier">
+  <div class="pad" style="top:230px;text-align:center">
+    <h1 style="font-size:104px;color:var(--viejo)">Con nosotros, ntp</h1>
+    <p style="font-size:38px;line-height:1.3;margin-top:24px;font-weight:600">Regala flores a quien amas<br>de forma <b style="color:var(--viejo)">anónima</b>. Guardamos tu secreto.</p>
+  </div>
+  <div style="position:absolute;top:630px;left:260px;width:560px">
+    <img src="assets/peonias_rosadas.png" style="width:100%;border-radius:40px;box-shadow:0 30px 60px rgba(197,113,113,.35);display:block" alt="Bouquet Jardín de Peonías Rosadas">
+  </div>
+  <div class="foot">florelimatelier.com</div>
+  <div class="idx">4/7</div>
+</section>
+
+<!-- SLIDE 5 -->
+<section class="slide light" id="s5">
+  <img class="logo" src="assets/logo.png" alt="Florelima Atelier">
+  <div class="pad" style="top:230px;text-align:center">
+    <h2 style="font-size:84px">Elige el que <span style="color:var(--viejo)">dice lo que callas</span></h2>
+  </div>
+  <div style="position:absolute;top:520px;left:50px;right:50px;display:flex;gap:26px">
+    <div class="card" style="flex:1"><img src="assets/pink_peonias.png" alt="Pink Peonías"><p>Pink<br>Peonías</p></div>
+    <div class="card" style="flex:1"><img src="assets/roja_imperial.png" alt="Ramo Peonía Roja Imperial"><p>Peonía Roja<br>Imperial</p></div>
+    <div class="card" style="flex:1"><img src="assets/vie_en_rose.jpg" alt="La Vie en Rose"><p>La Vie<br>en Rose</p></div>
+  </div>
+  <div class="pad" style="top:1060px;text-align:center;font-size:36px;font-weight:600">Más ramos y boxes en florelimatelier.com</div>
+  <div class="idx">5/7</div>
+</section>
+
+<!-- SLIDE 6 -->
+<section class="slide light" id="s6">
+  <img class="logo" src="assets/logo.png" alt="Florelima Atelier">
+  <div class="pad" style="top:230px;text-align:center">
+    <h2 style="font-size:82px;color:var(--viejo)">3 pasos, cero nombres</h2>
+  </div>
+  <div class="pad" style="top:470px;display:flex;flex-direction:column;gap:32px">
+    <div class="step"><div class="num">1</div><div><b>Eliges tu ramo</b><span>Peonías, rosas, boxes&hellip;</span></div></div>
+    <div class="step"><div class="num">2</div><div><b>Dedicatoria sin firmar</b><span>Tu nombre no aparece.</span></div></div>
+    <div class="step"><div class="num">3</div><div><b>Entrega express en Lima</b><span>Y tu secreto, a salvo.</span></div></div>
+  </div>
+  <div class="foot">florelimatelier.com</div>
+  <div class="idx">6/7</div>
+</section>
+
+<!-- SLIDE 7 -->
+<section class="slide" id="s7" style="background:linear-gradient(160deg,#D986A0 0%,#C57171 100%)">
+  <img class="logo w" src="assets/logo.png" alt="Florelima Atelier">
+  <div class="pad" style="top:250px;text-align:center">
+    <h1 style="font-size:100px;color:#fff;text-shadow:0 4px 20px rgba(120,50,70,.35)">Guárdalo y envíaselo a quien lo necesita</h1>
+  </div>
+  <div class="pad" style="top:730px;text-align:center">
+    <span class="btn">5% OFF en tu primera compra</span>
+    <p style="margin-top:56px;font-size:48px;font-weight:700;color:#fff">florelimatelier.com</p>
+    <p style="margin-top:14px;font-size:44px;font-weight:600;color:#fff">Llámanos: 933 642 066</p>
+  </div>
+  <div class="foot" style="color:#fff;opacity:.9">&#8635; Vuelve al inicio</div>
+  <div class="idx" style="color:#fff">7/7</div>
+</section>
+
+</body>
+</html>
