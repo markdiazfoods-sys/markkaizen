@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Feliz cumpleaños, Pamela Calle 🎂</title>
+<style>
+:root{--ink:#2a0f2e;--rose:#ff5d8f;--gold:#ffc857;--plum:#6a1b9a;--cream:#fff6ee}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,sans-serif;color:var(--cream);background:radial-gradient(1200px 800px at 20% -10%,#7b2a8f 0%,transparent 60%),radial-gradient(1000px 700px at 100% 10%,#c2185b 0%,transparent 55%),#1d0a24;min-height:100vh;overflow-x:hidden}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:50}
+header{min-height:92vh;display:grid;place-items:center;text-align:center;padding:2.5rem 1rem 3rem;position:relative}
+.kicker{letter-spacing:.35em;text-transform:uppercase;font-size:.85rem;color:var(--gold)}
+h1{font-family:Georgia,"Playfair Display",serif;font-size:clamp(2.8rem,10vw,6.5rem);line-height:.95;margin:.3em 0;background:linear-gradient(90deg,var(--gold),#fff,var(--rose),var(--gold));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:300% 0}}
+.sub{font-size:clamp(1.1rem,3vw,1.6rem);opacity:.9}
+.actions{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+button{font:inherit;cursor:pointer;border:0;border-radius:999px;padding:.85em 1.5em;color:var(--ink);background:linear-gradient(135deg,var(--gold),#ffe29a);font-weight:700;box-shadow:0 8px 24px #0006;transition:transform .2s}
+button:hover{transform:translateY(-3px) scale(1.04)}
+button.ghost{background:#ffffff1c;color:var(--cream);backdrop-filter:blur(6px)}
+.cake{font-size:4rem;display:inline-block;animation:bob 2.4s ease-in-out infinite;cursor:pointer;user-select:none}
+.cake.off{filter:grayscale(.3)}
+@keyframes bob{50%{transform:translateY(-12px) rotate(4deg)}}
+.hint{opacity:.6;font-size:.9rem;margin-top:1rem}
+.scroll{position:absolute;bottom:1.5rem;left:50%;translate:-50% 0;animation:bob 2s infinite;opacity:.7}
+main{max-width:1200px;margin:0 auto;padding:2rem 1rem 6rem}
+h2{font-family:Georgia,serif;font-size:clamp(1.8rem,5vw,3rem);text-align:center;margin-bottom:2rem}
+.wall{columns:3 260px;column-gap:18px}
+.card{break-inside:avoid;margin-bottom:18px;position:relative;border-radius:14px;overflow:hidden;cursor:zoom-in;background:#fff;padding:8px 8px 8px;box-shadow:0 14px 34px #0007;transform:rotate(var(--r,0deg));opacity:0;translate:0 40px;transition:opacity .7s,translate .7s,transform .25s,box-shadow .25s;will-change:transform}
+.card.in{opacity:1;translate:0 0}
+.card:hover{box-shadow:0 22px 50px #000a;z-index:2}
+.card img,.card .ph{display:block;width:100%;border-radius:8px;transform:translateZ(0)}
+.card .ph{display:grid;place-items:center;font-size:3rem;min-height:var(--h,220px);background:linear-gradient(135deg,var(--a),var(--b))}
+.card .heart{position:absolute;top:14px;right:14px;font-size:1.6rem;filter:drop-shadow(0 2px 4px #0008);opacity:0;transition:.2s}
+.card:hover .heart{opacity:1}
+.card .heart.on{opacity:1}
+.letter{max-width:680px;margin:5rem auto 0;text-align:center;background:#ffffff14;border:1px solid #ffffff30;border-radius:24px;padding:2.2rem 1.5rem;backdrop-filter:blur(8px)}
+.letter p{font-size:1.25rem;line-height:1.7}
+.sign{font-family:Georgia,serif;font-style:italic;font-size:1.6rem;color:var(--gold);margin-top:1rem}
+#lb{position:fixed;inset:0;background:#0d0412ee;display:none;place-items:center;z-index:100}
+#lb.open{display:grid}
+#lb .stage{max-width:92vw;max-height:84vh;display:grid;place-items:center}
+#lb img{max-width:92vw;max-height:84vh;border-radius:12px;box-shadow:0 20px 60px #000;animation:pop .3s}
+#lb .ph{width:min(80vw,520px);height:min(70vh,520px);border-radius:16px;display:grid;place-items:center;font-size:6rem}
+@keyframes pop{from{transform:scale(.92);opacity:0}}
+#lb .nav,#lb .x{position:absolute;background:#ffffff22;color:#fff;width:52px;height:52px;padding:0;font-size:1.6rem}
+#lb .prev{left:1rem}#lb .next{right:1rem}#lb .x{top:1rem;right:1rem}
+#lb .count{position:absolute;bottom:1rem;color:#fff9;font-size:.9rem}
+.cursor-glow{position:fixed;width:300px;height:300px;border-radius:50%;pointer-events:none;background:radial-gradient(#ff5d8f33,transparent 70%);translate:-50% -50%;z-index:1}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.fan{position:relative;height:clamp(200px,30vw,300px);width:min(92vw,760px);margin:0 auto 2.2rem}
+.fan img{position:absolute;bottom:0;left:50%;height:100%;max-width:38vw;aspect-ratio:3/4;object-fit:cover;border:6px solid #fff;border-radius:10px;box-shadow:0 18px 40px #000a;translate:calc(-50% + var(--x)) 0;transform:rotate(var(--rot));transform-origin:bottom center;transition:transform .35s,z-index 0s;animation:rise .9s both;animation-delay:var(--d)}
+.fan img:hover{transform:rotate(0) scale(1.1) translateY(-10px);z-index:9!important}
+@keyframes rise{from{opacity:0;transform:translateY(60px) rotate(0)}}
+.card .cap{display:block;text-align:center;font-family:"Brush Script MT","Segoe Script",cursive;font-size:1.25rem;color:#6a1b9a;padding:.35rem 0 .1rem}
+.card img{aspect-ratio:auto;height:auto}
+#lb .capt{position:absolute;bottom:2.6rem;color:#fff;font-family:"Brush Script MT","Segoe Script",cursive;font-size:1.8rem;text-shadow:0 2px 8px #000}
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<div class="cursor-glow" id="glow"></div>
+
+<header>
+  <div>
+    <div class="fan" id="fan"></div>
+    <div class="kicker">Hoy es tu día</div>
+    <h1>Pamela<br>Calle</h1>
+    <p class="sub">Feliz cumpleaños 🎉 Esta pared de recuerdos es para ti</p>
+    <div style="margin-top:1.5rem"><span class="cake" id="cake" title="Toca para soplar la vela">🎂</span></div>
+    <p class="hint" id="hint">Toca el pastel y sopla la vela 🕯️</p>
+    <div class="actions">
+      <button id="party">🎊 Fiesta</button>
+      <button class="ghost" id="play">▶ Presentación</button>
+      <a href="#fotos"><button class="ghost">Ver fotos ↓</button></a>
+    </div>
+  </div>
+  <div class="scroll">↓</div>
+</header>
+
+<main id="fotos">
+  <h2>Nuestros mejores momentos</h2>
+  <div class="wall" id="wall"></div>
+  <section class="letter">
+    <p>Que este año te traiga todo lo bonito que mereces. Gracias por ser tan especial y por iluminar cada foto en la que apareces. 💖</p>
+    <div class="sign">— Tu fan enamorado</div>
+  </section>
+</main>
+
+<div id="lb" role="dialog" aria-label="Visor de fotos">
+  <button class="x" id="lbx" aria-label="Cerrar">✕</button>
+  <button class="nav prev" id="prev" aria-label="Anterior">‹</button>
+  <div class="stage" id="stage"></div>
+  <button class="nav next" id="next" aria-label="Siguiente">›</button>
+  <div class="capt" id="capt"></div>
+  <div class="count" id="count"></div>
+</div>
+
+<script>
+/* ===== FOTOS =====  (carpeta pamela/) */
+const PHOTOS = [
+ ["pamela/1.jpg","Marinera de corazón"],["pamela/2.jpg","Reina del escenario"],["pamela/3.jpg","Roja y radiante"],
+ ["pamela/4.jpg","Pura magia"],["pamela/5.jpg","Navidad con brillo"],["pamela/6.jpg","Aire de aventura"],
+ ["pamela/7.jpg","Elegancia total"],["pamela/8.jpg","Siempre radiante"],["pamela/9.jpg","Dulce como el rosa"],
+ ["pamela/10.jpg","Pura energía"],["pamela/11.jpg","Con mucho estilo"],["pamela/12.jpg","Estrella de la TV"],
+ ["pamela/13.jpg","Actitud total"],["pamela/14.jpg","Noches de encanto"],["pamela/15.jpg","Sonrisa siempre"],
+ ["pamela/16.jpg","Llena de color"],["pamela/17.jpg","¡Salud!"],["pamela/18.jpg","Atardeceres dorados"],
+ ["pamela/19.jpg","Sol y playa"],["pamela/20.jpg","Fresca como el agua"],["pamela/21.jpg","Modo vacaciones"],
+ ["pamela/22.jpg","Días de piscina"],["pamela/23.jpg","Brisa marina"],["pamela/24.jpg","Luz de verano"],
+ ["pamela/25.jpg","Arena y sol"]
+];
+const $ = s => document.querySelector(s);
+const wall = $('#wall');
+let items = [];
+
+function load(){
+  items = PHOTOS.map(([src,cap])=>({src,cap}));
+  render();
+  // abanico de portada
+  const fan=$('#fan'),pick=[1,2,4,15,0].map(i=>items[i]),rots=[-18,-9,0,9,18],xs=[-190,-95,0,95,190];
+  const k=innerWidth<600?.36:1;
+  pick.forEach((it,i)=>{const im=document.createElement('img');im.src=it.src;im.alt='Pamela';
+    im.style.cssText=`--rot:${rots[i]}deg;--x:${xs[i]*k}px;--d:${i*.12}s;z-index:${i===2?5:i}`;
+    im.onclick=()=>open(PHOTOS.findIndex(p=>p[0]===it.src));fan.appendChild(im);});
+}
+function render(){
+  wall.innerHTML='';
+  items.forEach((it,i)=>{
+    const c=document.createElement('div'); c.className='card';
+    c.style.setProperty('--r',((Math.random()*6)-3).toFixed(1)+'deg');
+    c.innerHTML=`<img loading="lazy" src="${it.src}" alt="Pamela Calle, ${it.cap}"><span class="cap">${it.cap}</span><span class="heart">🤍</span>`;
+    c.addEventListener('click',e=>{ if(e.target.classList.contains('heart')){const h=e.target;h.classList.toggle('on');h.textContent=h.classList.contains('on')?'❤️':'🤍';burst(e.clientX,e.clientY,18);e.stopPropagation();return;} open(i); });
+    // inclinación 3D con el cursor
+    c.addEventListener('pointermove',e=>{ if(e.pointerType==='touch')return; const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5; c.style.transform=`perspective(700px) rotateY(${x*14}deg) rotateX(${-y*14}deg) scale(1.04)`; });
+    c.addEventListener('pointerleave',()=>c.style.transform='');
+    wall.appendChild(c); io.observe(c);
+  });
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
+
+/* ===== visor ===== */
+let cur=0,timer=null;
+const lb=$('#lb'),stage=$('#stage');
+function show(){ const it=items[cur]; stage.innerHTML=`<img src="${it.src}" alt="${it.cap}">`; $('#capt').textContent=it.cap; $('#count').textContent=`${cur+1} / ${items.length}`; }
+function open(i){cur=i;show();lb.classList.add('open');document.body.style.overflow='hidden';}
+function close(){lb.classList.remove('open');document.body.style.overflow='';stop();}
+function go(d){cur=(cur+d+items.length)%items.length;show();}
+function stop(){clearInterval(timer);timer=null;$('#play').textContent='▶ Presentación';}
+$('#lbx').onclick=close;$('#prev').onclick=()=>go(-1);$('#next').onclick=()=>go(1);
+lb.addEventListener('click',e=>{if(e.target===lb)close();});
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1);});
+let tx=null;lb.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+lb.addEventListener('touchend',e=>{if(tx==null)return;const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)go(d<0?1:-1);tx=null;});
+$('#play').onclick=()=>{ if(timer){stop();return;} if(!items.length)return; open(0); $('#play').textContent='⏸ Pausar'; timer=setInterval(()=>go(1),3000); };
+
+/* ===== confeti ===== */
+const cv=$('#confetti'),cx=cv.getContext('2d');let parts=[];
+function size(){cv.width=innerWidth;cv.height=innerHeight;}addEventListener('resize',size);size();
+const COLORS=['#ff5d8f','#ffc857','#fff','#b57bff','#5ee0c1'];
+function burst(x,y,n=90){for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,s=3+Math.random()*7;parts.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-4,g:.18,r:3+Math.random()*5,c:COLORS[i%5],rot:Math.random()*6,vr:(Math.random()-.5)*.3,life:140+Math.random()*60});}if(parts.length===n||!raf)loop();}
+let raf=0;
+function loop(){cx.clearRect(0,0,cv.width,cv.height);parts=parts.filter(p=>p.life>0&&p.y<cv.height+20);for(const p of parts){p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.vx*=.99;p.rot+=p.vr;p.life--;cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot);cx.fillStyle=p.c;cx.fillRect(-p.r,-p.r/2,p.r*2,p.r);cx.restore();}raf=parts.length?requestAnimationFrame(loop):0;}
+function party(){const w=innerWidth,h=innerHeight;[.2,.5,.8].forEach((f,i)=>setTimeout(()=>burst(w*f,h*.35,110),i*250));}
+$('#party').onclick=party;
+$('#cake').onclick=()=>{const c=$('#cake');if(c.classList.contains('off'))return;c.classList.add('off');c.textContent='🎂';$('#hint').textContent='¡Pide un deseo, Pamela! ✨ Feliz cumpleaños 💖';party();};
+addEventListener('pointermove',e=>{const g=$('#glow');g.style.left=e.clientX+'px';g.style.top=e.clientY+'px';});
+addEventListener('load',()=>setTimeout(party,500));
+load();
+</script>
+</body>
+</html>
