@@ -1,0 +1,5 @@
+Animación 9:16 "Ciudad al atardecer" estilo pantalla de carga de juego open-world (sin logos de terceros).
+- mark_kaizen_ciudad-sunset_9x16.mp4  1080x1920, 30 fps, 10 s, H.264 + audio sintético (riser y golpes de bajo).
+- render.py  regenera: python3 render.py [salida.mp4]  (numpy + Pillow + ffmpeg).
+Parallax de 3 capas de ciudad, sol, carretera en perspectiva, símbolo MARK KAIZEN, lema y CTA "Comenta KAIZEN".
+No es video de IA: es 2D por capas. Para video IA falta un plan de pago (ElevenLabs/Runway/Higgsfield).
