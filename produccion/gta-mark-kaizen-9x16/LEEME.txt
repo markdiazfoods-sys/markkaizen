@@ -1,0 +1,6 @@
+Video estilo GTA para TikTok 9:16 (1080x1920, 30 fps, 15 s, H.264 + audio sintetizado).
+- mark_kaizen_gta_9x16.mp4  resultado.
+- render.py  regenera el video: python3 render.py [salida.mp4]  (Pillow + ffmpeg).
+- assets/  hoja de personaje (estilo GTA) y foto hero usadas.
+Hook "NO ES UN TRAILER" → 8 cortes del personaje → cierre "ES MI MARCA" + CTA "COMENTA: KAIZEN".
+No usa el logo de GTA VI (marca de Rockstar). No es video generado por IA: es animación y montaje de tus imágenes.
