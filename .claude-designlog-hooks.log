@@ -21,3 +21,5 @@
 [2026-11-19T23:11:30Z] PreToolUse (no design-log) → ALLOW
 [2026-11-19T23:59:36Z] SessionStart
 [2026-11-19T23:59:37Z] UserPromptSubmit (capture=no) «``` Abrir una nueva sesión de Claude Code en este repo, encargarle co»
+[2026-11-20T19:51:58Z] SessionStart
+[2026-11-20T19:51:59Z] UserPromptSubmit (capture=no) «Tienes modelos de animacion»
