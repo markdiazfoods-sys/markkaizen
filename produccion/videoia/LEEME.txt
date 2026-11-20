@@ -1,0 +1,32 @@
+videoia: generar videos con IA y editarlos desde la terminal.
+Solo necesita Python 3 (librería estándar) y ffmpeg. Sin pip install.
+
+GENERAR CON IA (Runway, modelo gen4.5)
+  1. Crea una clave en https://dev.runwayml.com y exporta: export RUNWAYML_API_SECRET=...
+     (no la pegues en chats ni la subas al repo)
+  2. python3 videoia.py gen-texto  "plano cenital de un taller de diseño, luz naranja" -o clip.mp4 --ratio 720:1280 --dur 5
+     python3 videoia.py gen-imagen foto.jpg "la cámara avanza lento" -o clip.mp4 --ratio 720:1280 --dur 5
+  - Texto→video: ratios 1280:720 y 720:1280. Imagen→video: además 1104:832, 960:960, 832:1104, 1584:672.
+  - Duración 2–10 s. Prompt máx. 1000 caracteres. Se valida antes de gastar créditos.
+  - Cada generación consume créditos (precios: https://dev.runwayml.com). Los videos moderados también se cobran.
+  - Las URLs de salida son temporales: el script descarga el mp4 al terminar.
+
+EDITAR (ffmpeg, local, sin costo)
+  info       in.mp4
+  cortar     in.mp4 -o out.mp4 --inicio 2 --fin 8
+  unir       a.mp4 b.mp4 c.mp4 -o out.mp4          (iguala resolución al primero; soporta clips sin audio)
+  formato    in.mp4 -o out.mp4 --a 9:16 [--relleno recorte|barras]   (9:16, 16:9, 1:1, 4:5)
+  velocidad  in.mp4 -o out.mp4 --x 1.5
+  subtitulos in.mp4 subs.srt -o out.mp4            (quemados, zona segura de TikTok)
+  audio      in.mp4 musica.mp3 -o out.mp4 [--vol 0.3] [--reemplazar]
+  miniatura  in.mp4 -o thumb.jpg --t 1.0
+  pipeline   in.mp4 receta.json -o out.mp4
+
+Receta de ejemplo (receta.json): pasos encadenados
+  [{"op":"cortar","inicio":1,"fin":6},
+   {"op":"formato","a":"9:16","relleno":"barras"},
+   {"op":"subtitulos","srt":"subs.srt"},
+   {"op":"audio","pista":"musica.mp3","vol":0.25}]
+
+Flujo típico: gen-texto (varios clips) → unir → formato 9:16 → subtitulos → audio → subir a videos/.
+Salida: H.264 + AAC, yuv420p, faststart (compatible con TikTok, Instagram y la web del repo).
