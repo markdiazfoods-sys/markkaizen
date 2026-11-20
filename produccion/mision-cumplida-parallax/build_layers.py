@@ -156,9 +156,21 @@ plate = plate * (1 - hole_soft[..., None]) + soft * hole_soft[..., None]
 plate = np.clip(plate, 0, 1)
 
 # ---------------------------------------------------------------- textura del avatar sin texto
-text_hole = dilate((overlay_a > 0.04).astype(np.float32), 3)
-valid_av = (1.0 - text_hole) * (dilate(m, 2) > 0.02).astype(np.float32)
+_ov = (overlay_a > 0.04).astype(np.float32)
+_tb = np.zeros((SH, SW), np.float32)   # cajas completas del titulo: cubren huecos entre letras y degradados rosas
+for _x0, _y0, _x1, _y1 in [(250, 804, 652, 978), (165, 976, 738, 1116), (200, 1133, 705, 1207)]:
+    _tb[_y0:_y1, _x0:_x1] = 1
+text_hole = np.maximum(dilate(_tb, 4), dilate(_ov, 3))
+# solo pixeles del interior real del avatar alimentan el relleno (antes entraban fondo/cielo y teñian las piernas)
+valid_av = (1.0 - text_hole) * (erode((m > 0.5).astype(np.float32), 5) > 0.5).astype(np.float32) * (luma < 0.20)
 av_fill = pushpull(src, valid_av)
+# oscurece/limita el relleno al rango de la tela (pantalon oscuro) y añade grano para que no quede una banda plana
+_fl = 0.299 * av_fill[..., 0] + 0.587 * av_fill[..., 1] + 0.114 * av_fill[..., 2]
+_k = np.clip(0.16 / np.maximum(_fl, 1e-3), 0, 1)[..., None]
+av_fill = av_fill * _k
+_rng = np.random.default_rng(5)
+_gr = blur(_rng.random((SH, SW)).astype(np.float32), 1.2)
+av_fill = np.clip(av_fill * (0.88 + 0.35 * (_gr - 0.5) * 2 + 0.12)[..., None], 0, 1)
 av_tex = np.where(text_hole[..., None] > 0.5, av_fill, src)
 # mezcla suave en el borde del hueco
 th_s = blur(text_hole, 1.0)
@@ -170,11 +182,20 @@ D = np.zeros((SH, SW), np.float32)
 D[:] = 0.04                                       # cielo
 # skyline lejano
 D = np.where((yy > 420) & (yy < 1150), 0.12, D)
+# remate de la torre derecha: sobresale por encima de y=420, asi que se tomaba como cielo (nubes ondulantes + parallax de cielo)
+# -> lo tratamos como skyline (pixeles azulados dentro de la caja; el cielo es naranja/rosa: R > B)
+_tt = np.zeros((SH, SW), np.float32); _tt[330:430, 735:875] = 1
+_tt = _tt * (src[..., 2] > src[..., 0] * 0.95)
+D = np.maximum(D, dilate(erode(_tt, 1), 2) * 0.12)
 # carretera: mas cerca cuanto mas abajo
 road = np.clip((yy - 1130) / (SH - 1130), 0, 1)
 D = np.where(yy >= 1130, 0.25 + 0.55 * road, D)
 dark = (luma < 0.20).astype(np.float32)
 dark_s = blur(dark, 1.5)
+
+
+# edificios (coords slide) a excluir de las regiones de palmeras (misma lista que render_v3.py)
+BUILDINGS = [(738, 400, 872, 700), (738, 690, 850, 835), (708, 660, 770, 835), (870, 590, 899, 700)]
 
 
 def region_dark(box, d):
@@ -183,6 +204,10 @@ def region_dark(box, d):
     r = np.zeros((SH, SW), np.float32)
     r[y0:y1, x0:x1] = 1
     k = blur(r, 6) * dark_s
+    for bx0, by0, bx1, by1 in BUILDINGS:     # los edificios no son palmeras: no heredan su profundidad
+        e = np.zeros((SH, SW), np.float32)
+        e[by0:by1, bx0:bx1] = 1
+        k = k * (1.0 - blur(e, 3))
     D = np.maximum(D, k * d)
 
 

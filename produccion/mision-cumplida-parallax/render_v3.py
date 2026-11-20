@@ -149,6 +149,12 @@ for box, (pxs, pys), dmax in PALMS:
     rm = region_mask(box, 6) * dark_s
     dist = np.hypot((xx - pxs * FX), (yy - pys * FY)) / (dmax * FX)
     palm_amp = np.maximum(palm_amp, rm * np.clip(dist, 0, 1) ** 1.3)
+# edificios (coords slide) que NO deben balancearse aunque tengan pixeles oscuros dentro de una region de palmeras
+BUILDINGS = [(738, 400, 872, 700), (738, 690, 850, 835), (708, 660, 770, 835), (870, 590, 899, 700)]
+bld_keep = np.ones((OH, OW), F32)
+for b in BUILDINGS:
+    bld_keep *= 1.0 - region_mask(b, 4)
+palm_amp *= bld_keep
 palm_phase = (yy / 170.0 + xx / 240.0).astype(F32)
 
 # asfalto mojado
