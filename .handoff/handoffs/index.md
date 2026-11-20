@@ -1,0 +1,1 @@
+2026-11-20T23:15:07.553Z | ai video, mcp connectors, insertar_video, runway, elevenlabs, markkaizen | Goal: add connectors + skills so AI videos can be generated and inserted into markkaizen static portfolio site. Intent: | 2026-11-20/handoff-2026-11-20T23-15-07-553Z.md
