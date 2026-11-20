@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "runway": {
+      "type": "http",
+      "url": "https://mcp.runwayml.com/mcp"
+    },
+    "runway-dev": {
+      "type": "http",
+      "url": "https://dev.runwayml.com/mcp/claude"
+    },
+    "elevenlabs": {
+      "type": "http",
+      "url": "https://api.elevenlabs.io/v1/mcp"
+    }
+  }
+}
