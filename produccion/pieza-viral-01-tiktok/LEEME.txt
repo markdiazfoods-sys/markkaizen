@@ -1,0 +1,9 @@
+Pieza viral 01 "Tu marca no crece porque la quieres perfecta" para TikTok 9:16.
+Fuente del guion: docs/PIEZA_VIRAL_01_MARK_KAIZEN.md (rama ccr-6c3cc124-v2w59l).
+
+- mark_kaizen_pieza-viral-01_tiktok_9x16.mp4  1080x1920, 30 fps, 30 s, H.264 + audio (solo golpes de bajo).
+- render.py  regenera el video: python3 render.py [salida.mp4]  (numpy-free; Pillow + ffmpeg).
+
+Lleva: hook, 3 pasos, símbolo con anillo que se dibuja, CTA "COMENTA: KAIZEN", subtítulos de la voz en zona segura de TikTok.
+No incluye voz ni avatar presentador (solo el símbolo): para eso falta la imagen de referencia del personaje.
+Para variante B cambia los textos del hook en render.py.
