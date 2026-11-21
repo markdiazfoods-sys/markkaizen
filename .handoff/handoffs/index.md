@@ -1,0 +1,1 @@
+2026-11-21T00:04:22.230Z | gta vi teaser, mark kaizen, teaser-gta-cuarto, render.py, tiktok 9:16 | Goal: rebuild Mark Kaizen GTA VI-style 9:16 teaser v2 — interactive, "inside the game" tour of user's room, no repeated | 2026-11-21/handoff-2026-11-21T00-04-22-230Z.md

@@ -161,6 +161,36 @@ SKY_FAR = [(x, _rng.randint(50, 100), _rng.randint(120, 330)) for x in range(130
 SKY_NEAR = [(x, _rng.randint(60, 120), _rng.randint(180, 430)) for x in range(110, 980, 105)]
 
 
+
+def player(r, cx, feet, h, ph, mode, rim=(255, 190, 140), arm_up=0.0):
+    """Mark de cuerpo completo, tercera persona (de espaldas), ilustrado. Capa fija en pantalla (dp=0)."""
+    k = h / 760.0
+    pt = lambda dx, dy: (cx + dx * k, feet - dy * k)
+    PA, HO, HR, SK = (52, 44, 74), (64, 46, 86), (20, 14, 30), (236, 230, 240)
+    r.ell(cx, feet + 6 * k, 190 * k, 34 * k, (12, 8, 18), 0)                       # sombra en el piso
+    sw = math.sin(ph) if mode == "walk" else 0.0
+    if mode != "sit":
+        for side, lift in ((-1, max(0, sw)), (1, max(0, -sw))):
+            hx = side * 52; fx = hx + side * 6; fy = 24 + lift * 46
+            r.poly([pt(hx - 40, 390), pt(hx + 40, 390), pt(fx + 34, fy + 20), pt(fx - 34, fy + 20)], PA, 0)
+            r.ell(*pt(fx, fy - 6), 50 * k, 26 * k, SK, 0)
+    arm = lambda side, dy_: [pt(side * 138, 640), pt(side * 196, 620), pt(side * 188 + side * 8 * sw, 360 + dy_), pt(side * 132 + side * 8 * sw, 360 + dy_)]
+    r.poly(arm(-1, 40 * max(0, sw)), (34, 24, 46), 0)
+    r.poly([pt(-150, 640), pt(150, 640), pt(172, 560), pt(152, 330), pt(-152, 330), pt(-172, 560)], HO, 0)  # torso
+    r.line([pt(-150, 640), pt(-172, 560), pt(-152, 330)], rim, 10 * k, 0); r.line([pt(150, 640), pt(172, 560), pt(152, 330)], lerpc(rim, (90, 70, 120), 0.6), 6 * k, 0)                                    # luz de borde
+    if arm_up > 0:                                                                      # brazo señalando el neón
+        a = arm_up
+        r.poly([pt(138, 640), pt(200, 640), pt(210 + 40 * a, 640 + 230 * a), pt(160 + 40 * a, 650 + 230 * a)], (34, 24, 46), 0)
+        r.ell(*pt(188 + 40 * a, 670 + 240 * a), 30 * k, 34 * k, (214, 164, 128), 0)
+    else:
+        r.poly(arm(1, 40 * max(0, -sw)), (34, 24, 46), 0)
+    r.paste(SIM, *pt(0, 500), 200 * k, 0)                                              # logo en la espalda
+    r.ell(*pt(0, 660), 104 * k, 56 * k, (50, 36, 64), 0)                                # capucha
+    r.ell(*pt(0, 728), 60 * k, 68 * k, HR, 0)                                           # cabeza / pelo
+    for dx_ in (-40, -14, 14, 40):
+        r.poly([pt(dx_ - 16, 770), pt(dx_ + 4, 828 + (dx_ % 3) * 6), pt(dx_ + 18, 770)], HR, 0)
+    r.line([pt(-60, 720), pt(-50, 780)], rim, 5 * k, 0)
+
 # =================== ESCENAS ===================
 def sc_door(ts):
     a = ease((ts - 1.05) / 0.95)
@@ -199,6 +229,7 @@ def sc_door(ts):
     r.glow(540, 1450, 520 * (0.3 + a), 640 * (0.3 + a), WARM, 0.55 * a)                # luz en el piso
     r.glow(540, 1460, 420, 70, (255, 190, 130), 0.5 * (1 - a))                          # rayo bajo la puerta
     r.glow(540, 220, 600, 160, (255, 170, 140), 0.18)
+    player(r, 600, 1890, 760, ts * 7.5, "walk", (255, 196, 150))
     return r.finish()
 
 
@@ -265,10 +296,8 @@ def sc_desk(ts):
     r.ell(900, 1350, 36, 24, (24, 18, 34)); r.glow(900, 1350, 90, 50, PINK, 0.3 * on)
     r.rect(120, 1290, 190, 1360, (70, 52, 80), r=10)                                  # taza
     r.glow(540, 1300, 520, 120, PINK, 0.18 * on)
-    # silla en primer plano
-    r.poly([(150, 2500), (230, 1700), (850, 1700), (930, 2500)], (20, 14, 28), 1.25)
-    r.ell(540, 1700, 330, 120, (28, 20, 38), 1.25)
-    r.line([(230, 1700), (150, 2500)], (110, 70, 110), 4, 1.25)
+    r.poly([(120, 2500), (200, 1640), (880, 1640), (960, 2500)], (24, 18, 34), 0)       # respaldo de la silla
+    player(r, 540, 2230, 790, 0, "sit", (150, 220, 220))
     return r.finish()
 
 
@@ -320,6 +349,7 @@ def sc_window(ts):
     for i in range(5):                                                                # pájaros
         bx = (200 + ts * 110 + i * 130) % 1100 - 60; by = 520 + 40 * math.sin(ts * 4 + i) + i * 34
         r.line([(bx - 16, by), (bx, by + 8 * math.sin(ts * 12 + i)), (bx + 16, by)], (50, 30, 60), 4, 0.5)
+    player(r, 400, 1900, 780, 0, "stand", (255, 200, 150))
     # notificación del teléfono (capa fija)
     pop = ease((ts - 0.3) / 0.4) * (1 - 0)
     if pop > 0.01:
@@ -363,6 +393,7 @@ def sc_wall(ts):
     r.glow(540, 1010, 360, 60, (255, 80, 150), 0.5 if on else 0)
     r.rect(-200, 1555, 1300, 1575, (100, 72, 110), 1.0)                               # repisa
     r.glow(540, 1565, 700, 50, TEAL, 0.30)
+    player(r, 560, 1900, 780, 0, "stand", (255, 110, 170), arm_up=ease((ts - 1.0) / 0.4))
     for i, (x, h) in enumerate([(120, 160), (300, 120), (700, 180), (900, 140)]):      # figuras
         r.ell(x, 1555 - h * 0.78, 38, 38, lerpc((70, 52, 90), (130, 80, 120), i / 3))
         r.rect(x - 34, 1555 - h * 0.6, x + 34, 1555, lerpc((60, 44, 82), (120, 76, 116), i / 3), r=14)
@@ -528,7 +559,7 @@ def hud(img, t, i_sc, ts):
         if not (tin <= ts < tout): continue
         a = ease((ts - tin) / 0.2) * clamp((tout - ts) / 0.2)
         pressed = ts >= tp
-        yc = 1430 + (1 - ease((ts - tin) / 0.25)) * 20
+        yc = 1030 + (1 - ease((ts - tin) / 0.25)) * 20
         wtxt = d.textlength(label, font=F("inter", 40))
         w_ = int(wtxt + 170); x0 = W // 2 - w_ // 2
         d.rounded_rectangle([x0, yc - 48, x0 + w_, yc + 48], radius=48, fill=(14, 10, 22, int(190 * a)),
