@@ -1,0 +1,11 @@
+Teaser interactivo "Si mi cuarto fuera GTA VI" 9:16 (v2).
+
+- mark_kaizen_gta-vi-cuarto_9x16.mp4  1080x1920, 30 fps, 16.6 s, H.264 + audio sintetizado (bajo, arpegio, blips de UI).
+- render.py     regenera el video: python3 render.py [salida.mp4]  (numpy + Pillow + ffmpeg).
+                Vista previa de cuadros sueltos: ONLY=1.9,5.8 python3 render.py  -> PNG en /tmp/kz
+- ref_selfie.jpg  cuadro de Mark usado en la escena final (la única con su cara).
+
+Escenas (ninguna se repite): puerta -> escritorio/PC -> ventana + mensaje -> pared de posters + neón 改善 -> closet/hoodie -> selfie -> cierre CTA.
+HUD que reacciona: objetivo con check, dinero, estrellas, minimapa con jugador, prompts [E] que se "presionan".
+Color suave (durazno/rosa/crepúsculo), grano, viñeta, cámara en mano. Termina en destello cálido que enlaza con el inicio (loop).
+El cuarto es ilustrado con código; para uno fotográfico hacen falta fotos reales del cuarto.
