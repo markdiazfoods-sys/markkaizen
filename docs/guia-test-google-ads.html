@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Guía interactiva · Test Google Ads · Lima · Navidad</title>
+<title>Guía interactiva · Test Google Ads · Flor de Lima Atelier</title>
 <style>
-  :root{--rosa:#c2417a;--rosa-claro:#fbe9f1;--ink:#2a2230;--gris:#6b6475;--linea:#e8e1ec;--ok:#2f8f5b;--warn:#b4580a;--warn-bg:#fff4e5}
+  :root{--rosa:#c2417a;--rosa-claro:#fbe9f1;--ink:#2a2230;--gris:#6b6475;--linea:#e8e1ec;--ok:#2f8f5b;--warn-bg:#fff4e5}
   *{box-sizing:border-box}
   body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:#faf7fb;line-height:1.5}
-  header{background:linear-gradient(135deg,#c2417a,#8e2f64);color:#fff;padding:26px 20px}
-  header h1{margin:0 0 6px;font-size:1.55rem}
+  header{background:linear-gradient(135deg,#c2417a,#8e2f64);color:#fff;padding:24px 20px}
+  header h1{margin:0 0 6px;font-size:1.5rem}
   header p{margin:0;opacity:.92}
   .wrap{max-width:920px;margin:0 auto}
   .gprog{margin-top:14px}
   .gprog .bar{height:10px;background:rgba(255,255,255,.3);border-radius:99px;overflow:hidden}
   .gprog .bar i{display:block;height:100%;width:0;background:#fff;transition:width .25s}
-  .gprog small{display:block;margin-top:4px;opacity:.95}
+  .gprog small{display:block;margin-top:4px}
   .pdf-btn{margin-top:12px;border:1px solid #fff;background:transparent;color:#fff;padding:7px 16px;border-radius:99px;font:inherit;cursor:pointer}
   nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--linea);z-index:5}
   nav .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 10px}
@@ -28,13 +28,16 @@
   h3{margin:22px 0 8px;font-size:1.05rem;color:var(--rosa)}
   .card{background:#fff;border:1px solid var(--linea);border-radius:12px;padding:16px;margin:12px 0}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
-  .kpi b{display:block;font-size:1.45rem;color:var(--rosa)}
+  .kpi b{display:block;font-size:1.4rem;color:var(--rosa)}
   .kpi span{color:var(--gris);font-size:.9rem}
   .warn{background:var(--warn-bg);border:1px solid #f1c98f;color:#6b3a06;border-radius:10px;padding:12px 14px;margin:12px 0}
-  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--linea);border-radius:10px;overflow:hidden;font-size:.95rem}
-  th,td{padding:9px 12px;border-bottom:1px solid var(--linea);text-align:left}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--linea);border-radius:10px;overflow:hidden;font-size:.93rem}
+  th,td{padding:8px 11px;border-bottom:1px solid var(--linea);text-align:left}
   th{background:var(--rosa-claro);font-weight:700}
   tr:last-child td{border-bottom:0}
+  td.n{text-align:center}
+  tfoot td,tr.tot td{font-weight:700;background:#faf7fb}
+  .scroll{overflow-x:auto}
   ul.check{list-style:none;padding:0;margin:0}
   ul.check li{padding:8px 0;border-bottom:1px solid var(--linea)}
   ul.check li:last-child{border:0}
@@ -50,19 +53,19 @@
   .copy.done{background:var(--ok)}
   .tag{display:inline-block;background:var(--rosa-claro);color:var(--rosa);border-radius:99px;padding:2px 10px;font-size:.8rem;font-weight:700}
   small.muted{color:var(--gris)}
-  .names{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
-  .names label{display:block;font-size:.85rem;color:var(--gris)}
-  input[type=text],input[type=number]{width:100%;padding:8px 10px;border:1px solid var(--linea);border-radius:8px;font:inherit;background:#fff}
-  .flow{counter-reset:s;list-style:none;padding:0;margin:0}
-  .flow li{counter-increment:s;position:relative;padding:10px 12px 10px 48px;background:#fff;border:1px solid var(--linea);border-radius:10px;margin:8px 0}
-  .flow li::before{content:counter(s);position:absolute;left:12px;top:10px;width:26px;height:26px;border-radius:50%;background:var(--rosa);color:#fff;font-weight:700;display:grid;place-items:center;font-size:.85rem}
+  input[type=number],select{width:100%;padding:8px 10px;border:1px solid var(--linea);border-radius:8px;font:inherit;background:#fff}
   .calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
   .calc label{font-size:.85rem;color:var(--gris);display:block;margin-bottom:3px}
   .res{margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
   .res div{background:var(--rosa-claro);border-radius:10px;padding:10px 12px}
-  .res b{display:block;font-size:1.25rem;color:var(--rosa)}
+  .res b{display:block;font-size:1.2rem;color:var(--rosa)}
   .res b.neg{color:#b3261e}
   .res span{font-size:.85rem;color:var(--gris)}
+  .fname{margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .fname code{background:#2a2230;color:#fff;padding:8px 12px;border-radius:8px;font-size:1rem}
+  .flow{counter-reset:s;list-style:none;padding:0;margin:0}
+  .flow li{counter-increment:s;position:relative;padding:10px 12px 10px 48px;background:#fff;border:1px solid var(--linea);border-radius:10px;margin:8px 0}
+  .flow li::before{content:counter(s);position:absolute;left:12px;top:10px;width:26px;height:26px;border-radius:50%;background:var(--rosa);color:#fff;font-weight:700;display:grid;place-items:center;font-size:.85rem}
   @media print{
     nav,.pdf-btn,.copy{display:none!important}
     section.tab{display:block!important;margin-bottom:18px}
@@ -77,23 +80,20 @@
 <body>
 <header>
   <div class="wrap">
-    <h1>Guía interactiva · Test de Google Ads · Lima</h1>
-    <p>Semana de prueba · Navidad · Preparado por Mark Díaz (trafficker digital)</p>
-    <div class="gprog">
-      <div class="bar"><i id="gbar"></i></div>
-      <small id="gtxt">Avance del equipo: 0 de 0 tareas</small>
-    </div>
+    <h1>Guía interactiva · Test de Google Ads · Flor de Lima Atelier</h1>
+    <p>Semana de prueba · Navidad · Preparado por Mark Díaz</p>
+    <div class="gprog"><div class="bar"><i id="gbar"></i></div><small id="gtxt">Avance del equipo</small></div>
     <button class="pdf-btn" onclick="window.print()">Imprimir / guardar como PDF</button>
   </div>
 </header>
 
 <nav><div class="wrap" id="tabs">
   <button data-t="resumen" class="on">Resumen</button>
-  <button data-t="contenido">Contenido digital</button>
-  <button data-t="viab">Presupuesto y viabilidad</button>
-  <button data-t="admin">Administración · Argus</button>
-  <button data-t="cv">Compras y ventas</button>
-  <button data-t="jefa">Aprobación</button>
+  <button data-t="formatos">Formatos y metadatos</button>
+  <button data-t="joyce">Joyce</button>
+  <button data-t="lesly">Lesly</button>
+  <button data-t="gabriela">Gabriela</button>
+  <button data-t="mark">Mark</button>
   <button data-t="wsp">WhatsApp</button>
 </div></nav>
 
@@ -103,40 +103,29 @@
 <section class="tab on" id="resumen">
   <h2>1. Resumen</h2>
   <div class="grid">
-    <div class="card kpi"><b>S/50 por día</b><span>Presupuesto del test</span></div>
+    <div class="card kpi"><b>S/50 por día</b><span>Presupuesto del test, esta semana</span></div>
     <div class="card kpi"><b>Lima, Perú</b><span>Única zona geográfica</span></div>
-    <div class="card kpi"><b>Google Ads</b><span>Plataforma principal</span></div>
-    <div class="card kpi"><b>Navidad</b><span>Sin alcohol en los anuncios</span></div>
+    <div class="card kpi"><b>20 imágenes</b><span>Cuadrada, vertical y horizontal</span></div>
+    <div class="card kpi"><b>15 videos</b><span>Cuadrado, vertical y horizontal</span></div>
   </div>
 
-  <h3>Quién es quién <small class="muted">(escribe los nombres, se guardan en tu navegador)</small></h3>
-  <div class="card names">
-    <div><label>Contenido digital (Meta, Instagram)</label><input type="text" data-k="contenido" value="Joyce"></div>
-    <div><label>Presupuestos, costos y viabilidad</label><input type="text" data-k="viab" placeholder="Por asignar"></div>
-    <div><label>Administración (sistema Argus)</label><input type="text" data-k="admin" placeholder="Por asignar"></div>
-    <div><label>Compras y ventas</label><input type="text" data-k="cv" placeholder="Por asignar"></div>
-    <div><label>Aprobación (jefa)</label><input type="text" data-k="jefa" value="Gabriela"></div>
-  </div>
-
-  <h3>Reparto de responsabilidades</h3>
+  <h3>Quién hace qué</h3>
   <table>
-    <tr><th>Quién</th><th>Qué hace</th></tr>
-    <tr><td><b class="nm" data-k="contenido">Joyce</b></td><td>Contenido digital: piezas para Google, posts de Instagram y Facebook</td></tr>
-    <tr><td><b class="nm" data-k="viab">(Presupuestos)</b></td><td>Presupuestos y costos; confirma si el plan es viable</td></tr>
-    <tr><td><b class="nm" data-k="admin">(Administración)</b></td><td>Apoyo administrativo; registro y conciliación en Argus</td></tr>
-    <tr><td><b class="nm" data-k="cv">(Compras y ventas)</b></td><td>Stock y compras; atención de las ventas que lleguen</td></tr>
-    <tr><td><b class="nm" data-k="jefa">Gabriela</b></td><td>Aprueba presupuesto y enfoque</td></tr>
-    <tr><td><b>Mark</b></td><td>Configura y lanza la campaña, mide resultados</td></tr>
+    <tr><th>Quién</th><th>Rol</th><th>Entrega</th></tr>
+    <tr><td><b>Joyce</b></td><td>Creadora de contenido digital: Instagram, Facebook y TikTok</td><td>Imágenes y videos para Google Ads, más los posts de redes</td></tr>
+    <tr><td><b>Lesly</b></td><td>Compras y ventas; enlace con Argus</td><td>Stock listo y ventas del test registradas en Argus</td></tr>
+    <tr><td><b>Gabriela</b></td><td>Jefa de Flor de Lima Atelier: presupuesto, viabilidad y aprobación</td><td>Visto bueno del presupuesto y del enfoque</td></tr>
+    <tr><td><b>Mark</b></td><td>Pauta: configura y lanza Google Ads, mide resultados</td><td>Campaña activa y reporte al cierre</td></tr>
   </table>
 
   <h3>Flujo de la semana</h3>
   <ol class="flow">
-    <li><b>Viabilidad:</b> se revisan presupuesto y costos antes de lanzar.</li>
-    <li><b>Aprobación:</b> la jefa aprueba presupuesto y enfoque.</li>
-    <li><b>Preparación en paralelo:</b> contenido prepara piezas, compras y ventas confirma stock, administración deja listo el registro en Argus.</li>
-    <li><b>Lanzamiento:</b> Mark configura y activa la campaña en Google Ads.</li>
-    <li><b>Seguimiento:</b> las ventas se registran en Argus con su origen.</li>
-    <li><b>Cierre:</b> resultados y ganancia real; se decide la semana siguiente.</li>
+    <li><b>Gabriela</b> revisa presupuesto y viabilidad, y aprueba el enfoque.</li>
+    <li><b>Joyce</b> prepara las 20 imágenes y los 15 videos con los nombres y medidas de la pestaña Formatos.</li>
+    <li><b>Lesly</b> confirma stock y deja Argus listo para registrar el origen de cada venta.</li>
+    <li><b>Mark</b> sube las piezas, configura la campaña y la lanza.</li>
+    <li><b>Seguimiento:</b> las ventas entran por Argus, que conecta Meta, Google Ads, la plataforma y WhatsApp.</li>
+    <li><b>Cierre:</b> ventas, ganancia real y decisión de la semana siguiente.</li>
   </ol>
 
   <h3>Por qué insistimos en Google</h3>
@@ -145,63 +134,119 @@
     <div class="warn">⚠️ Es <b>venta</b>, no ganancia. Falta descontar el costo del producto y la mano de obra. Aun así, es de lo que mejor nos ha funcionado.</div>
   </div>
 
-  <h3>Qué probamos</h3>
-  <div class="card"><ul>
-    <li>Un grupo de anuncios con <b>enfoque en colecciones</b>: <span class="tag">Graduación</span> <span class="tag">Peonías</span> <span class="tag">Menos de S/99.90</span></li>
-    <li>Hasta <b>20 imágenes</b> y <b>15 videos</b> en formato cuadrado, vertical y horizontal.</li>
-    <li>En Instagram y Facebook se reutilizan los <b>posts existentes</b>.</li>
-    <li>Posicionar la marca frente a la competencia (Magia Sorprende Lima y otras florerías).</li>
-  </ul></div>
+  <h3>Enfoque</h3>
+  <div class="card">Un grupo de anuncios por <b>colecciones</b>: <span class="tag">Graduación</span> <span class="tag">Peonías</span> <span class="tag">Menos de S/99.90</span>. Si se quiere ir más específico, se hace por categoría la semana siguiente.</div>
 
-  <div class="warn">🚫 <b>Alcohol restringido por Navidad.</b> Ni licores ni vinos en ninguna imagen o video de esta semana.</div>
-  <div class="warn"><b>Por confirmar:</b> las medidas y pesos máximos están escritos de memoria. Confírmenlos en el gestor de Google Ads y en Meta antes de subir nada.</div>
+  <div class="warn">🚫 <b>Navidad: alcohol restringido.</b> Ni licores ni vinos en ninguna imagen o video.</div>
+  <div class="warn"><b>Por confirmar:</b> las medidas, pesos y límites de texto están escritos de memoria. Confírmenlos en el gestor de Google Ads y en Meta antes de subir nada.</div>
 </section>
 
-<!-- CONTENIDO -->
-<section class="tab" id="contenido">
-  <h2>2. <span class="nm" data-k="contenido">Joyce</span> · Contenido digital</h2>
-  <p>Entrega separada por plataforma. No hace falta llegar al máximo: mejor <b>pocos y buenos</b>, con la marca visible.</p>
+<!-- FORMATOS -->
+<section class="tab" id="formatos">
+  <h2>2. Formatos, medidas y metadatos</h2>
 
-  <h3>Google Ads (prioridad)</h3>
-  <table>
-    <tr><th>Tipo</th><th>Formato</th><th>Medida</th></tr>
-    <tr><td>Imagen</td><td>Cuadrado 1:1</td><td>1200 × 1200</td></tr>
+  <h3>Medidas exactas por plataforma</h3>
+  <div class="scroll"><table>
+    <tr><th>Plataforma</th><th>Tipo</th><th>Formato</th><th>Medida (px)</th></tr>
+    <tr><td rowspan="6"><b>Google Ads</b></td><td>Imagen</td><td>Cuadrado 1:1</td><td>1200 × 1200</td></tr>
     <tr><td>Imagen</td><td>Vertical 4:5</td><td>960 × 1200</td></tr>
     <tr><td>Imagen</td><td>Horizontal 1.91:1</td><td>1200 × 628</td></tr>
     <tr><td>Video</td><td>Horizontal 16:9</td><td>1920 × 1080</td></tr>
     <tr><td>Video</td><td>Cuadrado 1:1</td><td>1080 × 1080</td></tr>
     <tr><td>Video</td><td>Vertical 9:16</td><td>1080 × 1920</td></tr>
-  </table>
-  <p><small class="muted">Máximo: 20 imágenes y 15 videos en total. Peso máximo por imagen: 5 MB (por confirmar).</small></p>
+    <tr><td rowspan="3"><b>Instagram y Facebook</b></td><td>Feed</td><td>Cuadrado 1:1</td><td>1080 × 1080</td></tr>
+    <tr><td>Feed</td><td>Vertical 4:5</td><td>1080 × 1350</td></tr>
+    <tr><td>Historias y Reels</td><td>Vertical 9:16</td><td>1080 × 1920</td></tr>
+    <tr><td><b>TikTok</b></td><td>Video</td><td>Vertical 9:16</td><td>1080 × 1920</td></tr>
+  </table></div>
+  <p><small class="muted">Peso máximo por imagen en Google: 5 MB (por confirmar). Todas las medidas: por confirmar en cada gestor.</small></p>
 
-  <h3>Instagram y Facebook (Meta)</h3>
-  <div class="card">Usar los <b>posts que ya tenemos</b>. Solo si algo debe salir como <b>anuncio independiente</b>:</div>
-  <table>
-    <tr><th>Formato</th><th>Medida</th></tr>
-    <tr><td>Cuadrado</td><td>1080 × 1080</td></tr>
-    <tr><td>Vertical 4:5</td><td>1080 × 1350</td></tr>
-    <tr><td>Historias y Reels 9:16</td><td>1080 × 1920</td></tr>
-  </table>
-  <p><small class="muted">Pueden ser videos antiguos de cada colección. Si falta una versión, se rehace desde el mismo video.</small></p>
+  <h3>Cómo repartir las 20 imágenes y los 15 videos</h3>
+  <div class="scroll"><table>
+    <tr><th>Colección</th><th>Cuadrada 1:1</th><th>Vertical 4:5</th><th>Horizontal 1.91:1</th><th>Total imágenes</th><th>Videos (maestros)</th></tr>
+    <tr><td>Graduación</td><td class="n">3</td><td class="n">2</td><td class="n">2</td><td class="n">7</td><td class="n">2</td></tr>
+    <tr><td>Peonías</td><td class="n">3</td><td class="n">2</td><td class="n">2</td><td class="n">7</td><td class="n">2</td></tr>
+    <tr><td>Menos de S/99.90</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">6</td><td class="n">1</td></tr>
+    <tr class="tot"><td>Total</td><td class="n">8</td><td class="n">6</td><td class="n">6</td><td class="n">20</td><td class="n">5</td></tr>
+  </table></div>
+  <div class="card">
+    <b>Videos sin trabajo de más:</b> se hacen <b>5 videos maestros</b> y cada uno se exporta en 3 formatos (16:9, 1:1 y 9:16): <b>5 × 3 = 15 videos</b>. Pueden ser videos antiguos de cada colección; si falta una versión, se recompone desde el mismo video.<br>
+    <b>Calidad:</b> las piezas principales en calidad excelente; las de relleno pueden ser de calidad promedio. No hace falta llegar al máximo: mejor pocos y buenos, con la marca visible.
+  </div>
+  <div class="warn">🚫 Navidad: ninguna pieza con licores ni vinos, tampoco al fondo de la foto.</div>
 
+  <h3>Generador de nombre de archivo</h3>
+  <div class="card">
+    <p style="margin-top:0">Todos los archivos se nombran igual, para que Mark los encuentre y Argus los relacione con cada venta.</p>
+    <div class="calc">
+      <div><label>Colección</label><select id="f-col"><option value="grad">Graduación</option><option value="peon">Peonías</option><option value="m99">Menos de S/99.90</option></select></div>
+      <div><label>Tipo</label><select id="f-tipo"><option value="img">Imagen</option><option value="vid">Video</option></select></div>
+      <div><label>Formato</label><select id="f-fmt"><option value="1x1">Cuadrado 1:1</option><option value="4x5">Vertical 4:5</option><option value="191x1">Horizontal 1.91:1 (imagen)</option><option value="16x9">Horizontal 16:9 (video)</option><option value="9x16">Vertical 9:16</option></select></div>
+      <div><label>Número</label><input type="number" id="f-num" value="1" min="1" max="99"></div>
+    </div>
+    <div class="fname"><code id="f-out">FLA_grad_img_1x1_01</code><button class="copy" id="f-copy">Copiar nombre</button></div>
+    <p><small class="muted">Formato: <b>FLA</b> (Flor de Lima Atelier) _ colección _ tipo _ formato _ número. Cambien el prefijo si prefieren otro.</small></p>
+  </div>
+
+  <h3>Metadatos de la campaña</h3>
+  <div class="scroll"><table>
+    <tr><th>Dato</th><th>Valor</th><th>Para qué</th></tr>
+    <tr><td>Nombre de campaña</td><td>FLA_test-navidad_google_lima</td><td>Identificarla en Google Ads y en Argus</td></tr>
+    <tr><td>Grupos de anuncios</td><td>graduacion · peonias · menos-99-90</td><td>Medir cada colección por separado</td></tr>
+    <tr><td>Etiquetas en el enlace (UTM)</td><td>utm_source=google · utm_medium=cpc · utm_campaign=test-navidad · utm_content=(colección)</td><td>Saber de qué anuncio vino cada venta</td></tr>
+    <tr><td>Origen de venta en Argus</td><td>Google Ads – test Navidad</td><td>Que Lesly marque las ventas del test</td></tr>
+    <tr><td>Textos del anuncio</td><td>Títulos cortos y descripciones</td><td>Límites de caracteres: por confirmar en Google Ads</td></tr>
+  </table></div>
+</section>
+
+<!-- JOYCE -->
+<section class="tab" id="joyce">
+  <h2>3. Joyce · Contenido digital</h2>
+  <p>Instagram, Facebook y TikTok. Para el test, además, las piezas de Google Ads. Todas las medidas y el nombre de archivo están en la pestaña <b>Formatos y metadatos</b>.</p>
   <h3>Checklist de entrega</h3>
-  <div class="prog"><i data-bar="contenido"></i></div><div class="pcount" data-count="contenido"></div>
-  <ul class="check" data-group="contenido">
-    <li><label><input type="checkbox"><span>Imágenes de <b>Graduación</b> (1:1, 4:5 y 1.91:1)</span></label></li>
-    <li><label><input type="checkbox"><span>Imágenes de <b>Peonías</b> (1:1, 4:5 y 1.91:1)</span></label></li>
-    <li><label><input type="checkbox"><span>Imágenes de productos <b>menos de S/99.90</b> (1:1, 4:5 y 1.91:1)</span></label></li>
-    <li><label><input type="checkbox"><span>Videos por colección (16:9, 1:1 y 9:16)</span></label></li>
+  <div class="prog"><i data-bar="joyce"></i></div><div class="pcount" data-count="joyce"></div>
+  <ul class="check" data-group="joyce">
+    <li><label><input type="checkbox"><span><b>Graduación:</b> 7 imágenes (3 cuadradas, 2 verticales, 2 horizontales)</span></label></li>
+    <li><label><input type="checkbox"><span><b>Peonías:</b> 7 imágenes (3 cuadradas, 2 verticales, 2 horizontales)</span></label></li>
+    <li><label><input type="checkbox"><span><b>Menos de S/99.90:</b> 6 imágenes (2 de cada formato)</span></label></li>
+    <li><label><input type="checkbox"><span>5 videos maestros (2 Graduación, 2 Peonías, 1 Menos de S/99.90)</span></label></li>
+    <li><label><input type="checkbox"><span>Cada video exportado en 16:9, 1:1 y 9:16 (15 en total)</span></label></li>
     <li><label><input type="checkbox"><span>Sin alcohol en ninguna pieza (Navidad)</span></label></li>
     <li><label><input type="checkbox"><span>Marca visible en todas las piezas</span></label></li>
-    <li><label><input type="checkbox"><span>Posts de Instagram/Facebook elegidos (reutilizar los existentes)</span></label></li>
-    <li><label><input type="checkbox"><span>Medidas confirmadas en el gestor de Google Ads y Meta</span></label></li>
+    <li><label><input type="checkbox"><span>Archivos con el nombre del generador (FLA_colección_tipo_formato_número)</span></label></li>
+    <li><label><input type="checkbox"><span>Instagram y Facebook: posts existentes elegidos (solo se crea un anuncio aparte si hace falta)</span></label></li>
+    <li><label><input type="checkbox"><span>TikTok: versión 9:16 de los videos elegidos</span></label></li>
+    <li><label><input type="checkbox"><span>Medidas confirmadas en Google Ads, Meta y TikTok</span></label></li>
   </ul>
 </section>
 
-<!-- VIABILIDAD -->
-<section class="tab" id="viab">
-  <h2>3. <span class="nm" data-k="viab">(Presupuestos)</span> · Presupuesto, costos y viabilidad</h2>
-  <p>Objetivo: confirmar con números que el test vale la pena antes de lanzar, y calcular la ganancia real al cerrar.</p>
+<!-- LESLY -->
+<section class="tab" id="lesly">
+  <h2>4. Lesly · Compras, ventas y Argus</h2>
+  <p>Objetivo: que haya producto si los anuncios funcionan, y que cada venta del test quede registrada con su origen. Argus conecta Meta, Google Ads, la plataforma y los flujos de WhatsApp que ya están lanzados.</p>
+  <div class="warn">Esta guía no conoce los campos exactos de Argus. Confirmen dónde se marca el origen de la venta y ajusten la lista.</div>
+  <h3>Checklist</h3>
+  <div class="prog"><i data-bar="lesly"></i></div><div class="pcount" data-count="lesly"></div>
+  <ul class="check" data-group="lesly">
+    <li><label><input type="checkbox"><span>Stock e insumos para Graduación, Peonías y productos menos de S/99.90</span></label></li>
+    <li><label><input type="checkbox"><span>Compras extra por si suben los pedidos (Navidad)</span></label></li>
+    <li><label><input type="checkbox"><span>Capacidad de armado y entrega en Lima durante la semana</span></label></li>
+    <li><label><input type="checkbox"><span>Argus: origen "Google Ads – test Navidad" listo para marcar las ventas</span></label></li>
+    <li><label><input type="checkbox"><span>Argus recibe las ventas de la web y los mensajes de WhatsApp</span></label></li>
+    <li><label><input type="checkbox"><span>Registro diario de ventas del test</span></label></li>
+    <li><label><input type="checkbox"><span>Si un producto se agota, avisar a Mark para pausar el anuncio</span></label></li>
+    <li><label><input type="checkbox"><span>Al cierre: pasar a Mark y a Gabriela el total de ventas y los costos reales</span></label></li>
+  </ul>
+</section>
+
+<!-- GABRIELA -->
+<section class="tab" id="gabriela">
+  <h2>5. Gabriela · Presupuesto, viabilidad y aprobación</h2>
+  <div class="card"><b>Para decidir</b><ul>
+    <li>Test de Google Ads: <b>S/50 diarios</b> en Lima, esta semana.</li>
+    <li>Foco: Graduación, Peonías y productos a menos de S/99.90.</li>
+    <li>Joyce prepara las piezas, Lesly asegura stock y registro en Argus, Mark lanza y mide.</li>
+  </ul></div>
 
   <h3>Calculadora de viabilidad</h3>
   <div class="card">
@@ -214,151 +259,102 @@
     </div>
     <div class="res">
       <div><b id="r-inv">S/0</b><span>Inversión en anuncios</span></div>
-      <div><b id="r-roas">0x</b><span>Retorno sobre venta (ROAS)</span></div>
+      <div><b id="r-roas">—</b><span>Retorno sobre venta (ROAS)</span></div>
       <div><b id="r-gan">S/0</b><span>Ganancia estimada</span></div>
       <div><b id="r-eq">—</b><span>ROAS mínimo para no perder</span></div>
     </div>
-    <p><small class="muted">Referencia de septiembre: S/80 → más de S/5,000 en ventas (≈60x). Eso es venta bruta. Completa costo y mano de obra con los datos reales de la tienda; no hay valores por defecto a propósito.</small></p>
+    <p><small class="muted">Referencia de septiembre: S/80 → más de S/5,000 en ventas (≈60x), venta bruta. Los costos arrancan en 0 a propósito: complétenlos con los datos reales.</small></p>
   </div>
 
   <h3>Checklist</h3>
-  <div class="prog"><i data-bar="viab"></i></div><div class="pcount" data-count="viab"></div>
-  <ul class="check" data-group="viab">
-    <li><label><input type="checkbox"><span>Costo de producto por colección (Graduación, Peonías, menos de S/99.90)</span></label></li>
-    <li><label><input type="checkbox"><span>Costo de mano de obra por pedido</span></label></li>
-    <li><label><input type="checkbox"><span>Margen por colección y ROAS mínimo para no perder</span></label></li>
-    <li><label><input type="checkbox"><span>Veredicto de viabilidad enviado a la jefa (sí / ajustar / no)</span></label></li>
-    <li><label><input type="checkbox"><span>Revisión de competidores: Magia Sorprende Lima y 2 o 3 florerías (colecciones, precios, tipo de anuncios)</span></label></li>
-    <li><label><input type="checkbox"><span>Al cierre: ganancia real calculada con Mark</span></label></li>
-  </ul>
-</section>
-
-<!-- ADMIN -->
-<section class="tab" id="admin">
-  <h2>4. <span class="nm" data-k="admin">(Administración)</span> · Apoyo administrativo y Argus</h2>
-  <p>Objetivo: que cada venta del test quede registrada en Argus y se pueda medir sin discusión al cierre.</p>
-  <div class="warn">Esta guía no conoce los campos exactos de Argus. Confirmen cómo registrar el <b>origen de la venta</b> (por ejemplo "Google Ads – test Navidad") y ajusten la lista.</div>
-  <h3>Checklist</h3>
-  <div class="prog"><i data-bar="admin"></i></div><div class="pcount" data-count="admin"></div>
-  <ul class="check" data-group="admin">
-    <li><label><input type="checkbox"><span>Definir cómo se marca en Argus una venta que viene de Google Ads</span></label></li>
-    <li><label><input type="checkbox"><span>Avisar a quienes registran ventas cómo marcarlas</span></label></li>
-    <li><label><input type="checkbox"><span>Registro diario de ventas del test (pedidos web y WhatsApp)</span></label></li>
-    <li><label><input type="checkbox"><span>Cuadrar con Mark el total de ventas de la semana</span></label></li>
-    <li><label><input type="checkbox"><span>Pasar a presupuestos los datos de costo y mano de obra reales</span></label></li>
-  </ul>
-</section>
-
-<!-- COMPRAS Y VENTAS -->
-<section class="tab" id="cv">
-  <h2>5. <span class="nm" data-k="cv">(Compras y ventas)</span> · Compras y ventas</h2>
-  <p>Objetivo: que si los anuncios funcionan, haya producto y alguien que atienda los pedidos.</p>
-  <h3>Checklist</h3>
-  <div class="prog"><i data-bar="cv"></i></div><div class="pcount" data-count="cv"></div>
-  <ul class="check" data-group="cv">
-    <li><label><input type="checkbox"><span>Stock y flores/insumos para Graduación, Peonías y productos menos de S/99.90</span></label></li>
-    <li><label><input type="checkbox"><span>Compras extra por si suben los pedidos (Navidad)</span></label></li>
-    <li><label><input type="checkbox"><span>Capacidad de armado y entrega en Lima durante la semana</span></label></li>
-    <li><label><input type="checkbox"><span>Quién atiende los mensajes y pedidos que lleguen, y en qué horario</span></label></li>
-    <li><label><input type="checkbox"><span>Productos que se agoten: avisar a Mark para pausar anuncios</span></label></li>
-  </ul>
-</section>
-
-<!-- JEFA -->
-<section class="tab" id="jefa">
-  <h2>6. <span class="nm" data-k="jefa">Gabriela</span> · Aprobación</h2>
-  <div class="card"><b>Resumen para decidir</b><ul>
-    <li>Test de Google Ads: <b>S/50 diarios</b> en Lima.</li>
-    <li>Foco: Graduación, Peonías y productos a menos de S/99.90.</li>
-    <li>Contenido prepara piezas; presupuestos confirma viabilidad; compras y ventas asegura stock; administración registra en Argus.</li>
-    <li>Mark configura la campaña y entrega resultados al cerrar la semana.</li>
-  </ul></div>
-  <h3>Decisiones</h3>
-  <div class="prog"><i data-bar="jefa"></i></div><div class="pcount" data-count="jefa"></div>
-  <ul class="check" data-group="jefa">
-    <li><label><input type="checkbox"><span>Presupuesto diario aprobado (o cambiado)</span></label></li>
-    <li><label><input type="checkbox"><span>Enfoque de colecciones aprobado (o cambiado)</span></label></li>
-    <li><label><input type="checkbox"><span>Viabilidad revisada</span></label></li>
+  <div class="prog"><i data-bar="gabriela"></i></div><div class="pcount" data-count="gabriela"></div>
+  <ul class="check" data-group="gabriela">
+    <li><label><input type="checkbox"><span>Costo de producto y mano de obra por colección revisados</span></label></li>
+    <li><label><input type="checkbox"><span>Viabilidad confirmada con la calculadora</span></label></li>
+    <li><label><input type="checkbox"><span>Presupuesto de S/50 diarios aprobado (o cambiado)</span></label></li>
+    <li><label><input type="checkbox"><span>Enfoque por colecciones aprobado (o cambiado)</span></label></li>
     <li><label><input type="checkbox"><span>Luz verde para lanzar</span></label></li>
-    <li><label><input type="checkbox"><span>Al cierre: decidir si la próxima semana se trabaja colección por colección</span></label></li>
+    <li><label><input type="checkbox"><span>Al cierre: ganancia real revisada y decisión de la semana siguiente (más específico, por categoría)</span></label></li>
   </ul>
   <div class="warn">El número de ventas que se reporte es <b>venta bruta</b>. La ganancia real se calcula descontando producto y mano de obra.</div>
+</section>
+
+<!-- MARK -->
+<section class="tab" id="mark">
+  <h2>6. Mark · Pauta en Google Ads</h2>
+  <h3>Checklist</h3>
+  <div class="prog"><i data-bar="mark"></i></div><div class="pcount" data-count="mark"></div>
+  <ul class="check" data-group="mark">
+    <li><label><input type="checkbox"><span>Medidas y límites de texto confirmados en el gestor de Google Ads</span></label></li>
+    <li><label><input type="checkbox"><span>Campaña creada: FLA_test-navidad_google_lima, solo Lima, S/50 por día</span></label></li>
+    <li><label><input type="checkbox"><span>Tres grupos de anuncios: graduación, peonías, menos de S/99.90</span></label></li>
+    <li><label><input type="checkbox"><span>Imágenes y videos subidos con sus nombres</span></label></li>
+    <li><label><input type="checkbox"><span>Etiquetas UTM puestas en los enlaces</span></label></li>
+    <li><label><input type="checkbox"><span>Revisión de que ningún anuncio muestra alcohol</span></label></li>
+    <li><label><input type="checkbox"><span>Revisión de competidores: Magia Sorprende Lima y 2 o 3 florerías</span></label></li>
+    <li><label><input type="checkbox"><span>Campaña lanzada tras la luz verde de Gabriela</span></label></li>
+    <li><label><input type="checkbox"><span>Seguimiento diario de gasto, clics y ventas (cruzar con Argus)</span></label></li>
+    <li><label><input type="checkbox"><span>Reporte al cierre de la semana a Gabriela</span></label></li>
+  </ul>
 </section>
 
 <!-- WHATSAPP -->
 <section class="tab" id="wsp">
   <h2>7. Mensajes de WhatsApp listos para copiar</h2>
-  <p>Toca <b>Copiar</b> y pega en el grupo o en el chat. Los nombres salen de la pestaña Resumen.</p>
+  <p>Toca <b>Copiar</b> y pega en el grupo o en el chat de cada persona.</p>
 
   <div class="msg-head"><span>1 · Para todos: contexto</span><button class="copy">Copiar</button></div>
-  <div class="msg">Buenas equipo 🌸 <span class="nm" data-k="contenido">Joyce</span>, <span class="nm" data-k="viab">(Presupuestos)</span>, <span class="nm" data-k="admin">(Administración)</span>, <span class="nm" data-k="cv">(Compras y ventas)</span>, <span class="nm" data-k="jefa">Gabriela</span>
+  <div class="msg">Buenas equipo 🌸 @Joyce @Lesly @Gabriela
 
 Esta semana hacemos un *test de Google Ads*:
 • Presupuesto: *S/50 diarios*
 • Zona: *solo Lima, Perú*
 
-Por qué Google: en la última campaña (septiembre) invertimos *S/80* y se generaron *más de S/5,000 en ventas*. Ojo, eso es venta, falta descontar producto y mano de obra. Aun así es lo que mejor nos ha funcionado 💐</div>
+Por qué Google: en la última campaña (septiembre) invertimos *S/80* y se generaron *más de S/5,000 en ventas*. Ojo, eso es venta, falta descontar producto y mano de obra. Aun así es lo que mejor nos ha funcionado 💐
 
-  <div class="msg-head"><span>2 · Para todos: enfoque y restricción</span><button class="copy">Copiar</button></div>
-  <div class="msg">🌷 *Enfoque de esta semana: colecciones*
-• Graduación
-• Peonías
-• Productos a *menos de S/99.90*
+Enfoque: colecciones *Graduación*, *Peonías* y productos a *menos de S/99.90*.
 
-⚠️ *Navidad:* el *alcohol está restringido* en los anuncios. No usar licores ni vinos en ninguna imagen o video.
+⚠️ *Navidad:* el *alcohol está restringido*. No usar licores ni vinos en ninguna imagen o video.</div>
 
-La próxima semana vemos si trabajamos algo más específico, colección por colección.</div>
+  <div class="msg-head"><span>2 · Joyce: piezas para Google Ads</span><button class="copy">Copiar</button></div>
+  <div class="msg">@Joyce necesito esto para *Google Ads* 📌
 
-  <div class="msg-head"><span>3 · Contenido: Google Ads</span><button class="copy">Copiar</button></div>
-  <div class="msg"><span class="nm" data-k="contenido">Joyce</span> necesito esto para *Google Ads* 📌
+🖼️ *20 imágenes*: 8 cuadradas (1200×1200), 6 verticales 4:5 (960×1200) y 6 horizontales (1200×628).
+Reparto: Graduación 7, Peonías 7, Menos de S/99.90 6.
 
-🖼️ *Hasta 20 imágenes*:
-• Cuadrado 1:1 → 1200×1200
-• Vertical 4:5 → 960×1200
-• Horizontal 1.91:1 → 1200×628
+🎬 *15 videos*: 5 videos base, cada uno en 3 formatos: 16:9 (1920×1080), 1:1 (1080×1080) y 9:16 (1080×1920).
+Reparto: Graduación 2, Peonías 2, Menos de S/99.90 1.
 
-🎬 *Hasta 15 videos*:
-• Horizontal 16:9 → 1920×1080
-• Cuadrado 1:1 → 1080×1080
-• Vertical 9:16 → 1080×1920
+Pueden ser videos antiguos de cada colección. Calidad excelente en las principales, promedio en las de relleno. Marca visible y *sin alcohol*.
 
-De graduación, peonías y menos de S/99.90. No hace falta llegar al máximo: mejor pocos y buenos, con la marca visible.</div>
+Nombre de archivo: FLA_coleccion_tipo_formato_numero (ej: FLA_grad_img_1x1_01).</div>
 
-  <div class="msg-head"><span>4 · Contenido: Instagram y Facebook</span><button class="copy">Copiar</button></div>
-  <div class="msg"><span class="nm" data-k="contenido">Joyce</span> para *Instagram y Facebook* usamos los *posts que ya tenemos*, no hace falta crear de cero.
+  <div class="msg-head"><span>3 · Joyce: Instagram, Facebook y TikTok</span><button class="copy">Copiar</button></div>
+  <div class="msg">@Joyce para *Instagram, Facebook y TikTok* usamos los *posts que ya tenemos*, no hace falta crear de cero.
 
 Solo si alguno sale como *anuncio independiente*:
 • Cuadrado → 1080×1080
 • Vertical 4:5 → 1080×1350
-• Historias y Reels 9:16 → 1080×1920
+• Historias, Reels y TikTok 9:16 → 1080×1920
 
-Pueden ser *videos antiguos* de cada colección. Si falta alguna versión, me avisas y la rehago del mismo video.</div>
+Si falta alguna versión de un video, me avisas y la rehago del mismo video.</div>
 
-  <div class="msg-head"><span>5 · Presupuestos y viabilidad</span><button class="copy">Copiar</button></div>
-  <div class="msg"><span class="nm" data-k="viab">(Presupuestos)</span> necesito tu parte antes de lanzar 📊
+  <div class="msg-head"><span>4 · Lesly: compras, ventas y Argus</span><button class="copy">Copiar</button></div>
+  <div class="msg">@Lesly tu parte esta semana 🛒
 
-Con los costos de producto y mano de obra por colección (graduación, peonías, menos de S/99.90), ¿el test de S/50 diarios es viable? Dime el ROAS mínimo para no perder y tu veredicto (sí / ajustar / no).
+1) Confirma stock e insumos de graduación, peonías y productos a menos de S/99.90, y que podamos armar y entregar en Lima si suben los pedidos.
+2) En *Argus* deja listo el origen "Google Ads – test Navidad" para marcar las ventas del test (web y WhatsApp).
+3) Si algo se agota, avísame y pauso el anuncio.
+Al cierre me pasas total de ventas y costos reales.</div>
 
-También revisa a *Magia Sorprende Lima* y 2 o 3 florerías: colecciones, precios y tipo de anuncios.</div>
+  <div class="msg-head"><span>5 · Gabriela: aprobación</span><button class="copy">Copiar</button></div>
+  <div class="msg">@Gabriela te cuento el plan de la semana 🙌
 
-  <div class="msg-head"><span>6 · Administración (Argus)</span><button class="copy">Copiar</button></div>
-  <div class="msg"><span class="nm" data-k="admin">(Administración)</span> tu apoyo esta semana 🗂️
+Test de Google Ads: S/50 diarios en Lima, foco en graduación, peonías y productos a menos de S/99.90. Joyce prepara las piezas, Lesly asegura stock y registro en Argus, yo lanzo y mido.
 
-Necesito que las ventas del test queden registradas en *Argus* con su origen (Google Ads – test Navidad). Define cómo marcarlas y avisa a quien registra. Al cierre cuadramos el total conmigo y pasamos costos reales a presupuestos.</div>
+Necesito que revises presupuesto y viabilidad, y me des luz verde. Si quieres cambiar el presupuesto o el enfoque, avísame. Te paso resultados al cerrar la semana (venta bruta; la ganancia real se calcula con producto y mano de obra).</div>
 
-  <div class="msg-head"><span>7 · Compras y ventas</span><button class="copy">Copiar</button></div>
-  <div class="msg"><span class="nm" data-k="cv">(Compras y ventas)</span> para esta semana 🛒
-
-Confirma stock e insumos de graduación, peonías y productos a menos de S/99.90, y quién atiende los pedidos que lleguen. Si algo se agota, avísame y pauso los anuncios.</div>
-
-  <div class="msg-head"><span>8 · Jefa: aprobación</span><button class="copy">Copiar</button></div>
-  <div class="msg"><span class="nm" data-k="jefa">Gabriela</span> te cuento el plan de la semana 🙌
-
-Test de Google Ads: S/50 diarios en Lima, foco en graduación, peonías y productos a menos de S/99.90. Cada área ya tiene su parte (contenido, viabilidad, Argus, compras y ventas).
-
-Necesito tu aprobación del presupuesto y el enfoque. Si quieres cambiar algo, avísame. Te paso resultados al cerrar la semana.</div>
-
-  <div class="warn" style="margin-top:20px">Antes de enviar los mensajes 3 y 4, confirmen las medidas en el gestor de Google Ads y en Meta.</div>
+  <div class="warn" style="margin-top:20px">Antes de enviar el mensaje 2 y 3, confirmen las medidas en Google Ads, Meta y TikTok.</div>
 </section>
 
 </div></main>
@@ -374,34 +370,17 @@ Necesito tu aprobación del presupuesto y el enfoque. Si quieres cambiar algo, a
     window.scrollTo({top:0});
   }); });
 
-  // Nombres editables
-  var defaults = {};
-  document.querySelectorAll('.nm').forEach(function(el){ if(!(el.dataset.k in defaults)) defaults[el.dataset.k] = el.textContent; });
-  function paintNames(){
-    document.querySelectorAll('input[data-k]').forEach(function(inp){
-      var k = inp.dataset.k, v = inp.value.trim();
-      document.querySelectorAll('.nm[data-k="'+k+'"]').forEach(function(el){ el.textContent = v || defaults[k]; });
-    });
-  }
-  document.querySelectorAll('input[data-k]').forEach(function(inp){
-    var saved = store('guia-nombre-'+inp.dataset.k);
-    if(saved !== null) inp.value = saved;
-    inp.addEventListener('input', function(){ store('guia-nombre-'+inp.dataset.k, inp.value); paintNames(); });
-  });
-  paintNames();
-
   // Checklists con memoria y avance global
-  var groups = document.querySelectorAll('ul.check');
   function paintGlobal(){
     var total = 0, done = 0;
     document.querySelectorAll('ul.check input').forEach(function(b){ total++; if(b.checked) done++; });
     document.getElementById('gbar').style.width = (total ? done/total*100 : 0) + '%';
     document.getElementById('gtxt').textContent = 'Avance del equipo: ' + done + ' de ' + total + ' tareas';
   }
-  groups.forEach(function(ul){
+  document.querySelectorAll('ul.check').forEach(function(ul){
     var g = ul.dataset.group, boxes = Array.prototype.slice.call(ul.querySelectorAll('input'));
     var bar = document.querySelector('[data-bar="'+g+'"]'), cnt = document.querySelector('[data-count="'+g+'"]');
-    var saved = {}; try{ saved = JSON.parse(store('guia-chk-'+g) || '{}'); }catch(e){}
+    var saved = {}; try{ saved = JSON.parse(store('guia2-chk-'+g) || '{}'); }catch(e){}
     function paint(){
       var d = boxes.filter(function(b){ return b.checked; }).length;
       bar.style.width = (d/boxes.length*100) + '%';
@@ -410,7 +389,7 @@ Necesito tu aprobación del presupuesto y el enfoque. Si quieres cambiar algo, a
     }
     boxes.forEach(function(b, i){
       b.checked = !!saved[i];
-      b.addEventListener('change', function(){ saved[i] = b.checked; store('guia-chk-'+g, JSON.stringify(saved)); paint(); });
+      b.addEventListener('change', function(){ saved[i] = b.checked; store('guia2-chk-'+g, JSON.stringify(saved)); paint(); });
     });
     paint();
   });
@@ -421,29 +400,43 @@ Necesito tu aprobación del presupuesto y el enfoque. Si quieres cambiar algo, a
   function sol(n){ return 'S/' + Math.round(n).toLocaleString('es-PE'); }
   function calc(){
     var inv = num('c-dia') * num('c-dias'), ventas = num('c-ventas');
-    var costoPct = (num('c-prod') + num('c-mo')) / 100;
-    var margen = 1 - costoPct;
+    var margen = 1 - (num('c-prod') + num('c-mo')) / 100;
     var gan = ventas * margen - inv;
     document.getElementById('r-inv').textContent = sol(inv);
     document.getElementById('r-roas').textContent = inv > 0 ? (ventas/inv).toFixed(1) + 'x' : '—';
     var g = document.getElementById('r-gan'); g.textContent = sol(gan); g.className = gan < 0 ? 'neg' : '';
-    document.getElementById('r-eq').textContent = margen > 0 ? (1/margen).toFixed(2) + 'x' : 'No hay margen';
-    ids.forEach(function(id){ store('guia-calc-'+id, document.getElementById(id).value); });
+    document.getElementById('r-eq').textContent = margen > 0 ? (1/margen).toFixed(2) + 'x' : 'Sin margen';
+    ids.forEach(function(id){ store('guia2-calc-'+id, document.getElementById(id).value); });
   }
   ids.forEach(function(id){
-    var el = document.getElementById(id), s = store('guia-calc-'+id);
+    var el = document.getElementById(id), s = store('guia2-calc-'+id);
     if(s !== null) el.value = s;
     el.addEventListener('input', calc);
   });
   calc();
 
-  // Copiar mensajes
-  document.querySelectorAll('.copy').forEach(function(btn){ btn.addEventListener('click', function(){
-    var text = btn.parentElement.nextElementSibling.innerText;
-    var ok = function(){ btn.textContent = 'Copiado ✓'; btn.classList.add('done'); setTimeout(function(){ btn.textContent = 'Copiar'; btn.classList.remove('done'); }, 1800); };
-    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(ok, fallback); } else { fallback(); }
+  // Generador de nombre de archivo
+  var fids = ['f-col','f-tipo','f-fmt','f-num'];
+  function fname(){
+    var n = parseInt(document.getElementById('f-num').value, 10); if(!(n > 0)) n = 1;
+    var nn = (n < 10 ? '0' : '') + n;
+    document.getElementById('f-out').textContent = 'FLA_' + document.getElementById('f-col').value + '_' + document.getElementById('f-tipo').value + '_' + document.getElementById('f-fmt').value + '_' + nn;
+  }
+  fids.forEach(function(id){ var el = document.getElementById(id); el.addEventListener('input', fname); el.addEventListener('change', fname); });
+  fname();
+
+  // Copiar
+  function copyText(text, btn, label){
+    var ok = function(){ btn.textContent = 'Copiado ✓'; btn.classList.add('done'); setTimeout(function(){ btn.textContent = label; btn.classList.remove('done'); }, 1800); };
     function fallback(){ var t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); try{ document.execCommand('copy'); }catch(e){} t.remove(); ok(); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(ok, fallback); } else { fallback(); }
+  }
+  document.querySelectorAll('.msg-head .copy').forEach(function(btn){ btn.addEventListener('click', function(){
+    copyText(btn.parentElement.nextElementSibling.innerText, btn, 'Copiar');
   }); });
+  document.getElementById('f-copy').addEventListener('click', function(){
+    copyText(document.getElementById('f-out').textContent, this, 'Copiar nombre');
+  });
 </script>
 </body>
 </html>
