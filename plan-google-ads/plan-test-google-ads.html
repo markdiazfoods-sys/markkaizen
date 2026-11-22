@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan test Google Ads · Lima · Navidad</title>
+<style>
+  :root{--rosa:#c2417a;--rosa-claro:#fbe9f1;--ink:#2a2230;--gris:#6b6475;--linea:#e8e1ec;--ok:#2f8f5b;--warn:#b4580a;--warn-bg:#fff4e5}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:#faf7fb;line-height:1.5}
+  header{background:linear-gradient(135deg,#c2417a,#8e2f64);color:#fff;padding:28px 20px}
+  header h1{margin:0 0 6px;font-size:1.6rem}
+  header p{margin:0;opacity:.9}
+  .wrap{max-width:900px;margin:0 auto}
+  nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--linea);z-index:5}
+  nav .wrap{display:flex;gap:4px;overflow-x:auto;padding:0 12px}
+  nav button{border:0;background:none;padding:14px 14px;font:inherit;font-weight:600;color:var(--gris);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+  nav button.on{color:var(--rosa);border-color:var(--rosa)}
+  main{padding:20px 16px 60px}
+  section.tab{display:none}
+  section.tab.on{display:block}
+  h2{margin:8px 0 12px;font-size:1.3rem}
+  h3{margin:22px 0 8px;font-size:1.05rem;color:var(--rosa)}
+  .card{background:#fff;border:1px solid var(--linea);border-radius:12px;padding:16px;margin:12px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+  .kpi b{display:block;font-size:1.5rem;color:var(--rosa)}
+  .kpi span{color:var(--gris);font-size:.9rem}
+  .warn{background:var(--warn-bg);border:1px solid #f1c98f;color:#6b3a06;border-radius:10px;padding:12px 14px;margin:12px 0}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--linea);border-radius:10px;overflow:hidden;font-size:.95rem}
+  th,td{padding:9px 12px;border-bottom:1px solid var(--linea);text-align:left}
+  th{background:var(--rosa-claro);font-weight:700}
+  tr:last-child td{border-bottom:0}
+  ul.check{list-style:none;padding:0;margin:0}
+  ul.check li{padding:8px 0;border-bottom:1px solid var(--linea)}
+  ul.check li:last-child{border:0}
+  ul.check label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+  ul.check input{margin-top:5px;width:18px;height:18px;accent-color:var(--ok)}
+  ul.check input:checked + span{text-decoration:line-through;color:var(--gris)}
+  .prog{height:8px;background:var(--linea);border-radius:99px;overflow:hidden;margin:6px 0 14px}
+  .prog i{display:block;height:100%;width:0;background:var(--ok);transition:width .25s}
+  .msg{background:#e7ffd9;border:1px solid #b9e8a0;border-radius:12px;padding:14px;white-space:pre-wrap;font-size:.95rem;position:relative}
+  .msg-head{display:flex;justify-content:space-between;align-items:center;margin:18px 0 6px;font-weight:700}
+  .copy{border:0;background:var(--rosa);color:#fff;padding:7px 14px;border-radius:99px;font:inherit;font-size:.85rem;cursor:pointer}
+  .copy.done{background:var(--ok)}
+  .tag{display:inline-block;background:var(--rosa-claro);color:var(--rosa);border-radius:99px;padding:2px 10px;font-size:.8rem;font-weight:700}
+  .pdf-btn{margin-top:14px;border:1px solid #fff;background:transparent;color:#fff;padding:8px 16px;border-radius:99px;font:inherit;cursor:pointer}
+  details{background:#fff;border:1px solid var(--linea);border-radius:10px;padding:10px 14px;margin:8px 0}
+  summary{cursor:pointer;font-weight:600}
+  small.muted{color:var(--gris)}
+  @media print{
+    nav,.pdf-btn,.copy{display:none!important}
+    section.tab{display:block!important;margin-bottom:18px}
+    section.tab + section.tab{break-before:page}
+    .card,table,.msg,.warn,tr{break-inside:avoid}
+    h2,h3,.msg-head{break-after:avoid}
+    body{background:#fff}
+    header{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .msg,th,.warn{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    details{display:block}
+    details > *{display:block}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Plan del test de Google Ads · Lima</h1>
+    <p>Semana de prueba · Navidad · Preparado por Mark Díaz (trafficker digital)</p>
+    <button class="pdf-btn" onclick="window.print()">Imprimir / guardar como PDF</button>
+  </div>
+</header>
+
+<nav><div class="wrap" id="tabs">
+  <button data-t="resumen" class="on">Resumen</button>
+  <button data-t="joyce">Joyce</button>
+  <button data-t="lesly">Lesly</button>
+  <button data-t="gabriels">Gabriela</button>
+  <button data-t="wsp">Mensajes WhatsApp</button>
+</div></nav>
+
+<main><div class="wrap">
+
+<!-- RESUMEN -->
+<section class="tab on" id="resumen">
+  <h2>1. Resumen del plan</h2>
+  <div class="grid">
+    <div class="card kpi"><b>S/50 por día</b><span>Presupuesto del test</span></div>
+    <div class="card kpi"><b>Lima, Perú</b><span>Única zona geográfica</span></div>
+    <div class="card kpi"><b>Google Ads</b><span>Plataforma principal del test</span></div>
+    <div class="card kpi"><b>Navidad</b><span>Sin alcohol en los anuncios</span></div>
+  </div>
+
+  <h3>Por qué insistimos en Google</h3>
+  <div class="card">
+    En la última campaña (septiembre 2026) se invirtieron <b>S/80</b> y se generaron <b>más de S/5,000 en ventas</b>. Eso da un retorno aproximado de <b>60 veces</b> lo invertido (ROAS aprox. 60x, cálculo propio).
+    <div class="warn">⚠️ Es <b>venta</b>, no ganancia. Falta descontar el costo del producto y la mano de obra. Aun así, es de lo que mejor nos ha funcionado.</div>
+  </div>
+
+  <h3>Qué probamos</h3>
+  <div class="card">
+    <ul>
+      <li>Un grupo de anuncios de Google con <b>enfoque en colecciones</b>: <span class="tag">Graduación</span> <span class="tag">Peonías</span> <span class="tag">Menos de S/99.90</span></li>
+      <li>Hasta <b>20 imágenes</b> y <b>15 videos</b> en formato cuadrado, vertical y horizontal.</li>
+      <li>En Instagram y Facebook se reutilizan los <b>posts existentes</b>. Solo se crean anuncios independientes si hace falta.</li>
+      <li>Posicionar la marca frente a la competencia (Magia Sorprende Lima y otras florerías).</li>
+    </ul>
+  </div>
+
+  <h3>Reparto de responsabilidades</h3>
+  <table>
+    <tr><th>Quién</th><th>Qué hace</th><th>Tipo de instrucción</th></tr>
+    <tr><td>Joyce</td><td>Diseño y video: entrega las piezas por plataforma</td><td>Detallada, medidas exactas</td></tr>
+    <tr><td>Lesly</td><td>Revisión de competidores</td><td>Solo objetivo y entregable</td></tr>
+    <tr><td>Gabriela (jefa)</td><td>Aprueba presupuesto y enfoque</td><td>Resumen y decisiones</td></tr>
+    <tr><td>Mark</td><td>Configura y lanza la campaña, mide resultados</td><td>—</td></tr>
+  </table>
+
+  <h3>Restricción importante</h3>
+  <div class="warn">🚫 <b>Alcohol restringido por Navidad.</b> No usar licores ni vinos en ninguna imagen o video de esta semana.</div>
+
+  <h3>Lo que falta confirmar</h3>
+  <div class="warn">Las medidas de este documento están escritas de memoria. <b>Confírmenlas en el gestor de Google Ads y en Meta antes de subir nada.</b> Los pesos máximos también.</div>
+</section>
+
+<!-- JOYCE -->
+<section class="tab" id="joyce">
+  <h2>2. Joyce · Diseño y video</h2>
+  <p>Entrega separada por plataforma. No hace falta llegar al máximo: mejor <b>pocos y buenos</b>, con la marca visible.</p>
+
+  <h3>Google Ads (prioridad)</h3>
+  <table>
+    <tr><th>Tipo</th><th>Formato</th><th>Medida</th></tr>
+    <tr><td>Imagen</td><td>Cuadrado 1:1</td><td>1200 × 1200</td></tr>
+    <tr><td>Imagen</td><td>Vertical 4:5</td><td>960 × 1200</td></tr>
+    <tr><td>Imagen</td><td>Horizontal 1.91:1</td><td>1200 × 628</td></tr>
+    <tr><td>Video</td><td>Horizontal 16:9</td><td>1920 × 1080</td></tr>
+    <tr><td>Video</td><td>Cuadrado 1:1</td><td>1080 × 1080</td></tr>
+    <tr><td>Video</td><td>Vertical 9:16</td><td>1080 × 1920</td></tr>
+  </table>
+  <p><small class="muted">Máximo: 20 imágenes y 15 videos en total. Peso máximo por imagen: 5 MB (por confirmar).</small></p>
+
+  <h3>Instagram y Facebook (Meta)</h3>
+  <div class="card">Usar los <b>posts que ya tenemos</b>. Solo si algo debe salir como <b>anuncio independiente</b>:</div>
+  <table>
+    <tr><th>Formato</th><th>Medida</th></tr>
+    <tr><td>Cuadrado</td><td>1080 × 1080</td></tr>
+    <tr><td>Vertical 4:5</td><td>1080 × 1350</td></tr>
+    <tr><td>Historias y Reels 9:16</td><td>1080 × 1920</td></tr>
+  </table>
+  <p><small class="muted">Para no sobrecargar a Joyce, pueden ser videos antiguos de cada colección. Si falta una versión, se rehace desde el mismo video.</small></p>
+
+  <h3>Checklist de entrega</h3>
+  <div class="prog"><i id="p-joyce"></i></div>
+  <ul class="check" data-group="joyce">
+    <li><label><input type="checkbox"><span>Imágenes de <b>Graduación</b> (1:1, 4:5 y 1.91:1)</span></label></li>
+    <li><label><input type="checkbox"><span>Imágenes de <b>Peonías</b> (1:1, 4:5 y 1.91:1)</span></label></li>
+    <li><label><input type="checkbox"><span>Imágenes de productos <b>menos de S/99.90</b> (1:1, 4:5 y 1.91:1)</span></label></li>
+    <li><label><input type="checkbox"><span>Videos por colección (16:9, 1:1 y 9:16)</span></label></li>
+    <li><label><input type="checkbox"><span>Sin alcohol en ninguna pieza (Navidad)</span></label></li>
+    <li><label><input type="checkbox"><span>Marca visible en todas las piezas</span></label></li>
+    <li><label><input type="checkbox"><span>Posts de Instagram/Facebook elegidos (reutilizar los existentes)</span></label></li>
+    <li><label><input type="checkbox"><span>Medidas confirmadas en el gestor de Google Ads y Meta</span></label></li>
+  </ul>
+</section>
+
+<!-- LESLY -->
+<section class="tab" id="lesly">
+  <h2>3. Lesly · Competidores</h2>
+  <p>Objetivo: saber cómo nos posicionamos frente a las florerías de Lima.</p>
+  <div class="card">
+    <b>Qué revisar</b> en <b>Magia Sorprende Lima</b> y otras 2 o 3 florerías (número tentativo):
+    <ul>
+      <li>Qué colecciones promocionan</li>
+      <li>A qué precios</li>
+      <li>Qué tipo de anuncios usan (imagen, video, formato)</li>
+      <li>Si tienen anuncios activos en Google o Meta</li>
+    </ul>
+  </div>
+  <h3>Checklist</h3>
+  <div class="prog"><i id="p-lesly"></i></div>
+  <ul class="check" data-group="lesly">
+    <li><label><input type="checkbox"><span>Lista de 3 o 4 competidores definida</span></label></li>
+    <li><label><input type="checkbox"><span>Colecciones y precios anotados</span></label></li>
+    <li><label><input type="checkbox"><span>Tipos de anuncio anotados</span></label></li>
+    <li><label><input type="checkbox"><span>Resumen enviado a Mark</span></label></li>
+  </ul>
+</section>
+
+<!-- GABRIELA -->
+<section class="tab" id="gabriels">
+  <h2>4. Gabriela · Aprobación</h2>
+  <div class="card">
+    <b>Resumen para decidir</b>
+    <ul>
+      <li>Test de Google Ads: <b>S/50 diarios</b> en Lima.</li>
+      <li>Foco: Graduación, Peonías y productos a menos de S/99.90.</li>
+      <li>Joyce prepara las piezas. Lesly revisa a la competencia.</li>
+      <li>Mark configura la campaña y entrega resultados al cerrar la semana.</li>
+    </ul>
+  </div>
+  <h3>Decisiones que puede tomar</h3>
+  <ul>
+    <li>Cambiar el presupuesto diario.</li>
+    <li>Cambiar el enfoque de colecciones.</li>
+    <li>Decidir si la próxima semana se trabaja algo más específico, colección por colección.</li>
+  </ul>
+  <h3>Cómo leer el resultado</h3>
+  <div class="warn">El número de ventas que se reporte es <b>venta bruta</b>. La ganancia real se calcula descontando producto y mano de obra.</div>
+</section>
+
+<!-- WHATSAPP -->
+<section class="tab" id="wsp">
+  <h2>5. Mensajes de WhatsApp listos para copiar</h2>
+  <p>Toca <b>Copiar</b> y pega en el grupo o en el chat de cada persona.</p>
+
+  <div class="msg-head"><span>1 · Para las tres: contexto</span><button class="copy">Copiar</button></div>
+  <div class="msg">Buenas equipo 🌸 @joyce @lesly @gabriels
+
+Esta semana hacemos un *test de Google Ads*:
+• Presupuesto: *S/50 diarios*
+• Zona: *solo Lima, Perú*
+
+Por qué Google: en la última campaña (septiembre) invertimos *S/80* y se generaron *más de S/5,000 en ventas*. Ojo, eso es venta, falta descontar producto y mano de obra. Aun así es lo que mejor nos ha funcionado.
+
+También sirve para posicionarnos frente a la competencia (Magia Sorprende Lima y otras florerías) 💐</div>
+
+  <div class="msg-head"><span>2 · Para las tres: enfoque y restricción</span><button class="copy">Copiar</button></div>
+  <div class="msg">🌷 *Enfoque de esta semana: colecciones*
+• Graduación
+• Peonías
+• Productos a *menos de S/99.90*
+
+⚠️ *Navidad:* el *alcohol está restringido* en los anuncios. No usar licores ni vinos en ninguna imagen o video.
+
+La próxima semana vemos si trabajamos algo más específico, colección por colección.</div>
+
+  <div class="msg-head"><span>3 · Solo Joyce: Google Ads</span><button class="copy">Copiar</button></div>
+  <div class="msg">@joyce necesito esto para *Google Ads* 📌
+
+🖼️ *Hasta 20 imágenes*, repartidas en:
+• Cuadrado 1:1 → 1200×1200
+• Vertical 4:5 → 960×1200
+• Horizontal 1.91:1 → 1200×628
+
+🎬 *Hasta 15 videos*, repartidos en:
+• Horizontal 16:9 → 1920×1080
+• Cuadrado 1:1 → 1080×1080
+• Vertical 9:16 → 1080×1920
+
+Todo de las colecciones graduación, peonías y menos de S/99.90. No hace falta llegar al máximo: mejor pocos y buenos, con la marca visible.</div>
+
+  <div class="msg-head"><span>4 · Solo Joyce: Instagram y Facebook</span><button class="copy">Copiar</button></div>
+  <div class="msg">@joyce para *Instagram y Facebook*: usamos los *posts que ya tenemos*, no hace falta crear de cero.
+
+Solo si quieres que alguno salga como *anuncio independiente*, estas son las medidas:
+• Cuadrado → 1080×1080
+• Vertical 4:5 → 1080×1350
+• Historias y Reels 9:16 → 1080×1920
+
+Para no sobrecargarte, pueden ser *videos antiguos* de cada colección. Si falta alguna versión (cuadrada, vertical u horizontal), me avisas y la rehago del mismo video.</div>
+
+  <div class="msg-head"><span>5 · Solo Lesly</span><button class="copy">Copiar</button></div>
+  <div class="msg">@lesly tu parte esta semana: *competidores* 🔍
+
+Necesito que revises a *Magia Sorprende Lima* y otras 2 o 3 florerías de Lima. Anota qué colecciones promocionan, a qué precios y qué tipo de anuncios usan.
+
+Con eso comparamos nuestra posición. Cuando lo tengas, me lo pasas por aquí.</div>
+
+  <div class="msg-head"><span>6 · Solo Gabriela</span><button class="copy">Copiar</button></div>
+  <div class="msg">@gabriels te cuento el plan de la semana 🙌
+
+Test de Google Ads: S/50 diarios en Lima, con foco en graduación, peonías y productos a menos de S/99.90. Joyce prepara las piezas y Lesly revisa a la competencia.
+
+Si quieres cambiar el presupuesto o el enfoque, avísame y lo ajustamos. Te paso resultados al cerrar la semana.</div>
+
+  <div class="warn" style="margin-top:20px">Antes de enviar los mensajes 3 y 4, confirmen las medidas en el gestor de Google Ads y en Meta.</div>
+</section>
+
+</div></main>
+
+<script>
+  // Pestañas
+  const tabs=document.querySelectorAll('#tabs button');
+  tabs.forEach(b=>b.addEventListener('click',()=>{
+    tabs.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+    document.querySelectorAll('section.tab').forEach(s=>s.classList.toggle('on',s.id===b.dataset.t));
+    window.scrollTo({top:0});
+  }));
+
+  // Checklist con memoria local
+  document.querySelectorAll('ul.check').forEach(ul=>{
+    const g=ul.dataset.group, boxes=[...ul.querySelectorAll('input')], bar=document.getElementById('p-'+g);
+    let saved={};try{saved=JSON.parse(localStorage.getItem('plan-'+g)||'{}')}catch(e){}
+    const paint=()=>{bar.style.width=(boxes.filter(b=>b.checked).length/boxes.length*100)+'%'};
+    boxes.forEach((b,i)=>{
+      b.checked=!!saved[i];
+      b.addEventListener('change',()=>{
+        saved[i]=b.checked;
+        try{localStorage.setItem('plan-'+g,JSON.stringify(saved))}catch(e){}
+        paint();
+      });
+    });
+    paint();
+  });
+
+  // Copiar mensajes
+  document.querySelectorAll('.copy').forEach(btn=>btn.addEventListener('click',async()=>{
+    const text=btn.parentElement.nextElementSibling.innerText;
+    try{await navigator.clipboard.writeText(text)}catch(e){
+      const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();
+    }
+    btn.textContent='Copiado ✓';btn.classList.add('done');
+    setTimeout(()=>{btn.textContent='Copiar';btn.classList.remove('done')},1800);
+  }));
+</script>
+</body>
+</html>
