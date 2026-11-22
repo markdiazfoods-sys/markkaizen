@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía visual · Test Google Ads · Flor de Lima Atelier</title>
+<style>
+:root{
+  --rosa:#c2417a;--rosa2:#8e2f64;--rosa-claro:#fbe9f1;--ink:#2a2230;--gris:#6b6475;--linea:#e8e1ec;
+  --ok:#2f8f5b;--bad:#b3261e;--warn:#fff4e5;--bg:#faf7fb;
+  --grad:#5b6cd9;--peon:#e0679b;--m99:#e8a33d;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.45}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+button{font:inherit;cursor:pointer}
+h2{font-size:1.5rem;margin:0 0 4px}
+.sub{color:var(--gris);margin:0 0 18px}
+section{padding:34px 0 10px}
+.card{background:#fff;border:1px solid var(--linea);border-radius:16px;padding:18px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#c2417a,#7d2a5a);color:#fff;padding:30px 0 34px;position:relative;overflow:hidden}
+.hero::before,.hero::after{content:"🌸";position:absolute;font-size:9rem;opacity:.08;pointer-events:none}
+.hero::before{right:-20px;top:-30px;transform:rotate(15deg)}
+.hero::after{left:-30px;bottom:-60px;transform:rotate(-20deg)}
+.hero .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.hero h1{margin:0;font-size:1.9rem;line-height:1.15}
+.hero p{margin:6px 0 0;opacity:.9}
+.ring{position:relative;width:96px;height:96px;flex:none}
+.ring svg{transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:1.25rem}
+.ring small{position:absolute;left:0;right:0;bottom:-18px;text-align:center;font-size:.7rem;opacity:.9}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:26px;position:relative}
+.stat{background:rgba(255,255,255,.15);backdrop-filter:blur(2px);border:1px solid rgba(255,255,255,.3);border-radius:16px;padding:14px;text-align:center}
+.stat .ic{font-size:1.6rem}
+.stat b{display:block;font-size:1.7rem;line-height:1.1}
+.stat span{font-size:.82rem;opacity:.92}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--linea)}
+nav .wrap{display:flex;gap:4px;overflow-x:auto;padding:8px 12px}
+nav a{white-space:nowrap;text-decoration:none;color:var(--gris);font-weight:600;font-size:.9rem;padding:7px 13px;border-radius:99px}
+nav a.on{background:var(--rosa);color:#fff}
+
+/* STEPPER */
+.stepper{display:flex;align-items:center;overflow-x:auto;padding:6px 2px 14px}
+.dot{flex:none;display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;color:var(--gris);width:84px}
+.dot i{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:1.5rem;background:#fff;border:3px solid var(--linea);transition:.2s}
+.dot span{font-size:.78rem;font-weight:700}
+.dot.done i{background:var(--rosa-claro);border-color:var(--rosa)}
+.dot.on i{background:var(--rosa);border-color:var(--rosa);transform:scale(1.15);box-shadow:0 6px 16px rgba(194,65,122,.35)}
+.dot.on span{color:var(--rosa)}
+.bar{flex:1;min-width:14px;height:4px;background:var(--linea);border-radius:4px;margin-bottom:22px}
+.bar.done{background:var(--rosa)}
+.detail{display:flex;gap:16px;align-items:center;min-height:96px}
+.detail .big{font-size:3rem;flex:none}
+.detail h3{margin:0 0 4px;font-size:1.2rem}
+.detail p{margin:0;color:var(--gris)}
+.who{display:inline-block;background:var(--rosa-claro);color:var(--rosa);border-radius:99px;padding:2px 12px;font-weight:700;font-size:.8rem;margin-bottom:6px}
+.stepbtns{display:flex;justify-content:space-between;margin-top:14px}
+.btn{border:1px solid var(--rosa);background:#fff;color:var(--rosa);border-radius:99px;padding:8px 18px;font-weight:700}
+.btn.fill{background:var(--rosa);color:#fff}
+.btn:disabled{opacity:.35;cursor:default}
+
+/* GOOGLE */
+.cmp{display:grid;gap:14px}
+.row-l{display:flex;justify-content:space-between;font-weight:700;margin-bottom:5px}
+.track{height:38px;background:#f1ecf4;border-radius:10px;overflow:hidden;position:relative}
+.fill-bar{height:100%;border-radius:10px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:#fff;font-weight:700;width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.fill-bar.inv{background:var(--rosa2)}
+.fill-bar.sales{background:var(--ok)}
+.track.unknown .fill-bar.sales{background:repeating-linear-gradient(45deg,#f4b860,#f4b860 12px,#f9d49a 12px,#f9d49a 24px);color:#6b3a06}
+.mult{display:inline-flex;align-items:center;gap:8px;background:var(--rosa);color:#fff;border-radius:99px;padding:8px 18px;font-weight:800;font-size:1.3rem}
+.callout{background:var(--warn);border:1px solid #f1c98f;color:#6b3a06;border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start}
+.callout .ic{font-size:1.4rem}
+
+/* COLECCIONES */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.col{border:3px solid var(--linea);background:#fff;border-radius:16px;padding:16px;text-align:center;transition:.2s;color:var(--ink)}
+.col .ic{font-size:2.4rem}
+.col b{display:block;margin-top:4px}
+.col small{color:var(--gris)}
+.col.on{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.1)}
+.col[data-c=grad].on{border-color:var(--grad);background:#eef0ff}
+.col[data-c=peon].on{border-color:var(--peon);background:#fdeaf2}
+.col[data-c=m99].on{border-color:var(--m99);background:#fff3de}
+.col[data-c=all].on{border-color:var(--rosa);background:var(--rosa-claro)}
+
+/* PIEZAS */
+.total{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+.tot{flex:1;min-width:150px;background:#fff;border:1px solid var(--linea);border-radius:16px;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.tot .n{font-size:2.2rem;font-weight:800;color:var(--rosa);line-height:1}
+.tot span{color:var(--gris);font-size:.88rem}
+.fmtrow{display:flex;align-items:flex-end;gap:14px;padding:12px 0;border-bottom:1px dashed var(--linea);flex-wrap:wrap}
+.fmtrow:last-child{border:0}
+.fmtlab{width:150px;flex:none}
+.fmtlab b{display:block}
+.fmtlab small{color:var(--gris)}
+.tiles{display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;flex:1}
+.tile{height:58px;border-radius:7px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:.8rem;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35);animation:pop .35s both}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+.tile.vid{height:50px;position:relative}
+.tile.vid::after{content:"▶";font-size:.9rem;opacity:.95}
+.master{display:flex;align-items:flex-end;gap:10px;padding:10px 12px;border-radius:14px;background:#faf7fb;margin:8px 0;flex-wrap:wrap}
+.master .mb{width:150px;flex:none;font-weight:700}
+.master .eq{color:var(--gris);font-weight:700}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.85rem;color:var(--gris);margin-top:10px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:5px;vertical-align:-1px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--linea);background:#fff;border-radius:99px;padding:6px 14px;font-weight:700;color:var(--gris);font-size:.88rem}
+.chip.on{background:var(--rosa);border-color:var(--rosa);color:#fff}
+.q3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:12px}
+.q3 div{background:var(--rosa-claro);border-radius:12px;padding:10px 12px;font-size:.9rem}
+.q3 b{display:block;color:var(--rosa)}
+.badge-w{display:inline-block;background:var(--warn);border:1px solid #f1c98f;color:#6b3a06;border-radius:99px;padding:2px 10px;font-size:.75rem;font-weight:700}
+
+/* EQUIPO */
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.person{border:3px solid var(--linea);background:#fff;border-radius:18px;padding:16px;text-align:center;color:var(--ink);position:relative;transition:.2s}
+.person .av{width:68px;height:68px;border-radius:50%;margin:0 auto 8px;display:grid;place-items:center;font-size:2rem;color:#fff}
+.person b{font-size:1.1rem}
+.person small{display:block;color:var(--gris);min-height:34px}
+.mini{height:8px;background:var(--linea);border-radius:99px;overflow:hidden;margin-top:10px}
+.mini i{display:block;height:100%;width:0;transition:width .3s}
+.person.on{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.1)}
+.panel{margin-top:14px}
+.panel h3{margin:0 0 4px}
+.task{display:flex;gap:12px;align-items:center;padding:11px 12px;border:1px solid var(--linea);border-radius:12px;margin:8px 0;cursor:pointer;background:#fff;transition:.15s}
+.task:hover{background:var(--bg)}
+.task input{width:22px;height:22px;flex:none;accent-color:var(--ok)}
+.task .ti{font-size:1.4rem;flex:none}
+.task.ok{background:#eaf7f0;border-color:#b5dfc8}
+.task.ok span{color:var(--gris);text-decoration:line-through}
+
+/* REGLAS */
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.no{display:flex;gap:16px;align-items:center;background:#fff0ee;border:2px solid #f0b4ae;border-radius:16px;padding:16px}
+.no .sign{position:relative;width:78px;height:78px;flex:none;display:grid;place-items:center;font-size:2.6rem;border:7px solid var(--bad);border-radius:50%;background:#fff}
+.no .sign::after{content:"";position:absolute;width:100%;height:7px;background:var(--bad);transform:rotate(-45deg);border-radius:4px}
+.no b{color:var(--bad);font-size:1.15rem}
+
+/* NOMBRE ARCHIVO */
+.gen{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.gen label{font-size:.8rem;color:var(--gris);display:block;margin-bottom:3px}
+select,input[type=number]{width:100%;padding:9px 10px;border:1px solid var(--linea);border-radius:10px;font:inherit;background:#fff}
+.fn{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:14px;font-family:ui-monospace,Menlo,Consolas,monospace}
+.fn span{padding:8px 11px;border-radius:9px;color:#fff;font-weight:700}
+.fn small{display:block;font-family:system-ui;font-weight:400;font-size:.65rem;opacity:.85}
+.copy{border:0;background:var(--rosa);color:#fff;padding:8px 16px;border-radius:99px;font-weight:700;font-size:.85rem}
+.copy.done{background:var(--ok)}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:12px}
+.meta div{border:1px solid var(--linea);border-radius:12px;padding:10px 12px;background:#fff}
+.meta small{color:var(--gris);display:block}
+.meta code{font-size:.82rem;word-break:break-all;color:var(--rosa2)}
+
+/* CALC */
+.sl{margin:12px 0}
+.sl label{display:flex;justify-content:space-between;font-size:.9rem;font-weight:600;margin-bottom:2px}
+.sl output{color:var(--rosa);font-weight:800}
+input[type=range]{width:100%;accent-color:var(--rosa);height:26px}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:720px){.rg{grid-template-columns:1fr}}
+.kp{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:6px 0 14px}
+.kp div{background:var(--rosa-claro);border-radius:12px;padding:10px 12px}
+.kp b{display:block;font-size:1.3rem;color:var(--rosa)}
+.kp b.neg{color:var(--bad)}
+.kp b.pos{color:var(--ok)}
+.kp span{font-size:.8rem;color:var(--gris)}
+.stack{display:flex;height:40px;border-radius:10px;overflow:hidden;background:#f1ecf4}
+.stack i{display:grid;place-items:center;color:#fff;font-size:.72rem;font-weight:700;font-style:normal;overflow:hidden;white-space:nowrap;transition:width .3s}
+.gauge{position:relative;height:16px;background:#f1ecf4;border-radius:99px;margin:26px 0 4px}
+.gauge .g{height:100%;border-radius:99px;transition:width .3s}
+.gauge .mk{position:absolute;top:-8px;width:3px;height:32px;background:var(--ink);transition:left .3s}
+.gauge .mk em{position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-style:normal;font-size:.7rem;white-space:nowrap;font-weight:700}
+.hint{font-size:.8rem;color:var(--gris);margin-top:8px}
+
+/* WSP */
+.wtabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.chat{background:#efe7dd;border-radius:16px;padding:16px;min-height:180px}
+.bubble{background:#dcf8c6;border-radius:4px 14px 14px 14px;padding:12px 14px;white-space:pre-wrap;font-size:.93rem;box-shadow:0 1px 1px rgba(0,0,0,.15);max-width:640px}
+.chat .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+
+footer{padding:30px 16px 50px;text-align:center;color:var(--gris);font-size:.85rem}
+@media print{nav,.copy,.btn,.stepbtns{display:none!important}.card,.tile,.callout{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero"><div class="wrap">
+  <div class="top">
+    <div>
+      <h1>Test de Google Ads<br>Flor de Lima Atelier 🌸</h1>
+      <p>Semana de prueba · Navidad · Preparado por Mark Díaz</p>
+    </div>
+    <div class="ring" title="Avance del equipo">
+      <svg width="96" height="96" viewBox="0 0 96 96"><circle cx="48" cy="48" r="40" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="9"/><circle id="ringc" cx="48" cy="48" r="40" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-dasharray="251.3" stroke-dashoffset="251.3" style="transition:stroke-dashoffset .4s"/></svg>
+      <b id="ringt">0%</b><small>avance del equipo</small>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="ic">💰</div><b>S/<span data-count="50">0</span></b><span>por día</span></div>
+    <div class="stat"><div class="ic">📍</div><b>Lima</b><span>única zona</span></div>
+    <div class="stat"><div class="ic">🖼️</div><b data-count="20">0</b><span>imágenes</span></div>
+    <div class="stat"><div class="ic">🎬</div><b data-count="15">0</b><span>videos</span></div>
+  </div>
+</div></header>
+
+<nav><div class="wrap" id="nav">
+  <a href="#plan" class="on">Plan</a><a href="#google">Por qué Google</a><a href="#piezas">Piezas</a><a href="#equipo">Equipo</a><a href="#reglas">Reglas</a><a href="#calc">Calculadora</a><a href="#msgs">WhatsApp</a>
+</div></nav>
+
+<main class="wrap">
+
+<!-- PLAN -->
+<section id="plan">
+  <h2>1 · El plan de la semana</h2>
+  <p class="sub">Toca cada paso para ver quién hace qué.</p>
+  <div class="card">
+    <div class="stepper" id="stepper"></div>
+    <div class="detail" id="detail"></div>
+    <div class="stepbtns"><button class="btn" id="prev">← Anterior</button><button class="btn fill" id="next">Siguiente →</button></div>
+  </div>
+</section>
+
+<!-- GOOGLE -->
+<section id="google">
+  <h2>2 · Por qué insistimos en Google</h2>
+  <p class="sub">Resultado de la última campaña (septiembre 2026).</p>
+  <div class="card cmp">
+    <div><div class="row-l"><span>Invertido</span><span>S/80</span></div><div class="track"><div class="fill-bar inv" data-w="1.6"></div></div></div>
+    <div><div class="row-l"><span>Ventas generadas</span><span>más de S/5,000</span></div><div class="track" id="trk"><div class="fill-bar sales" data-w="100"><span id="trklab"></span></div></div></div>
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+      <div class="mult">≈ 60× <small style="font-weight:400;font-size:.8rem">lo invertido (cálculo propio)</small></div>
+      <button class="btn" id="tg">¿Y la ganancia? 🤔</button>
+    </div>
+    <div class="callout"><span class="ic">⚠️</span><div><b>Es venta, no ganancia.</b> Falta descontar el costo del producto y la mano de obra. Aun así, es de lo que mejor nos ha funcionado.</div></div>
+  </div>
+</section>
+
+<!-- PIEZAS -->
+<section id="piezas">
+  <h2>3 · Qué hay que preparar</h2>
+  <p class="sub">Tres colecciones. Elige una para ver cuántas piezas lleva.</p>
+  <div class="cols" id="cols"></div>
+
+  <div class="total">
+    <div class="tot"><div class="n" id="nimg">20</div><span>imágenes</span></div>
+    <div class="tot"><div class="n" id="nvid">15</div><span>videos<br><small id="vsub">5 maestros × 3 formatos</small></span></div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin:0 0 4px">🖼️ Imágenes</h3>
+    <div id="imgs"></div>
+    <div class="legend" id="lg"></div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3 style="margin:0 0 4px">🎬 Videos: se hace 1 maestro y se exporta en 3 formatos</h3>
+    <div id="vids"></div>
+    <p class="hint">Pueden ser videos antiguos de cada colección. Si falta una versión, se recompone desde el mismo video.</p>
+  </div>
+
+  <div class="q3">
+    <div><b>⭐ Principales</b>Calidad excelente</div>
+    <div><b>➕ De relleno</b>Calidad promedio</div>
+    <div><b>🌸 Siempre</b>Marca visible y sin alcohol</div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3 style="margin:0 0 8px">📐 Medidas por plataforma <span class="badge-w">por confirmar en cada gestor</span></h3>
+    <div class="chips" id="ptabs"></div>
+    <div id="pshapes" style="margin-top:14px"></div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo">
+  <h2>4 · Quién hace qué</h2>
+  <p class="sub">Toca tu nombre y marca tus tareas. El avance se guarda en este dispositivo.</p>
+  <div class="team" id="team"></div>
+  <div class="card panel" id="panel"></div>
+</section>
+
+<!-- REGLAS -->
+<section id="reglas">
+  <h2>5 · Reglas y nombres</h2>
+  <div class="rules">
+    <div class="no"><div class="sign">🍷</div><div><b>Navidad: alcohol restringido</b><br>Ni licores ni vinos en ninguna imagen o video, tampoco al fondo de la foto.</div></div>
+    <div class="callout"><span class="ic">🔎</span><div><b>Por confirmar</b><br>Medidas, pesos y límites de texto están escritos de memoria. Confírmenlos en Google Ads y Meta antes de subir.</div></div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <h3 style="margin:0 0 4px">🏷️ Generador de nombre de archivo</h3>
+    <p class="hint" style="margin:0 0 10px">Así Mark encuentra cada pieza y Argus la relaciona con cada venta.</p>
+    <div class="gen">
+      <div><label>Colección</label><select id="f-col"><option value="grad">Graduación</option><option value="peon">Peonías</option><option value="m99">Menos de S/99.90</option></select></div>
+      <div><label>Tipo</label><select id="f-tipo"><option value="img">Imagen</option><option value="vid">Video</option></select></div>
+      <div><label>Formato</label><select id="f-fmt"><option value="1x1">Cuadrado 1:1</option><option value="4x5">Vertical 4:5</option><option value="191x1">Horizontal 1.91:1 (imagen)</option><option value="16x9">Horizontal 16:9 (video)</option><option value="9x16">Vertical 9:16</option></select></div>
+      <div><label>Número</label><input type="number" id="f-num" value="1" min="1" max="99"></div>
+    </div>
+    <div class="fn" id="fn"></div>
+    <div style="margin-top:12px"><button class="copy" id="f-copy">Copiar nombre</button></div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <h3 style="margin:0">🧭 Datos de la campaña</h3>
+    <div class="meta">
+      <div><small>Campaña</small><code>FLA_test-navidad_google_lima</code></div>
+      <div><small>Grupos de anuncios</small><code>graduacion · peonias · menos-99-90</code></div>
+      <div><small>Etiquetas del enlace (UTM)</small><code>utm_source=google · utm_medium=cpc · utm_campaign=test-navidad · utm_content=(colección)</code></div>
+      <div><small>Origen de venta en Argus</small><code>Google Ads – test Navidad</code></div>
+    </div>
+  </div>
+</section>
+
+<!-- CALC -->
+<section id="calc">
+  <h2>6 · Calculadora de viabilidad</h2>
+  <p class="sub">Para Gabriela. Mueve los controles y mira si el test sale a favor. Los costos arrancan en 0 a propósito: complétenlos con datos reales.</p>
+  <div class="card rg">
+    <div>
+      <div class="sl"><label>Presupuesto diario <output id="o-dia"></output></label><input type="range" id="c-dia" min="10" max="200" step="5" value="50"></div>
+      <div class="sl"><label>Días de prueba <output id="o-dias"></output></label><input type="range" id="c-dias" min="1" max="14" step="1" value="7"></div>
+      <div class="sl"><label>Ventas esperadas o reales <output id="o-ventas"></output></label><input type="range" id="c-ventas" min="0" max="20000" step="50" value="0"></div>
+      <div class="sl"><label>Costo del producto (% de la venta) <output id="o-prod"></output></label><input type="range" id="c-prod" min="0" max="100" step="1" value="0"></div>
+      <div class="sl"><label>Mano de obra (% de la venta) <output id="o-mo"></output></label><input type="range" id="c-mo" min="0" max="100" step="1" value="0"></div>
+      <button class="btn" id="ex">Probar con un ejemplo (no es dato real)</button>
+      <button class="btn" id="rs">Reiniciar</button>
+    </div>
+    <div>
+      <div class="kp">
+        <div><b id="r-inv">S/0</b><span>Inversión en anuncios</span></div>
+        <div><b id="r-roas">—</b><span>ROAS (venta ÷ inversión)</span></div>
+        <div><b id="r-gan">S/0</b><span>Ganancia estimada</span></div>
+        <div><b id="r-eq">—</b><span>ROAS mínimo para no perder</span></div>
+      </div>
+      <div style="font-weight:700;margin-bottom:6px">¿A dónde se va cada sol vendido?</div>
+      <div class="stack" id="stack"></div>
+      <div class="legend" id="slg"></div>
+      <div style="font-weight:700;margin:16px 0 0">¿Llegamos al mínimo?</div>
+      <div class="gauge"><div class="g" id="gg"></div><div class="mk" id="gm"><em id="gml"></em></div></div>
+      <div class="hint" id="gtx"></div>
+    </div>
+  </div>
+  <p class="hint">Referencia de septiembre: S/80 → más de S/5,000 en ventas (≈60×), venta bruta.</p>
+</section>
+
+<!-- WSP -->
+<section id="msgs">
+  <h2>7 · Mensajes de WhatsApp</h2>
+  <p class="sub">Elige el mensaje, toca <b>Copiar</b> y pégalo en el grupo o chat.</p>
+  <div class="wtabs" id="wtabs"></div>
+  <div class="chat"><div class="head"><b id="wttl"></b><button class="copy" id="wcopy">Copiar</button></div><div class="bubble" id="wbub"></div></div>
+  <div class="callout" style="margin-top:12px"><span class="ic">🔎</span><div>Antes de enviar los mensajes 2 y 3, confirmen las medidas en Google Ads, Meta y TikTok.</div></div>
+</section>
+
+</main>
+<footer>Guía visual · Test Google Ads · Flor de Lima Atelier 🌸</footer>
+
+<script>
+/* ---------- utilidades ---------- */
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+function sol(n){return 'S/'+Math.round(n).toLocaleString('es-PE')}
+function copyText(text,btn,label){
+  function ok(){btn.textContent='Copiado ✓';btn.classList.add('done');setTimeout(function(){btn.textContent=label;btn.classList.remove('done')},1600)}
+  function fb(){var t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(e){}t.remove();ok()}
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).then(ok,fb);else fb();
+}
+
+/* ---------- contadores y barras animadas ---------- */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; io.unobserve(e.target);
+  var el=e.target;
+  if(el.dataset.count!==undefined){var to=+el.dataset.count,t0=null;(function f(t){if(!t0)t0=t;var p=Math.min((t-t0)/900,1);el.textContent=Math.round(to*p);if(p<1)requestAnimationFrame(f)})(performance.now())}
+  if(el.dataset.w!==undefined){el.style.width=el.dataset.w+'%'}
+})},{threshold:.4});
+$$('[data-count],[data-w]').forEach(function(el){io.observe(el)});
+
+/* ---------- navegación activa ---------- */
+var links=$$('#nav a'),secs=links.map(function(a){return $(a.getAttribute('href'))});
+window.addEventListener('scroll',function(){
+  var y=window.scrollY+90,cur=0;secs.forEach(function(s,i){if(s.offsetTop<=y)cur=i});
+  links.forEach(function(a,i){a.classList.toggle('on',i===cur)});
+},{passive:true});
+
+/* ---------- 1. stepper ---------- */
+var STEPS=[
+ {ic:'✅',t:'Aprobar',who:'Gabriela',d:'Revisa presupuesto y viabilidad, y aprueba el enfoque. Sin su luz verde no se lanza nada.'},
+ {ic:'📸',t:'Crear piezas',who:'Joyce',d:'Prepara las 20 imágenes y los 15 videos con los nombres y medidas de esta guía.'},
+ {ic:'🛒',t:'Stock y Argus',who:'Lesly',d:'Confirma stock y deja Argus listo para registrar el origen de cada venta.'},
+ {ic:'🚀',t:'Lanzar',who:'Mark',d:'Sube las piezas, configura la campaña en Google Ads y la lanza.'},
+ {ic:'📊',t:'Seguimiento',who:'Argus',d:'Las ventas entran por Argus, que conecta Meta, Google Ads, la plataforma y WhatsApp.'},
+ {ic:'🏁',t:'Cierre',who:'Todos',d:'Ventas, ganancia real y decisión de la semana siguiente (más específico, por categoría).'}
+];
+var si=0;
+function drawSteps(){
+  var h='';STEPS.forEach(function(s,i){
+    h+='<button class="dot '+(i<si?'done ':'')+(i===si?'on':'')+'" data-i="'+i+'"><i>'+s.ic+'</i><span>'+s.t+'</span></button>';
+    if(i<STEPS.length-1)h+='<div class="bar '+(i<si?'done':'')+'"></div>';
+  });
+  $('#stepper').innerHTML=h;
+  var s=STEPS[si];
+  $('#detail').innerHTML='<div class="big">'+s.ic+'</div><div><span class="who">Paso '+(si+1)+' · '+s.who+'</span><h3>'+s.t+'</h3><p>'+s.d+'</p></div>';
+  $('#prev').disabled=si===0;$('#next').disabled=si===STEPS.length-1;
+  $$('.dot').forEach(function(b){b.onclick=function(){si=+b.dataset.i;drawSteps()}});
+}
+$('#prev').onclick=function(){if(si>0){si--;drawSteps()}};
+$('#next').onclick=function(){if(si<STEPS.length-1){si++;drawSteps()}};
+drawSteps();
+
+/* ---------- 2. ganancia desconocida ---------- */
+var unk=false;
+$('#tg').onclick=function(){unk=!unk;$('#trk').classList.toggle('unknown',unk);$('#trklab').textContent=unk?'¿ganancia? falta descontar producto y mano de obra':'';this.textContent=unk?'Ver solo ventas':'¿Y la ganancia? 🤔'};
+
+/* ---------- 3. piezas ---------- */
+var COL={grad:{n:'Graduación',ic:'🎓',c:'#5b6cd9',img:{'1x1':3,'4x5':2,'191':2},vid:2},
+         peon:{n:'Peonías',ic:'🌸',c:'#e0679b',img:{'1x1':3,'4x5':2,'191':2},vid:2},
+         m99:{n:'Menos de S/99.90',ic:'🏷️',c:'#e8a33d',img:{'1x1':2,'4x5':2,'191':2},vid:1}};
+var IMGF=[{k:'1x1',n:'Cuadrada 1:1',r:'1/1',px:'1200 × 1200'},{k:'4x5',n:'Vertical 4:5',r:'4/5',px:'960 × 1200'},{k:'191',n:'Horizontal 1.91:1',r:'1.91/1',px:'1200 × 628'}];
+var VIDF=[{n:'16:9',r:'16/9',px:'1920 × 1080'},{n:'1:1',r:'1/1',px:'1080 × 1080'},{n:'9:16',r:'9/16',px:'1080 × 1920'}];
+var sel='all';
+function keys(){return sel==='all'?['grad','peon','m99']:[sel]}
+function drawCols(){
+  var h='<button class="col '+(sel==='all'?'on':'')+'" data-c="all"><div class="ic">🌷</div><b>Todas</b><small>20 imágenes · 5 videos</small></button>';
+  Object.keys(COL).forEach(function(k){var c=COL[k],ni=c.img['1x1']+c.img['4x5']+c.img['191'];
+    h+='<button class="col '+(sel===k?'on':'')+'" data-c="'+k+'"><div class="ic">'+c.ic+'</div><b>'+c.n+'</b><small>'+ni+' imágenes · '+c.vid+' video'+(c.vid>1?'s':'')+'</small></button>'});
+  $('#cols').innerHTML=h;
+  $$('.col').forEach(function(b){b.onclick=function(){sel=b.dataset.c;drawCols();drawPieces()}});
+}
+function drawPieces(){
+  var ks=keys(),ni=0,nm=0,h='';
+  IMGF.forEach(function(f){
+    var tiles='',cnt=0;
+    ks.forEach(function(k){for(var i=0;i<COL[k].img[f.k];i++){cnt++;tiles+='<div class="tile" style="aspect-ratio:'+f.r+';background:'+COL[k].c+';animation-delay:'+(cnt*40)+'ms">'+cnt+'</div>'}});
+    ni+=cnt;
+    h+='<div class="fmtrow"><div class="fmtlab"><b>'+f.n+'</b><small>'+f.px+' px</small></div><div class="tiles">'+tiles+'</div></div>';
+  });
+  $('#imgs').innerHTML=h;
+  $('#lg').innerHTML=ks.map(function(k){return '<span><i style="background:'+COL[k].c+'"></i>'+COL[k].n+'</span>'}).join('');
+  var v='',m=0;
+  ks.forEach(function(k){for(var i=0;i<COL[k].vid;i++){m++;
+    v+='<div class="master"><div class="mb">🎞️ Maestro '+m+'<br><small style="font-weight:400;color:#6b6475">'+COL[k].n+'</small></div><span class="eq">→</span>'+
+      VIDF.map(function(f){return '<div style="text-align:center"><div class="tile vid" style="aspect-ratio:'+f.r+';background:'+COL[k].c+'"></div><small style="font-size:.7rem;color:#6b6475">'+f.n+'</small></div>'}).join('')+'</div>'}});
+  nm=m;
+  $('#vids').innerHTML=v;
+  anim($('#nimg'),ni);anim($('#nvid'),nm*3);
+  $('#vsub').textContent=nm+(nm>1?' maestros':' maestro')+' × 3 formatos';
+}
+function anim(el,to){var from=+el.textContent||0,t0=null;(function f(t){if(!t0)t0=t;var p=Math.min((t-t0)/400,1);el.textContent=Math.round(from+(to-from)*p);if(p<1)requestAnimationFrame(f)})(performance.now())}
+drawCols();drawPieces();
+
+/* plataformas */
+var PLAT={'Google Ads':[['Imagen 1:1','1/1','1200 × 1200'],['Imagen 4:5','4/5','960 × 1200'],['Imagen 1.91:1','1.91/1','1200 × 628'],['Video 16:9','16/9','1920 × 1080'],['Video 1:1','1/1','1080 × 1080'],['Video 9:16','9/16','1080 × 1920']],
+          'Instagram y Facebook':[['Feed 1:1','1/1','1080 × 1080'],['Feed 4:5','4/5','1080 × 1350'],['Historias y Reels 9:16','9/16','1080 × 1920']],
+          'TikTok':[['Video 9:16','9/16','1080 × 1920']]};
+var pk=Object.keys(PLAT)[0];
+function drawPlat(){
+  $('#ptabs').innerHTML=Object.keys(PLAT).map(function(k){return '<button class="chip '+(k===pk?'on':'')+'" data-k="'+k+'">'+k+'</button>'}).join('');
+  $$('#ptabs .chip').forEach(function(b){b.onclick=function(){pk=b.dataset.k;drawPlat()}});
+  $('#pshapes').innerHTML='<div style="display:flex;gap:18px;align-items:flex-end;flex-wrap:wrap">'+PLAT[pk].map(function(s){
+    return '<div style="text-align:center"><div class="tile" style="height:82px;aspect-ratio:'+s[1]+';background:linear-gradient(135deg,#c2417a,#8e2f64);margin:0 auto 6px"></div><b style="font-size:.82rem">'+s[0]+'</b><br><small style="color:#6b6475">'+s[2]+' px</small></div>'}).join('')+'</div>';
+}
+drawPlat();
+
+/* ---------- 4. equipo ---------- */
+var TEAM={
+ joyce:{n:'Joyce',ic:'📸',c:'#e0679b',r:'Contenido digital: Instagram, Facebook y TikTok',tasks:[
+  ['🎓','Graduación: 7 imágenes (3 cuadradas, 2 verticales, 2 horizontales)'],
+  ['🌸','Peonías: 7 imágenes (3 cuadradas, 2 verticales, 2 horizontales)'],
+  ['🏷️','Menos de S/99.90: 6 imágenes (2 de cada formato)'],
+  ['🎞️','5 videos maestros (2 Graduación, 2 Peonías, 1 Menos de S/99.90)'],
+  ['📤','Cada video exportado en 16:9, 1:1 y 9:16 (15 en total)'],
+  ['🚫','Sin alcohol en ninguna pieza (Navidad)'],
+  ['🌷','Marca visible en todas las piezas'],
+  ['🏷️','Archivos con el nombre del generador (FLA_colección_tipo_formato_número)'],
+  ['📱','Instagram y Facebook: posts existentes elegidos (solo se crea un anuncio aparte si hace falta)'],
+  ['🎵','TikTok: versión 9:16 de los videos elegidos'],
+  ['📐','Medidas confirmadas en Google Ads, Meta y TikTok']]},
+ lesly:{n:'Lesly',ic:'🛒',c:'#e8a33d',r:'Compras y ventas; enlace con Argus',tasks:[
+  ['📦','Stock e insumos para Graduación, Peonías y productos menos de S/99.90'],
+  ['➕','Compras extra por si suben los pedidos (Navidad)'],
+  ['🚚','Capacidad de armado y entrega en Lima durante la semana'],
+  ['🔗','Argus: origen "Google Ads – test Navidad" listo para marcar las ventas'],
+  ['💬','Argus recibe las ventas de la web y los mensajes de WhatsApp'],
+  ['📝','Registro diario de ventas del test'],
+  ['⏸️','Si un producto se agota, avisar a Mark para pausar el anuncio'],
+  ['🏁','Al cierre: pasar a Mark y a Gabriela el total de ventas y los costos reales']],
+  note:'Esta guía no conoce los campos exactos de Argus. Confirmen dónde se marca el origen de la venta y ajusten la lista.'},
+ gabriela:{n:'Gabriela',ic:'✅',c:'#5b6cd9',r:'Jefa: presupuesto, viabilidad y aprobación',tasks:[
+  ['🧾','Costo de producto y mano de obra por colección revisados'],
+  ['🧮','Viabilidad confirmada con la calculadora'],
+  ['💰','Presupuesto de S/50 diarios aprobado (o cambiado)'],
+  ['🎯','Enfoque por colecciones aprobado (o cambiado)'],
+  ['🟢','Luz verde para lanzar'],
+  ['🏁','Al cierre: ganancia real revisada y decisión de la semana siguiente (más específico, por categoría)']],
+  note:'El número de ventas que se reporte es venta bruta. La ganancia real se calcula descontando producto y mano de obra.'},
+ mark:{n:'Mark',ic:'🎯',c:'#2f8f5b',r:'Pauta: configura y lanza Google Ads, mide',tasks:[
+  ['📐','Medidas y límites de texto confirmados en el gestor de Google Ads'],
+  ['🏗️','Campaña creada: FLA_test-navidad_google_lima, solo Lima, S/50 por día'],
+  ['🗂️','Tres grupos de anuncios: graduación, peonías, menos de S/99.90'],
+  ['⬆️','Imágenes y videos subidos con sus nombres'],
+  ['🔖','Etiquetas UTM puestas en los enlaces'],
+  ['🚫','Revisión de que ningún anuncio muestra alcohol'],
+  ['🔍','Revisión de competidores: Magia Sorprende Lima y 2 o 3 florerías'],
+  ['🚀','Campaña lanzada tras la luz verde de Gabriela'],
+  ['📈','Seguimiento diario de gasto, clics y ventas (cruzar con Argus)'],
+  ['🏁','Reporte al cierre de la semana a Gabriela']]}
+};
+var cur='joyce',state={};
+Object.keys(TEAM).forEach(function(k){try{state[k]=JSON.parse(store('gv-'+k)||'{}')}catch(e){state[k]={}}});
+function pct(k){var t=TEAM[k].tasks.length,d=0;for(var i=0;i<t;i++)if(state[k][i])d++;return [d,t]}
+function paintGlobal(){
+  var D=0,T=0;Object.keys(TEAM).forEach(function(k){var p=pct(k);D+=p[0];T+=p[1]});
+  var f=T?D/T:0;$('#ringc').style.strokeDashoffset=251.3*(1-f);$('#ringt').textContent=Math.round(f*100)+'%';
+}
+function drawTeam(){
+  $('#team').innerHTML=Object.keys(TEAM).map(function(k){var t=TEAM[k],p=pct(k);
+    return '<button class="person '+(k===cur?'on':'')+'" data-k="'+k+'" style="'+(k===cur?'border-color:'+t.c:'')+'"><div class="av" style="background:'+t.c+'">'+t.ic+'</div><b>'+t.n+'</b><small>'+t.r+'</small><div class="mini"><i style="width:'+(p[0]/p[1]*100)+'%;background:'+t.c+'"></i></div><small style="min-height:0;margin-top:4px">'+p[0]+' de '+p[1]+'</small></button>'}).join('');
+  $$('.person').forEach(function(b){b.onclick=function(){cur=b.dataset.k;drawTeam();drawPanel()}});
+  paintGlobal();
+}
+function drawPanel(){
+  var t=TEAM[cur],p=pct(cur);
+  var h='<h3 style="color:'+t.c+'">'+t.ic+' '+t.n+' · '+p[0]+' de '+p[1]+' listas</h3>';
+  if(t.note)h+='<div class="callout" style="margin:8px 0"><span class="ic">⚠️</span><div>'+t.note+'</div></div>';
+  t.tasks.forEach(function(x,i){h+='<label class="task '+(state[cur][i]?'ok':'')+'"><input type="checkbox" data-i="'+i+'" '+(state[cur][i]?'checked':'')+'><span class="ti">'+x[0]+'</span><span>'+x[1]+'</span></label>'});
+  $('#panel').innerHTML=h;
+  $$('#panel input').forEach(function(c){c.onchange=function(){state[cur][c.dataset.i]=c.checked;store('gv-'+cur,JSON.stringify(state[cur]));drawTeam();drawPanel()}});
+}
+drawTeam();drawPanel();
+
+/* ---------- 5. nombre de archivo ---------- */
+function drawFn(){
+  var n=parseInt($('#f-num').value,10);if(!(n>0))n=1;var nn=(n<10?'0':'')+n;
+  var parts=[['FLA','marca','#8e2f64'],[$('#f-col').value,'colección','#5b6cd9'],[$('#f-tipo').value,'tipo','#2f8f5b'],[$('#f-fmt').value,'formato','#e8a33d'],[nn,'número','#c2417a']];
+  $('#fn').innerHTML=parts.map(function(p,i){return (i?'<b style="color:#6b6475">_</b>':'')+'<span style="background:'+p[2]+'">'+p[0]+'<small>'+p[1]+'</small></span>'}).join('');
+  window._fname=parts.map(function(p){return p[0]}).join('_');
+}
+['f-col','f-tipo','f-fmt','f-num'].forEach(function(id){$('#'+id).addEventListener('input',drawFn);$('#'+id).addEventListener('change',drawFn)});
+$('#f-copy').onclick=function(){copyText(window._fname,this,'Copiar nombre')};
+drawFn();
+
+/* ---------- 6. calculadora ---------- */
+var CI=['c-dia','c-dias','c-ventas','c-prod','c-mo'],DEF={'c-dia':50,'c-dias':7,'c-ventas':0,'c-prod':0,'c-mo':0};
+function calc(){
+  var dia=+$('#c-dia').value,dias=+$('#c-dias').value,v=+$('#c-ventas').value,pp=+$('#c-prod').value,pm=+$('#c-mo').value;
+  $('#o-dia').textContent='S/'+dia;$('#o-dias').textContent=dias;$('#o-ventas').textContent=sol(v);$('#o-prod').textContent=pp+'%';$('#o-mo').textContent=pm+'%';
+  var inv=dia*dias,margen=1-(pp+pm)/100,gan=v*margen-inv,roas=inv>0?v/inv:0,be=margen>0?1/margen:Infinity;
+  $('#r-inv').textContent=sol(inv);
+  $('#r-roas').textContent=inv>0?roas.toFixed(1)+'×':'—';
+  var g=$('#r-gan');g.textContent=sol(gan);g.className=v<=0?'':(gan<0?'neg':'pos');
+  $('#r-eq').textContent=isFinite(be)?be.toFixed(2)+'×':'Sin margen';
+  /* barra apilada */
+  var pa=v*pp/100,ma=v*pm/100,seg=[['Producto',pa,'#5b6cd9'],['Mano de obra',ma,'#e8a33d'],['Anuncios',inv,'#8e2f64']];
+  if(gan>0)seg.push(['Ganancia',gan,'#2f8f5b']);
+  var tot=seg.reduce(function(a,s){return a+s[1]},0);
+  if(v<=0){$('#stack').innerHTML='<i style="width:100%;background:#d9d2de;color:#6b6475">Pon ventas para ver el reparto</i>';$('#slg').innerHTML=''}
+  else{
+    $('#stack').innerHTML=seg.filter(function(s){return s[1]>0}).map(function(s){var w=s[1]/tot*100;return '<i style="width:'+w+'%;background:'+s[2]+'">'+(w>12?s[0]:'')+'</i>'}).join('');
+    $('#slg').innerHTML=seg.filter(function(s){return s[1]>0}).map(function(s){return '<span><i style="background:'+s[2]+'"></i>'+s[0]+' '+sol(s[1])+'</span>'}).join('')+(gan<0?'<span style="color:#b3261e;font-weight:700">⚠️ Pérdida de '+sol(-gan)+'</span>':'');
+  }
+  /* medidor */
+  var max=Math.max(roas,isFinite(be)?be:roas,1)*1.25,ok=roas>=be;
+  $('#gg').style.width=Math.min(roas/max*100,100)+'%';$('#gg').style.background=v<=0?'#d9d2de':(ok?'#2f8f5b':'#b3261e');
+  if(isFinite(be)){$('#gm').style.display='block';$('#gm').style.left=Math.min(be/max*100,100)+'%';$('#gml').textContent='mínimo '+be.toFixed(2)+'×'}else $('#gm').style.display='none';
+  $('#gtx').textContent=v<=0?'Mueve "Ventas" para ver si pasamos la línea del mínimo.':(!isFinite(be)?'Con estos costos no queda margen: nunca habría ganancia.':(ok?'✅ Pasamos el mínimo: el test no pierde dinero.':'❌ Debajo del mínimo: con estas ventas el test pierde dinero.'));
+  CI.forEach(function(id){store('gv-calc-'+id,$('#'+id).value)});
+}
+CI.forEach(function(id){var s=store('gv-calc-'+id);if(s!==null&&s!=='')$('#'+id).value=s;$('#'+id).addEventListener('input',calc)});
+$('#ex').onclick=function(){$('#c-ventas').value=3500;$('#c-prod').value=40;$('#c-mo').value=15;calc()};
+$('#rs').onclick=function(){CI.forEach(function(id){$('#'+id).value=DEF[id]});calc()};
+calc();
+
+/* ---------- 7. WhatsApp ---------- */
+var MSG=[
+ ['1 · Para todos','Buenas equipo 🌸 @Joyce @Lesly @Gabriela\n\nEsta semana hacemos un *test de Google Ads*:\n• Presupuesto: *S/50 diarios*\n• Zona: *solo Lima, Perú*\n\nPor qué Google: en la última campaña (septiembre) invertimos *S/80* y se generaron *más de S/5,000 en ventas*. Ojo, eso es venta, falta descontar producto y mano de obra. Aun así es lo que mejor nos ha funcionado 💐\n\nEnfoque: colecciones *Graduación*, *Peonías* y productos a *menos de S/99.90*.\n\n⚠️ *Navidad:* el *alcohol está restringido*. No usar licores ni vinos en ninguna imagen o video.'],
+ ['2 · Joyce: Google Ads','@Joyce necesito esto para *Google Ads* 📌\n\n🖼️ *20 imágenes*: 8 cuadradas (1200×1200), 6 verticales 4:5 (960×1200) y 6 horizontales (1200×628).\nReparto: Graduación 7, Peonías 7, Menos de S/99.90 6.\n\n🎬 *15 videos*: 5 videos base, cada uno en 3 formatos: 16:9 (1920×1080), 1:1 (1080×1080) y 9:16 (1080×1920).\nReparto: Graduación 2, Peonías 2, Menos de S/99.90 1.\n\nPueden ser videos antiguos de cada colección. Calidad excelente en las principales, promedio en las de relleno. Marca visible y *sin alcohol*.\n\nNombre de archivo: FLA_coleccion_tipo_formato_numero (ej: FLA_grad_img_1x1_01).'],
+ ['3 · Joyce: Redes','@Joyce para *Instagram, Facebook y TikTok* usamos los *posts que ya tenemos*, no hace falta crear de cero.\n\nSolo si alguno sale como *anuncio independiente*:\n• Cuadrado → 1080×1080\n• Vertical 4:5 → 1080×1350\n• Historias, Reels y TikTok 9:16 → 1080×1920\n\nSi falta alguna versión de un video, me avisas y la rehago del mismo video.'],
+ ['4 · Lesly','@Lesly tu parte esta semana 🛒\n\n1) Confirma stock e insumos de graduación, peonías y productos a menos de S/99.90, y que podamos armar y entregar en Lima si suben los pedidos.\n2) En *Argus* deja listo el origen "Google Ads – test Navidad" para marcar las ventas del test (web y WhatsApp).\n3) Si algo se agota, avísame y pauso el anuncio.\nAl cierre me pasas total de ventas y costos reales.'],
+ ['5 · Gabriela','@Gabriela te cuento el plan de la semana 🙌\n\nTest de Google Ads: S/50 diarios en Lima, foco en graduación, peonías y productos a menos de S/99.90. Joyce prepara las piezas, Lesly asegura stock y registro en Argus, yo lanzo y mido.\n\nNecesito que revises presupuesto y viabilidad, y me des luz verde. Si quieres cambiar el presupuesto o el enfoque, avísame. Te paso resultados al cerrar la semana (venta bruta; la ganancia real se calcula con producto y mano de obra).']
+];
+var mi=0;
+function drawMsg(){
+  $('#wtabs').innerHTML=MSG.map(function(m,i){return '<button class="chip '+(i===mi?'on':'')+'" data-i="'+i+'">'+m[0]+'</button>'}).join('');
+  $$('#wtabs .chip').forEach(function(b){b.onclick=function(){mi=+b.dataset.i;drawMsg()}});
+  $('#wttl').textContent=MSG[mi][0];$('#wbub').textContent=MSG[mi][1];
+}
+$('#wcopy').onclick=function(){copyText(MSG[mi][1],this,'Copiar')};
+drawMsg();
+</script>
+</body>
+</html>
