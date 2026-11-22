@@ -1,0 +1,1 @@
+2026-11-22T02:59:06.804Z | google ads, whatsapp, lima, navidad, plan, joyce, lesly | Goal: team instructions + plan doc for Google Ads test (Lima, S/50/day, Christmas week) for florist brand. Core intent: | 2026-11-22/handoff-2026-11-22T02-59-06-804Z.md
