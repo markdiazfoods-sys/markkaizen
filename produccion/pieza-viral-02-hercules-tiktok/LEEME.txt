@@ -1,0 +1,9 @@
+Pieza viral 02 "Hércules: 12 trabajos, cero magia" para TikTok 9:16.
+Ángulo: los 12 trabajos de Hércules como lección de mejora continua (kaizen).
+
+- mark_kaizen_pieza-viral-02-hercules_tiktok_9x16.mp4  1080x1920, 30 fps, 30 s, H.264 + audio (solo golpes de bajo).
+- render.py  regenera el video: python3 render.py [salida.mp4]  (Pillow + ffmpeg).
+
+Estructura: hook, tachado, bucle abierto, 3 pasos (elige un león / repite / mejora 1%),
+símbolo con anillo que se dibuja, CTA "COMENTA: KAIZEN", subtítulos en zona segura de TikTok.
+No incluye voz ni avatar presentador. Para cambiar textos edita frame() en render.py.
