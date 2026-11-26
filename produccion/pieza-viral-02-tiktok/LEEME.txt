@@ -1,0 +1,9 @@
+Pieza viral 02 "Tu video muere en 2 segundos" para TikTok 9:16.
+
+- mark_kaizen_pieza-viral-02_tiktok_9x16.mp4  1080x1920, 30 fps, 26 s, H.264 + audio (solo golpes de bajo).
+- render.py  regenera el video: python3 render.py [salida.mp4]  (Pillow + ffmpeg; reutiliza helpers de la pieza 01).
+
+Estructura: hook (0-2 s) / error "Hola, soy..." (2-5) / bucle abierto (5-7) / 3 pasos (7-19) / simbolo + 改善 (19-22) / CTA "COMENTA: HOOK" (22-26).
+Caption sugerido: Tu video no muere por malo, muere porque empieza lento. 3 cambios para frenar el scroll. Comenta HOOK 👇
+Hashtags: #tiktokmarketing #marcapersonal #contenidoviral #kaizen #creadoresdecontenido
+Sin voz ni avatar presentador (no hay imagen de referencia del personaje). No se uso ningun generador IA (0 creditos).
