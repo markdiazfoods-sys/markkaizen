@@ -51,3 +51,27 @@ Texto corrido para leer (≈150 palabras, ritmo natural ~65 s):
 
 - **Tú a cámara (recomendado):** más confianza para un puesto remoto.
 - **Con avatar/voz IA:** el repo ya tiene conectores de video y voz en `.mcp.json` y skills `video-ia-generar` / `video-ia-insertar`. Útil para inserts o B-roll; evita reemplazar tu cara y tu voz, porque la presentación es justamente para que te conozcan.
+
+---
+
+# Versión corta: 30 s (TikTok / Reels / Shorts)
+
+Mismo CV, una sola prueba numérica, cortes más rápidos. Formato 9:16, 1080×1920.
+
+| Tiempo | Lo que dices (voz) | Texto en pantalla | Imagen |
+|---|---|---|---|
+| 0–3 s | "¿Tu publicidad gasta mucho y vende poco? Soy Mark, trafficker digital." | ¿Gastas mucho y vendes poco? | A cámara, primer plano, arrancas hablando |
+| 3–10 s | "Gestiono Google Ads, Meta Ads y TikTok Ads, y decido con datos, no con intuición." | Google · Meta · TikTok Ads | Logos + cortes rápidos de pantalla |
+| 10–20 s | "En septiembre, con 3,048 soles de inversión, logré 15,648 en valor atribuido: ROAS 5.13." | S/3,048 → S/15,648 · ROAS 5.13 | Número animado, captura del panel (sin datos de clientes) |
+| 20–26 s | "Trabajo remoto, con autonomía, reportes claros y comunicación constante." | Remoto · Autonomía · Reportes claros | Tu espacio de trabajo |
+| 26–30 s | "Escríbeme y hagamos rendir tu inversión." | markdiazfoods@gmail.com · 969 722 522 | A cámara, cierre con sonrisa |
+
+Texto corrido (≈75 palabras, ritmo ~30 s):
+
+> ¿Tu publicidad gasta mucho y vende poco? Soy Mark, trafficker digital. Gestiono Google Ads, Meta Ads y TikTok Ads, y decido con datos, no con intuición. En septiembre, con 3,048 soles de inversión, logré 15,648 en valor atribuido: ROAS 5.13. Trabajo remoto, con autonomía, reportes claros y comunicación constante. Escríbeme y hagamos rendir tu inversión.
+
+Notas:
+- Subtítulos grandes y animados: en TikTok/Reels la mayoría ve sin sonido.
+- Un corte cada 2–3 s; la cifra ROAS 5.13 debe quedar al menos 2 s legible.
+- Si grabaste la versión de 60 s, reutiliza las tomas y recorta; no regraves todo.
+- Publicación: pon el correo en la bio y, en LinkedIn, enlaza la versión de 60 s en el primer comentario.
