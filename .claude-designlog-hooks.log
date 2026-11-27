@@ -34,3 +34,6 @@
 [2026-11-20T22:50:48Z] UserPromptSubmit (capture=no) «Dame el vídeo ``` ¿Puedes generar el video de 15 s en 9:16 con otra »
 [2026-11-20T23:13:15Z] SessionStart
 [2026-11-20T23:13:16Z] UserPromptSubmit (capture=no) «Haz las skills y conectores para meter videos de ia»
+[2026-11-27T18:46:27Z] SessionStart
+[2026-11-27T18:46:28Z] UserPromptSubmit (capture=no) «Hazlo bien mi video presentación para trabajar remoto como trafficker»
+[2026-11-27T18:47:05Z] PreToolUse (no design-log) → ALLOW
