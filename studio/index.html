@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Studio · Series con IA · MARK KAIZEN</title>
+<style>
+:root{--ink:#0B0B0F;--card:#151515;--line:#26262B;--tx:#fff;--mute:#A9A9B3;--dim:#71717B;--or:#FF6B00;--ok:#3ddc84;--wip:#ffc233;--bad:#ff5c5c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--tx);font:15px/1.5 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+header{display:flex;gap:12px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+header h1{font-size:18px;margin:0;margin-right:auto}header h1 b{color:var(--or)}
+button,select,input,textarea{font:inherit;color:var(--tx);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 12px}
+button{cursor:pointer}button:hover{border-color:var(--or)}
+button.pri{background:var(--or);border-color:var(--or);color:#000;font-weight:600}
+main{display:grid;grid-template-columns:250px 1fr;min-height:calc(100vh - 62px)}
+aside{border-right:1px solid var(--line);padding:14px;display:flex;flex-direction:column;gap:8px}
+.s{padding:10px 12px;border:1px solid var(--line);border-radius:10px;cursor:pointer;background:var(--card)}
+.s.on{border-color:var(--or)}.s small{color:var(--mute);display:block}
+.bar{height:5px;background:var(--line);border-radius:4px;margin-top:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--or)}
+section{padding:20px;overflow:auto}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+h2{margin:0 0 4px}h3{margin:18px 0 8px;color:var(--mute);font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+.muted{color:var(--mute)}
+table{width:100%;border-collapse:collapse}
+th,td{padding:8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+th{color:var(--dim);font-weight:500;font-size:12px}
+td.st{padding:4px}
+.chip{display:inline-block;min-width:34px;text-align:center;padding:3px 8px;border-radius:99px;font-size:12px;cursor:pointer;border:1px solid var(--line);user-select:none}
+.chip.pend{color:var(--dim)}.chip.wip{color:var(--wip);border-color:var(--wip)}.chip.ok{color:#000;background:var(--ok);border-color:var(--ok)}.chip.bad{color:var(--bad);border-color:var(--bad)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
+textarea{width:100%;min-height:140px;resize:vertical}
+dialog{background:var(--ink);color:var(--tx);border:1px solid var(--or);border-radius:14px;max-width:760px;width:92vw}
+dialog::backdrop{background:#000a}
+@media(max-width:760px){main{grid-template-columns:1fr}aside{border-right:0;border-bottom:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<header>
+  <h1>MARK KAIZEN <b>改善</b> · Studio de series IA</h1>
+  <button id="newSerie">+ Serie</button>
+  <button id="exp">Exportar JSON</button>
+  <button id="imp">Importar</button>
+  <input type="file" id="file" accept="application/json" hidden>
+</header>
+<main>
+  <aside id="list"></aside>
+  <section id="view"></section>
+</main>
+<dialog id="dlg"></dialog>
+
+<script>
+/* ---------- Pipeline: etapas y herramientas (editables) ---------- */
+const STAGES=[
+ {k:'guion',n:'Guion',tool:'Claude',make:(s,e)=>`Escribe el guion del episodio ${e.n} "${e.titulo}" de la serie "${s.nombre}".\nGénero/tono: ${s.tono}. Idioma: ${s.idioma}. Duración objetivo: ${s.dur}s. Formato ${s.formato}.\nBiblia de la serie:\n${s.biblia}\nEntrega: gancho (3 s), desarrollo por escenas numeradas (acción + diálogo + plano de cámara), cierre/CTA.`},
+ {k:'personajes',n:'Personajes',tool:'Krea / Runway',make:(s,e)=>`Imagen de referencia de los personajes para "${s.nombre}" (consistente en todos los episodios). Estilo: ${s.estilo}. Personajes:\n${s.biblia}\nFormato ${s.formato}, fondo limpio, mismo rostro/vestuario siempre.`},
+ {k:'voz',n:'Voz',tool:'ElevenLabs',make:(s,e)=>`Genera la voz en ${s.idioma} del episodio ${e.n} con creative_generate_speech. Usa la misma voice_id por personaje (de creative_list_voices). Texto = diálogos del guion aprobado.`},
+ {k:'video',n:'Video',tool:'Runway / Kling / Higgsfield',make:(s,e)=>`Genera los clips del episodio ${e.n} "${e.titulo}" escena por escena (5–10 s), ${s.formato}, estilo ${s.estilo}. Usa la imagen de referencia de personajes como primer frame. Cámara y movimiento explícitos en cada prompt. Confirma créditos antes de gastar.`},
+ {k:'edicion',n:'Edición',tool:'ffmpeg / HyperFrames',make:(s,e)=>`Une los clips del ep. ${e.n}, mezcla la voz y música, añade subtítulos en ${s.idioma} y cierre con logo. Exporta mp4 ${s.formato}. Verifica con ffprobe resolución, duración y audio.`},
+ {k:'publicar',n:'Publicar',tool:'Manual',make:(s,e)=>`Prepara copy, hashtags y hora de publicación del ep. ${e.n} para ${s.plataforma}.`}
+];
+const ESTADOS=['pend','wip','ok','bad'],ETIQ={pend:'—',wip:'en curso',ok:'listo',bad:'falló'};
+
+/* ---------- Estado ---------- */
+const KEY='mk_studio_v1';
+const uid=()=>Math.random().toString(36).slice(2,9);
+function demo(){return{sel:null,series:[]}}
+let db=JSON.parse(localStorage.getItem(KEY)||'null')||demo();
+const save=()=>localStorage.setItem(KEY,JSON.stringify(db));
+const cur=()=>db.series.find(s=>s.id===db.sel);
+const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pct=s=>{const t=s.eps.length*STAGES.length;return t?Math.round(100*s.eps.reduce((a,e)=>a+STAGES.filter(g=>e.st[g.k]==='ok').length,0)/t):0};
+
+/* ---------- Vistas ---------- */
+function render(){
+  const L=document.getElementById('list');
+  L.innerHTML=db.series.map(s=>`<div class="s ${s.id===db.sel?'on':''}" data-id="${s.id}"><b>${esc(s.nombre)}</b><small>${s.eps.length} ep · ${pct(s)}%</small><div class="bar"><i style="width:${pct(s)}%"></i></div></div>`).join('')||'<p class="muted">Sin series. Crea la primera con “+ Serie”.</p>';
+  L.querySelectorAll('.s').forEach(el=>el.onclick=()=>{db.sel=el.dataset.id;save();render()});
+  const s=cur(),V=document.getElementById('view');
+  if(!s){V.innerHTML='<h2>Bienvenido</h2><p class="muted">Crea una serie, define su biblia (personajes, tono, estilo) y sigue cada episodio por el pipeline: guion → personajes → voz → video → edición → publicar. Cada etapa genera el prompt listo para pegar en Claude o en la herramienta indicada.</p>';return}
+  V.innerHTML=`
+  <div class="row"><div style="margin-right:auto"><h2>${esc(s.nombre)}</h2><span class="muted">${esc(s.plataforma)} · ${esc(s.formato)} · ${s.dur}s · ${esc(s.idioma)} · ${pct(s)}% completo</span></div>
+   <button id="edS">Editar serie</button><button id="addE" class="pri">+ Episodio</button></div>
+  <table><thead><tr><th>#</th><th>Episodio</th>${STAGES.map(g=>`<th title="${g.tool}">${g.n}</th>`).join('')}<th></th></tr></thead><tbody>
+  ${s.eps.map(e=>`<tr><td>${e.n}</td><td>${esc(e.titulo)}</td>${STAGES.map(g=>`<td class="st"><span class="chip ${e.st[g.k]}" data-e="${e.id}" data-g="${g.k}">${e.st[g.k]==='pend'?'—':e.st[g.k]==='ok'?'✓':e.st[g.k]==='wip'?'…':'✗'}</span></td>`).join('')}
+   <td><button data-p="${e.id}">Prompts</button> <button data-d="${e.id}" title="Eliminar">🗑</button></td></tr>`).join('')||`<tr><td colspan="${STAGES.length+3}" class="muted">Sin episodios.</td></tr>`}
+  </tbody></table>
+  <h3>Biblia de la serie</h3><div class="card"><pre style="white-space:pre-wrap;margin:0;font:inherit">${esc(s.biblia)||'—'}</pre></div>
+  <p class="muted">Clic en un estado para avanzar: — → en curso → listo → falló.</p>`;
+  V.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{const e=s.eps.find(x=>x.id===c.dataset.e);const a=e.st[c.dataset.g];e.st[c.dataset.g]=ESTADOS[(ESTADOS.indexOf(a)+1)%4];save();render()});
+  V.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>prompts(s,s.eps.find(x=>x.id===b.dataset.p)));
+  V.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{if(confirm('¿Eliminar episodio?')){s.eps=s.eps.filter(x=>x.id!==b.dataset.d);save();render()}});
+  document.getElementById('addE').onclick=()=>{const t=prompt('Título del episodio');if(!t)return;s.eps.push({id:uid(),n:s.eps.length+1,titulo:t,st:Object.fromEntries(STAGES.map(g=>[g.k,'pend']))});save();render()};
+  document.getElementById('edS').onclick=()=>serieForm(s);
+}
+function prompts(s,e){
+  const d=document.getElementById('dlg');
+  d.innerHTML=`<h2>Ep. ${e.n} · ${esc(e.titulo)}</h2><p class="muted">Copia el prompt de la etapa y úsalo en Claude Code (con los conectores) o en la herramienta indicada.</p>
+  ${STAGES.map(g=>`<div class="card"><div class="row"><b style="margin-right:auto">${g.n} <span class="muted">· ${g.tool}</span></b><button data-c="${g.k}">Copiar</button></div><textarea readonly id="t_${g.k}">${esc(g.make(s,e))}</textarea></div>`).join('')}
+  <div class="row"><button id="cl" class="pri">Cerrar</button></div>`;
+  d.showModal();
+  d.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{navigator.clipboard.writeText(document.getElementById('t_'+b.dataset.c).value);b.textContent='Copiado ✓'});
+  document.getElementById('cl').onclick=()=>d.close();
+}
+function serieForm(s){
+  const n=!s;s=s||{id:uid(),nombre:'',plataforma:'TikTok',formato:'9:16',dur:30,idioma:'Español',tono:'',estilo:'Estudio japonés contemporáneo, fondo oscuro, acento naranja #FF6B00',biblia:'',eps:[]};
+  const d=document.getElementById('dlg');
+  const f=(k,l,t='input')=>`<label class="muted">${l}</label>${t==='ta'?`<textarea id="f_${k}">${esc(s[k])}</textarea>`:`<input id="f_${k}" value="${esc(s[k])}" style="width:100%">`}`;
+  d.innerHTML=`<h2>${n?'Nueva serie':'Editar serie'}</h2>${f('nombre','Nombre')}${f('plataforma','Plataforma')}${f('formato','Formato (9:16, 16:9…)')}${f('dur','Duración por episodio (s)')}${f('idioma','Idioma')}${f('tono','Género y tono')}${f('estilo','Estilo visual')}${f('biblia','Biblia: personajes, mundo, reglas de continuidad','ta')}
+  <div class="row" style="margin-top:12px"><button id="ok" class="pri">Guardar</button><button id="no">Cancelar</button></div>`;
+  d.showModal();
+  document.getElementById('no').onclick=()=>d.close();
+  document.getElementById('ok').onclick=()=>{['nombre','plataforma','formato','dur','idioma','tono','estilo','biblia'].forEach(k=>s[k]=document.getElementById('f_'+k).value);s.dur=+s.dur||30;if(!s.nombre)return;if(n){db.series.push(s);db.sel=s.id}save();d.close();render()};
+}
+document.getElementById('newSerie').onclick=()=>serieForm();
+document.getElementById('exp').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(db,null,2)],{type:'application/json'}));a.download='studio-series.json';a.click()};
+document.getElementById('imp').onclick=()=>document.getElementById('file').click();
+document.getElementById('file').onchange=async ev=>{try{const j=JSON.parse(await ev.target.files[0].text());if(!Array.isArray(j.series))throw 0;db=j;save();render()}catch{alert('JSON inválido')}};
+render();
+</script>
+</body>
+</html>
